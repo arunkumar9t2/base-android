@@ -13,6 +13,9 @@ buildscript {
 }
 
 allprojects {
+    group = artifactGroup
+    version = '1.0'
+
     repositories {
         google()
         jcenter()

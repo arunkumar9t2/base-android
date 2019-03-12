@@ -4,8 +4,8 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    group = "${artifactGroup}.extensions"
-    version = "1.0"
+    group = artifactGroup
+    version = "${artifactVersion}.${buildNumber}"
 
     compileSdkVersion buildDetails.compileSdk
 
