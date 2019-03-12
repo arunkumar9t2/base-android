@@ -13,8 +13,8 @@ buildscript {
 }
 
 allprojects {
-    group = artifactGroup
-    version = '1.0'
+    group = "dev.arunkumar.android"
+    version = '1.0.0'
 
     repositories {
         google()

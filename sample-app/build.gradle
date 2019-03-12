@@ -46,7 +46,7 @@ androidExtensions {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(path: ':android-extensions')
+    implementation project(path: ':extensions')
     implementation "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}"
 
     implementation "com.android.support:appcompat-v7:${versions.supportLibrary}"
@@ -54,5 +54,4 @@ dependencies {
 
     testImplementation "junit:junit:${versions.junit}"
     testImplementation "org.robolectric:robolectric:${versions.roboelectric}"
-
 }
