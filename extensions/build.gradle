@@ -7,7 +7,7 @@ version = "1.0.0"
 archivesBaseName = "extensions"
 
 android {
-    defaultPublishConfig "release"
+    defaultPublishConfig "debug"
     compileSdkVersion buildDetails.compileSdk
 
     compileOptions {
@@ -28,13 +28,9 @@ android {
     }
 
     buildTypes {
-        debug {
-            minifyEnabled false
-            debuggable true
-        }
         release {
-            minifyEnabled true
-            debuggable false
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 
