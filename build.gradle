@@ -13,7 +13,7 @@ buildscript {
 }
 
 allprojects {
-    group = "dev.arunkumar.android"
+    group = 'dev.arunkumar.android'
     version = '1.0.0'
 
     repositories {
