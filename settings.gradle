@@ -1,1 +1,1 @@
-include ':sample-app', ':extensions'
+include ':sample-app', ':common-ext'
