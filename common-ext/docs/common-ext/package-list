@@ -1,6 +1,0 @@
-$dokka.format:html
-$dokka.linkExtension:html
-$dokka.location:dev.arunkumar.common.ext.context$dpToPx(android.content.Context, kotlin.Double)dev.arunkumar.common.ext.context/android.content.-context/dp-to-px.html
-$dokka.location:dev.arunkumar.common.ext.context$pxToDp(android.content.Context, kotlin.Int)dev.arunkumar.common.ext.context/android.content.-context/px-to-dp.html
-$dokka.location:dev.arunkumar.common.ext.context$resolveColorRes(android.content.Context, kotlin.Int)dev.arunkumar.common.ext.context/android.content.-context/resolve-color-res.html
-dev.arunkumar.common.ext.context

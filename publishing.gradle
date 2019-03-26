@@ -32,7 +32,7 @@ uploadArchives {
 
 dokka {
     outputFormat = 'html'
-    outputDirectory = "$projectDir/docs/"
+    outputDirectory = "$buildDir/javadoc"
     classpath = new ArrayList<File>(project.tasks['assemble'].outputs.files.files)
     sourceDirs = android.sourceSets.main.java.srcDirs
     externalDocumentationLink {
