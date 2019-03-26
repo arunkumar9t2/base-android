@@ -1,4 +1,5 @@
 ext {
+
     buildDetails = [
             'compileSdk': 28,
             'minSdk'    : 19,
@@ -18,5 +19,14 @@ ext {
             'rxBinding'       : '2.1.1',
             'butterKnife'     : '8.8.1',
             'ktx'             : '0.3',
+            'dokka'           : '0.9.17'
     ]
+
+    developerId = 'arunkumar9t2'
+    developerName = 'Arunkumar'
+    developerEmail = 'arunk.beece@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
 }

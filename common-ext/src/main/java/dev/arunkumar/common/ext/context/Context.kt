@@ -7,11 +7,17 @@ import android.support.annotation.ColorInt
 import android.support.annotation.ColorRes
 import android.support.v4.content.ContextCompat
 
+/**
+ * Converts given [dp] to pixel units
+ */
 fun Context.dpToPx(dp: Double): Int {
     val displayMetrics = resources.displayMetrics
     return ((dp * displayMetrics.density + 0.5).toInt())
 }
 
+/**
+ * Converts given [px] pixels units to density independent units
+ */
 fun Context.pxToDp(px: Int): Int {
     val displayMetrics = resources.displayMetrics
     return (px / displayMetrics.density).toInt()

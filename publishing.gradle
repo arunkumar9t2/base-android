@@ -1,0 +1,57 @@
+apply plugin: 'org.jetbrains.dokka-android'
+apply plugin: 'maven'
+
+uploadArchives {
+    repositories.mavenDeployer {
+        def deployPath = file("../maven-repo/releases/")
+        repository(url: "file://${deployPath.absolutePath}")
+        pom.project {
+            packaging 'aar'
+
+            groupId rootProject.group
+            artifactId artifact
+            version version
+
+            developers {
+                developer {
+                    id developerId
+                    name developerName
+                    email developerEmail
+                }
+            }
+
+            licenses {
+                license {
+                    name licenseName
+                    url licenseUrl
+                }
+            }
+        }
+    }
+}
+
+dokka {
+    outputFormat = 'html'
+    outputDirectory = "$projectDir/docs/"
+    classpath = new ArrayList<File>(project.tasks['assemble'].outputs.files.files)
+    sourceDirs = android.sourceSets.main.java.srcDirs
+    externalDocumentationLink {
+        url = new URL("https://developer.android.com/reference/")
+        packageListUrl = new URL("https://developer.android.com/reference/android/support/package-list")
+    }
+}
+
+task docJar(type: Jar, dependsOn: dokka) {
+    classifier = 'javadoc'
+    from dokka.outputDirectory
+}
+
+task sourceJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.srcDirs
+}
+
+artifacts {
+    archives sourceJar
+    archives docJar
+}
