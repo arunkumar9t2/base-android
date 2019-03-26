@@ -39,6 +39,23 @@ android {
         }
     }
 
+    flavorDimensions "dep"
+
+    productFlavors {
+        local {
+            dimension "dep"
+        }
+        remote {
+            dimension "dep"
+        }
+    }
+
+    variantFilter { variant ->
+        if (variant.name == "localRelease") {
+            setIgnore(true)
+        }
+    }
+
     testOptions {
         unitTests {
             includeAndroidResources = true
@@ -52,7 +69,10 @@ androidExtensions {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(path: ':common-ext')
+
+    localImplementation project(path: ':common-ext')
+    remoteImplementation "dev.arunkumar.android:common-ext:1.0.0"
+
     implementation "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}"
 
     implementation "com.android.support:appcompat-v7:${versions.supportLibrary}"
