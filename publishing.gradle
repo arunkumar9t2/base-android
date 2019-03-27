@@ -3,8 +3,7 @@ apply plugin: 'maven'
 
 uploadArchives {
     repositories.mavenDeployer {
-        def deployPath = file("../maven-repo/releases/")
-        repository(url: "file://${deployPath.absolutePath}")
+        repository(url: "file://${file("../maven-repo/releases/").absolutePath}")
         pom.project {
             packaging 'aar'
 
