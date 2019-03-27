@@ -13,6 +13,8 @@ class MainActivity : DaggerAppCompatActivity() {
 
     @Inject
     lateinit var preferences: SharedPreferences
+    @Inject
+    lateinit var testActivityScope: TestActivityScope
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,4 +28,8 @@ class MainActivity : DaggerAppCompatActivity() {
         @ContributesAndroidInjector
         abstract fun mainActivity(): MainActivity
     }
+
+
+    @PerActivity
+    class TestActivityScope @Inject constructor()
 }
