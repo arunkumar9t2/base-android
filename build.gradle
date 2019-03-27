@@ -20,7 +20,12 @@ allprojects {
     repositories {
         google()
         jcenter()
-        maven { url "https://raw.github.com/arunkumar9t2/base-android/master/maven-repo/releases" }
+        maven {
+            url "https://raw.github.com/arunkumar9t2/base-android/master/maven-repo/releases"
+            content {
+                includeGroup "dev.arunkumar.android"
+            }
+        }
     }
 }
 

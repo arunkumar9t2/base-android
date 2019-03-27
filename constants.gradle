@@ -5,6 +5,7 @@ ext {
             'minSdk'    : 19,
             'targetSdk' : 28,
     ]
+
     versions = [
             'androidGradle'   : '3.4.0-rc02',
             'supportLibrary'  : '28.0.0',
@@ -14,6 +15,7 @@ ext {
             'roboelectric'    : '4.2',
             'timber'          : '4.6.0',
             'rx'              : '2.1.13',
+            'dagger'          : '2.19',
             'rxKotlin'        : '2.2.0',
             'rxAndroid'       : '2.0.1',
             'rxBinding'       : '2.1.1',

@@ -1,1 +1,1 @@
-include ':sample-app', ':common-ext'
+include ':sample-app', ':common-ext', ':dagger-base'
