@@ -6,7 +6,8 @@ import dagger.Component
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
 import dev.arunkumar.android.SampleApp
-import dev.arunkumar.android.home.MainActivity
+import dev.arunkumar.android.dagger.viewmodel.DefaultViewModelsBuilder
+import dev.arunkumar.android.home.HomeActivity
 import dev.arunkumar.android.util.PreferencesModule
 import javax.inject.Singleton
 
@@ -15,9 +16,10 @@ import javax.inject.Singleton
     modules = [
         AndroidSupportInjectionModule::class,
 
-        MainActivity.Builder::class,
+        HomeActivity.Builder::class,
 
         /** Utils **/
+        DefaultViewModelsBuilder::class,
         PreferencesModule::class
     ]
 )
