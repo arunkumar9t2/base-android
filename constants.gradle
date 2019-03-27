@@ -15,7 +15,7 @@ ext {
             'roboelectric'       : '4.2',
             'timber'             : '4.6.0',
             'rx'                 : '2.1.13',
-            'dagger'             : '2.19',
+            'dagger'             : '2.21',
             'rxKotlin'           : '2.2.0',
             'rxAndroid'          : '2.0.1',
             'rxBinding'          : '2.1.1',
