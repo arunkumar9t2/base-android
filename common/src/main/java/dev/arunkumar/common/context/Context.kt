@@ -1,6 +1,6 @@
 @file:Suppress("NOTHING_TO_INLINE")
 
-package dev.arunkumar.common.ext.context
+package dev.arunkumar.common.context
 
 import android.content.Context
 import android.support.annotation.ColorInt

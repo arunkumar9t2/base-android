@@ -71,8 +71,8 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     // Common
-    localImplementation project(path: ':common-ext')
-    remoteImplementation "dev.arunkumar.android:common-ext:1.0.0"
+    localImplementation project(path: ':common')
+    // remoteImplementation "dev.arunkumar.android:common:1.0.0"
 
     // Dagger related
     localImplementation project(path: ':dagger-base')
