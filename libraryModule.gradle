@@ -4,7 +4,6 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    defaultPublishConfig "debug"
     compileSdkVersion buildDetails.compileSdk
 
     compileOptions {
