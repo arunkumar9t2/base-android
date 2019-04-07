@@ -85,6 +85,7 @@ dependencies {
 
     // Viewmodel
     localImplementation project(path: ':viewmodel-utils')
+    remoteImplementation "dev.arunkumar.android:viewmodel-utils:1.0.0"
 
     implementation "com.google.dagger:dagger-android:${versions.dagger}"
     implementation "com.google.dagger:dagger-android-support:${versions.dagger}"
