@@ -80,6 +80,12 @@ dependencies {
     localImplementation project(path: ':dagger-viewmodel')
     remoteImplementation "dev.arunkumar.android:dagger-viewmodel:1.0.0"
 
+    // Loggin
+    implementation "com.jakewharton.timber:timber:${versions.timber}"
+
+    // Viewmodel
+    localImplementation project(path: ':viewmodel-utils')
+
     implementation "com.google.dagger:dagger-android:${versions.dagger}"
     implementation "com.google.dagger:dagger-android-support:${versions.dagger}"
     kapt "com.google.dagger:dagger-compiler:${versions.dagger}"
@@ -89,6 +95,11 @@ dependencies {
 
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}"
+
+    // Rx
+    implementation "io.reactivex.rxjava2:rxandroid:${versions.rxAndroid}"
+    implementation "io.reactivex.rxjava2:rxkotlin:${versions.rxKotlin}"
+    implementation "com.jakewharton.rxbinding2:rxbinding:${versions.rxBinding}"
 
     // AndroidX
     implementation "com.android.support:appcompat-v7:${versions.supportLibrary}"

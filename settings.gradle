@@ -1,1 +1,1 @@
-include ':sample-app', ':common', ':dagger-base', ':dagger-viewmodel'
+include ':sample-app', ':common', ':dagger-base', ':dagger-viewmodel', ':viewmodel-utils'

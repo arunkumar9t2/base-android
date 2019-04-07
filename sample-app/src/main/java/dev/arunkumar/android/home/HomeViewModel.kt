@@ -1,12 +1,27 @@
 package dev.arunkumar.android.home
 
-import android.arch.lifecycle.ViewModel
+import com.jakewharton.rxrelay2.BehaviorRelay
+import dev.arunkumar.android.viewmodel.RxViewModel
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.rxkotlin.subscribeBy
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class HomeViewModel
 @Inject
-constructor() : ViewModel() {
+constructor() : RxViewModel() {
 
-    override fun onCleared() {
+    val count = BehaviorRelay.create<Long>()
+
+    init {
+        start()
+    }
+
+    private fun start() {
+        Observable.interval(100, TimeUnit.MILLISECONDS)
+            .untilCleared()
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeBy(onNext = count::accept)
     }
 }

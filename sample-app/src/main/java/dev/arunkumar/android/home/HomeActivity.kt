@@ -14,6 +14,7 @@ import dev.arunkumar.android.dagger.activity.PerActivity
 import dev.arunkumar.android.dagger.viewmodel.UsesViewModel
 import dev.arunkumar.android.dagger.viewmodel.ViewModelKey
 import dev.arunkumar.android.dagger.viewmodel.viewModel
+import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 class HomeActivity : DaggerAppCompatActivity(), UsesViewModel {
@@ -29,8 +30,14 @@ class HomeActivity : DaggerAppCompatActivity(), UsesViewModel {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        observeViewModel()
     }
 
+    private fun observeViewModel() {
+        homeViewModel.count.subscribe {
+            counter.text = it.toString()
+        }
+    }
 
     @Module
     abstract class Builder {
