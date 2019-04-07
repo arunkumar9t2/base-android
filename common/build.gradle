@@ -5,6 +5,10 @@ ext {
     artifact = "common"
 }
 
+android {
+
+}
+
 apply from: '../publishing.gradle'
 
 dependencies {

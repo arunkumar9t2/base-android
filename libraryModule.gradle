@@ -28,10 +28,12 @@ android {
         debug {
             minifyEnabled false
             debuggable true
+            buildConfigField "boolean", "DEBUG_BUILD", "true"
         }
         release {
             minifyEnabled true
             debuggable false
+            buildConfigField "boolean", "DEBUG_BUILD", "false"
         }
     }
 
