@@ -80,8 +80,8 @@ dependencies {
     localImplementation project(path: ':dagger-viewmodel')
     remoteImplementation "dev.arunkumar.android:dagger-viewmodel:1.0.0"
 
-    // Loggin
-    implementation "com.jakewharton.timber:timber:${versions.timber}"
+    // Logging
+    localImplementation project(path: ':logging')
 
     // Viewmodel
     localImplementation project(path: ':viewmodel-utils')

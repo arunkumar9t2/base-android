@@ -3,7 +3,7 @@ package dev.arunkumar.android
 import dagger.android.support.DaggerApplication
 import dev.arunkumar.android.di.AppComponent
 import dev.arunkumar.android.di.DaggerAppComponent
-import timber.log.Timber
+import dev.arunkumar.android.logging.initDebugLogs
 
 class SampleApp : DaggerApplication() {
 
@@ -15,14 +15,7 @@ class SampleApp : DaggerApplication() {
 
     override fun onCreate() {
         super.onCreate()
-
-        initTimber()
-    }
-
-    private fun initTimber() {
-        if (BuildConfig.DEBUG){
-            Timber.plant(Timber.DebugTree())
-        }
+        initDebugLogs()
     }
 
     override fun applicationInjector() = appComponent
