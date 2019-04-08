@@ -21,6 +21,7 @@ constructor() : RxViewModel() {
     private fun start() {
         Observable.interval(100, TimeUnit.MILLISECONDS)
             .untilCleared()
+            .doOnNext { logd(it.toString()) }
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy(onNext = count::accept)
     }
