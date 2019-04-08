@@ -1,6 +1,7 @@
 package dev.arunkumar.android.home
 
 import com.jakewharton.rxrelay2.BehaviorRelay
+import dev.arunkumar.android.logging.logd
 import dev.arunkumar.android.viewmodel.RxViewModel
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -19,7 +20,7 @@ constructor() : RxViewModel() {
     }
 
     private fun start() {
-        Observable.interval(100, TimeUnit.MILLISECONDS)
+        Observable.interval(500, TimeUnit.MILLISECONDS)
             .untilCleared()
             .doOnNext { logd(it.toString()) }
             .observeOn(AndroidSchedulers.mainThread())
