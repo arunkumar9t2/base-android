@@ -4,7 +4,6 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    defaultPublishConfig "debug"
     compileSdkVersion buildDetails.compileSdk
 
     compileOptions {
@@ -26,13 +25,9 @@ android {
 
     buildTypes {
         debug {
-            minifyEnabled false
-            debuggable true
             buildConfigField "boolean", "DEBUG_BUILD", "true"
         }
         release {
-            minifyEnabled true
-            debuggable false
             buildConfigField "boolean", "DEBUG_BUILD", "false"
         }
     }

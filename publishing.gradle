@@ -1,32 +1,46 @@
 apply plugin: 'org.jetbrains.dokka-android'
 apply plugin: 'maven'
 
+def releaseFolder = "file://${file("../maven-repo/releases/").absolutePath}"
+def snapshotFolder = "file://${file("../maven-repo/snapshots/").absolutePath}"
+
+def versionName = isSnapshot() ? "$version-SNAPSHOT" : version
+
 uploadArchives {
-    repositories.mavenDeployer {
-        repository(url: "file://${file("../maven-repo/releases/").absolutePath}")
-        pom.project {
-            packaging 'aar'
+    repositories {
+        mavenDeployer {
+            repository(url: releaseFolder)
+            snapshotRepository(url: snapshotFolder)
+            pom {
+                project {
+                    packaging 'aar'
 
-            groupId rootProject.group
-            artifactId artifact
-            version version
+                    groupId rootProject.group
+                    artifactId artifact
+                    version versionName
 
-            developers {
-                developer {
-                    id developerId
-                    name developerName
-                    email developerEmail
-                }
-            }
+                    developers {
+                        developer {
+                            id developerId
+                            name developerName
+                            email developerEmail
+                        }
+                    }
 
-            licenses {
-                license {
-                    name licenseName
-                    url licenseUrl
+                    licenses {
+                        license {
+                            name licenseName
+                            url licenseUrl
+                        }
+                    }
                 }
             }
         }
     }
+}
+
+private boolean isSnapshot() {
+    return project.hasProperty("isSnapshot") && project.property("isSnapshot").toBoolean()
 }
 
 dokka {
