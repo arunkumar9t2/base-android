@@ -8,6 +8,17 @@ import dev.arunkumar.android.logging.BuildConfig.DEBUG_BUILD
 import timber.log.Timber
 
 /**
+ * Includes given block of code in [action] only on debug builds.
+ *
+ * @param include to indicate if the block should be
+ */
+inline fun onDebug(include: Boolean = DEBUG_BUILD, action: () -> Unit) {
+    if (include) {
+        action()
+    }
+}
+
+/**
  * Logs with [Log.DEBUG] level when [include] is `true`
  */
 inline fun logd(
@@ -20,7 +31,6 @@ inline fun logd(
         throwable?.let { Timber.d(it, message, args) } ?: Timber.d(message, args)
     }
 }
-
 
 /**
  * Logs with [Log.VERBOSE] level when [include] is `true`
