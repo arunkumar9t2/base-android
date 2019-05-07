@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>dev.arunkumar.android</groupId>
+  <artifactId>common</artifactId>
+  <versioning>
+    <versions>
+      <version>SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20190507152504</lastUpdated>
+  </versioning>
+</metadata>

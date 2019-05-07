@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>dev.arunkumar.android</groupId>
+  <artifactId>viewmodel-utils</artifactId>
+  <versioning>
+    <versions>
+      <version>SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20190507152506</lastUpdated>
+  </versioning>
+</metadata>
