@@ -83,7 +83,7 @@ dependencies {
     // Dagger related
     localImplementation project(path: ':dagger-base')
     remoteImplementation "dev.arunkumar.android:dagger-base:1.0.0"
-    // snapshotImplementation "dev.arunkumar.android:dagger-base:SNAPSHOT"
+    snapshotImplementation "dev.arunkumar.android:dagger-base:1.0-SNAPSHOT"
     localImplementation project(path: ':dagger-viewmodel')
     remoteImplementation "dev.arunkumar.android:dagger-viewmodel:1.0.0"
 

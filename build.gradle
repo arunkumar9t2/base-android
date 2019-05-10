@@ -22,12 +22,18 @@ allprojects {
         jcenter()
         maven {
             url "https://raw.github.com/arunkumar9t2/base-android/master/maven-repo/releases"
+            mavenContent {
+                releasesOnly()
+            }
             content {
                 includeGroup "dev.arunkumar.android"
             }
         }
         maven {
             url "https://raw.github.com/arunkumar9t2/base-android/master/maven-repo/snapshots"
+            mavenContent {
+                snapshotsOnly()
+            }
             content {
                 includeGroup "dev.arunkumar.android"
             }
