@@ -48,11 +48,17 @@ android {
         remote {
             dimension "dep"
         }
+        snapshot {
+            dimension "dep"
+        }
     }
 
     variantFilter { variant ->
         if (variant.name == "localRelease") {
-            setIgnore(true)
+            variant.setIgnore(true)
+        }
+        if (variant.name == "snapshotRelease") {
+            variant.setIgnore(true)
         }
     }
 
@@ -77,6 +83,7 @@ dependencies {
     // Dagger related
     localImplementation project(path: ':dagger-base')
     remoteImplementation "dev.arunkumar.android:dagger-base:1.0.0"
+    // snapshotImplementation "dev.arunkumar.android:dagger-base:SNAPSHOT"
     localImplementation project(path: ':dagger-viewmodel')
     remoteImplementation "dev.arunkumar.android:dagger-viewmodel:1.0.0"
 

@@ -26,6 +26,12 @@ allprojects {
                 includeGroup "dev.arunkumar.android"
             }
         }
+        maven {
+            url "https://raw.github.com/arunkumar9t2/base-android/master/maven-repo/snapshots"
+            content {
+                includeGroup "dev.arunkumar.android"
+            }
+        }
     }
 }
 

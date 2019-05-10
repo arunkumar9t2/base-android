@@ -4,7 +4,7 @@ apply plugin: 'maven'
 def releaseFolder = "file://${file("../maven-repo/releases/").absolutePath}"
 def snapshotFolder = "file://${file("../maven-repo/snapshots/").absolutePath}"
 
-def versionName = isSnapshot() ? "SNAPSHOT" : version
+def versionName = isSnapshot() ? "1.0-SNAPSHOT" : version
 
 uploadArchives {
     repositories {
