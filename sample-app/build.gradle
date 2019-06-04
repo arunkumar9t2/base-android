@@ -86,14 +86,17 @@ dependencies {
     snapshotImplementation "dev.arunkumar.android:dagger-base:1.0-SNAPSHOT"
     localImplementation project(path: ':dagger-viewmodel')
     remoteImplementation "dev.arunkumar.android:dagger-viewmodel:1.0.0"
+    snapshotImplementation "dev.arunkumar.android:dagger-viewmodel:1.0-SNAPSHOT"
 
     // Logging
     localImplementation project(path: ':logging')
     remoteImplementation "dev.arunkumar.android:logging:1.0.0"
+    snapshotImplementation "dev.arunkumar.android:logging:1.0-SNAPSHOT"
 
     // Viewmodel
     localImplementation project(path: ':viewmodel-utils')
     remoteImplementation "dev.arunkumar.android:viewmodel-utils:1.0.0"
+    snapshotImplementation "dev.arunkumar.android:viewmodel-utils:1.0-SNAPSHOT"
 
     implementation "com.google.dagger:dagger-android:${versions.dagger}"
     implementation "com.google.dagger:dagger-android-support:${versions.dagger}"
