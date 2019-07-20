@@ -40,12 +40,12 @@ uploadArchives {
 }
 
 if (isSnapshot()) {
-    def snapshotsCleanup = project.tasks.register("cleanupSnapshots", Delete) {
+    def cleanupSnapshots = project.tasks.register("cleanupSnapshots", Delete) {
         description = "Cleans up old snapshot files"
-        delete "${project.rootDir}/maven-repo/snapshots/"
+        delete "${project.rootDir}/maven-repo/snapshots/${rootProject.group.toString().replace(".", "/")}/$artifact"
     }
     project.tasks.named("uploadArchives").configure {
-        dependsOn(snapshotsCleanup)
+        dependsOn(cleanupSnapshots)
     }
 }
 
