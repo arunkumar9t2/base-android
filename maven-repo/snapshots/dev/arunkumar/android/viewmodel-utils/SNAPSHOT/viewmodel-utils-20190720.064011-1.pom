@@ -3,8 +3,8 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <groupId>dev.arunkumar.android</groupId>
-  <artifactId>common</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <artifactId>viewmodel-utils</artifactId>
+  <version>SNAPSHOT</version>
   <packaging>aar</packaging>
   <licenses>
     <license>
@@ -20,6 +20,24 @@
     </developer>
   </developers>
   <dependencies>
+    <dependency>
+      <groupId>io.reactivex.rxjava2</groupId>
+      <artifactId>rxjava</artifactId>
+      <version>2.2.8</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.jakewharton.rxrelay2</groupId>
+      <artifactId>rxrelay</artifactId>
+      <version>2.1.0</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>android.arch.lifecycle</groupId>
+      <artifactId>extensions</artifactId>
+      <version>1.1.1</version>
+      <scope>compile</scope>
+    </dependency>
     <dependency>
       <groupId>org.jetbrains.kotlin</groupId>
       <artifactId>kotlin-android-extensions-runtime</artifactId>
