@@ -5,3 +5,6 @@
 
 # Publish a snapshot of all modules
 ./gradlew uploadArchives -PisSnapshot=true
+
+# Stage all files
+git add .
