@@ -39,8 +39,18 @@ uploadArchives {
     }
 }
 
+if (isSnapshot()) {
+    def snapshotsCleanup = project.tasks.register("cleanupSnapshots", Delete) {
+        description = "Cleans up old snapshot files"
+        delete "${project.rootDir}/maven-repo/snapshots/"
+    }
+    project.tasks.named("uploadArchives").configure {
+        dependsOn(snapshotsCleanup)
+    }
+}
+
 private boolean isSnapshot() {
-    return project.hasProperty("isSnapshot") && project.property("isSnapshot").toBoolean()
+    return project.hasProperty("snapshot") && project.property("snapshot").toBoolean()
 }
 
 dokka {
