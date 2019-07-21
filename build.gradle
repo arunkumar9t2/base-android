@@ -16,26 +16,27 @@ buildscript {
 allprojects {
     group = 'dev.arunkumar.android'
     version = '1.0.0'
+    def repoUrl = "https://raw.github.com/arunkumar9t2/base-android/master/maven-repo/"
 
     repositories {
         google()
         jcenter()
         maven {
-            url "https://raw.github.com/arunkumar9t2/base-android/master/maven-repo/releases"
+            url "${repoUrl}releases"
             mavenContent {
                 releasesOnly()
             }
             content {
-                includeGroup "dev.arunkumar.android"
+                includeGroup group
             }
         }
         maven {
-            url "https://raw.github.com/arunkumar9t2/base-android/master/maven-repo/snapshots"
+            url "${repoUrl}snapshots"
             mavenContent {
                 snapshotsOnly()
             }
             content {
-                includeGroup "dev.arunkumar.android"
+                includeGroup group
             }
         }
     }
