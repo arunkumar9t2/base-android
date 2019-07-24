@@ -4,8 +4,8 @@
   <artifactId>viewmodel-utils</artifactId>
   <versioning>
     <versions>
-      <version>1.0-SNAPSHOT</version>
+      <version>master-SNAPSHOT</version>
     </versions>
-    <lastUpdated>20190724174331</lastUpdated>
+    <lastUpdated>20190724180230</lastUpdated>
   </versioning>
 </metadata>
