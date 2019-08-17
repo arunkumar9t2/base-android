@@ -41,6 +41,8 @@ jobs:
         run: sudo chmod +x ./gradlew
 
       - name: Deploy artifacts
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         if: github.ref == 'refs/heads/master'
         run: |
           ./gradlew uploadArchives
