@@ -50,7 +50,6 @@ jobs:
           echo "Setting up git"
           git config --global user.email "arunk.beece@gmail.com"
           git config --global user.name "arunkumar9t2"
-          git remote set-url origin https://$GITHUB_TOKEN:x-oauth-basic@github.com/${{ github.repository }}.git
           git add .
           echo "Committing change"
           git commit -m "[CI] Publish latest artifacts"
