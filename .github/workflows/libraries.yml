@@ -29,20 +29,19 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
       - uses: actions/checkout@v1
       - name: Set up JDK 1.8
+        if: github.ref == 'refs/heads/master'
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
 
       - name: Set gradle permissions
-        run: sudo chmod +x android-app/gradlew
+        if: github.ref == 'refs/heads/master'
+        run: sudo chmod +x ./gradlew
 
       - name: Deploy artifacts
+        if: github.ref == 'refs/heads/master'
         run: |
           ./gradlew uploadArchives
           ./gradlew uploadArchives -Psnapshot=true
