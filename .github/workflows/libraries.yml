@@ -16,7 +16,7 @@ jobs:
         run: sudo chmod +x ./gradlew
       - name: Download dependencies
         run: |
-          ./gradlew app:dependencies
+          ./gradlew dependencies
 
       - name: Build debug
         run: |
