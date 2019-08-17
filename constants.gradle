@@ -2,7 +2,7 @@ ext {
 
     buildDetails = [
             'compileSdk': 28,
-            'minSdk'    : 19,
+            'minSdk'    : 16,
             'targetSdk' : 28,
     ]
 
