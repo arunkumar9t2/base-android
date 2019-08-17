@@ -20,11 +20,11 @@ jobs:
 
       - name: Build debug
         run: |
-          ./gradlew assembleDebug
+          ./gradlew assembleLocalDebug
 
       - name: Test debug
         run: |
-          ./gradlew testDebugUnitTest
+          ./gradlew testLocalDebugUnitTest
   deploy:
     needs: build
     runs-on: ubuntu-latest
