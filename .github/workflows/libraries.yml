@@ -41,15 +41,20 @@ jobs:
         run: sudo chmod +x ./gradlew
 
       - name: Deploy artifacts
+        if: github.ref == 'refs/heads/master'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        if: github.ref == 'refs/heads/master'
         run: |
           ./gradlew uploadArchives
           ./gradlew uploadArchives -Psnapshot=true
+          echo "Setting up git"
+          echo "https://s:x-oauth-basic@github.com/${{ github.repository }}.git"
           git config --global user.email "actions@github.com"
           git config --global user.name "GitHub Actions"
-          git add -A
+          git remote set-url origin https://$GITHUB_TOKEN:x-oauth-basic@github.com/${{ github.repository }}.git
+          git add .
+          echo "Committing change"
           git commit -m "[CI] Publish latest artifacts"
+          echo "Pushing artificats to repository"
           git push -u origin HEAD
           git status
