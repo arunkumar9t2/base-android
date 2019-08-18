@@ -21,7 +21,7 @@ android {
 
         vectorDrawables.useSupportLibrary = true
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -114,11 +114,11 @@ dependencies {
     implementation "com.jakewharton.rxbinding2:rxbinding:${versions.rxBinding}"
 
     // AndroidX
-    implementation "com.android.support:appcompat-v7:${versions.supportLibrary}"
-    implementation "com.android.support.constraint:constraint-layout:${versions.constraintLayout}"
+    implementation "androidx.appcompat:appcompat:${versions.appcompat}"
+    implementation "androidx.constraintlayout:constraintlayout:${versions.constraintLayout}"
 
     // Lifecycle extensions
-    implementation "android.arch.lifecycle:extensions:${versions.lifecycleExtensions}"
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
 
     testImplementation "junit:junit:${versions.junit}"
     testImplementation "org.robolectric:robolectric:${versions.roboelectric}"

@@ -47,15 +47,32 @@ allprojects {
     }
 }
 
-subprojects { project ->
+def sampleAppName = "sample-app"
+
+subprojects { subProject ->
     apply from: '../constants.gradle'
-    if (project.name != "sample-app") {
-        project.ext.artifact = project.name
-        project.version = project.ext.moduleVersion[project.name]
+    if (subProject.name != sampleAppName) {
+        subProject.ext.artifact = subProject.name
+        subProject.version = subProject.ext.moduleVersion[subProject.name]
         apply from: '../libraryModule.gradle'
         apply from: '../publishing.gradle'
     }
 }
+
+/*def sampleApp = subprojects.find { it.name == sampleAppName }
+def libraryProjects = subprojects.findAll { it.name != sampleAppName }
+libraryProjects.each { library ->
+    library.afterEvaluate {
+        // Apply all library modules as dependencies to sample project
+        sampleApp.afterEvaluate {
+            sampleApp.dependencies {
+                localImplementation project(path: ":${library.name}")
+                remoteImplementation "${library.group}:${library.name}:${library.version}"
+                snapshotImplementation "${library.group}:${library.name}:master-SNAPSHOT"
+            }
+        }
+    }
+}*/
 
 task clean(type: Delete) {
     delete rootProject.buildDir

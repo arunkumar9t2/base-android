@@ -1,7 +1,7 @@
 package dev.arunkumar.android.viewmodel
 
-import android.arch.lifecycle.ViewModel
-import android.support.annotation.CallSuper
+import androidx.annotation.CallSuper
+import androidx.lifecycle.ViewModel
 import com.jakewharton.rxrelay2.PublishRelay
 import io.reactivex.BackpressureStrategy.LATEST
 import io.reactivex.Flowable
