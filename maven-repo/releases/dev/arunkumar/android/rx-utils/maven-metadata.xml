@@ -3,10 +3,11 @@
   <groupId>dev.arunkumar.android</groupId>
   <artifactId>rx-utils</artifactId>
   <versioning>
-    <release>unspecified</release>
+    <release>1.0.0</release>
     <versions>
       <version>unspecified</version>
+      <version>1.0.0</version>
     </versions>
-    <lastUpdated>20190818151532</lastUpdated>
+    <lastUpdated>20190818165937</lastUpdated>
   </versioning>
 </metadata>

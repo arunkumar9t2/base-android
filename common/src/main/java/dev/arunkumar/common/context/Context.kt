@@ -6,6 +6,7 @@ import android.content.Context
 import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
+import dev.arunkumar.common.model.StringResource
 
 /**
  * Converts given [dp] to pixel units
@@ -25,3 +26,8 @@ fun Context.pxToDp(px: Int): Int {
 
 @ColorInt
 inline fun Context.resolveColorRes(@ColorRes id: Int): Int = ContextCompat.getColor(this, id)
+
+inline fun Context.resolveStringResource(stringResource: StringResource) = getString(
+    stringResource.resource,
+    stringResource.args
+)
