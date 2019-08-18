@@ -4,8 +4,6 @@ apply plugin: 'maven'
 def releaseFolder = "file://${file("../maven-repo/releases/").absolutePath}"
 def snapshotFolder = "file://${file("../maven-repo/snapshots/").absolutePath}"
 
-def versionName = isSnapshot() ? "master-SNAPSHOT" : version
-
 uploadArchives {
     repositories {
         mavenDeployer {
@@ -17,7 +15,7 @@ uploadArchives {
 
                     groupId rootProject.group
                     artifactId artifact
-                    version versionName
+                    version version
 
                     developers {
                         developer {
