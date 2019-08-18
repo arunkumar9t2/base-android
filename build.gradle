@@ -1,6 +1,5 @@
 buildscript {
     apply from: 'constants.gradle'
-
     repositories {
         google()
         jcenter()
@@ -45,6 +44,16 @@ allprojects {
         resolutionStrategy {
             cacheChangingModulesFor 0, 'seconds'
         }
+    }
+}
+
+subprojects { project ->
+    apply from: '../constants.gradle'
+    if (project.name != "sample-app") {
+        project.ext.artifact = project.name
+        project.version = project.ext.moduleVersion[project.name]
+        apply from: '../libraryModule.gradle'
+        apply from: '../publishing.gradle'
     }
 }
 

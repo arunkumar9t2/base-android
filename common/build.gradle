@@ -1,16 +1,3 @@
-apply from: '../libraryModule.gradle'
-
-version = "1.0.0"
-ext {
-    artifact = "common"
-}
-
-android {
-
-}
-
-apply from: '../publishing.gradle'
-
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}"
