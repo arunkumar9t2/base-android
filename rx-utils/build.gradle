@@ -1,0 +1,20 @@
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}"
+
+    implementation "io.reactivex.rxjava2:rxjava:${versions.rx}"
+    implementation "io.reactivex.rxjava2:rxandroid:${versions.rxAndroid}"
+
+    debugImplementation project(path: ':common')
+    releaseImplementation deps.common
+
+    api "com.google.dagger:dagger-android:${versions.dagger}"
+    api "com.google.dagger:dagger-android-support:${versions.dagger}"
+    kapt "com.google.dagger:dagger-compiler:${versions.dagger}"
+    kapt "com.google.dagger:dagger-android-processor:${versions.dagger}"
+    kaptTest "com.google.dagger:dagger-compiler:${versions.dagger}"
+    kaptTest "com.google.dagger:dagger-android-processor:${versions.dagger}"
+
+    testImplementation "junit:junit:${versions.junit}"
+    testImplementation "org.robolectric:robolectric:${versions.roboelectric}"
+}

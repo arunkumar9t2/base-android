@@ -6,6 +6,7 @@ kapt {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}"
 
     implementation "com.airbnb.android:epoxy:${versions.epoxy}"
     kapt "com.airbnb.android:epoxy-processor:${versions.epoxy}"

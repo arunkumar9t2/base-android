@@ -1,5 +1,7 @@
 ext {
 
+    groupId = "dev.arunkumar.android"
+
     buildDetails = [
             'compileSdk': 28,
             'minSdk'    : 16,

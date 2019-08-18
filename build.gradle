@@ -12,10 +12,16 @@ buildscript {
     }
 }
 
-allprojects {
-    group = 'dev.arunkumar.android'
-    version = '1.0.0'
+def releaseDeps = moduleVersion
+        .collectEntries { moduleName, version ->
+            [(moduleName): "${groupId}:$moduleName:$version"]
+        }
+
+allprojects { project ->
+    group = groupId
     def repoUrl = "https://raw.github.com/arunkumar9t2/base-android/master/maven-repo/"
+
+    project.extensions.add("deps", releaseDeps)
 
     repositories {
         google()
