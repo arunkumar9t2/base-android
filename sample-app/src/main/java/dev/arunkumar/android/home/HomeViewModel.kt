@@ -2,16 +2,16 @@ package dev.arunkumar.android.home
 
 import com.jakewharton.rxrelay2.BehaviorRelay
 import dev.arunkumar.android.logging.logd
+import dev.arunkumar.android.rxschedulers.SchedulerProvider
 import dev.arunkumar.android.viewmodel.RxViewModel
 import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
-import java.util.concurrent.TimeUnit
+import java.util.concurrent.TimeUnit.MILLISECONDS
 import javax.inject.Inject
 
 class HomeViewModel
 @Inject
-constructor() : RxViewModel() {
+constructor(private val schedulerProvider: SchedulerProvider) : RxViewModel() {
 
     val count = BehaviorRelay.create<Long>()
 
@@ -20,10 +20,10 @@ constructor() : RxViewModel() {
     }
 
     private fun start() {
-        Observable.interval(500, TimeUnit.MILLISECONDS)
-            .untilCleared()
+        Observable.interval(500, MILLISECONDS, schedulerProvider.pool)
             .doOnNext { logd(it.toString()) }
-            .observeOn(AndroidSchedulers.mainThread())
+            .observeOn(schedulerProvider.ui)
+            .untilCleared()
             .subscribeBy(onNext = count::accept)
     }
 }

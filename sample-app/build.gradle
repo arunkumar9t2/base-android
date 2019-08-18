@@ -98,6 +98,11 @@ dependencies {
     remoteImplementation "dev.arunkumar.android:viewmodel-utils:1.0.0"
     snapshotImplementation "dev.arunkumar.android:viewmodel-utils:master-SNAPSHOT"
 
+    // Rx utils
+    localImplementation project(path: ':rx-utils')
+    remoteImplementation "dev.arunkumar.android:rx-utils:1.0.0"
+    snapshotImplementation "dev.arunkumar.android:rx-utils:master-SNAPSHOT"
+
     implementation "com.google.dagger:dagger-android:${versions.dagger}"
     implementation "com.google.dagger:dagger-android-support:${versions.dagger}"
     kapt "com.google.dagger:dagger-compiler:${versions.dagger}"

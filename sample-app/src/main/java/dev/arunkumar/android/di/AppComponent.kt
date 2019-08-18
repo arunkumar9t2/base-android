@@ -5,6 +5,7 @@ import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
+import dev.arunkumar.android.AppSchedulersModule
 import dev.arunkumar.android.SampleApp
 import dev.arunkumar.android.dagger.viewmodel.DefaultViewModelsBuilder
 import dev.arunkumar.android.home.HomeActivity
@@ -20,7 +21,8 @@ import javax.inject.Singleton
 
         /** Utils **/
         DefaultViewModelsBuilder::class,
-        PreferencesModule::class
+        PreferencesModule::class,
+        AppSchedulersModule::class
     ]
 )
 interface AppComponent : AndroidInjector<SampleApp> {
