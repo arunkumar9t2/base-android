@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Always publish from master
+git checkout master
+
 ./gradlew clean
 
 # Publish all modules and their latest versions
@@ -10,3 +13,6 @@
 
 # Stage all files
 git add .
+
+# Commit and publish
+git commit -m "[RELEASE] Publish artifacts" && git push
