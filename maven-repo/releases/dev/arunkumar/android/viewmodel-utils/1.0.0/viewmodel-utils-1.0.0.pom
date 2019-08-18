@@ -33,9 +33,9 @@
       <scope>compile</scope>
     </dependency>
     <dependency>
-      <groupId>android.arch.lifecycle</groupId>
-      <artifactId>extensions</artifactId>
-      <version>1.1.1</version>
+      <groupId>androidx.lifecycle</groupId>
+      <artifactId>lifecycle-extensions</artifactId>
+      <version>2.0.0</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
@@ -51,9 +51,9 @@
       <scope>compile</scope>
     </dependency>
     <dependency>
-      <groupId>com.android.support</groupId>
-      <artifactId>support-compat</artifactId>
-      <version>28.0.0</version>
+      <groupId>androidx.core</groupId>
+      <artifactId>core</artifactId>
+      <version>1.0.2</version>
       <scope>compile</scope>
     </dependency>
   </dependencies>

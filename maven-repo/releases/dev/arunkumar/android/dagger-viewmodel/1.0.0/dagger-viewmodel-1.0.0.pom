@@ -21,9 +21,9 @@
   </developers>
   <dependencies>
     <dependency>
-      <groupId>android.arch.lifecycle</groupId>
-      <artifactId>extensions</artifactId>
-      <version>1.1.1</version>
+      <groupId>androidx.lifecycle</groupId>
+      <artifactId>lifecycle-extensions</artifactId>
+      <version>2.0.0</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
