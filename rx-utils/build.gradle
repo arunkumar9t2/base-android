@@ -5,8 +5,7 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxjava:${versions.rx}"
     implementation "io.reactivex.rxjava2:rxandroid:${versions.rxAndroid}"
 
-    debugImplementation project(path: ':common')
-    releaseImplementation deps.common
+    implementation project(path: ':common')
 
     api "com.google.dagger:dagger-android:${versions.dagger}"
     api "com.google.dagger:dagger-android-support:${versions.dagger}"
