@@ -4,5 +4,6 @@ import androidx.annotation.StringRes
 
 data class StringResource(
     @param:StringRes val resource: Int,
-    val args: Array<String>
+    val args: List<String> = emptyList(),
+    val resourceArgs: List<Int> = emptyList()
 )

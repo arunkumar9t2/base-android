@@ -27,7 +27,12 @@ fun Context.pxToDp(px: Int): Int {
 @ColorInt
 inline fun Context.resolveColorRes(@ColorRes id: Int): Int = ContextCompat.getColor(this, id)
 
-inline fun Context.resolveStringResource(stringResource: StringResource) = getString(
-    stringResource.resource,
-    stringResource.args
-)
+inline fun Context.resolveStringResource(
+    stringResource: StringResource,
+    args: Array<String> = emptyArray(),
+    resourceArgs: Array<Int> = emptyArray()
+) = when {
+    args.isNotEmpty() -> getString(stringResource.resource, stringResource.args)
+    resourceArgs.isNotEmpty() -> getString(stringResource.resource, resourceArgs.map(::getString))
+    else -> getString(stringResource.resource)
+}
