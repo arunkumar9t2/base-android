@@ -4,8 +4,12 @@ import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
+import javax.inject.Singleton
 
-class AppSchedulerProvider @Inject constructor() : SchedulerProvider {
+@Singleton
+class AppSchedulerProvider
+@Inject
+constructor() : SchedulerProvider {
     override val ui: Scheduler get() = AndroidSchedulers.mainThread()
     override val single: Scheduler get() = Schedulers.single()
     override val io: Scheduler get() = Schedulers.io()
