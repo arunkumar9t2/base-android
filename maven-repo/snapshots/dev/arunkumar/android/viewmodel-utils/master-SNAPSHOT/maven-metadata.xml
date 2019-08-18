@@ -5,32 +5,32 @@
   <version>master-SNAPSHOT</version>
   <versioning>
     <snapshot>
-      <timestamp>20190818.182458</timestamp>
+      <timestamp>20190818.190001</timestamp>
       <buildNumber>1</buildNumber>
     </snapshot>
-    <lastUpdated>20190818182458</lastUpdated>
+    <lastUpdated>20190818190001</lastUpdated>
     <snapshotVersions>
       <snapshotVersion>
         <extension>aar</extension>
-        <value>master-20190818.182458-1</value>
-        <updated>20190818182458</updated>
+        <value>master-20190818.190001-1</value>
+        <updated>20190818190001</updated>
       </snapshotVersion>
       <snapshotVersion>
         <extension>pom</extension>
-        <value>master-20190818.182458-1</value>
-        <updated>20190818182458</updated>
+        <value>master-20190818.190001-1</value>
+        <updated>20190818190001</updated>
       </snapshotVersion>
       <snapshotVersion>
         <classifier>javadoc</classifier>
         <extension>jar</extension>
-        <value>master-20190818.182458-1</value>
-        <updated>20190818182458</updated>
+        <value>master-20190818.190001-1</value>
+        <updated>20190818190001</updated>
       </snapshotVersion>
       <snapshotVersion>
         <classifier>sources</classifier>
         <extension>jar</extension>
-        <value>master-20190818.182458-1</value>
-        <updated>20190818182458</updated>
+        <value>master-20190818.190001-1</value>
+        <updated>20190818190001</updated>
       </snapshotVersion>
     </snapshotVersions>
   </versioning>

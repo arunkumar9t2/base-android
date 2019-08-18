@@ -3,6 +3,7 @@
 # Always publish from master
 git checkout master
 
+./gradlew --stop
 ./gradlew clean
 
 # Publish all modules and their latest versions
