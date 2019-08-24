@@ -55,5 +55,5 @@ jobs:
           echo "Committing change"
           git commit -m "[CI] Publish latest artifacts"
           echo "Pushing artificats to repository"
-          git push origin master
-          git status
+          git show-ref
+          git push origin HEAD:master
