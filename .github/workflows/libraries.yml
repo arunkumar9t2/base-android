@@ -25,34 +25,35 @@ jobs:
       - name: Test debug
         run: |
           ./gradlew testLocalDebugUnitTest
-#  deploy:
-#    needs: build
-#    runs-on: ubuntu-latest
-#    steps:
-#      - uses: actions/checkout@v1
-#      - name: Set up JDK 1.8
-#        if: false
-#        uses: actions/setup-java@v1
-#        with:
-#          java-version: 1.8
-#
-#      - name: Set gradle permissions
-#        if: github.ref == 'refs/heads/master'
-#        run: sudo chmod +x ./gradlew
-#
-#      - name: Deploy artifacts
-#        if: github.ref == 'refs/heads/master'
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#        run: |
-#          ./gradlew uploadArchives
-#          ./gradlew uploadArchives -Psnapshot=true
-#          echo "Setting up git"
-#          git config --global user.email "arunk.beece@gmail.com"
-#          git config --global user.name "arunkumar9t2"
-#          git add .
-#          echo "Committing change"
-#          git commit -m "[CI] Publish latest artifacts"
-#          echo "Pushing artificats to repository"
-#          git push -u origin HEAD
-#          git status
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Set up JDK 1.8
+        if: false
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+
+      - name: Set gradle permissions
+        if: github.ref == 'refs/heads/master'
+        run: sudo chmod +x ./gradlew
+
+      - name: Deploy artifacts
+        if: github.ref == 'refs/heads/master'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          ./gradlew uploadArchives
+          ./gradlew uploadArchives -Psnapshot=true
+          echo "Setting up git"
+          git remote set-url origin https://x-access-token:$GITHUB_TOKEN@github.com/${{ github.repository }}.git
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+          git add .
+          echo "Committing change"
+          git commit -m "[CI] Publish latest artifacts"
+          echo "Pushing artificats to repository"
+          git push -u origin HEAD
+          git status
