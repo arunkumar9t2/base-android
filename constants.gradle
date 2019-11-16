@@ -9,7 +9,7 @@ ext {
     ]
 
     versions = [
-            'androidGradle'      : '3.6.0-beta01',
+            'androidGradle'      : '3.6.0-beta04',
             'androidxcore'       : '1.0.2',
             'appcompat'          : '1.0.2',
             'constraintLayout'   : '1.1.3',
@@ -42,7 +42,7 @@ ext {
 
     developerId = 'arunkumar9t2'
     developerName = 'Arunkumar'
-    developerEmail = 'arunk.beece@gmail.com'
+    developerEmail = 'hi@arunkumar.dev'
 
     licenseName = 'The Apache Software License, Version 2.0'
     licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
