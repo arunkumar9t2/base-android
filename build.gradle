@@ -1,27 +1,21 @@
 buildscript {
     apply from: 'constants.gradle'
+
     repositories {
         google()
         jcenter()
     }
 
     dependencies {
-        classpath "com.android.tools.build:gradle:${versions.androidGradle}"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
-        classpath "org.jetbrains.dokka:dokka-android-gradle-plugin:${versions.dokka}"
+        classpath deps.agp
+        classpath deps.kotlinGradlePlugin
+        classpath deps.dokka
     }
 }
-
-def releaseDeps = moduleVersion
-        .collectEntries { moduleName, version ->
-            [(moduleName): "${groupId}:$moduleName:$version"]
-        }
 
 allprojects { project ->
     group = groupId
     def repoUrl = "https://raw.github.com/arunkumar9t2/base-android/master/maven-repo/"
-
-    project.extensions.add("deps", releaseDeps)
 
     repositories {
         google()
@@ -46,7 +40,7 @@ allprojects { project ->
         }
     }
 
-    configurations.all {
+    configurations.configureEach {
         resolutionStrategy {
             cacheChangingModulesFor 0, 'seconds'
         }
@@ -68,21 +62,6 @@ subprojects { subProject ->
         apply from: '../publishing.gradle'
     }
 }
-
-/*def sampleApp = subprojects.find { it.name == sampleAppName }
-def libraryProjects = subprojects.findAll { it.name != sampleAppName }
-libraryProjects.each { library ->
-    library.afterEvaluate {
-        // Apply all library modules as dependencies to sample project
-        sampleApp.afterEvaluate {
-            sampleApp.dependencies {
-                localImplementation project(path: ":${library.name}")
-                remoteImplementation "${library.group}:${library.name}:${library.version}"
-                snapshotImplementation "${library.group}:${library.name}:master-SNAPSHOT"
-            }
-        }
-    }
-}*/
 
 task clean(type: Delete) {
     delete rootProject.buildDir

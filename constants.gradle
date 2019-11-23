@@ -7,26 +7,60 @@ ext {
             'targetSdk' : 28,
     ]
 
-    versions = [
-            'androidGradle'      : '3.5.2',
-            'androidxcore'       : '1.0.2',
-            'appcompat'          : '1.0.2',
-            'constraintLayout'   : '1.1.3',
-            'kotlin'             : '1.3.50',
-            'junit'              : '4.12',
-            'roboelectric'       : '4.2',
-            'timber'             : '4.7.1',
-            'rx'                 : '2.2.8',
-            'rxRelay'            : '2.1.0',
-            'rxKotlin'           : '2.2.0',
-            'rxAndroid'          : '2.1.1',
-            'rxBinding'          : '2.1.1',
-            'dagger'             : '2.23.2',
-            'butterKnife'        : '8.8.1',
-            'ktx'                : '0.3',
-            'dokka'              : '0.9.17',
-            'lifecycleExtensions': '2.0.0',
-            'epoxy'              : '3.7.0'
+    rvVersion = "1.0.0"
+    agpVersion = "3.5.2"
+    kotlinVersion = "1.3.50"
+    dokkaVersion = "0.9.17"
+    daggerVersion = "2.23.2"
+
+    androidXCore = "1.0.2"
+    androidXLifecycle = "2.0.0"
+    androidXAppCompat = "1.0.2"
+    constraintLayoutVersion = "1.1.3"
+
+    junitVersion = "4.12"
+    roboeletricVersion = "4.2"
+
+    epoxyVersion = "3.7.0"
+
+    timberVersion = "4.7.1"
+
+    rxVersion = "2.2.8"
+    rxAndroidVersion = "2.1.1"
+    rxKotlinVersion = "2.2.0"
+    rxRelayVersion = "2.1.0"
+    rxBindingVersion = "2.1.1"
+
+    deps = [
+            'androidXCore'          : "androidx.core:core:$androidXCore",
+            'androidXLifecycle'     : "androidx.lifecycle:lifecycle-extensions:$androidXLifecycle",
+            'androidXAppCompat'     : "androidx.appcompat:appcompat:$androidXAppCompat",
+            'constraintLayout'      : "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion",
+            'recyclerView'          : "androidx.recyclerview:recyclerview:$rvVersion",
+            'agp'                   : "com.android.tools.build:gradle:$agpVersion",
+
+            'kotlinGradlePlugin'    : "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion",
+            'kotlinStdLib'          : "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion",
+            'dokka'                 : "org.jetbrains.dokka:dokka-android-gradle-plugin:$dokkaVersion",
+
+            'daggerAndroid'         : "com.google.dagger:dagger-android:$daggerVersion",
+            'daggerAndroidSupport'  : "com.google.dagger:dagger-android-support:$daggerVersion",
+            'daggerCompiler'        : "com.google.dagger:dagger-compiler:$daggerVersion",
+            'daggerAndroidProcessor': "com.google.dagger:dagger-android-processor:$daggerVersion",
+
+            'junit'                 : "junit:junit:$junitVersion",
+            'roboelectric'          : "org.robolectric:robolectric:$roboeletricVersion",
+
+            'epoxy'                 : "com.airbnb.android:epoxy:$epoxyVersion",
+            'epoxyProcessor'        : "com.airbnb.android:epoxy-processor:$epoxyVersion",
+
+            'timber'                : "com.jakewharton.timber:timber:$timberVersion",
+
+            'rx'                    : "io.reactivex.rxjava2:rxjava:$rxVersion",
+            'rxAndroid'             : "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion",
+            'rxKotlin'              : "io.reactivex.rxjava2:rxkotlin:$rxKotlinVersion",
+            'rxRelay'               : "com.jakewharton.rxrelay2:rxrelay:$rxRelayVersion",
+            'rxBinding'             : "com.jakewharton.rxbinding2:rxbinding:$rxBindingVersion"
     ]
 
     moduleVersion = [

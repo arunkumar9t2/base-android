@@ -1,15 +1,12 @@
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation "androidx.core:core:${versions.androidxcore}"
+    implementation deps.androidXCore
 
-    api "com.google.dagger:dagger-android:${versions.dagger}"
-    api "com.google.dagger:dagger-android-support:${versions.dagger}"
-    kapt "com.google.dagger:dagger-compiler:${versions.dagger}"
-    kapt "com.google.dagger:dagger-android-processor:${versions.dagger}"
-    kaptTest "com.google.dagger:dagger-compiler:${versions.dagger}"
-    kaptTest "com.google.dagger:dagger-android-processor:${versions.dagger}"
-
-    testImplementation "junit:junit:${versions.junit}"
-    testImplementation "org.robolectric:robolectric:${versions.roboelectric}"
+    api deps.daggerAndroid
+    api deps.daggerAndroidSupport
+    kapt deps.daggerCompiler
+    kapt deps.daggerAndroidProcessor
+    kaptTest deps.daggerCompiler
+    kaptTest deps.daggerAndroidProcessor
 }

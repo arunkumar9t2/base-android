@@ -1,8 +1,5 @@
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}"
-    implementation "androidx.core:core:${versions.androidxcore}"
-
-    testImplementation "junit:junit:${versions.junit}"
-    testImplementation "org.robolectric:robolectric:${versions.roboelectric}"
+    implementation deps.kotlinStdLib
+    implementation deps.androidXCore
 }

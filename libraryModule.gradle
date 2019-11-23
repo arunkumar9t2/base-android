@@ -16,7 +16,7 @@ android {
         targetSdkVersion buildDetails.targetSdk
 
         versionCode 1
-        versionName "1.0"
+        versionName moduleVersion[project.name]
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -45,4 +45,9 @@ android {
 
 androidExtensions {
     experimental = true
+}
+
+dependencies {
+    testImplementation deps.junit
+    testImplementation deps.roboelectric
 }

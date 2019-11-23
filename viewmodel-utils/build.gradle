@@ -1,13 +1,10 @@
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}"
-    implementation "androidx.core:core:${versions.androidxcore}"
+    implementation deps.kotlinStdLib
+    implementation deps.androidXCore
 
-    api "io.reactivex.rxjava2:rxjava:${versions.rx}"
-    api "com.jakewharton.rxrelay2:rxrelay:${versions.rxRelay}"
+    api deps.rx
+    api deps.rxRelay
 
-    api "androidx.lifecycle:lifecycle-extensions:${versions.lifecycleExtensions}"
-
-    testImplementation "junit:junit:${versions.junit}"
-    testImplementation "org.robolectric:robolectric:${versions.roboelectric}"
+    api deps.androidXLifecycle
 }

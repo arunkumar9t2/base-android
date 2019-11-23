@@ -1,10 +1,6 @@
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}"
+    implementation deps.kotlinStdLib
 
-    // Timber logging
-    api "com.jakewharton.timber:timber:${versions.timber}"
-
-    testImplementation "junit:junit:${versions.junit}"
-    testImplementation "org.robolectric:robolectric:${versions.roboelectric}"
+    api deps.timber
 }
