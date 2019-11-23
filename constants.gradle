@@ -33,6 +33,7 @@ ext {
 
     deps = [
             'androidXCore'          : "androidx.core:core:$androidXCore",
+            'androidXCoreKtx'       : "androidx.core:core-ktx:$androidXCore",
             'androidXLifecycle'     : "androidx.lifecycle:lifecycle-extensions:$androidXLifecycle",
             'androidXAppCompat'     : "androidx.appcompat:appcompat:$androidXAppCompat",
             'constraintLayout'      : "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion",
