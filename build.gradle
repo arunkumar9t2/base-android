@@ -48,16 +48,13 @@ allprojects { project ->
 }
 
 def sampleAppName = "sample-app"
-
-private boolean isSnapshot() {
-    return project.hasProperty("snapshot") && project.property("snapshot").toBoolean()
-}
+def isSnapshot = project.hasProperty("snapshot")
 
 subprojects { subProject ->
     apply from: '../constants.gradle'
     if (subProject.name != sampleAppName) {
         subProject.ext.artifact = subProject.name
-        subProject.version = isSnapshot() ? "master-SNAPSHOT" : subProject.ext.moduleVersion[subProject.name]
+        subProject.version = isSnapshot ? "master-SNAPSHOT" : subProject.ext.moduleVersion[subProject.name]
         apply from: '../libraryModule.gradle'
         apply from: '../publishing.gradle'
     }
