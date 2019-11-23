@@ -18,6 +18,8 @@ ext {
     androidXAppCompat = "1.0.2"
     constraintLayoutVersion = "1.1.3"
 
+    pagingVersion = "2.1.0"
+
     junitVersion = "4.12"
     roboeletricVersion = "4.2"
 
@@ -31,6 +33,8 @@ ext {
     rxRelayVersion = "2.1.0"
     rxBindingVersion = "2.1.1"
 
+    realmVersion = "5.9.0"
+
     deps = [
             'androidXCore'          : "androidx.core:core:$androidXCore",
             'androidXCoreKtx'       : "androidx.core:core-ktx:$androidXCore",
@@ -39,6 +43,10 @@ ext {
             'constraintLayout'      : "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion",
             'recyclerView'          : "androidx.recyclerview:recyclerview:$rvVersion",
             'agp'                   : "com.android.tools.build:gradle:$agpVersion",
+
+            'paging'                : "androidx.paging:paging-runtime-ktx:$pagingVersion",
+            'pagingCommon'          : "androidx.paging:paging-common-ktx:$pagingVersion",
+            'pagingRxjava'          : "androidx.paging:paging-rxjava2-ktx:$pagingVersion",
 
             'kotlinGradlePlugin'    : "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion",
             'kotlinStdLib'          : "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion",
@@ -61,7 +69,9 @@ ext {
             'rxAndroid'             : "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion",
             'rxKotlin'              : "io.reactivex.rxjava2:rxkotlin:$rxKotlinVersion",
             'rxRelay'               : "com.jakewharton.rxrelay2:rxrelay:$rxRelayVersion",
-            'rxBinding'             : "com.jakewharton.rxbinding2:rxbinding:$rxBindingVersion"
+            'rxBinding'             : "com.jakewharton.rxbinding2:rxbinding:$rxBindingVersion",
+
+            'realmPlugin'           : "io.realm:realm-gradle-plugin:$realmVersion",
     ]
 
     moduleVersion = [
@@ -71,7 +81,8 @@ ext {
             'epoxy-utils'     : '1.0.0',
             'logging'         : '1.0.0',
             'viewmodel-utils' : '1.0.0',
-            'rx-utils'        : '1.0.0'
+            'rx-utils'        : '1.0.0',
+            'orbit'           : '1.0.0'
     ]
 
     developerId = 'arunkumar9t2'
