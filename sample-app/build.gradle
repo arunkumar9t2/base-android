@@ -114,6 +114,11 @@ dependencies {
     remoteImplementation "dev.arunkumar.android:rx-utils:1.0.0"
     snapshotImplementation "dev.arunkumar.android:rx-utils:master-SNAPSHOT"
 
+    // Epoxy utils
+    localImplementation project(path: ':epoxy-utils')
+    remoteImplementation "dev.arunkumar.android:epoxy-utils:1.0.0"
+    snapshotImplementation "dev.arunkumar.android:epoxy-utils:master-SNAPSHOT"
+
     implementation project(path: ':orbit')
 
     implementation deps.daggerAndroid
@@ -130,6 +135,10 @@ dependencies {
     implementation deps.rxAndroid
     implementation deps.rxKotlin
     implementation deps.rxBinding
+
+    // Epoxy
+    implementation deps.epoxyPaging
+    kapt deps.epoxyProcessor
 
     // AndroidX
     implementation deps.androidXAppCompat

@@ -1,5 +1,7 @@
 package dev.arunkumar.android
 
+import com.airbnb.epoxy.EpoxyAsyncUtil.getAsyncBackgroundHandler
+import com.airbnb.epoxy.EpoxyController
 import dagger.android.support.DaggerApplication
 import dev.arunkumar.android.di.AppComponent
 import dev.arunkumar.android.di.DaggerAppComponent
@@ -22,7 +24,15 @@ class SampleApp : DaggerApplication() {
     override fun onCreate() {
         super.onCreate()
         initDebugLogs()
+
+        initEpoxy()
         initRealm()
+    }
+
+    private fun initEpoxy() {
+        EpoxyController.setGlobalDebugLoggingEnabled(BuildConfig.DEBUG)
+        EpoxyController.defaultDiffingHandler = getAsyncBackgroundHandler()
+        EpoxyController.defaultModelBuildingHandler = getAsyncBackgroundHandler()
     }
 
     private fun initRealm() {
@@ -39,7 +49,6 @@ class SampleApp : DaggerApplication() {
         }
         RealmConfiguration.Builder()
             .deleteRealmIfMigrationNeeded()
-            .inMemory()
             .build()
             .let(Realm::setDefaultConfiguration)
     }

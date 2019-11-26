@@ -9,6 +9,6 @@ dependencies {
     api project(path: ':common')
     implementation deps.kotlinStdLib
 
-    implementation deps.epoxy
+    api deps.epoxy
     kapt deps.epoxyProcessor
 }

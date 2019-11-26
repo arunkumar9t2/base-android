@@ -2,16 +2,18 @@ package dev.arunkumar.android.realm
 
 import io.realm.Realm
 import io.realm.RealmModel
+import io.realm.RealmQuery
 import io.realm.RealmResults
 
 class RealmPagedDataSource<T : RealmModel>(
-    private val realm: Realm,
-    private val realmResults: RealmResults<T>
+    realmQueryBuilder: (Realm) -> RealmQuery<T>
 ) : TiledDataSource<T>() {
 
-    init {
-        realmResults.addChangeListener { results ->
+    private var realm: Realm = defaultRealm()
+    private var realmResults: RealmResults<T> = realmQueryBuilder(realm).findAll().apply {
+        addChangeListener { results ->
             invalidate()
+            this@RealmPagedDataSource.realm.close()
         }
     }
 

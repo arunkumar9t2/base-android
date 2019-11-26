@@ -1,13 +1,12 @@
 package dev.arunkumar.android.home
 
+import androidx.paging.PagedList
 import com.jakewharton.rxrelay2.BehaviorRelay
-import dev.arunkumar.android.home.items.DefaultItemsRepository
-import dev.arunkumar.android.logging.logd
+import dev.arunkumar.android.data.DefaultItemsRepository
+import dev.arunkumar.android.data.Item
 import dev.arunkumar.android.rxschedulers.SchedulerProvider
 import dev.arunkumar.android.viewmodel.RxViewModel
-import io.reactivex.Observable
 import io.reactivex.rxkotlin.subscribeBy
-import java.util.concurrent.TimeUnit.MILLISECONDS
 import javax.inject.Inject
 
 class HomeViewModel
@@ -17,17 +16,15 @@ constructor(
     private val defaultItemsRepository: DefaultItemsRepository
 ) : RxViewModel() {
 
-    val count = BehaviorRelay.create<Long>()
+    val itemsPagedList = BehaviorRelay.create<PagedList<Item>>()
 
     init {
         start()
     }
 
     private fun start() {
-        Observable.interval(500, MILLISECONDS, schedulerProvider.pool)
-            .doOnNext { logd(it.toString()) }
+        defaultItemsRepository.items()
             .observeOn(schedulerProvider.ui)
-            .untilCleared()
-            .subscribeBy(onNext = count::accept)
+            .subscribeBy(onNext = itemsPagedList::accept)
     }
 }

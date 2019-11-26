@@ -62,6 +62,7 @@ ext {
 
             'epoxy'                 : "com.airbnb.android:epoxy:$epoxyVersion",
             'epoxyProcessor'        : "com.airbnb.android:epoxy-processor:$epoxyVersion",
+            'epoxyPaging'           : "com.airbnb.android:epoxy-paging:$epoxyVersion",
 
             'timber'                : "com.jakewharton.timber:timber:$timberVersion",
 
