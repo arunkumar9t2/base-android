@@ -65,7 +65,9 @@ constructor(
                 build()
             }
             val realmExecutor = RealmExecutor()
-            val realmQueryBuilder: (Realm) -> RealmQuery<Item> = { it.where() }
+            val realmQueryBuilder: (Realm) -> RealmQuery<Item> = {
+                it.where<Item>().sort("id")
+            }
             val dataSourceFactory = RealmDataSourceFactory(realmQueryBuilder)
 
             RxPagedListBuilder(dataSourceFactory, config)
