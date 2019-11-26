@@ -14,7 +14,10 @@ interface StoppableExecutor : Executor {
 class RealmExecutor(private val tag: String? = null) : StoppableExecutor {
 
     private val handlerThread by lazy {
-        HandlerThread(tag ?: toString(), THREAD_PRIORITY_BACKGROUND).apply { start() }
+        HandlerThread(
+            tag ?: this::class.java.simpleName + hashCode(),
+            THREAD_PRIORITY_BACKGROUND
+        ).apply { start() }
     }
     private val handlerExecutor by lazy { HandlerExecutor(Handler(handlerThread.looper)) }
 

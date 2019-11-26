@@ -27,4 +27,10 @@ constructor(
             .observeOn(schedulerProvider.ui)
             .subscribeBy(onNext = itemsPagedList::accept)
     }
+
+    fun delete(item: Item) {
+        defaultItemsRepository.deleteItem(item)
+            .subscribeOn(schedulerProvider.io)
+            .subscribe()
+    }
 }

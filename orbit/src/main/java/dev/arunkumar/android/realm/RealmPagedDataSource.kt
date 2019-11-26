@@ -12,8 +12,8 @@ class RealmPagedDataSource<T : RealmModel>(
     private var realm: Realm = defaultRealm()
     private var realmResults: RealmResults<T> = realmQueryBuilder(realm).findAll().apply {
         addChangeListener { results ->
-            invalidate()
             this@RealmPagedDataSource.realm.close()
+            invalidate()
         }
     }
 
