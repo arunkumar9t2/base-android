@@ -1,6 +1,5 @@
 package dev.arunkumar.android
 
-import com.airbnb.epoxy.EpoxyAsyncUtil.getAsyncBackgroundHandler
 import com.airbnb.epoxy.EpoxyController
 import dagger.android.support.DaggerApplication
 import dev.arunkumar.android.di.AppComponent
@@ -31,8 +30,6 @@ class SampleApp : DaggerApplication() {
 
     private fun initEpoxy() {
         EpoxyController.setGlobalDebugLoggingEnabled(BuildConfig.DEBUG)
-        EpoxyController.defaultDiffingHandler = getAsyncBackgroundHandler()
-        EpoxyController.defaultModelBuildingHandler = getAsyncBackgroundHandler()
     }
 
     private fun initRealm() {

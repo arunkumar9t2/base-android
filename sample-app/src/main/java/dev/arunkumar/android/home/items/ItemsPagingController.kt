@@ -7,6 +7,7 @@ import android.view.Gravity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
 import com.airbnb.epoxy.CallbackProp
+import com.airbnb.epoxy.EpoxyAsyncUtil.getAsyncBackgroundHandler
 import com.airbnb.epoxy.EpoxyModel
 import com.airbnb.epoxy.ModelView
 import com.airbnb.epoxy.ModelView.Size
@@ -43,7 +44,10 @@ class ItemView(context: Context) : AppCompatTextView(context) {
     }
 }
 
-class ItemsPagingController : PagedListEpoxyController<Item>() {
+class ItemsPagingController : PagedListEpoxyController<Item>(
+    modelBuildingHandler = getAsyncBackgroundHandler(),
+    diffingHandler = getAsyncBackgroundHandler()
+) {
 
     private val clicksSubject = PublishRelay.create<Item>()
     val clicks: Observable<Item> = clicksSubject.hide()
