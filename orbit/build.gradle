@@ -1,5 +1,4 @@
 buildscript {
-    apply from: '../constants.gradle'
     repositories {
         google()
         jcenter()
@@ -8,10 +7,15 @@ buildscript {
         classpath deps.realmPlugin
     }
 }
+
 apply plugin: 'realm-android'
 
 dependencies {
-    implementation deps.paging
-    implementation deps.pagingCommon
-    implementation deps.pagingRxjava
+    api project(path: ':common')
+    api project(path: ':rx-utils')
+
+    api deps.epoxy
+    api deps.paging
+    api deps.pagingCommon
+    api deps.pagingRxjava
 }

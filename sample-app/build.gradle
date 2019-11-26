@@ -1,7 +1,18 @@
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath deps.realmPlugin
+    }
+}
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'realm-android'
 
 android {
     compileSdkVersion buildDetails.compileSdk
@@ -102,6 +113,8 @@ dependencies {
     localImplementation project(path: ':rx-utils')
     remoteImplementation "dev.arunkumar.android:rx-utils:1.0.0"
     snapshotImplementation "dev.arunkumar.android:rx-utils:master-SNAPSHOT"
+
+    implementation project(path: ':orbit')
 
     implementation deps.daggerAndroid
     implementation deps.daggerAndroidSupport
