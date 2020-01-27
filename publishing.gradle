@@ -1,39 +1,47 @@
 apply plugin: 'org.jetbrains.dokka-android'
-apply plugin: 'maven'
+apply plugin: 'maven-publish'
 
 def releaseFolder = "file://${file("../maven-repo/releases/").absolutePath}"
 def snapshotFolder = "file://${file("../maven-repo/snapshots/").absolutePath}"
 
 def isSnapshot = project.hasProperty("snapshot")
 
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            repository(url: releaseFolder)
-            snapshotRepository(url: snapshotFolder)
-            pom {
-                project {
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                pom {
                     packaging 'aar'
-
-                    groupId rootProject.group
-                    artifactId artifact
-                    version version
-
+                    name = artifact
                     developers {
                         developer {
-                            id developerId
-                            name developerName
-                            email developerEmail
+                            id = developerId
+                            name = developerName
+                            email = developerEmail
                         }
                     }
-
                     licenses {
                         license {
-                            name licenseName
-                            url licenseUrl
+                            name = licenseName
+                            url = licenseUrl
                         }
                     }
                 }
+                from components.release
+                groupId rootProject.group
+                artifactId artifact
+                version version
+            }
+            /*debug(MavenPublication) {
+                from components.debug
+                groupId rootProject.group
+                artifactId "$artifact-debug"
+                version version
+            }*/
+        }
+        repositories {
+            maven {
+                url = isSnapshot ? snapshotFolder : releaseFolder
             }
         }
     }
@@ -60,8 +68,10 @@ dokka {
     }
 }
 
-task docJar(type: Jar, dependsOn: dokka) {
-    classifier = 'javadoc'
+task dokkaJar(type: Jar, dependsOn: dokka) {
+    group = JavaBasePlugin.DOCUMENTATION_GROUP
+    classifier = "javadoc"
+    description = "Assembles Kotlin docs with Dokka"
     from dokka.outputDirectory
 }
 
@@ -72,5 +82,5 @@ task sourceJar(type: Jar) {
 
 artifacts {
     archives sourceJar
-    archives docJar
+    archives dokkaJar
 }

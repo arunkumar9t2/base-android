@@ -47,8 +47,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          ./gradlew uploadArchives
-          ./gradlew uploadArchives -Psnapshot
+          ./gradlew publishReleasePublicationToMavenRepository
+          ./gradlew publishReleasePublicationToMavenRepository -Psnapshot
           echo "Setting up git"
           git remote set-url origin https://x-access-token:$GITHUB_TOKEN@github.com/${{ github.repository }}.git
           git config --global user.email "action@github.com"

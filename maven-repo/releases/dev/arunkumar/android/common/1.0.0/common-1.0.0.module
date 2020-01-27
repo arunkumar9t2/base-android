@@ -1,0 +1,96 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "dev.arunkumar.android",
+    "module": "common",
+    "version": "1.0.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "6.1",
+      "buildId": "mbkojahj55egljmcbdl7kftaea"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "common-1.0.0.aar",
+          "url": "common-1.0.0.aar",
+          "size": 24679,
+          "sha512": "121c2a6813bf2ad317ca0edb86f601d078bd117354f089d2e84134e098a4590552755883e2a5cb965eaf6fdc6ead6c2739a1500965f674d307a883dd192922fd",
+          "sha256": "7010ea6fdf3184e00e10001643499381b7ea46a2ee7c5576f488a03c40330ace",
+          "sha1": "d9e1694a995a65d0969f665f9f336f6ba7b68a44",
+          "md5": "caf5efc6ddee0febfac9690b94e47206"
+        }
+      ]
+    },
+    {
+      "name": "releaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-android-extensions-runtime",
+          "version": {
+            "requires": "1.3.61"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "1.3.61"
+          }
+        },
+        {
+          "group": "androidx.core",
+          "module": "core",
+          "version": {
+            "requires": "1.0.2"
+          }
+        },
+        {
+          "group": "androidx.core",
+          "module": "core-ktx",
+          "version": {
+            "requires": "1.0.2"
+          }
+        },
+        {
+          "group": "androidx.recyclerview",
+          "module": "recyclerview",
+          "version": {
+            "requires": "1.0.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "common-1.0.0.aar",
+          "url": "common-1.0.0.aar",
+          "size": 24679,
+          "sha512": "121c2a6813bf2ad317ca0edb86f601d078bd117354f089d2e84134e098a4590552755883e2a5cb965eaf6fdc6ead6c2739a1500965f674d307a883dd192922fd",
+          "sha256": "7010ea6fdf3184e00e10001643499381b7ea46a2ee7c5576f488a03c40330ace",
+          "sha1": "d9e1694a995a65d0969f665f9f336f6ba7b68a44",
+          "md5": "caf5efc6ddee0febfac9690b94e47206"
+        }
+      ]
+    }
+  ]
+}
