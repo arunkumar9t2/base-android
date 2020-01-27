@@ -11,7 +11,7 @@
   "createdBy": {
     "gradle": {
       "version": "6.1",
-      "buildId": "3n46gqbuvvga7dmi5q4ftpi7dy"
+      "buildId": "qkhi6nlaqvbgfizhe3npvj6jrm"
     }
   },
   "variants": [
@@ -43,11 +43,11 @@
         {
           "name": "epoxy-utils-1.0.0.aar",
           "url": "epoxy-utils-1.0.0.aar",
-          "size": 24284,
-          "sha512": "a22ef278ace994f10717f9c1feb3e0e3fbe1abf8feeae51efd0a87ad8e983692e1e630f591e82f93753e89d6aa047070234eee6a400151cdb16b0f36e71da30d",
-          "sha256": "23eebc6e616913a7b2d40266a3b4d14e6b14a2eca2bcf5001a80e28b82ac3103",
-          "sha1": "4fb8225dc3292d1a66b85c8e180bbc07fbe5f6c7",
-          "md5": "60b52a5ba0331ae8a0b0bc48317352a2"
+          "size": 24435,
+          "sha512": "78550690c2799d4d049112f681e8574d6ff8dc57ca2b4d9ff6d5f9b638be3f8c232f85e85c882c3aff6e17985aff7d5f4e4c5ee1bf4ddc6f6bfeb78aa3fee3e3",
+          "sha256": "56aecdbecc526f1a2ce67e3eef4eaa449245965a311596ed14878231db292c2e",
+          "sha1": "40f0699b208849ee2c8197104c333d0cdc362db1",
+          "md5": "07505eb43bc1f78f16c163787b4035e7"
         }
       ]
     },
@@ -93,11 +93,11 @@
         {
           "name": "epoxy-utils-1.0.0.aar",
           "url": "epoxy-utils-1.0.0.aar",
-          "size": 24284,
-          "sha512": "a22ef278ace994f10717f9c1feb3e0e3fbe1abf8feeae51efd0a87ad8e983692e1e630f591e82f93753e89d6aa047070234eee6a400151cdb16b0f36e71da30d",
-          "sha256": "23eebc6e616913a7b2d40266a3b4d14e6b14a2eca2bcf5001a80e28b82ac3103",
-          "sha1": "4fb8225dc3292d1a66b85c8e180bbc07fbe5f6c7",
-          "md5": "60b52a5ba0331ae8a0b0bc48317352a2"
+          "size": 24435,
+          "sha512": "78550690c2799d4d049112f681e8574d6ff8dc57ca2b4d9ff6d5f9b638be3f8c232f85e85c882c3aff6e17985aff7d5f4e4c5ee1bf4ddc6f6bfeb78aa3fee3e3",
+          "sha256": "56aecdbecc526f1a2ce67e3eef4eaa449245965a311596ed14878231db292c2e",
+          "sha1": "40f0699b208849ee2c8197104c333d0cdc362db1",
+          "md5": "07505eb43bc1f78f16c163787b4035e7"
         }
       ]
     }
