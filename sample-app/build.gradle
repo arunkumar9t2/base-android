@@ -22,6 +22,8 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    ndkVersion "21.0.6113669"
+
     defaultConfig {
         applicationId "dev.arunkumar.android"
         minSdkVersion buildDetails.minSdk
@@ -120,6 +122,8 @@ dependencies {
     snapshotImplementation "dev.arunkumar.android:epoxy-utils:master-SNAPSHOT"
 
     implementation project(path: ':orbit')
+    remoteImplementation "dev.arunkumar.android:orbit:1.0.0"
+    snapshotImplementation "dev.arunkumar.android:orbit:master-SNAPSHOT"
 
     implementation deps.daggerAndroid
     implementation deps.daggerAndroidSupport

@@ -23,7 +23,6 @@ class SampleApp : DaggerApplication() {
     override fun onCreate() {
         super.onCreate()
         initDebugLogs()
-
         initEpoxy()
         initRealm()
     }
