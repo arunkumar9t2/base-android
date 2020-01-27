@@ -3,9 +3,10 @@
   <groupId>dev.arunkumar.android</groupId>
   <artifactId>viewmodel-utils</artifactId>
   <versioning>
+    <latest>master-SNAPSHOT</latest>
     <versions>
       <version>master-SNAPSHOT</version>
     </versions>
-    <lastUpdated>20200127071929</lastUpdated>
+    <lastUpdated>20200127110250</lastUpdated>
   </versioning>
 </metadata>

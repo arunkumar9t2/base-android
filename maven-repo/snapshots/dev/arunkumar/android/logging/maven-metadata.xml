@@ -3,9 +3,10 @@
   <groupId>dev.arunkumar.android</groupId>
   <artifactId>logging</artifactId>
   <versioning>
+    <latest>master-SNAPSHOT</latest>
     <versions>
       <version>master-SNAPSHOT</version>
     </versions>
-    <lastUpdated>20200127071928</lastUpdated>
+    <lastUpdated>20200127110250</lastUpdated>
   </versioning>
 </metadata>

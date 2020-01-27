@@ -11,7 +11,7 @@
   "createdBy": {
     "gradle": {
       "version": "6.1",
-      "buildId": "mbkojahj55egljmcbdl7kftaea"
+      "buildId": "zjpshntq2bbkrhvoed74wdm5xu"
     }
   },
   "variants": [
@@ -43,11 +43,11 @@
         {
           "name": "dagger-base-1.0.0.aar",
           "url": "dagger-base-1.0.0.aar",
-          "size": 14172,
-          "sha512": "1e633fb67a3b0faecfe64ecaca24726c770f7a627b9c88ef0bae27c65ef32f7d20558ab25026b32ecdb982238fd18f84f3bc83606497650dffc90799b8684d80",
-          "sha256": "ed943a8f0e08e24da4c1915a2f5386d95225df0f47fee7a07e2b3e007173171c",
-          "sha1": "8c8989b626998e2fce28affeaa2d97a22439b2d7",
-          "md5": "17c3ba282db13a406c685aaaba2f73ee"
+          "size": 14345,
+          "sha512": "af005f23991c38e2afbb033f7b78b9dd4db97b34e3f0a215abe03789a8f58eca6336dfc7d9ac249405ab9af3386a369e190bd6b4e16dcf363aa3f27118d7160c",
+          "sha256": "e919621e97879341477e13f48100de612125da260c2e6a0cdf078199a80e61a0",
+          "sha1": "a3cced0388ee935e12ef9746e260ff384ec1c9af",
+          "md5": "987331e2a5b728aa831f45fe1e014dc2"
         }
       ]
     },
@@ -85,7 +85,7 @@
           "group": "androidx.core",
           "module": "core",
           "version": {
-            "requires": "1.0.2"
+            "requires": "1.1.0"
           }
         }
       ],
@@ -93,11 +93,11 @@
         {
           "name": "dagger-base-1.0.0.aar",
           "url": "dagger-base-1.0.0.aar",
-          "size": 14172,
-          "sha512": "1e633fb67a3b0faecfe64ecaca24726c770f7a627b9c88ef0bae27c65ef32f7d20558ab25026b32ecdb982238fd18f84f3bc83606497650dffc90799b8684d80",
-          "sha256": "ed943a8f0e08e24da4c1915a2f5386d95225df0f47fee7a07e2b3e007173171c",
-          "sha1": "8c8989b626998e2fce28affeaa2d97a22439b2d7",
-          "md5": "17c3ba282db13a406c685aaaba2f73ee"
+          "size": 14345,
+          "sha512": "af005f23991c38e2afbb033f7b78b9dd4db97b34e3f0a215abe03789a8f58eca6336dfc7d9ac249405ab9af3386a369e190bd6b4e16dcf363aa3f27118d7160c",
+          "sha256": "e919621e97879341477e13f48100de612125da260c2e6a0cdf078199a80e61a0",
+          "sha1": "a3cced0388ee935e12ef9746e260ff384ec1c9af",
+          "md5": "987331e2a5b728aa831f45fe1e014dc2"
         }
       ]
     }

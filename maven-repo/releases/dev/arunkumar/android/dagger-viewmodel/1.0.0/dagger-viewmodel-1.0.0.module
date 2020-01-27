@@ -11,7 +11,7 @@
   "createdBy": {
     "gradle": {
       "version": "6.1",
-      "buildId": "mbkojahj55egljmcbdl7kftaea"
+      "buildId": "zjpshntq2bbkrhvoed74wdm5xu"
     }
   },
   "variants": [
@@ -28,7 +28,7 @@
           "group": "androidx.lifecycle",
           "module": "lifecycle-extensions",
           "version": {
-            "requires": "2.0.0"
+            "requires": "2.1.0"
           }
         },
         {
@@ -50,11 +50,11 @@
         {
           "name": "dagger-viewmodel-1.0.0.aar",
           "url": "dagger-viewmodel-1.0.0.aar",
-          "size": 25388,
-          "sha512": "d153d1f9accb747d6d3f73f4441ad2d9c693c317092b8b11b9df878b2b5f0d56ecfb02cf280660fdbd8bfac8fab4241d59c18984e80d8a5fc4123dd6e858ece8",
-          "sha256": "573da6c7a70b5c608726f6d09b881718b533430c189056d191a8c06c74f506a0",
-          "sha1": "d0b22157e6ad8222e38d1a66762b89ce17009525",
-          "md5": "14a89ee1e4c5321f051476dbbe26d24c"
+          "size": 25380,
+          "sha512": "dca8970364d38c4ade1f5909900c964110866069e6a7019e0f53d6fff29f900c6caf6fd4d93979c62af213c34172f227f68a3f573e3787eba2f0b6c5ac5cf51b",
+          "sha256": "51f0a8ac53d7a9fe2db05032313c48bda52947ff0bf8540492b9d2db028e86fb",
+          "sha1": "8d6f55c8a19f3edc629efb3c970d820d91437b9d",
+          "md5": "43d9712eaefc666e8990ec3c73ff7a7a"
         }
       ]
     },
@@ -71,7 +71,7 @@
           "group": "androidx.lifecycle",
           "module": "lifecycle-extensions",
           "version": {
-            "requires": "2.0.0"
+            "requires": "2.1.0"
           }
         },
         {
@@ -100,11 +100,11 @@
         {
           "name": "dagger-viewmodel-1.0.0.aar",
           "url": "dagger-viewmodel-1.0.0.aar",
-          "size": 25388,
-          "sha512": "d153d1f9accb747d6d3f73f4441ad2d9c693c317092b8b11b9df878b2b5f0d56ecfb02cf280660fdbd8bfac8fab4241d59c18984e80d8a5fc4123dd6e858ece8",
-          "sha256": "573da6c7a70b5c608726f6d09b881718b533430c189056d191a8c06c74f506a0",
-          "sha1": "d0b22157e6ad8222e38d1a66762b89ce17009525",
-          "md5": "14a89ee1e4c5321f051476dbbe26d24c"
+          "size": 25380,
+          "sha512": "dca8970364d38c4ade1f5909900c964110866069e6a7019e0f53d6fff29f900c6caf6fd4d93979c62af213c34172f227f68a3f573e3787eba2f0b6c5ac5cf51b",
+          "sha256": "51f0a8ac53d7a9fe2db05032313c48bda52947ff0bf8540492b9d2db028e86fb",
+          "sha1": "8d6f55c8a19f3edc629efb3c970d820d91437b9d",
+          "md5": "43d9712eaefc666e8990ec3c73ff7a7a"
         }
       ]
     }
