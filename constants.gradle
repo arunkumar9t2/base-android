@@ -8,8 +8,8 @@ ext {
     ]
 
     rvVersion = "1.0.0"
-    agpVersion = "3.5.2"
-    kotlinVersion = "1.3.50"
+    agpVersion = "3.6.0-rc01"
+    kotlinVersion = "1.3.61"
     dokkaVersion = "0.9.17"
     daggerVersion = "2.23.2"
 
