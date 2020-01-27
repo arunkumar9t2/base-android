@@ -1,20 +1,19 @@
 package dev.arunkumar.common.result
 
 sealed class Result<T> {
-
     val hasValue: Boolean
-        get() = when {
-            this is Success -> true
-            this is Loading -> this.initialValue != null
-            this is Error -> this.initialValue != null
+        get() = when (this) {
+            is Success -> true
+            is Loading -> this.initialValue != null
+            is Error -> this.initialValue != null
             else -> false
         }
 
     val value: T
-        get() = when {
-            this is Success -> this.data
-            this is Loading -> this.initialValue ?: throw RuntimeException("No data present")
-            this is Error -> this.initialValue ?: throw RuntimeException("No data present")
+        get() = when (this) {
+            is Success -> this.data
+            is Loading -> this.initialValue ?: throw RuntimeException("No data present")
+            is Error -> this.initialValue ?: throw RuntimeException("No data present")
             else -> throw RuntimeException("No data present")
         }
 

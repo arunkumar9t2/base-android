@@ -60,6 +60,20 @@ inline fun logi(
     }
 }
 
+/**
+ * Logs with [Log.INFO] level when [include] is `true`
+ */
+inline fun logw(
+    message: String,
+    include: Boolean = DEBUG_BUILD,
+    throwable: Throwable? = null,
+    vararg args: Any
+) {
+    if (include) {
+        throwable?.let { Timber.w(it, message, args) } ?: Timber.w(message, args)
+    }
+}
+
 
 /**
  * Logs with [Log.INFO] level when [include] is `true`

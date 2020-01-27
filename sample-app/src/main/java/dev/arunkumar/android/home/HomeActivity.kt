@@ -14,6 +14,8 @@ import dev.arunkumar.android.dagger.activity.PerActivity
 import dev.arunkumar.android.dagger.viewmodel.UsesViewModel
 import dev.arunkumar.android.dagger.viewmodel.ViewModelKey
 import dev.arunkumar.android.dagger.viewmodel.viewModel
+import dev.arunkumar.android.home.items.ItemsPagingController
+import io.reactivex.rxkotlin.subscribeBy
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
@@ -30,13 +32,15 @@ class HomeActivity : DaggerAppCompatActivity(), UsesViewModel {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        observeViewModel()
+        setupItems()
     }
 
-    private fun observeViewModel() {
-        homeViewModel.count.subscribe {
-            counter.text = it.toString()
-        }
+    private fun setupItems() {
+        val itemsController = ItemsPagingController()
+        itemsRv.setController(itemsController)
+        homeViewModel.itemsPagedList.subscribeBy(onNext = itemsController::submitList)
+
+        itemsController.clicks.subscribeBy(onNext = homeViewModel::delete)
     }
 
     @Module

@@ -1,7 +1,18 @@
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath deps.realmPlugin
+    }
+}
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'realm-android'
 
 android {
     compileSdkVersion buildDetails.compileSdk
@@ -103,6 +114,13 @@ dependencies {
     remoteImplementation "dev.arunkumar.android:rx-utils:1.0.0"
     snapshotImplementation "dev.arunkumar.android:rx-utils:master-SNAPSHOT"
 
+    // Epoxy utils
+    localImplementation project(path: ':epoxy-utils')
+    remoteImplementation "dev.arunkumar.android:epoxy-utils:1.0.0"
+    snapshotImplementation "dev.arunkumar.android:epoxy-utils:master-SNAPSHOT"
+
+    implementation project(path: ':orbit')
+
     implementation deps.daggerAndroid
     implementation deps.daggerAndroidSupport
     kapt deps.daggerCompiler
@@ -117,6 +135,10 @@ dependencies {
     implementation deps.rxAndroid
     implementation deps.rxKotlin
     implementation deps.rxBinding
+
+    // Epoxy
+    implementation deps.epoxyPaging
+    kapt deps.epoxyProcessor
 
     // AndroidX
     implementation deps.androidXAppCompat
