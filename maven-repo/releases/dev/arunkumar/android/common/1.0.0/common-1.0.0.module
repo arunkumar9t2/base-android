@@ -11,7 +11,7 @@
   "createdBy": {
     "gradle": {
       "version": "6.1",
-      "buildId": "mbkojahj55egljmcbdl7kftaea"
+      "buildId": "zjpshntq2bbkrhvoed74wdm5xu"
     }
   },
   "variants": [
@@ -27,11 +27,11 @@
         {
           "name": "common-1.0.0.aar",
           "url": "common-1.0.0.aar",
-          "size": 24679,
-          "sha512": "121c2a6813bf2ad317ca0edb86f601d078bd117354f089d2e84134e098a4590552755883e2a5cb965eaf6fdc6ead6c2739a1500965f674d307a883dd192922fd",
-          "sha256": "7010ea6fdf3184e00e10001643499381b7ea46a2ee7c5576f488a03c40330ace",
-          "sha1": "d9e1694a995a65d0969f665f9f336f6ba7b68a44",
-          "md5": "caf5efc6ddee0febfac9690b94e47206"
+          "size": 24856,
+          "sha512": "aeeb5f94dabf31c7b4355f4d6db474eabf44af463ad3332d348078f3489f9ba8a49da8f812eea4315c264e3e53ef0aca31ee79196ff17553848008c0120c6a3d",
+          "sha256": "1528836baee292bbcd397f59bd3c3d11bc136cc3a19303e3b2ec9b5d3edd4741",
+          "sha1": "552fb6f4667e6bbc9b9da4464a26f4761de37bff",
+          "md5": "467023beeaad964604edc84067e348bb"
         }
       ]
     },
@@ -62,14 +62,14 @@
           "group": "androidx.core",
           "module": "core",
           "version": {
-            "requires": "1.0.2"
+            "requires": "1.1.0"
           }
         },
         {
           "group": "androidx.core",
           "module": "core-ktx",
           "version": {
-            "requires": "1.0.2"
+            "requires": "1.1.0"
           }
         },
         {
@@ -84,11 +84,11 @@
         {
           "name": "common-1.0.0.aar",
           "url": "common-1.0.0.aar",
-          "size": 24679,
-          "sha512": "121c2a6813bf2ad317ca0edb86f601d078bd117354f089d2e84134e098a4590552755883e2a5cb965eaf6fdc6ead6c2739a1500965f674d307a883dd192922fd",
-          "sha256": "7010ea6fdf3184e00e10001643499381b7ea46a2ee7c5576f488a03c40330ace",
-          "sha1": "d9e1694a995a65d0969f665f9f336f6ba7b68a44",
-          "md5": "caf5efc6ddee0febfac9690b94e47206"
+          "size": 24856,
+          "sha512": "aeeb5f94dabf31c7b4355f4d6db474eabf44af463ad3332d348078f3489f9ba8a49da8f812eea4315c264e3e53ef0aca31ee79196ff17553848008c0120c6a3d",
+          "sha256": "1528836baee292bbcd397f59bd3c3d11bc136cc3a19303e3b2ec9b5d3edd4741",
+          "sha1": "552fb6f4667e6bbc9b9da4464a26f4761de37bff",
+          "md5": "467023beeaad964604edc84067e348bb"
         }
       ]
     }

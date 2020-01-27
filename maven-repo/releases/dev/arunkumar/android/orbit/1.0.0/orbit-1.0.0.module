@@ -11,7 +11,7 @@
   "createdBy": {
     "gradle": {
       "version": "6.1",
-      "buildId": "mbkojahj55egljmcbdl7kftaea"
+      "buildId": "zjpshntq2bbkrhvoed74wdm5xu"
     }
   },
   "variants": [
@@ -28,21 +28,21 @@
           "group": "io.realm",
           "module": "realm-android-library",
           "version": {
-            "requires": "5.9.0"
+            "requires": "6.1.0"
           }
         },
         {
           "group": "io.realm",
           "module": "realm-android-kotlin-extensions",
           "version": {
-            "requires": "5.9.0"
+            "requires": "6.1.0"
           }
         },
         {
           "group": "io.realm",
           "module": "realm-annotations",
           "version": {
-            "requires": "5.9.0"
+            "requires": "6.1.0"
           }
         },
         {
@@ -92,11 +92,11 @@
         {
           "name": "orbit-1.0.0.aar",
           "url": "orbit-1.0.0.aar",
-          "size": 35501,
-          "sha512": "6d8668d20603fff22c1009ac1d61e72a2cb2ddf4351745e275ba9b5d9be173ef17ae5e1370d398e980b2639716e613cc34fc56d79f9575deefb046cfccf4e8bf",
-          "sha256": "1c0bf8bb15594688045678f30b1f3c257856538a3106423ce3270ce09574650d",
-          "sha1": "118059a9f5cde35127df2c8420333240e08fab6e",
-          "md5": "e7d2a05c15771d95803d9703468f694c"
+          "size": 35670,
+          "sha512": "1d29de0022487c7ee71947ead112f042a0aa8394a66ea0fd49d1f4af431aeeccf58d4c5a9dc58db6eee724105f6ca57a263e438216eb8cb5872a359c6a495508",
+          "sha256": "870ade38cd3ed461a2b083f1b347e5e022c5f813e48851f1f63587b4e36fb18f",
+          "sha1": "7e327418e1c31711604b6c17397bbdfaa04ac0db",
+          "md5": "ba0a34a156bce42449e4fa91135afc00"
         }
       ]
     },
@@ -113,21 +113,21 @@
           "group": "io.realm",
           "module": "realm-android-library",
           "version": {
-            "requires": "5.9.0"
+            "requires": "6.1.0"
           }
         },
         {
           "group": "io.realm",
           "module": "realm-android-kotlin-extensions",
           "version": {
-            "requires": "5.9.0"
+            "requires": "6.1.0"
           }
         },
         {
           "group": "io.realm",
           "module": "realm-annotations",
           "version": {
-            "requires": "5.9.0"
+            "requires": "6.1.0"
           }
         },
         {
@@ -184,11 +184,11 @@
         {
           "name": "orbit-1.0.0.aar",
           "url": "orbit-1.0.0.aar",
-          "size": 35501,
-          "sha512": "6d8668d20603fff22c1009ac1d61e72a2cb2ddf4351745e275ba9b5d9be173ef17ae5e1370d398e980b2639716e613cc34fc56d79f9575deefb046cfccf4e8bf",
-          "sha256": "1c0bf8bb15594688045678f30b1f3c257856538a3106423ce3270ce09574650d",
-          "sha1": "118059a9f5cde35127df2c8420333240e08fab6e",
-          "md5": "e7d2a05c15771d95803d9703468f694c"
+          "size": 35670,
+          "sha512": "1d29de0022487c7ee71947ead112f042a0aa8394a66ea0fd49d1f4af431aeeccf58d4c5a9dc58db6eee724105f6ca57a263e438216eb8cb5872a359c6a495508",
+          "sha256": "870ade38cd3ed461a2b083f1b347e5e022c5f813e48851f1f63587b4e36fb18f",
+          "sha1": "7e327418e1c31711604b6c17397bbdfaa04ac0db",
+          "md5": "ba0a34a156bce42449e4fa91135afc00"
         }
       ]
     }

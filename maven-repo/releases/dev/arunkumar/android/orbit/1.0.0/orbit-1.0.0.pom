@@ -29,19 +29,19 @@
     <dependency>
       <groupId>io.realm</groupId>
       <artifactId>realm-android-library</artifactId>
-      <version>5.9.0</version>
+      <version>6.1.0</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>io.realm</groupId>
       <artifactId>realm-android-kotlin-extensions</artifactId>
-      <version>5.9.0</version>
+      <version>6.1.0</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>io.realm</groupId>
       <artifactId>realm-annotations</artifactId>
-      <version>5.9.0</version>
+      <version>6.1.0</version>
       <scope>compile</scope>
     </dependency>
     <dependency>

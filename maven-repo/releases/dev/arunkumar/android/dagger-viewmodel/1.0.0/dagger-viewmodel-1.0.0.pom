@@ -29,7 +29,7 @@
     <dependency>
       <groupId>androidx.lifecycle</groupId>
       <artifactId>lifecycle-extensions</artifactId>
-      <version>2.0.0</version>
+      <version>2.1.0</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
