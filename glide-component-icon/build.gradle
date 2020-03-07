@@ -1,0 +1,8 @@
+apply plugin: "kotlin-kapt"
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation deps.kotlinStdLib
+    implementation deps.glide
+    implementation deps.androidXCoreKtx
+}

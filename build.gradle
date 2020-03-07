@@ -1,11 +1,9 @@
 buildscript {
     apply from: "constants.gradle"
-
     repositories {
         google()
         jcenter()
     }
-
     dependencies {
         classpath deps.agp
         classpath deps.kotlinGradlePlugin

@@ -35,6 +35,8 @@ ext {
 
     realmVersion = "6.1.0"
 
+    glideVersion = "4.11.0"
+
     deps = [
             "androidXCore"          : "androidx.core:core:$androidXCore",
             "androidXCoreKtx"       : "androidx.core:core-ktx:$androidXCore",
@@ -73,6 +75,8 @@ ext {
             "rxBinding"             : "com.jakewharton.rxbinding2:rxbinding:$rxBindingVersion",
 
             "realmPlugin"           : "io.realm:realm-gradle-plugin:$realmVersion",
+
+            "glide"                 : "com.github.bumptech.glide:glide:$glideVersion",
     ]
 
     moduleVersion = [
