@@ -6,17 +6,6 @@ def snapshotFolder = "file://${file("../maven-repo/snapshots/").absolutePath}"
 
 def isSnapshot = project.hasProperty("snapshot")
 
-if (isSnapshot) {
-    def cleanupSnapshots = project.tasks.register("cleanupSnapshots", Delete) {
-        group = "publishing"
-        description = "Cleans up old snapshot files"
-        delete "${project.rootDir}/maven-repo/snapshots/${rootProject.group.toString().replace(".", "/")}/$artifact"
-    }
-    project.tasks.named("publishReleasePublicationToMavenRepository").configure {
-        dependsOn(cleanupSnapshots)
-    }
-}
-
 dokka {
     outputFormat = "html"
     outputDirectory = "$buildDir/javadoc"
@@ -86,6 +75,19 @@ afterEvaluate {
             maven {
                 url = isSnapshot ? snapshotFolder : releaseFolder
             }
+        }
+    }
+}
+
+if (isSnapshot) {
+    def cleanupSnapshots = project.tasks.register("cleanupSnapshots", Delete) {
+        group = "publishing"
+        description = "Cleans up old snapshot files"
+        delete "${project.rootDir}/maven-repo/snapshots/${rootProject.group.toString().replace(".", "/")}/$artifact"
+    }
+    project.afterEvaluate {
+        tasks.named("publishReleasePublicationToMavenRepository").configure {
+            dependsOn(cleanupSnapshots)
         }
     }
 }
