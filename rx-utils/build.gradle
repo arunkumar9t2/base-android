@@ -1,11 +1,11 @@
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation deps.kotlinStdLib
 
     api deps.rx
     api deps.rxAndroid
 
-    api project(path: ':common')
+    api project(path: ":common")
 
     api deps.daggerAndroid
     api deps.daggerAndroidSupport

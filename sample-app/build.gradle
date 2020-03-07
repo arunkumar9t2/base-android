@@ -8,11 +8,11 @@ buildscript {
     }
 }
 
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'realm-android'
+apply plugin: "com.android.application"
+apply plugin: "kotlin-android"
+apply plugin: "kotlin-kapt"
+apply plugin: "kotlin-android-extensions"
+apply plugin: "realm-android"
 
 android {
     compileSdkVersion buildDetails.compileSdk
@@ -46,13 +46,13 @@ android {
             minifyEnabled false
             shrinkResources false
             debuggable true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
         }
         release {
             minifyEnabled true
             shrinkResources true
             debuggable false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
         }
     }
 
@@ -91,41 +91,41 @@ androidExtensions {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: "libs", include: ["*.jar"])
 
     // Common
-    localImplementation project(path: ':common')
+    localImplementation project(path: ":common")
     remoteImplementation "dev.arunkumar.android:common:1.0.0"
 
     // Dagger related
-    localImplementation project(path: ':dagger-base')
+    localImplementation project(path: ":dagger-base")
     remoteImplementation "dev.arunkumar.android:dagger-base:1.0.0"
     snapshotImplementation "dev.arunkumar.android:dagger-base:master-SNAPSHOT"
-    localImplementation project(path: ':dagger-viewmodel')
+    localImplementation project(path: ":dagger-viewmodel")
     remoteImplementation "dev.arunkumar.android:dagger-viewmodel:1.0.0"
     snapshotImplementation "dev.arunkumar.android:dagger-viewmodel:master-SNAPSHOT"
 
     // Logging
-    localImplementation project(path: ':logging')
+    localImplementation project(path: ":logging")
     remoteImplementation "dev.arunkumar.android:logging:1.0.0"
     snapshotImplementation "dev.arunkumar.android:logging:master-SNAPSHOT"
 
     // Viewmodel
-    localImplementation project(path: ':viewmodel-utils')
+    localImplementation project(path: ":viewmodel-utils")
     remoteImplementation "dev.arunkumar.android:viewmodel-utils:1.0.0"
     snapshotImplementation "dev.arunkumar.android:viewmodel-utils:master-SNAPSHOT"
 
     // Rx utils
-    localImplementation project(path: ':rx-utils')
+    localImplementation project(path: ":rx-utils")
     remoteImplementation "dev.arunkumar.android:rx-utils:1.0.0"
     snapshotImplementation "dev.arunkumar.android:rx-utils:master-SNAPSHOT"
 
     // Epoxy utils
-    localImplementation project(path: ':epoxy-utils')
+    localImplementation project(path: ":epoxy-utils")
     remoteImplementation "dev.arunkumar.android:epoxy-utils:1.0.0"
     snapshotImplementation "dev.arunkumar.android:epoxy-utils:master-SNAPSHOT"
 
-    implementation project(path: ':orbit')
+    implementation project(path: ":orbit")
     remoteImplementation "dev.arunkumar.android:orbit:1.0.0"
     snapshotImplementation "dev.arunkumar.android:orbit:master-SNAPSHOT"
 

@@ -2,9 +2,9 @@ ext {
     groupId = "dev.arunkumar.android"
 
     buildDetails = [
-            'compileSdk': 29,
-            'minSdk'    : 16,
-            'targetSdk' : 28,
+            "compileSdk": 29,
+            "minSdk"    : 16,
+            "targetSdk" : 28,
     ]
 
     rvVersion = "1.0.0"
@@ -36,61 +36,61 @@ ext {
     realmVersion = "6.1.0"
 
     deps = [
-            'androidXCore'          : "androidx.core:core:$androidXCore",
-            'androidXCoreKtx'       : "androidx.core:core-ktx:$androidXCore",
-            'androidXLifecycle'     : "androidx.lifecycle:lifecycle-extensions:$androidXLifecycle",
-            'androidXAppCompat'     : "androidx.appcompat:appcompat:$androidXAppCompat",
-            'constraintLayout'      : "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion",
-            'recyclerView'          : "androidx.recyclerview:recyclerview:$rvVersion",
-            'agp'                   : "com.android.tools.build:gradle:$agpVersion",
+            "androidXCore"          : "androidx.core:core:$androidXCore",
+            "androidXCoreKtx"       : "androidx.core:core-ktx:$androidXCore",
+            "androidXLifecycle"     : "androidx.lifecycle:lifecycle-extensions:$androidXLifecycle",
+            "androidXAppCompat"     : "androidx.appcompat:appcompat:$androidXAppCompat",
+            "constraintLayout"      : "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion",
+            "recyclerView"          : "androidx.recyclerview:recyclerview:$rvVersion",
+            "agp"                   : "com.android.tools.build:gradle:$agpVersion",
 
-            'paging'                : "androidx.paging:paging-runtime-ktx:$pagingVersion",
-            'pagingCommon'          : "androidx.paging:paging-common-ktx:$pagingVersion",
-            'pagingRxjava'          : "androidx.paging:paging-rxjava2-ktx:$pagingVersion",
+            "paging"                : "androidx.paging:paging-runtime-ktx:$pagingVersion",
+            "pagingCommon"          : "androidx.paging:paging-common-ktx:$pagingVersion",
+            "pagingRxjava"          : "androidx.paging:paging-rxjava2-ktx:$pagingVersion",
 
-            'kotlinGradlePlugin'    : "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion",
-            'kotlinStdLib'          : "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion",
-            'dokka'                 : "org.jetbrains.dokka:dokka-android-gradle-plugin:$dokkaVersion",
+            "kotlinGradlePlugin"    : "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion",
+            "kotlinStdLib"          : "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion",
+            "dokka"                 : "org.jetbrains.dokka:dokka-android-gradle-plugin:$dokkaVersion",
 
-            'daggerAndroid'         : "com.google.dagger:dagger-android:$daggerVersion",
-            'daggerAndroidSupport'  : "com.google.dagger:dagger-android-support:$daggerVersion",
-            'daggerCompiler'        : "com.google.dagger:dagger-compiler:$daggerVersion",
-            'daggerAndroidProcessor': "com.google.dagger:dagger-android-processor:$daggerVersion",
+            "daggerAndroid"         : "com.google.dagger:dagger-android:$daggerVersion",
+            "daggerAndroidSupport"  : "com.google.dagger:dagger-android-support:$daggerVersion",
+            "daggerCompiler"        : "com.google.dagger:dagger-compiler:$daggerVersion",
+            "daggerAndroidProcessor": "com.google.dagger:dagger-android-processor:$daggerVersion",
 
-            'junit'                 : "junit:junit:$junitVersion",
-            'roboelectric'          : "org.robolectric:robolectric:$roboeletricVersion",
+            "junit"                 : "junit:junit:$junitVersion",
+            "roboelectric"          : "org.robolectric:robolectric:$roboeletricVersion",
 
-            'epoxy'                 : "com.airbnb.android:epoxy:$epoxyVersion",
-            'epoxyProcessor'        : "com.airbnb.android:epoxy-processor:$epoxyVersion",
-            'epoxyPaging'           : "com.airbnb.android:epoxy-paging:$epoxyVersion",
+            "epoxy"                 : "com.airbnb.android:epoxy:$epoxyVersion",
+            "epoxyProcessor"        : "com.airbnb.android:epoxy-processor:$epoxyVersion",
+            "epoxyPaging"           : "com.airbnb.android:epoxy-paging:$epoxyVersion",
 
-            'timber'                : "com.jakewharton.timber:timber:$timberVersion",
+            "timber"                : "com.jakewharton.timber:timber:$timberVersion",
 
-            'rx'                    : "io.reactivex.rxjava2:rxjava:$rxVersion",
-            'rxAndroid'             : "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion",
-            'rxKotlin'              : "io.reactivex.rxjava2:rxkotlin:$rxKotlinVersion",
-            'rxRelay'               : "com.jakewharton.rxrelay2:rxrelay:$rxRelayVersion",
-            'rxBinding'             : "com.jakewharton.rxbinding2:rxbinding:$rxBindingVersion",
+            "rx"                    : "io.reactivex.rxjava2:rxjava:$rxVersion",
+            "rxAndroid"             : "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion",
+            "rxKotlin"              : "io.reactivex.rxjava2:rxkotlin:$rxKotlinVersion",
+            "rxRelay"               : "com.jakewharton.rxrelay2:rxrelay:$rxRelayVersion",
+            "rxBinding"             : "com.jakewharton.rxbinding2:rxbinding:$rxBindingVersion",
 
-            'realmPlugin'           : "io.realm:realm-gradle-plugin:$realmVersion",
+            "realmPlugin"           : "io.realm:realm-gradle-plugin:$realmVersion",
     ]
 
     moduleVersion = [
-            'common'          : '1.0.0',
-            'dagger-base'     : '1.0.0',
-            'dagger-viewmodel': '1.0.0',
-            'epoxy-utils'     : '1.0.0',
-            'logging'         : '1.0.0',
-            'viewmodel-utils' : '1.0.0',
-            'rx-utils'        : '1.0.0',
-            'orbit'           : '1.0.0'
+            "common"          : "1.0.0",
+            "dagger-base"     : "1.0.0",
+            "dagger-viewmodel": "1.0.0",
+            "epoxy-utils"     : "1.0.0",
+            "logging"         : "1.0.0",
+            "viewmodel-utils" : "1.0.0",
+            "rx-utils"        : "1.0.0",
+            "orbit"           : "1.0.0"
     ]
 
-    developerId = 'arunkumar9t2'
-    developerName = 'Arunkumar'
-    developerEmail = 'hi@arunkumar.dev'
+    developerId = "arunkumar9t2"
+    developerName = "Arunkumar"
+    developerEmail = "hi@arunkumar.dev"
 
-    licenseName = 'The Apache Software License, Version 2.0'
-    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    licenseName = "The Apache Software License, Version 2.0"
+    licenseUrl = "http://www.apache.org/licenses/LICENSE-2.0.txt"
     allLicenses = ["Apache-2.0"]
 }

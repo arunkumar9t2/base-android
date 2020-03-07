@@ -1,17 +1,55 @@
-apply plugin: 'org.jetbrains.dokka-android'
-apply plugin: 'maven-publish'
+apply plugin: "org.jetbrains.dokka-android"
+apply plugin: "maven-publish"
 
 def releaseFolder = "file://${file("../maven-repo/releases/").absolutePath}"
 def snapshotFolder = "file://${file("../maven-repo/snapshots/").absolutePath}"
 
 def isSnapshot = project.hasProperty("snapshot")
 
+if (isSnapshot) {
+    def cleanupSnapshots = project.tasks.register("cleanupSnapshots", Delete) {
+        description = "Cleans up old snapshot files"
+        delete "${project.rootDir}/maven-repo/snapshots/${rootProject.group.toString().replace(".", "/")}/$artifact"
+    }
+    project.tasks.named("uploadArchives").configure {
+        dependsOn(cleanupSnapshots)
+    }
+}
+
+dokka {
+    outputFormat = "html"
+    outputDirectory = "$buildDir/javadoc"
+    classpath = new ArrayList<File>(project.tasks["assemble"].outputs.files.files)
+    sourceDirs = android.sourceSets.main.java.srcDirs
+    externalDocumentationLink {
+        url = new URL("https://developer.android.com/reference/")
+        packageListUrl = new URL("https://developer.android.com/reference/android/support/package-list")
+    }
+}
+
+task dokkaJar(type: Jar, dependsOn: dokka) {
+    group = JavaBasePlugin.DOCUMENTATION_GROUP
+    classifier = "javadoc"
+    description = "Assembles Kotlin docs with Dokka"
+    from dokka.outputDirectory
+}
+
+task sourceJar(type: Jar) {
+    classifier = "sources"
+    from android.sourceSets.main.java.srcDirs
+}
+
+artifacts {
+    archives sourceJar
+    archives dokkaJar
+}
+
 afterEvaluate {
     publishing {
         publications {
             release(MavenPublication) {
                 pom {
-                    packaging 'aar'
+                    packaging "aar"
                     name = artifact
                     developers {
                         developer {
@@ -45,42 +83,4 @@ afterEvaluate {
             }
         }
     }
-}
-
-if (isSnapshot) {
-    def cleanupSnapshots = project.tasks.register("cleanupSnapshots", Delete) {
-        description = "Cleans up old snapshot files"
-        delete "${project.rootDir}/maven-repo/snapshots/${rootProject.group.toString().replace(".", "/")}/$artifact"
-    }
-    project.tasks.named("uploadArchives").configure {
-        dependsOn(cleanupSnapshots)
-    }
-}
-
-dokka {
-    outputFormat = 'html'
-    outputDirectory = "$buildDir/javadoc"
-    classpath = new ArrayList<File>(project.tasks['assemble'].outputs.files.files)
-    sourceDirs = android.sourceSets.main.java.srcDirs
-    externalDocumentationLink {
-        url = new URL("https://developer.android.com/reference/")
-        packageListUrl = new URL("https://developer.android.com/reference/android/support/package-list")
-    }
-}
-
-task dokkaJar(type: Jar, dependsOn: dokka) {
-    group = JavaBasePlugin.DOCUMENTATION_GROUP
-    classifier = "javadoc"
-    description = "Assembles Kotlin docs with Dokka"
-    from dokka.outputDirectory
-}
-
-task sourceJar(type: Jar) {
-    classifier = 'sources'
-    from android.sourceSets.main.java.srcDirs
-}
-
-artifacts {
-    archives sourceJar
-    archives dokkaJar
 }

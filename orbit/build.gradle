@@ -8,11 +8,11 @@ buildscript {
     }
 }
 
-apply plugin: 'realm-android'
+apply plugin: "realm-android"
 
 dependencies {
-    api project(path: ':common')
-    api project(path: ':rx-utils')
+    api project(path: ":common")
+    api project(path: ":rx-utils")
 
     api deps.epoxy
     api deps.paging

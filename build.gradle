@@ -1,5 +1,5 @@
 buildscript {
-    apply from: 'constants.gradle'
+    apply from: "constants.gradle"
 
     repositories {
         google()
@@ -42,7 +42,7 @@ allprojects { project ->
 
     configurations.configureEach {
         resolutionStrategy {
-            cacheChangingModulesFor 0, 'seconds'
+            cacheChangingModulesFor 0, "seconds"
         }
     }
 }
@@ -51,12 +51,12 @@ def sampleAppName = "sample-app"
 def isSnapshot = project.hasProperty("snapshot")
 
 subprojects { subProject ->
-    apply from: '../constants.gradle'
+    apply from: "../constants.gradle"
     if (subProject.name != sampleAppName) {
         subProject.ext.artifact = subProject.name
         subProject.version = isSnapshot ? "master-SNAPSHOT" : subProject.ext.moduleVersion[subProject.name]
-        apply from: '../libraryModule.gradle'
-        apply from: '../publishing.gradle'
+        apply from: "../libraryModule.gradle"
+        apply from: "../publishing.gradle"
     }
 }
 

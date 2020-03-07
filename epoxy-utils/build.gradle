@@ -1,12 +1,12 @@
-apply plugin: 'kotlin-kapt'
+apply plugin: "kotlin-kapt"
 
 kapt {
     correctErrorTypes = true
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    api project(path: ':common')
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    api project(path: ":common")
     implementation deps.kotlinStdLib
 
     api deps.epoxy
