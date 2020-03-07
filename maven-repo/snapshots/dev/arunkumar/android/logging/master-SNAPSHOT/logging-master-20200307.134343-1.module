@@ -1,0 +1,91 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "dev.arunkumar.android",
+    "module": "logging",
+    "version": "master-SNAPSHOT",
+    "attributes": {
+      "org.gradle.status": "integration"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "6.1",
+      "buildId": "baqtdocinfd67c6op2phcey7me"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "com.jakewharton.timber",
+          "module": "timber",
+          "version": {
+            "requires": "4.7.1"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "logging-master-SNAPSHOT.aar",
+          "url": "logging-master-20200307.134343-1.aar",
+          "size": 3899,
+          "sha512": "1fd759fb4a53b5ebf861a90aa8ea1482a92becee86ac2eb4b6f05f81eab7840ef21c72657b4c68980bd6dcbe4908be7bac2952d592138a3c7ac0c6763403a455",
+          "sha256": "e1c6e670547d63ba75cc76b45319e5c10f64e99cbb56effcffbe5d64d5c2dc70",
+          "sha1": "e31b168fd79ab539daf184e108269c06721e35a0",
+          "md5": "5d0270ec590e34ac8063ab2e47e36f25"
+        }
+      ]
+    },
+    {
+      "name": "releaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "com.jakewharton.timber",
+          "module": "timber",
+          "version": {
+            "requires": "4.7.1"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-android-extensions-runtime",
+          "version": {
+            "requires": "1.3.61"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "1.3.61"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "logging-master-SNAPSHOT.aar",
+          "url": "logging-master-20200307.134343-1.aar",
+          "size": 3899,
+          "sha512": "1fd759fb4a53b5ebf861a90aa8ea1482a92becee86ac2eb4b6f05f81eab7840ef21c72657b4c68980bd6dcbe4908be7bac2952d592138a3c7ac0c6763403a455",
+          "sha256": "e1c6e670547d63ba75cc76b45319e5c10f64e99cbb56effcffbe5d64d5c2dc70",
+          "sha1": "e31b168fd79ab539daf184e108269c06721e35a0",
+          "md5": "5d0270ec590e34ac8063ab2e47e36f25"
+        }
+      ]
+    }
+  ]
+}
