@@ -8,10 +8,11 @@ def isSnapshot = project.hasProperty("snapshot")
 
 if (isSnapshot) {
     def cleanupSnapshots = project.tasks.register("cleanupSnapshots", Delete) {
+        group = "publishing"
         description = "Cleans up old snapshot files"
         delete "${project.rootDir}/maven-repo/snapshots/${rootProject.group.toString().replace(".", "/")}/$artifact"
     }
-    project.tasks.named("uploadArchives").configure {
+    project.tasks.named("publishReleasePublicationToMavenRepository").configure {
         dependsOn(cleanupSnapshots)
     }
 }
@@ -48,6 +49,10 @@ afterEvaluate {
     publishing {
         publications {
             release(MavenPublication) {
+
+                artifact(sourceJar)
+                artifact(dokkaJar)
+
                 pom {
                     packaging "aar"
                     name = artifact
