@@ -5,25 +5,25 @@
   <version>master-SNAPSHOT</version>
   <versioning>
     <snapshot>
-      <timestamp>20200307.122859</timestamp>
-      <buildNumber>5</buildNumber>
+      <timestamp>20200307.124948</timestamp>
+      <buildNumber>6</buildNumber>
     </snapshot>
-    <lastUpdated>20200307122859</lastUpdated>
+    <lastUpdated>20200307124948</lastUpdated>
     <snapshotVersions>
       <snapshotVersion>
         <extension>aar</extension>
-        <value>master-20200307.122859-5</value>
-        <updated>20200307122859</updated>
+        <value>master-20200307.124948-6</value>
+        <updated>20200307124948</updated>
       </snapshotVersion>
       <snapshotVersion>
         <extension>pom</extension>
-        <value>master-20200307.122859-5</value>
-        <updated>20200307122859</updated>
+        <value>master-20200307.124948-6</value>
+        <updated>20200307124948</updated>
       </snapshotVersion>
       <snapshotVersion>
         <extension>module</extension>
-        <value>master-20200307.122859-5</value>
-        <updated>20200307122859</updated>
+        <value>master-20200307.124948-6</value>
+        <updated>20200307124948</updated>
       </snapshotVersion>
     </snapshotVersions>
   </versioning>
