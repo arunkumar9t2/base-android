@@ -125,9 +125,22 @@ dependencies {
     remoteImplementation "dev.arunkumar.android:epoxy-utils:1.0.0"
     snapshotImplementation "dev.arunkumar.android:epoxy-utils:master-SNAPSHOT"
 
-    implementation project(path: ":orbit")
+    // Orbit
+    localImplementation project(path: ":orbit")
     remoteImplementation "dev.arunkumar.android:orbit:1.0.0"
     snapshotImplementation "dev.arunkumar.android:orbit:master-SNAPSHOT"
+
+    // Glide component icon
+    localImplementation project(path: ":orbit")
+    remoteImplementation "dev.arunkumar.android:orbit:1.0.0"
+    snapshotImplementation "dev.arunkumar.android:orbit:master-SNAPSHOT"
+
+    // Dagger work manager
+    implementation project(path: ":dagger-workmanager")
+    // remoteImplementation "dev.arunkumar.android:dagger-workmanager:1.0.0"
+    // snapshotImplementation "dev.arunkumar.android:dagger-workmanager:master-SNAPSHOT"
+    implementation deps.workManagerRx
+    implementation deps.workManagerKtx
 
     implementation deps.daggerAndroid
     implementation deps.daggerAndroidSupport

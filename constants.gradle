@@ -37,6 +37,8 @@ ext {
 
     glideVersion = "4.11.0"
 
+    workMangerVersion = "2.3.3"
+
     deps = [
             "androidXCore"          : "androidx.core:core:$androidXCore",
             "androidXCoreKtx"       : "androidx.core:core-ktx:$androidXCore",
@@ -77,6 +79,10 @@ ext {
             "realmPlugin"           : "io.realm:realm-gradle-plugin:$realmVersion",
 
             "glide"                 : "com.github.bumptech.glide:glide:$glideVersion",
+
+            "workManager"           : "androidx.work:work-runtime:$workMangerVersion",
+            "workManagerRx"         : "androidx.work:work-rxjava2:$workMangerVersion",
+            "workManagerKtx"        : "androidx.work:work-runtime-ktx:$workMangerVersion",
     ]
 
     moduleVersion = [

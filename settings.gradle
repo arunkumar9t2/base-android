@@ -7,4 +7,5 @@ include ":sample-app",
         ":epoxy-utils",
         ":rx-utils",
         ":orbit",
-        ":glide-component-icon"
+        ":glide-component-icon",
+        ":dagger-workmanager"

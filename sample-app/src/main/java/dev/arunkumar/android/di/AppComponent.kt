@@ -8,8 +8,11 @@ import dagger.android.support.AndroidSupportInjectionModule
 import dev.arunkumar.android.AppSchedulersModule
 import dev.arunkumar.android.SampleApp
 import dev.arunkumar.android.dagger.viewmodel.DefaultViewModelsBuilder
+import dev.arunkumar.android.data.ItemsModule
 import dev.arunkumar.android.home.HomeActivity
 import dev.arunkumar.android.util.PreferencesModule
+import dev.arunkumar.android.util.work.SampleWorkerInjectionModule
+import dev.arunkumar.android.util.work.SampleWorkerSubComponent
 import javax.inject.Singleton
 
 @Singleton
@@ -19,13 +22,20 @@ import javax.inject.Singleton
 
         HomeActivity.Builder::class,
 
+        /** Items **/
+        ItemsModule::class,
+
         /** Utils **/
+        AppModule::class,
         DefaultViewModelsBuilder::class,
         PreferencesModule::class,
-        AppSchedulersModule::class
+        AppSchedulersModule::class,
+        SampleWorkerInjectionModule::class
     ]
 )
 interface AppComponent : AndroidInjector<SampleApp> {
+
+    fun workerSubComponentFactory(): SampleWorkerSubComponent.Factory
 
     @Component.Builder
     interface Builder {

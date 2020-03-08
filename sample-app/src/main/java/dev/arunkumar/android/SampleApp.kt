@@ -1,5 +1,6 @@
 package dev.arunkumar.android
 
+import androidx.work.Configuration
 import com.airbnb.epoxy.EpoxyController
 import dagger.android.support.DaggerApplication
 import dev.arunkumar.android.di.AppComponent
@@ -10,7 +11,7 @@ import io.realm.RealmConfiguration
 import io.realm.log.LogLevel.*
 import io.realm.log.RealmLog
 
-class SampleApp : DaggerApplication() {
+class SampleApp : DaggerApplication(), Configuration.Provider {
 
     private val appComponent: AppComponent by lazy {
         DaggerAppComponent.builder()
@@ -48,4 +49,10 @@ class SampleApp : DaggerApplication() {
             .build()
             .let(Realm::setDefaultConfiguration)
     }
+
+    override fun getWorkManagerConfiguration() = Configuration
+        .Builder().run {
+            //setWorkerFactory(appComponent.daggerWorkerFactory())
+            build()
+        }
 }

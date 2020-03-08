@@ -1,0 +1,12 @@
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+
+    api deps.workManager
+
+    api deps.daggerAndroid
+    api deps.daggerAndroidSupport
+    kapt deps.daggerCompiler
+    kapt deps.daggerAndroidProcessor
+    kaptTest deps.daggerCompiler
+    kaptTest deps.daggerAndroidProcessor
+}

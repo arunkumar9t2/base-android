@@ -11,6 +11,14 @@ buildscript {
     }
 }
 
+plugins {
+    id "scabbard.gradle" version "0.2.0"
+}
+
+scabbard {
+    enabled true
+}
+
 allprojects { project ->
     group = groupId
     def repoUrl = "https://raw.github.com/arunkumar9t2/base-android/master/maven-repo/"

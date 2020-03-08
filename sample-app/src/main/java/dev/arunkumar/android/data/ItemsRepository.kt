@@ -3,6 +3,8 @@ package dev.arunkumar.android.data
 import androidx.paging.PagedList
 import androidx.paging.PagedList.Config
 import androidx.paging.RxPagedListBuilder
+import dagger.Binds
+import dagger.Module
 import dev.arunkumar.android.realm.RealmDataSourceFactory
 import dev.arunkumar.android.realm.epoxy.epoxyBgScheduler
 import dev.arunkumar.android.realm.realmTransaction
@@ -28,7 +30,13 @@ interface ItemsRepository {
         prefetchDistance: Int = 30 * 2
     ): Flowable<PagedList<Item>>
 
-    fun deleteItem(item: Item): Completable
+    fun deleteItem(itemId: Int): Completable
+}
+
+@Module
+interface ItemsModule {
+    @Binds
+    fun itemsRepository(defaultItemsRepository: DefaultItemsRepository): ItemsRepository
 }
 
 class DefaultItemsRepository
@@ -78,10 +86,9 @@ constructor(
                 .doAfterTerminate { realmExecutor.stop() }
         })
 
-
-    override fun deleteItem(item: Item) = completable {
+    override fun deleteItem(itemId: Int) = completable {
         realmTransaction {
-            it.where<Item>().equalTo("id", item.id).findAll().deleteAllFromRealm()
+            it.where<Item>().equalTo("id", itemId).findAll().deleteAllFromRealm()
         }
     }
 }
