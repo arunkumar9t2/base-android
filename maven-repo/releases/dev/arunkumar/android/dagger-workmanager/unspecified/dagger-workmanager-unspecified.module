@@ -11,7 +11,7 @@
   "createdBy": {
     "gradle": {
       "version": "6.1",
-      "buildId": "h6vh7eofnjcs7brnbe73h6bmve"
+      "buildId": "5p2g6allanb6howmll52dje3mm"
     }
   },
   "variants": [
@@ -50,11 +50,11 @@
         {
           "name": "dagger-workmanager-unspecified.aar",
           "url": "dagger-workmanager-unspecified.aar",
-          "size": 18366,
-          "sha512": "6d0af591fdea040b836bd048e1f7ebe410924d1b75093c35436961d98a5d844ed2d21111111ddb8ea831c55f63f21f77ac4aa5a4611da89923dcbab044f825cc",
-          "sha256": "04d5cbdfae5f64168745e3997406a46a50f59ede9d96307c6c9edab89d8b258d",
-          "sha1": "05e3f85311605a66b317738bb517a07e33ab4a72",
-          "md5": "ee5e781e5430e4a56f3e01d2bb8f8b5f"
+          "size": 20472,
+          "sha512": "dea4b80ab3bd867f3c250a40c4f29dfdc48b32b48bc634ea817bb153c60eea583b45777eae1528d3c19a3a107dfc21a2d30665cada34153a1609d80c2c2e7a84",
+          "sha256": "f6235edd97ee43fd195e9fa361c90cfa1afdb92a8f97a20bebfb6b830aa98964",
+          "sha1": "aad0cb1bdafeec38ed1676d657b2be40ed1cda23",
+          "md5": "040583fee91a28e3132adc9d3faee6bf"
         }
       ]
     },
@@ -94,17 +94,31 @@
           "version": {
             "requires": "1.3.61"
           }
+        },
+        {
+          "group": "dev.arunkumar.android",
+          "module": "logging",
+          "version": {
+            "requires": "1.0.0"
+          }
+        },
+        {
+          "group": "dev.arunkumar.android",
+          "module": "dagger-base",
+          "version": {
+            "requires": "1.0.0"
+          }
         }
       ],
       "files": [
         {
           "name": "dagger-workmanager-unspecified.aar",
           "url": "dagger-workmanager-unspecified.aar",
-          "size": 18366,
-          "sha512": "6d0af591fdea040b836bd048e1f7ebe410924d1b75093c35436961d98a5d844ed2d21111111ddb8ea831c55f63f21f77ac4aa5a4611da89923dcbab044f825cc",
-          "sha256": "04d5cbdfae5f64168745e3997406a46a50f59ede9d96307c6c9edab89d8b258d",
-          "sha1": "05e3f85311605a66b317738bb517a07e33ab4a72",
-          "md5": "ee5e781e5430e4a56f3e01d2bb8f8b5f"
+          "size": 20472,
+          "sha512": "dea4b80ab3bd867f3c250a40c4f29dfdc48b32b48bc634ea817bb153c60eea583b45777eae1528d3c19a3a107dfc21a2d30665cada34153a1609d80c2c2e7a84",
+          "sha256": "f6235edd97ee43fd195e9fa361c90cfa1afdb92a8f97a20bebfb6b830aa98964",
+          "sha1": "aad0cb1bdafeec38ed1676d657b2be40ed1cda23",
+          "md5": "040583fee91a28e3132adc9d3faee6bf"
         }
       ]
     }
