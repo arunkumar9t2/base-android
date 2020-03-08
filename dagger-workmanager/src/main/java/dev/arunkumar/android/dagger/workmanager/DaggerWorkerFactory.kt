@@ -4,15 +4,11 @@ import android.content.Context
 import androidx.work.ListenableWorker
 import androidx.work.WorkerFactory
 import androidx.work.WorkerParameters
-import javax.inject.Inject
 import javax.inject.Provider
-import javax.inject.Singleton
 
-@Singleton
-class DaggerWorkerFactory
-@Inject
+abstract class DaggerWorkerFactory<T : WorkerSubComponent.Factory>
 constructor(
-    private val workerSubComponentFactory: WorkerSubComponent.Factory
+    private val workerSubComponentFactory: T
 ) : WorkerFactory() {
 
     override fun createWorker(

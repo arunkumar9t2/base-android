@@ -1,6 +1,9 @@
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
 
+    implementation project(path: ":logging")
+    implementation project(path: ":dagger-base")
+
     api deps.workManager
 
     api deps.daggerAndroid

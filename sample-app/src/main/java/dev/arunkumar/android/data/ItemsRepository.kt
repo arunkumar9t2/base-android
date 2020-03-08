@@ -30,7 +30,7 @@ interface ItemsRepository {
         prefetchDistance: Int = 30 * 2
     ): Flowable<PagedList<Item>>
 
-    fun deleteItem(itemId: Int): Completable
+    fun deleteItem(itemId: String): Completable
 }
 
 @Module
@@ -86,7 +86,7 @@ constructor(
                 .doAfterTerminate { realmExecutor.stop() }
         })
 
-    override fun deleteItem(itemId: Int) = completable {
+    override fun deleteItem(itemId: String) = completable {
         realmTransaction {
             it.where<Item>().equalTo("id", itemId).findAll().deleteAllFromRealm()
         }

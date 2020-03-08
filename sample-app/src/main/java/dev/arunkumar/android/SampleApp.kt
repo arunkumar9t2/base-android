@@ -1,8 +1,8 @@
 package dev.arunkumar.android
 
-import androidx.work.Configuration
 import com.airbnb.epoxy.EpoxyController
 import dagger.android.support.DaggerApplication
+import dev.arunkumar.android.dagger.application.AppInitializer
 import dev.arunkumar.android.di.AppComponent
 import dev.arunkumar.android.di.DaggerAppComponent
 import dev.arunkumar.android.logging.*
@@ -10,8 +10,9 @@ import io.realm.Realm
 import io.realm.RealmConfiguration
 import io.realm.log.LogLevel.*
 import io.realm.log.RealmLog
+import javax.inject.Inject
 
-class SampleApp : DaggerApplication(), Configuration.Provider {
+class SampleApp : DaggerApplication() {
 
     private val appComponent: AppComponent by lazy {
         DaggerAppComponent.builder()
@@ -21,11 +22,16 @@ class SampleApp : DaggerApplication(), Configuration.Provider {
 
     override fun applicationInjector() = appComponent
 
+    @Inject
+    @JvmSuppressWildcards
+    lateinit var appInitializers: Set<AppInitializer>
+
     override fun onCreate() {
         super.onCreate()
         initDebugLogs()
         initEpoxy()
         initRealm()
+        appInitializers.forEach { initializer -> initializer.initialize(this) }
     }
 
     private fun initEpoxy() {
@@ -49,10 +55,4 @@ class SampleApp : DaggerApplication(), Configuration.Provider {
             .build()
             .let(Realm::setDefaultConfiguration)
     }
-
-    override fun getWorkManagerConfiguration() = Configuration
-        .Builder().run {
-            //setWorkerFactory(appComponent.daggerWorkerFactory())
-            build()
-        }
 }
