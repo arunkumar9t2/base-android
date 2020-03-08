@@ -86,14 +86,16 @@ ext {
     ]
 
     moduleVersion = [
-            "common"          : "1.0.0",
-            "dagger-base"     : "1.0.0",
-            "dagger-viewmodel": "1.0.0",
-            "epoxy-utils"     : "1.0.0",
-            "logging"         : "1.0.0",
-            "viewmodel-utils" : "1.0.0",
-            "rx-utils"        : "1.0.0",
-            "orbit"           : "1.0.0"
+            "common"              : "1.0.0",
+            "dagger-base"         : "1.0.0",
+            "dagger-viewmodel"    : "1.0.0",
+            "epoxy-utils"         : "1.0.0",
+            "logging"             : "1.0.0",
+            "viewmodel-utils"     : "1.0.0",
+            "rx-utils"            : "1.0.0",
+            "orbit"               : "1.0.0",
+            "glide-component-icon": "1.0.0",
+            "dagger-workmanager"  : "1.0.0"
     ]
 
     developerId = "arunkumar9t2"
