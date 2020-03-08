@@ -3,11 +3,12 @@
   <groupId>dev.arunkumar.android</groupId>
   <artifactId>dagger-workmanager</artifactId>
   <versioning>
-    <latest>unspecified</latest>
-    <release>unspecified</release>
+    <latest>1.0.0</latest>
+    <release>1.0.0</release>
     <versions>
       <version>unspecified</version>
+      <version>1.0.0</version>
     </versions>
-    <lastUpdated>20200308160508</lastUpdated>
+    <lastUpdated>20200308161404</lastUpdated>
   </versioning>
 </metadata>
