@@ -25,7 +25,7 @@ class RealmPagedDataSource<T : RealmModel>(
     override fun loadRange(startPosition: Int, count: Int): List<T> {
         if (countItems() == 0) return emptyList()
         val results = mutableListOf<T>()
-        val endPosition = startPosition + count
+        val endPosition = minOf(startPosition + count, countItems())
         for (position in startPosition until endPosition) {
             realmResults[position]?.let { item ->
                 results.add(realm.copyFromRealm(item))
