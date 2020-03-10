@@ -19,6 +19,7 @@ class RealmExecutor(private val tag: String? = null) : StoppableExecutor {
             THREAD_PRIORITY_BACKGROUND
         ).apply { start() }
     }
+
     private val handlerExecutor by lazy { HandlerExecutor(Handler(handlerThread.looper)) }
 
     override fun execute(command: Runnable) = handlerExecutor.execute(command)

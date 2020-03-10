@@ -36,7 +36,7 @@ class HomeActivity : DaggerAppCompatActivity(), UsesViewModel {
     }
 
     private fun setupItems() {
-        val itemsController = ItemsPagingController()
+        val itemsController = ItemsPagingController(this)
         itemsRv.setController(itemsController)
         homeViewModel.itemsPagedList.subscribeBy(onNext = itemsController::submitList)
         itemsController.clicks.subscribeBy(onNext = homeViewModel::delete)

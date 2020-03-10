@@ -21,7 +21,7 @@ constructor(
 ) : RxWorker(application, workerParams) {
 
     override fun createWork(): Single<Result> {
-        val id = workerParams.inputData.keyValueMap["id"] as String
+        val id = workerParams.inputData.keyValueMap["id"] as Int
         return itemsRepository
             .deleteItem(id)
             .toSingle { Result.success() }

@@ -18,8 +18,8 @@ import io.reactivex.Flowable
 import io.realm.Realm
 import io.realm.RealmQuery
 import io.realm.kotlin.where
-import java.util.*
 import javax.inject.Inject
+import kotlin.random.Random.Default.nextInt
 
 interface ItemsRepository {
     fun addItemsIfEmpty(): Completable
@@ -30,7 +30,7 @@ interface ItemsRepository {
         prefetchDistance: Int = 30 * 2
     ): Flowable<PagedList<Item>>
 
-    fun deleteItem(itemId: String): Completable
+    fun deleteItem(itemId: Int): Completable
 }
 
 @Module
@@ -45,12 +45,19 @@ constructor(
     private val schedulerProvider: SchedulerProvider
 ) : ItemsRepository {
 
+    private val charPool: List<Char> = ('a'..'z') + ('A'..'Z') + ('0'..'9')
+
     override fun addItemsIfEmpty() = completable {
         realmTransaction { realm ->
+            fun name() = (1..10)
+                .map { nextInt(0, charPool.size) }
+                .map(charPool::get)
+                .joinToString("")
+
             if (realm.where<Item>().findAll().isEmpty()) {
                 val newItems = mutableListOf<Item>().apply {
-                    repeat(1000) {
-                        add(Item(UUID.randomUUID().toString()))
+                    for (id in 1..1000) {
+                        add(Item(id, name()))
                     }
                 }
                 realm.copyToRealmOrUpdate(newItems)
@@ -74,7 +81,7 @@ constructor(
             }
             val realmExecutor = RealmExecutor()
             val realmQueryBuilder: (Realm) -> RealmQuery<Item> = {
-                it.where<Item>().sort("id")
+                it.where<Item>().sort("name")
             }
             val dataSourceFactory = RealmDataSourceFactory(realmQueryBuilder)
 
@@ -86,7 +93,7 @@ constructor(
                 .doAfterTerminate { realmExecutor.stop() }
         })
 
-    override fun deleteItem(itemId: String) = completable {
+    override fun deleteItem(itemId: Int) = completable {
         realmTransaction {
             it.where<Item>().equalTo("id", itemId).findAll().deleteAllFromRealm()
         }

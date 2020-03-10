@@ -5,5 +5,6 @@ import io.realm.annotations.PrimaryKey
 
 open class Item(
     @PrimaryKey
-    var id: String = ""
+    var id: Int = 0,
+    var name: String = ""
 ) : RealmObject()
