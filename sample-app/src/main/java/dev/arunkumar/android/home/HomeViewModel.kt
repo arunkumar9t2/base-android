@@ -30,6 +30,7 @@ constructor(
     private fun start() {
         defaultItemsRepository.items()
             .observeOn(schedulerProvider.ui)
+            .untilCleared()
             .subscribeBy(onNext = itemsPagedList::accept)
     }
 
