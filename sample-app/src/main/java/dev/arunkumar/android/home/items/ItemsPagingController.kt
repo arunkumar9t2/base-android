@@ -27,20 +27,20 @@ class ItemsPagingController(private val activity: Activity) : PagedListEpoxyCont
 
         models.forEachIndexed { index, currEpoxyModel ->
 
+            currEpoxyModel.addTo(this)
+
             if (index != models.size - 1) {
                 val startingChar = (currEpoxyModel as ItemViewModel_).getText(activity).first()
                 val nextEpoxyModel = models[index + 1]
                 val nextChar = (nextEpoxyModel as ItemViewModel_).getText(activity).first()
                 if (!startingChar.equals(nextChar, ignoreCase = true)) {
                     itemView {
-                        val header = startingChar.toString()
+                        val header = nextChar.toString()
                         id(header)
                         text(header)
                     }
                 }
             }
-
-            currEpoxyModel.addTo(this)
         }
     }
 
