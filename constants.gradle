@@ -13,8 +13,8 @@ ext {
   dokkaVersion = "0.9.17"
   daggerVersion = "2.23.2"
 
-  androidXCore = "1.1.0"
-  androidXLifecycle = "2.1.0"
+  androidXCore = "1.2.0"
+  androidXLifecycle = "2.2.0"
   androidXAppCompat = "1.1.0"
   constraintLayoutVersion = "1.1.3"
 
