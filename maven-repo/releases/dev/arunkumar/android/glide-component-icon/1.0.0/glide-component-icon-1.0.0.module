@@ -10,8 +10,8 @@
   },
   "createdBy": {
     "gradle": {
-      "version": "6.1",
-      "buildId": "aoihbqnr5fh4tlkhni4j6si63m"
+      "version": "6.2.2",
+      "buildId": "bqt4nac5v5akvo3ttf6aafyscq"
     }
   },
   "variants": [
@@ -27,11 +27,11 @@
         {
           "name": "glide-component-icon-1.0.0.aar",
           "url": "glide-component-icon-1.0.0.aar",
-          "size": 11643,
-          "sha512": "24f89ed7ba0fbdbaabeb80700a5398e7c20e897d0b9e821d793c3afdd3edcb6f3473f4927fdbd040bba96029b8f13b9f686d851afc02edf301bdb302085f9f3d",
-          "sha256": "bc36b2387f13eafdfd2adf78868bbe883286c2eb1db4b6b2cb51cb0dbd0e64fd",
-          "sha1": "ab7e7e3f0519e967cc15dbbf32ba38675866b4f6",
-          "md5": "e95e41c62de50fd1bc803878753d8a6d"
+          "size": 11558,
+          "sha512": "8b2861e20a3e944dfa0b73d4c72d8b94917225bd3b40ff26d9a70bba3843b2cc6e722f7eaeb2beda68c51cc7ec9c337c91ecf0bbcea1f1d8f788141231c7519a",
+          "sha256": "bf61edb28cc2a2ba52d3feb495f4870aae413f6f0d0664ba06e537851f9ad476",
+          "sha1": "2179499c15044c131185a6e9638fb10091cef675",
+          "md5": "1a6fd1095d4ea5cbfc09ad5e827c951a"
         }
       ]
     },
@@ -77,11 +77,11 @@
         {
           "name": "glide-component-icon-1.0.0.aar",
           "url": "glide-component-icon-1.0.0.aar",
-          "size": 11643,
-          "sha512": "24f89ed7ba0fbdbaabeb80700a5398e7c20e897d0b9e821d793c3afdd3edcb6f3473f4927fdbd040bba96029b8f13b9f686d851afc02edf301bdb302085f9f3d",
-          "sha256": "bc36b2387f13eafdfd2adf78868bbe883286c2eb1db4b6b2cb51cb0dbd0e64fd",
-          "sha1": "ab7e7e3f0519e967cc15dbbf32ba38675866b4f6",
-          "md5": "e95e41c62de50fd1bc803878753d8a6d"
+          "size": 11558,
+          "sha512": "8b2861e20a3e944dfa0b73d4c72d8b94917225bd3b40ff26d9a70bba3843b2cc6e722f7eaeb2beda68c51cc7ec9c337c91ecf0bbcea1f1d8f788141231c7519a",
+          "sha256": "bf61edb28cc2a2ba52d3feb495f4870aae413f6f0d0664ba06e537851f9ad476",
+          "sha1": "2179499c15044c131185a6e9638fb10091cef675",
+          "md5": "1a6fd1095d4ea5cbfc09ad5e827c951a"
         }
       ]
     }

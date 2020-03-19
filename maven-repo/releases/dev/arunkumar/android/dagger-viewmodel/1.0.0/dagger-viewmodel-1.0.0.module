@@ -10,8 +10,8 @@
   },
   "createdBy": {
     "gradle": {
-      "version": "6.1",
-      "buildId": "aoihbqnr5fh4tlkhni4j6si63m"
+      "version": "6.2.2",
+      "buildId": "bqt4nac5v5akvo3ttf6aafyscq"
     }
   },
   "variants": [
@@ -50,11 +50,11 @@
         {
           "name": "dagger-viewmodel-1.0.0.aar",
           "url": "dagger-viewmodel-1.0.0.aar",
-          "size": 25523,
-          "sha512": "6617929800e8207c5d3b0dfc46afaa385a00707e1825fe5dfd33c55ef2d069916d01fbff5c67420cea69ed818dfe3a9a9df29eb756d65d4d5f604ddefcb8d076",
-          "sha256": "25c7f1a300fb491ed0c037eeab94fb6b5ed832a7a6b6c61ade192b4e67299a1d",
-          "sha1": "24296bcad318c83a782f4b30c5e357ed6d5d2893",
-          "md5": "bbead9eb264bc2309ace413ec0f9c357"
+          "size": 25439,
+          "sha512": "5005914b434a4c339392c27e91739efd05f09fbebd494d86648c66d4805d29d8977e9b9f809726240a2bc730431b3ec43836266071f971f754d5761bd8548cba",
+          "sha256": "bf8a53a6fb8cbb5c2c538c0d8f63a0d2d296f07886cb12433e613e3fc313ccdb",
+          "sha1": "16f2926d20716f35bd141d472173e46fa2f38e28",
+          "md5": "0c239e4542b28377dba5fae8c553dc15"
         }
       ]
     },
@@ -100,11 +100,11 @@
         {
           "name": "dagger-viewmodel-1.0.0.aar",
           "url": "dagger-viewmodel-1.0.0.aar",
-          "size": 25523,
-          "sha512": "6617929800e8207c5d3b0dfc46afaa385a00707e1825fe5dfd33c55ef2d069916d01fbff5c67420cea69ed818dfe3a9a9df29eb756d65d4d5f604ddefcb8d076",
-          "sha256": "25c7f1a300fb491ed0c037eeab94fb6b5ed832a7a6b6c61ade192b4e67299a1d",
-          "sha1": "24296bcad318c83a782f4b30c5e357ed6d5d2893",
-          "md5": "bbead9eb264bc2309ace413ec0f9c357"
+          "size": 25439,
+          "sha512": "5005914b434a4c339392c27e91739efd05f09fbebd494d86648c66d4805d29d8977e9b9f809726240a2bc730431b3ec43836266071f971f754d5761bd8548cba",
+          "sha256": "bf8a53a6fb8cbb5c2c538c0d8f63a0d2d296f07886cb12433e613e3fc313ccdb",
+          "sha1": "16f2926d20716f35bd141d472173e46fa2f38e28",
+          "md5": "0c239e4542b28377dba5fae8c553dc15"
         }
       ]
     }

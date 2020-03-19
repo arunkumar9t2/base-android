@@ -10,8 +10,8 @@
   },
   "createdBy": {
     "gradle": {
-      "version": "6.1",
-      "buildId": "aoihbqnr5fh4tlkhni4j6si63m"
+      "version": "6.2.2",
+      "buildId": "bqt4nac5v5akvo3ttf6aafyscq"
     }
   },
   "variants": [
@@ -50,11 +50,11 @@
         {
           "name": "dagger-workmanager-1.0.0.aar",
           "url": "dagger-workmanager-1.0.0.aar",
-          "size": 20489,
-          "sha512": "aeb9c8a872b2bd627b236b968f7a3b9ca962b7c0321def15ca546efdc440ba555ab9f6df9b43257b613a1d0b38b0e8c23232ace63611b8e73b6769017b38cfe7",
-          "sha256": "3b5ee036252847945dc6e19fdab79cbb81ebbe318320c3c55862ca65b3b41b41",
-          "sha1": "565eddff8a21824091b6937b932e1cdf2870b440",
-          "md5": "243415ce1930f764ea7fecae3abc8f04"
+          "size": 20407,
+          "sha512": "d27ac30303731ff073684cbe539432f11d9db549416fbd55d85bdec08f61ad3514e45e5e15d32e14a92b060966cc9def4f1a8479bdb8ca133ad5b354eba281fa",
+          "sha256": "19154214f631a22883b24275df6a4b587592e698078baadb122a92d5c59fef7e",
+          "sha1": "2c2331458515aea311cbf0f18a9e08c0fa0c162b",
+          "md5": "2024548204dc44d7f2f5d36fd6d9a218"
         }
       ]
     },
@@ -114,11 +114,11 @@
         {
           "name": "dagger-workmanager-1.0.0.aar",
           "url": "dagger-workmanager-1.0.0.aar",
-          "size": 20489,
-          "sha512": "aeb9c8a872b2bd627b236b968f7a3b9ca962b7c0321def15ca546efdc440ba555ab9f6df9b43257b613a1d0b38b0e8c23232ace63611b8e73b6769017b38cfe7",
-          "sha256": "3b5ee036252847945dc6e19fdab79cbb81ebbe318320c3c55862ca65b3b41b41",
-          "sha1": "565eddff8a21824091b6937b932e1cdf2870b440",
-          "md5": "243415ce1930f764ea7fecae3abc8f04"
+          "size": 20407,
+          "sha512": "d27ac30303731ff073684cbe539432f11d9db549416fbd55d85bdec08f61ad3514e45e5e15d32e14a92b060966cc9def4f1a8479bdb8ca133ad5b354eba281fa",
+          "sha256": "19154214f631a22883b24275df6a4b587592e698078baadb122a92d5c59fef7e",
+          "sha1": "2c2331458515aea311cbf0f18a9e08c0fa0c162b",
+          "md5": "2024548204dc44d7f2f5d36fd6d9a218"
         }
       ]
     }
