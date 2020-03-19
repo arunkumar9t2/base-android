@@ -5,37 +5,37 @@
   <version>master-SNAPSHOT</version>
   <versioning>
     <snapshot>
-      <timestamp>20200319.182257</timestamp>
+      <timestamp>20200319.183817</timestamp>
       <buildNumber>1</buildNumber>
     </snapshot>
-    <lastUpdated>20200319182257</lastUpdated>
+    <lastUpdated>20200319183817</lastUpdated>
     <snapshotVersions>
       <snapshotVersion>
         <classifier>sources</classifier>
         <extension>jar</extension>
-        <value>master-20200319.182257-1</value>
-        <updated>20200319182257</updated>
+        <value>master-20200319.183817-1</value>
+        <updated>20200319183817</updated>
       </snapshotVersion>
       <snapshotVersion>
         <classifier>javadoc</classifier>
         <extension>jar</extension>
-        <value>master-20200319.182257-1</value>
-        <updated>20200319182257</updated>
+        <value>master-20200319.183817-1</value>
+        <updated>20200319183817</updated>
       </snapshotVersion>
       <snapshotVersion>
         <extension>aar</extension>
-        <value>master-20200319.182257-1</value>
-        <updated>20200319182257</updated>
+        <value>master-20200319.183817-1</value>
+        <updated>20200319183817</updated>
       </snapshotVersion>
       <snapshotVersion>
         <extension>pom</extension>
-        <value>master-20200319.182257-1</value>
-        <updated>20200319182257</updated>
+        <value>master-20200319.183817-1</value>
+        <updated>20200319183817</updated>
       </snapshotVersion>
       <snapshotVersion>
         <extension>module</extension>
-        <value>master-20200319.182257-1</value>
-        <updated>20200319182257</updated>
+        <value>master-20200319.183817-1</value>
+        <updated>20200319183817</updated>
       </snapshotVersion>
     </snapshotVersions>
   </versioning>

@@ -1,0 +1,196 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "dev.arunkumar.android",
+    "module": "orbit",
+    "version": "master-SNAPSHOT",
+    "attributes": {
+      "org.gradle.status": "integration"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "6.2.2",
+      "buildId": "cxe7s4idarapzhb2yi53zdkwiy"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "io.realm",
+          "module": "realm-android-library",
+          "version": {
+            "requires": "6.1.0"
+          }
+        },
+        {
+          "group": "io.realm",
+          "module": "realm-android-kotlin-extensions",
+          "version": {
+            "requires": "6.1.0"
+          }
+        },
+        {
+          "group": "io.realm",
+          "module": "realm-annotations",
+          "version": {
+            "requires": "6.1.0"
+          }
+        },
+        {
+          "group": "dev.arunkumar.android",
+          "module": "common",
+          "version": {
+            "requires": "master-SNAPSHOT"
+          }
+        },
+        {
+          "group": "dev.arunkumar.android",
+          "module": "rx-utils",
+          "version": {
+            "requires": "master-SNAPSHOT"
+          }
+        },
+        {
+          "group": "com.airbnb.android",
+          "module": "epoxy",
+          "version": {
+            "requires": "3.7.0"
+          }
+        },
+        {
+          "group": "androidx.paging",
+          "module": "paging-runtime-ktx",
+          "version": {
+            "requires": "2.1.0"
+          }
+        },
+        {
+          "group": "androidx.paging",
+          "module": "paging-common-ktx",
+          "version": {
+            "requires": "2.1.0"
+          }
+        },
+        {
+          "group": "androidx.paging",
+          "module": "paging-rxjava2-ktx",
+          "version": {
+            "requires": "2.1.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "orbit-master-SNAPSHOT.aar",
+          "url": "orbit-master-SNAPSHOT.aar",
+          "size": 35812,
+          "sha512": "a63c702371109e7584b4befb294e9b69454537d8b851991ecbafc66cf89d85a88c67447d2d7c0077719ba40d6f2860bf76e9188c8a59c673b042409e30060986",
+          "sha256": "b8553267c0ae1af6ff9dd98a53ed86f6a31c04cfcaf40b6372d22b369912f81e",
+          "sha1": "ecb61dc448af26611c58a9c3c454e612256d0f4c",
+          "md5": "e7fb25e683451636432d8707ded8445a"
+        }
+      ]
+    },
+    {
+      "name": "releaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "io.realm",
+          "module": "realm-android-library",
+          "version": {
+            "requires": "6.1.0"
+          }
+        },
+        {
+          "group": "io.realm",
+          "module": "realm-android-kotlin-extensions",
+          "version": {
+            "requires": "6.1.0"
+          }
+        },
+        {
+          "group": "io.realm",
+          "module": "realm-annotations",
+          "version": {
+            "requires": "6.1.0"
+          }
+        },
+        {
+          "group": "dev.arunkumar.android",
+          "module": "common",
+          "version": {
+            "requires": "master-SNAPSHOT"
+          }
+        },
+        {
+          "group": "dev.arunkumar.android",
+          "module": "rx-utils",
+          "version": {
+            "requires": "master-SNAPSHOT"
+          }
+        },
+        {
+          "group": "com.airbnb.android",
+          "module": "epoxy",
+          "version": {
+            "requires": "3.7.0"
+          }
+        },
+        {
+          "group": "androidx.paging",
+          "module": "paging-runtime-ktx",
+          "version": {
+            "requires": "2.1.0"
+          }
+        },
+        {
+          "group": "androidx.paging",
+          "module": "paging-common-ktx",
+          "version": {
+            "requires": "2.1.0"
+          }
+        },
+        {
+          "group": "androidx.paging",
+          "module": "paging-rxjava2-ktx",
+          "version": {
+            "requires": "2.1.0"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-android-extensions-runtime",
+          "version": {
+            "requires": "1.3.61"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "orbit-master-SNAPSHOT.aar",
+          "url": "orbit-master-SNAPSHOT.aar",
+          "size": 35812,
+          "sha512": "a63c702371109e7584b4befb294e9b69454537d8b851991ecbafc66cf89d85a88c67447d2d7c0077719ba40d6f2860bf76e9188c8a59c673b042409e30060986",
+          "sha256": "b8553267c0ae1af6ff9dd98a53ed86f6a31c04cfcaf40b6372d22b369912f81e",
+          "sha1": "ecb61dc448af26611c58a9c3c454e612256d0f4c",
+          "md5": "e7fb25e683451636432d8707ded8445a"
+        }
+      ]
+    }
+  ]
+}
