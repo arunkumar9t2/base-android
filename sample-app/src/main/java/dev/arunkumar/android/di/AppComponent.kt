@@ -17,30 +17,31 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(
-    modules = [
-        AndroidSupportInjectionModule::class,
+  modules = [
+    AndroidSupportInjectionModule::class,
 
-        HomeActivity.Builder::class,
+    HomeActivity.Builder::class,
 
-        /** Items **/
-        ItemsModule::class,
+    /** Items **/
+    ItemsModule::class,
 
-        /** Utils **/
-        AppModule::class,
-        DefaultViewModelsBuilder::class,
-        PreferencesModule::class,
-        AppSchedulersModule::class,
-        SampleDaggerWorkerFactory.Module::class
-    ]
+    /** Utils **/
+    AppModule::class,
+    DefaultViewModelsBuilder::class,
+    PreferencesModule::class,
+    AppSchedulersModule::class,
+    SampleDaggerWorkerFactory.Module::class
+  ]
 )
 interface AppComponent : AndroidInjector<SampleApp> {
 
-    fun workerSubComponentFactory(): SampleWorkerSubComponent.Factory
+  fun workerSubComponentFactory(): SampleWorkerSubComponent.Factory
 
-    @Component.Builder
-    interface Builder {
-        fun build(): AppComponent
-        @BindsInstance
-        fun application(application: Application): Builder
-    }
+  @Component.Builder
+  interface Builder {
+    fun build(): AppComponent
+
+    @BindsInstance
+    fun application(application: Application): Builder
+  }
 }

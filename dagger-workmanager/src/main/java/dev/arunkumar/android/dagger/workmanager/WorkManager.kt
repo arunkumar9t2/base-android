@@ -10,9 +10,9 @@ import kotlin.annotation.AnnotationTarget.*
 import kotlin.reflect.KClass
 
 @Target(
-    FUNCTION,
-    PROPERTY_GETTER,
-    PROPERTY_SETTER
+  FUNCTION,
+  PROPERTY_GETTER,
+  PROPERTY_SETTER
 )
 @Retention(RUNTIME)
 @MapKey
@@ -24,9 +24,9 @@ annotation class WorkerKey(val value: KClass<out ListenableWorker>)
  */
 interface WorkerSubComponent {
 
-    fun workers(): Map<Class<out ListenableWorker>, Provider<ListenableWorker>>
+  fun workers(): Map<Class<out ListenableWorker>, Provider<ListenableWorker>>
 
-    interface Factory {
-        fun create(@BindsInstance workerParameters: WorkerParameters): WorkerSubComponent
-    }
+  interface Factory {
+    fun create(@BindsInstance workerParameters: WorkerParameters): WorkerSubComponent
+  }
 }

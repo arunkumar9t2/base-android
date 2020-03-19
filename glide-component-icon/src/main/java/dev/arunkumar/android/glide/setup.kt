@@ -10,6 +10,6 @@ import dev.arunkumar.android.glide.componenticon.ComponentIconDecoder
 import dev.arunkumar.android.glide.componenticon.ComponentIconModelLoader
 
 fun Registry.registerComponentIconLoader(context: Context, glide: Glide) {
-    prepend(Uri::class.java, ComponentIcon::class.java, ComponentIconModelLoader.Factory())
-    append(ComponentIcon::class.java, Bitmap::class.java, ComponentIconDecoder(context, glide))
+  prepend(Uri::class.java, ComponentIcon::class.java, ComponentIconModelLoader.Factory())
+  append(ComponentIcon::class.java, Bitmap::class.java, ComponentIconDecoder(context, glide))
 }

@@ -22,80 +22,80 @@ import javax.inject.Inject
 import kotlin.random.Random.Default.nextInt
 
 interface ItemsRepository {
-    fun addItemsIfEmpty(): Completable
+  fun addItemsIfEmpty(): Completable
 
-    fun items(
-        initialLoadSize: Int = 30 * 3,
-        pageSize: Int = 30,
-        prefetchDistance: Int = 30 * 2
-    ): Flowable<PagedList<Item>>
+  fun items(
+    initialLoadSize: Int = 30 * 3,
+    pageSize: Int = 30,
+    prefetchDistance: Int = 30 * 2
+  ): Flowable<PagedList<Item>>
 
-    fun deleteItem(itemId: Int): Completable
+  fun deleteItem(itemId: Int): Completable
 }
 
 @Module
 interface ItemsModule {
-    @Binds
-    fun itemsRepository(defaultItemsRepository: DefaultItemsRepository): ItemsRepository
+  @Binds
+  fun itemsRepository(defaultItemsRepository: DefaultItemsRepository): ItemsRepository
 }
 
 class DefaultItemsRepository
 @Inject
 constructor(
-    private val schedulerProvider: SchedulerProvider
+  private val schedulerProvider: SchedulerProvider
 ) : ItemsRepository {
 
-    private val charPool: List<Char> = ('a'..'z') + ('A'..'Z') + ('0'..'9')
+  private val charPool: List<Char> = ('a'..'z') + ('A'..'Z') + ('0'..'9')
 
-    override fun addItemsIfEmpty() = completable {
-        realmTransaction { realm ->
-            fun name() = (1..10)
-                .map { nextInt(0, charPool.size) }
-                .map(charPool::get)
-                .joinToString("")
+  override fun addItemsIfEmpty() = completable {
+    realmTransaction { realm ->
+      fun name() = (1..10)
+        .map { nextInt(0, charPool.size) }
+        .map(charPool::get)
+        .joinToString("")
 
-            if (realm.where<Item>().findAll().isEmpty()) {
-                val newItems = mutableListOf<Item>().apply {
-                    for (id in 1..1000) {
-                        add(Item(id, name()))
-                    }
-                }
-                realm.copyToRealmOrUpdate(newItems)
-            }
+      if (realm.where<Item>().findAll().isEmpty()) {
+        val newItems = mutableListOf<Item>().apply {
+          for (id in 1..1000) {
+            add(Item(id, name()))
+          }
         }
+        realm.copyToRealmOrUpdate(newItems)
+      }
     }
+  }
 
-    override fun items(
-        initialLoadSize: Int,
-        pageSize: Int,
-        prefetchDistance: Int
-    ) = addItemsIfEmpty()
-        .subscribeOn(schedulerProvider.io)
-        .andThen(Flowable.defer<PagedList<Item>> {
-            val config = Config.Builder().run {
-                setEnablePlaceholders(false)
-                setInitialLoadSizeHint(initialLoadSize)
-                setPageSize(pageSize)
-                setPrefetchDistance(prefetchDistance)
-                build()
-            }
-            val realmExecutor = RealmExecutor()
-            val realmQueryBuilder: (Realm) -> RealmQuery<Item> = {
-                it.where<Item>().sort("name")
-            }
-            val dataSourceFactory = RealmDataSourceFactory(realmQueryBuilder)
+  override fun items(
+    initialLoadSize: Int,
+    pageSize: Int,
+    prefetchDistance: Int
+  ) = addItemsIfEmpty()
+    .subscribeOn(schedulerProvider.io)
+    .andThen(Flowable.defer<PagedList<Item>> {
+      val config = Config.Builder().run {
+        setEnablePlaceholders(false)
+        setInitialLoadSizeHint(initialLoadSize)
+        setPageSize(pageSize)
+        setPrefetchDistance(prefetchDistance)
+        build()
+      }
+      val realmExecutor = RealmExecutor()
+      val realmQueryBuilder: (Realm) -> RealmQuery<Item> = {
+        it.where<Item>().sort("name")
+      }
+      val dataSourceFactory = RealmDataSourceFactory(realmQueryBuilder)
 
-            RxPagedListBuilder(dataSourceFactory, config)
-                .run {
-                    setFetchScheduler(realmExecutor.toScheduler())
-                    setNotifyScheduler(epoxyBgScheduler())
-                }.buildFlowable(LATEST)
-                .doAfterTerminate { realmExecutor.stop() }
-        })
+      RxPagedListBuilder(dataSourceFactory, config)
+        .run {
+          setFetchScheduler(realmExecutor.toScheduler())
+          setNotifyScheduler(epoxyBgScheduler())
+        }.buildFlowable(LATEST)
+        .doAfterTerminate { realmExecutor.stop() }
+    })
 
-    override fun deleteItem(itemId: Int) = completable {
-        realmTransaction {
-            it.where<Item>().equalTo("id", itemId).findAll().deleteAllFromRealm()
-        }
+  override fun deleteItem(itemId: Int) = completable {
+    realmTransaction {
+      it.where<Item>().equalTo("id", itemId).findAll().deleteAllFromRealm()
     }
+  }
 }

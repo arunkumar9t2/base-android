@@ -14,15 +14,15 @@ class DaggerWorkManagerInitializer
 @Inject
 constructor(private val workerFactory: WorkerFactory) : AppInitializer {
 
-    private fun workManagerConfig(block: Configuration.Builder.() -> Unit): Configuration {
-        return Configuration.Builder().apply(block).build()
-    }
+  private fun workManagerConfig(block: Configuration.Builder.() -> Unit): Configuration {
+    return Configuration.Builder().apply(block).build()
+  }
 
-    override fun initialize(application: Application) {
-        val config = workManagerConfig {
-            setWorkerFactory(workerFactory)
-        }
-        WorkManager.initialize(application, config)
-        logd("Workmanager initialized successfully")
+  override fun initialize(application: Application) {
+    val config = workManagerConfig {
+      setWorkerFactory(workerFactory)
     }
+    WorkManager.initialize(application, config)
+    logd("Workmanager initialized successfully")
+  }
 }

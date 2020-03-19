@@ -5,6 +5,6 @@ import dev.arunkumar.common.recyclerview.GridCalculator
 import dev.arunkumar.common.recyclerview.applyTo as baseApply
 
 fun GridCalculator.applyTo(epoxyRecyclerView: EpoxyRecyclerView) {
-    baseApply(epoxyRecyclerView)
-    epoxyRecyclerView.setItemSpacingPx(gridData().itemSpacing)
+  baseApply(epoxyRecyclerView)
+  epoxyRecyclerView.setItemSpacingPx(gridData().itemSpacing)
 }

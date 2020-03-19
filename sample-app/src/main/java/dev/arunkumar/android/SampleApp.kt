@@ -14,45 +14,45 @@ import javax.inject.Inject
 
 class SampleApp : DaggerApplication() {
 
-    private val appComponent: AppComponent by lazy {
-        DaggerAppComponent.builder()
-            .application(this)
-            .build()
+  private val appComponent: AppComponent by lazy {
+    DaggerAppComponent.builder()
+      .application(this)
+      .build()
+  }
+
+  override fun applicationInjector() = appComponent
+
+  @Inject
+  @JvmSuppressWildcards
+  lateinit var appInitializers: Set<AppInitializer>
+
+  override fun onCreate() {
+    super.onCreate()
+    initDebugLogs()
+    initEpoxy()
+    initRealm()
+    appInitializers.forEach { initializer -> initializer.initialize(this) }
+  }
+
+  private fun initEpoxy() {
+    EpoxyController.setGlobalDebugLoggingEnabled(BuildConfig.DEBUG)
+  }
+
+  private fun initRealm() {
+    Realm.init(this)
+    RealmLog.add { level, tag, throwable, message ->
+      val formattedMessage = "$tag : $message, ${throwable?.message}"
+      when (level) {
+        DEBUG -> logd(formattedMessage, throwable = throwable)
+        INFO -> logi(formattedMessage, throwable = throwable)
+        WARN -> logw(formattedMessage, throwable = throwable)
+        ERROR -> loge(formattedMessage, throwable = throwable)
+        FATAL -> loge(formattedMessage, throwable = throwable)
+      }
     }
-
-    override fun applicationInjector() = appComponent
-
-    @Inject
-    @JvmSuppressWildcards
-    lateinit var appInitializers: Set<AppInitializer>
-
-    override fun onCreate() {
-        super.onCreate()
-        initDebugLogs()
-        initEpoxy()
-        initRealm()
-        appInitializers.forEach { initializer -> initializer.initialize(this) }
-    }
-
-    private fun initEpoxy() {
-        EpoxyController.setGlobalDebugLoggingEnabled(BuildConfig.DEBUG)
-    }
-
-    private fun initRealm() {
-        Realm.init(this)
-        RealmLog.add { level, tag, throwable, message ->
-            val formattedMessage = "$tag : $message, ${throwable?.message}"
-            when (level) {
-                DEBUG -> logd(formattedMessage, throwable = throwable)
-                INFO -> logi(formattedMessage, throwable = throwable)
-                WARN -> logw(formattedMessage, throwable = throwable)
-                ERROR -> loge(formattedMessage, throwable = throwable)
-                FATAL -> loge(formattedMessage, throwable = throwable)
-            }
-        }
-        RealmConfiguration.Builder()
-            .deleteRealmIfMigrationNeeded()
-            .build()
-            .let(Realm::setDefaultConfiguration)
-    }
+    RealmConfiguration.Builder()
+      .deleteRealmIfMigrationNeeded()
+      .build()
+      .let(Realm::setDefaultConfiguration)
+  }
 }

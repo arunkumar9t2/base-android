@@ -1,10 +1,10 @@
 dependencies {
-    implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation deps.kotlinStdLib
-    implementation deps.androidXCore
+  implementation fileTree(dir: "libs", include: ["*.jar"])
+  implementation deps.kotlinStdLib
+  implementation deps.androidXCore
 
-    api deps.rx
-    api deps.rxRelay
+  api deps.rx
+  api deps.rxRelay
 
-    api deps.androidXLifecycle
+  api deps.androidXLifecycle
 }

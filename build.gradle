@@ -1,100 +1,100 @@
 buildscript {
-    apply from: "constants.gradle"
-    repositories {
-        google()
-        jcenter()
-    }
-    dependencies {
-        classpath deps.agp
-        classpath deps.kotlinGradlePlugin
-        classpath deps.dokka
-    }
+  apply from: "constants.gradle"
+  repositories {
+    google()
+    jcenter()
+  }
+  dependencies {
+    classpath deps.agp
+    classpath deps.kotlinGradlePlugin
+    classpath deps.dokka
+  }
 }
 
 plugins {
-    id "scabbard.gradle" version "0.2.0"
+  id "scabbard.gradle" version "0.2.0"
 }
 
 scabbard {
-    enabled true
-    fullBindingGraphValidation false
-    outputFormat "svg"
+  enabled true
+  fullBindingGraphValidation false
+  outputFormat "svg"
 }
 
 apply from: "gradle/local-properties.gradle"
 
 allprojects { project ->
-    group = groupId
-    def repoUrl = "https://raw.github.com/arunkumar9t2/base-android/master/maven-repo/"
+  group = groupId
+  def repoUrl = "https://raw.github.com/arunkumar9t2/base-android/master/maven-repo/"
 
-    repositories {
-        google()
-        jcenter()
-        maven {
-            url "${repoUrl}releases"
-            mavenContent {
-                releasesOnly()
-            }
-            content {
-                includeGroup group
-            }
-        }
-        maven {
-            url "${repoUrl}snapshots"
-            mavenContent {
-                snapshotsOnly()
-            }
-            content {
-                includeGroup group
-            }
-        }
+  repositories {
+    google()
+    jcenter()
+    maven {
+      url "${repoUrl}releases"
+      mavenContent {
+        releasesOnly()
+      }
+      content {
+        includeGroup group
+      }
     }
+    maven {
+      url "${repoUrl}snapshots"
+      mavenContent {
+        snapshotsOnly()
+      }
+      content {
+        includeGroup group
+      }
+    }
+  }
 
-    configurations.configureEach {
-        resolutionStrategy {
-            cacheChangingModulesFor 0, "seconds"
-        }
+  configurations.configureEach {
+    resolutionStrategy {
+      cacheChangingModulesFor 0, "seconds"
     }
+  }
 }
 
 def sampleAppName = "sample-app"
 def isSnapshot = project.hasProperty("snapshot")
 
 subprojects { subproject ->
-    apply from: "../constants.gradle"
-    if (subproject.name != sampleAppName) {
-        subproject.ext.artifact = subproject.name
-        subproject.version = isSnapshot ? "master-SNAPSHOT" : subproject.ext.moduleVersions[subproject.name]
-        apply from: "../libraryModule.gradle"
-        apply from: "../publishing.gradle"
-    }
+  apply from: "../constants.gradle"
+  if (subproject.name != sampleAppName) {
+    subproject.ext.artifact = subproject.name
+    subproject.version = isSnapshot ? "master-SNAPSHOT" : subproject.ext.moduleVersions[subproject.name]
+    apply from: "../libraryModule.gradle"
+    apply from: "../publishing.gradle"
+  }
 }
 
 afterEvaluate {
-    // Sample project
-    def sampleProject = subprojects.find { it.name == sampleAppName }
-    def baseModuleDependencies = subprojects
-            .findAll { it.name != sampleAppName }
-            .collect { "$group:${it.ext.artifact}:${it.version}" }
+  // Sample project
+  def sampleProject = subprojects.find { it.name == sampleAppName }
+  def baseModuleDependencies = subprojects
+      .findAll { it.name != sampleAppName }
+      .collect { "$group:${it.ext.artifact}:${it.version}" }
 
-    sampleProject.pluginManager.withPlugin("com.android.application") {
-        baseModuleDependencies.forEach { moduleDependency ->
-            sampleProject.dependencies.add("implementation", moduleDependency)
-        }
+  sampleProject.pluginManager.withPlugin("com.android.application") {
+    baseModuleDependencies.forEach { moduleDependency ->
+      sampleProject.dependencies.add("implementation", moduleDependency)
     }
-    if (hasProperty("localBuild")) {
-        sampleProject.configurations.configureEach {
-            resolutionStrategy {
-                dependencySubstitution {
-                    baseModuleDependencies.forEach { moduleDependency ->
-                        substitute module(moduleDependency) with project(":${moduleDependency.split(":")[1]}")
-                    }
-                }
-            }
+  }
+  if (hasProperty("localBuild")) {
+    sampleProject.configurations.configureEach {
+      resolutionStrategy {
+        dependencySubstitution {
+          baseModuleDependencies.forEach { moduleDependency ->
+            substitute module(moduleDependency) with project(":${moduleDependency.split(":")[1]}")
+          }
         }
+      }
     }
+  }
 }
 
 task clean(type: Delete) {
-    delete rootProject.buildDir
+  delete rootProject.buildDir
 }

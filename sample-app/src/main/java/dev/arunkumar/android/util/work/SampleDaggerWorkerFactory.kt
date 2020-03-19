@@ -10,12 +10,12 @@ import javax.inject.Singleton
 class SampleDaggerWorkerFactory
 @Inject
 constructor(
-    factory: SampleWorkerSubComponent.Factory
+  factory: SampleWorkerSubComponent.Factory
 ) : DaggerWorkerFactory<SampleWorkerSubComponent.Factory>(factory) {
 
-    @dagger.Module
-    interface Module {
-        @Binds
-        fun workerFactor(sampleDaggerWorkerFactory: SampleDaggerWorkerFactory): WorkerFactory
-    }
+  @dagger.Module
+  interface Module {
+    @Binds
+    fun workerFactor(sampleDaggerWorkerFactory: SampleDaggerWorkerFactory): WorkerFactory
+  }
 }

@@ -1,6 +1,6 @@
 dependencies {
-    implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation deps.kotlinStdLib
+  implementation fileTree(dir: "libs", include: ["*.jar"])
+  implementation deps.kotlinStdLib
 
-    api deps.timber
+  api deps.timber
 }

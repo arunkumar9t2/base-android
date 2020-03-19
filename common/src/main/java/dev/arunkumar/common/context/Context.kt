@@ -11,19 +11,19 @@ import androidx.core.content.ContextCompat
 
 
 fun Context.dpToPx(dp: Double): Int {
-    val displayMetrics = resources.displayMetrics
-    return ((dp * displayMetrics.density + 0.5).toInt())
+  val displayMetrics = resources.displayMetrics
+  return ((dp * displayMetrics.density + 0.5).toInt())
 }
 
 fun Context.pxToDp(px: Int): Int {
-    val displayMetrics = resources.displayMetrics
-    return (px / displayMetrics.density).toInt()
+  val displayMetrics = resources.displayMetrics
+  return (px / displayMetrics.density).toInt()
 }
 
 fun Context.spToPx(sp: Float) = applyDimension(
-    COMPLEX_UNIT_SP,
-    sp,
-    resources.displayMetrics
+  COMPLEX_UNIT_SP,
+  sp,
+  resources.displayMetrics
 ).toInt()
 
 @ColorInt

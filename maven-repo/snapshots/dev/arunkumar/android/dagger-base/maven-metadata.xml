@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <metadata>
-  <groupId>dev.arunkumar.android</groupId>
-  <artifactId>dagger-base</artifactId>
-  <versioning>
-    <latest>master-SNAPSHOT</latest>
-    <versions>
-      <version>master-SNAPSHOT</version>
-    </versions>
-    <lastUpdated>20200319175517</lastUpdated>
-  </versioning>
+    <groupId>dev.arunkumar.android</groupId>
+    <artifactId>dagger-base</artifactId>
+    <versioning>
+        <latest>master-SNAPSHOT</latest>
+        <versions>
+            <version>master-SNAPSHOT</version>
+        </versions>
+        <lastUpdated>20200319175517</lastUpdated>
+    </versioning>
 </metadata>

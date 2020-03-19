@@ -12,21 +12,21 @@ import dev.arunkumar.android.glide.componenticon.ComponentIcon.Companion.URI_SCH
 
 class ComponentIconModelLoader : ModelLoader<Uri, ComponentIcon> {
 
-    override fun buildLoadData(
-        model: Uri,
-        width: Int,
-        height: Int,
-        options: Options
-    ) = ComponentName.unflattenFromString(model.schemeSpecificPart)?.let {
-        LoadData(ObjectKey(model), ComponentIconDataFetcher(it))
-    }
+  override fun buildLoadData(
+    model: Uri,
+    width: Int,
+    height: Int,
+    options: Options
+  ) = ComponentName.unflattenFromString(model.schemeSpecificPart)?.let {
+    LoadData(ObjectKey(model), ComponentIconDataFetcher(it))
+  }
 
-    override fun handles(model: Uri) = model.scheme == URI_SCHEME_COMPONENT_ICON
+  override fun handles(model: Uri) = model.scheme == URI_SCHEME_COMPONENT_ICON
 
-    class Factory : ModelLoaderFactory<Uri, ComponentIcon> {
+  class Factory : ModelLoaderFactory<Uri, ComponentIcon> {
 
-        override fun build(multiFactory: MultiModelLoaderFactory) = ComponentIconModelLoader()
+    override fun build(multiFactory: MultiModelLoaderFactory) = ComponentIconModelLoader()
 
-        override fun teardown() {}
-    }
+    override fun teardown() {}
+  }
 }

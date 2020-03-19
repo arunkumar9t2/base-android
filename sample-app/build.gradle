@@ -1,11 +1,11 @@
 buildscript {
-    repositories {
-        google()
-        jcenter()
-    }
-    dependencies {
-        classpath deps.realmPlugin
-    }
+  repositories {
+    google()
+    jcenter()
+  }
+  dependencies {
+    classpath deps.realmPlugin
+  }
 }
 
 apply plugin: "com.android.application"
@@ -15,104 +15,104 @@ apply plugin: "kotlin-android-extensions"
 apply plugin: "realm-android"
 
 android {
-    compileSdkVersion buildDetails.compileSdk
+  compileSdkVersion buildDetails.compileSdk
 
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+
+  kotlinOptions {
+    jvmTarget = "1.8"
+  }
+
+  ndkVersion "21.0.6113669"
+
+  defaultConfig {
+    applicationId "dev.arunkumar.android"
+    minSdkVersion buildDetails.minSdk
+    targetSdkVersion buildDetails.targetSdk
+
+    versionCode 1
+    versionName "1.0"
+
+    vectorDrawables.useSupportLibrary = true
+
+    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+  }
+
+  buildTypes {
+    debug {
+      minifyEnabled false
+      shrinkResources false
+      debuggable true
+      proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
     }
-
-    kotlinOptions {
-        jvmTarget = "1.8"
+    release {
+      minifyEnabled true
+      shrinkResources true
+      debuggable false
+      proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
     }
+  }
 
-    ndkVersion "21.0.6113669"
+  flavorDimensions "dep"
 
-    defaultConfig {
-        applicationId "dev.arunkumar.android"
-        minSdkVersion buildDetails.minSdk
-        targetSdkVersion buildDetails.targetSdk
-
-        versionCode 1
-        versionName "1.0"
-
-        vectorDrawables.useSupportLibrary = true
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+  productFlavors {
+    local {
+      dimension "dep"
     }
-
-    buildTypes {
-        debug {
-            minifyEnabled false
-            shrinkResources false
-            debuggable true
-            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
-        }
-        release {
-            minifyEnabled true
-            shrinkResources true
-            debuggable false
-            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
-        }
+    remote {
+      dimension "dep"
     }
+  }
 
-    flavorDimensions "dep"
-
-    productFlavors {
-        local {
-            dimension "dep"
-        }
-        remote {
-            dimension "dep"
-        }
+  variantFilter { variant ->
+    if (variant.name == "localRelease") {
+      variant.setIgnore(true)
     }
+  }
 
-    variantFilter { variant ->
-        if (variant.name == "localRelease") {
-            variant.setIgnore(true)
-        }
+  testOptions {
+    unitTests {
+      includeAndroidResources = true
     }
-
-    testOptions {
-        unitTests {
-            includeAndroidResources = true
-        }
-    }
+  }
 }
 
 androidExtensions {
-    experimental = true
+  experimental = true
 }
 
 dependencies {
-    implementation fileTree(dir: "libs", include: ["*.jar"])
+  implementation fileTree(dir: "libs", include: ["*.jar"])
 
-    implementation deps.workManagerRx
-    implementation deps.workManagerKtx
+  implementation deps.workManagerRx
+  implementation deps.workManagerKtx
 
-    implementation deps.daggerAndroid
-    implementation deps.daggerAndroidSupport
-    kapt deps.daggerCompiler
-    kapt deps.daggerAndroidProcessor
-    kaptTest deps.daggerCompiler
-    kaptTest deps.daggerAndroidProcessor
+  implementation deps.daggerAndroid
+  implementation deps.daggerAndroidSupport
+  kapt deps.daggerCompiler
+  kapt deps.daggerAndroidProcessor
+  kaptTest deps.daggerCompiler
+  kaptTest deps.daggerAndroidProcessor
 
-    // Kotlin
-    implementation deps.kotlinStdLib
+  // Kotlin
+  implementation deps.kotlinStdLib
 
-    // Rx
-    implementation deps.rxAndroid
-    implementation deps.rxKotlin
-    implementation deps.rxBinding
+  // Rx
+  implementation deps.rxAndroid
+  implementation deps.rxKotlin
+  implementation deps.rxBinding
 
-    // Epoxy
-    implementation deps.epoxyPaging
-    kapt deps.epoxyProcessor
+  // Epoxy
+  implementation deps.epoxyPaging
+  kapt deps.epoxyProcessor
 
-    // AndroidX
-    implementation deps.androidXAppCompat
-    implementation deps.constraintLayout
+  // AndroidX
+  implementation deps.androidXAppCompat
+  implementation deps.constraintLayout
 
-    // Lifecycle extensions
-    implementation deps.androidXLifecycle
+  // Lifecycle extensions
+  implementation deps.androidXLifecycle
 }

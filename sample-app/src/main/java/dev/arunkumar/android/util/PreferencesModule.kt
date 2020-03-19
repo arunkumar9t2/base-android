@@ -10,9 +10,9 @@ import javax.inject.Singleton
 @Module
 class PreferencesModule {
 
-    @Provides
-    @Singleton
-    fun sharedPreferences(application: Application): SharedPreferences {
-        return PreferenceManager.getDefaultSharedPreferences(application)
-    }
+  @Provides
+  @Singleton
+  fun sharedPreferences(application: Application): SharedPreferences {
+    return PreferenceManager.getDefaultSharedPreferences(application)
+  }
 }

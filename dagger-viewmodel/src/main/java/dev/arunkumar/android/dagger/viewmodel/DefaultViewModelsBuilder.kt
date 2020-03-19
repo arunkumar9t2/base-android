@@ -12,7 +12,7 @@ import javax.inject.Singleton
 @Module
 abstract class DefaultViewModelsBuilder {
 
-    @Binds
-    @Singleton
-    abstract fun viewModelFactory(factory: MultibindsViewModelFactory): ViewModelProvider.Factory
+  @Binds
+  @Singleton
+  abstract fun viewModelFactory(factory: MultibindsViewModelFactory): ViewModelProvider.Factory
 }

@@ -7,10 +7,10 @@ import android.view.View
 import android.view.ViewOutlineProvider
 
 inline fun View.outline(crossinline outlineBuilder: View.(outline: Outline) -> Unit) {
-    if (SDK_INT >= LOLLIPOP) {
-        outlineProvider = object : ViewOutlineProvider() {
-            override fun getOutline(view: View, outline: Outline) = view.outlineBuilder(outline)
-        }
-        clipToOutline = true
+  if (SDK_INT >= LOLLIPOP) {
+    outlineProvider = object : ViewOutlineProvider() {
+      override fun getOutline(view: View, outline: Outline) = view.outlineBuilder(outline)
     }
+    clipToOutline = true
+  }
 }

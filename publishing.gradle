@@ -7,87 +7,87 @@ def snapshotFolder = "file://${file("../maven-repo/snapshots/").absolutePath}"
 def isSnapshot = project.hasProperty("snapshot")
 
 dokka {
-    outputFormat = "html"
-    outputDirectory = "$buildDir/javadoc"
-    classpath = new ArrayList<File>(project.tasks["assemble"].outputs.files.files)
-    sourceDirs = android.sourceSets.main.java.srcDirs
-    externalDocumentationLink {
-        url = new URL("https://developer.android.com/reference/")
-        packageListUrl = new URL("https://developer.android.com/reference/android/support/package-list")
-    }
+  outputFormat = "html"
+  outputDirectory = "$buildDir/javadoc"
+  classpath = new ArrayList<File>(project.tasks["assemble"].outputs.files.files)
+  sourceDirs = android.sourceSets.main.java.srcDirs
+  externalDocumentationLink {
+    url = new URL("https://developer.android.com/reference/")
+    packageListUrl = new URL("https://developer.android.com/reference/android/support/package-list")
+  }
 }
 
 task dokkaJar(type: Jar, dependsOn: dokka) {
-    group = JavaBasePlugin.DOCUMENTATION_GROUP
-    classifier = "javadoc"
-    description = "Assembles Kotlin docs with Dokka"
-    from dokka.outputDirectory
+  group = JavaBasePlugin.DOCUMENTATION_GROUP
+  classifier = "javadoc"
+  description = "Assembles Kotlin docs with Dokka"
+  from dokka.outputDirectory
 }
 
 task sourceJar(type: Jar) {
-    classifier = "sources"
-    from android.sourceSets.main.java.srcDirs
+  classifier = "sources"
+  from android.sourceSets.main.java.srcDirs
 }
 
 artifacts {
-    archives sourceJar
-    archives dokkaJar
+  archives sourceJar
+  archives dokkaJar
 }
 
 afterEvaluate {
-    publishing {
-        publications {
-            release(MavenPublication) {
+  publishing {
+    publications {
+      release(MavenPublication) {
 
-                artifact(sourceJar)
-                artifact(dokkaJar)
+        artifact(sourceJar)
+        artifact(dokkaJar)
 
-                pom {
-                    packaging "aar"
-                    name = artifact
-                    developers {
-                        developer {
-                            id = developerId
-                            name = developerName
-                            email = developerEmail
-                        }
-                    }
-                    licenses {
-                        license {
-                            name = licenseName
-                            url = licenseUrl
-                        }
-                    }
-                }
-                from components.release
-                groupId rootProject.group
-                artifactId artifact
-                version version
+        pom {
+          packaging "aar"
+          name = artifact
+          developers {
+            developer {
+              id = developerId
+              name = developerName
+              email = developerEmail
             }
-            /*debug(MavenPublication) {
-                from components.debug
-                groupId rootProject.group
-                artifactId "$artifact-debug"
-                version version
-            }*/
-        }
-        repositories {
-            maven {
-                url = isSnapshot ? snapshotFolder : releaseFolder
+          }
+          licenses {
+            license {
+              name = licenseName
+              url = licenseUrl
             }
+          }
         }
+        from components.release
+        groupId rootProject.group
+        artifactId artifact
+        version version
+      }
+      /*debug(MavenPublication) {
+          from components.debug
+          groupId rootProject.group
+          artifactId "$artifact-debug"
+          version version
+      }*/
     }
+    repositories {
+      maven {
+        url = isSnapshot ? snapshotFolder : releaseFolder
+      }
+    }
+  }
 }
 
 if (isSnapshot) {
-    def cleanupSnapshots = project.tasks.register("cleanupSnapshots", Delete) {
-        group = "publishing"
-        description = "Cleans up old snapshot files"
-        delete "${project.rootDir}/maven-repo/snapshots/${rootProject.group.toString().replace(".", "/")}/$artifact"
+  def cleanupSnapshots = project.tasks.register("cleanupSnapshots", Delete) {
+    group = "publishing"
+    description = "Cleans up old snapshot files"
+    delete "${project.rootDir}/maven-repo/snapshots/${rootProject.group.toString().replace(".", "/")}/$artifact"
+  }
+  project.afterEvaluate {
+    tasks.named("publishReleasePublicationToMavenRepository").configure {
+      dependsOn(cleanupSnapshots)
     }
-    project.afterEvaluate {
-        tasks.named("publishReleasePublicationToMavenRepository").configure {
-            dependsOn(cleanupSnapshots)
-        }
-    }
+  }
 }

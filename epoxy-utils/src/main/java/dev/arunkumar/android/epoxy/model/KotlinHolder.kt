@@ -7,13 +7,13 @@ import kotlinx.android.synthetic.*
 
 abstract class KotlinHolder : EpoxyHolder(), LayoutContainer {
 
-    override lateinit var containerView: View
+  override lateinit var containerView: View
 
-    override fun bindView(itemView: View) {
-        containerView = itemView
-    }
+  override fun bindView(itemView: View) {
+    containerView = itemView
+  }
 
-    fun unbindView() {
-        clearFindViewByIdCache()
-    }
+  fun unbindView() {
+    clearFindViewByIdCache()
+  }
 }

@@ -6,6 +6,6 @@ import dev.arunkumar.android.data.DeleteItemWorker
 
 @Subcomponent(modules = [DeleteItemWorker.Builder::class])
 interface SampleWorkerSubComponent : WorkerSubComponent {
-    @Subcomponent.Factory
-    interface Factory : WorkerSubComponent.Factory
+  @Subcomponent.Factory
+  interface Factory : WorkerSubComponent.Factory
 }

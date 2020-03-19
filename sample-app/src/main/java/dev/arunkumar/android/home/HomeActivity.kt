@@ -20,41 +20,43 @@ import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 class HomeActivity : DaggerAppCompatActivity(), UsesViewModel {
-    @Inject
-    lateinit var preferences: SharedPreferences
-    @Inject
-    lateinit var testActivityScope: DummyActivityScopeDep
-    @Inject
-    override lateinit var viewModelFactory: ViewModelProvider.Factory
+  @Inject
+  lateinit var preferences: SharedPreferences
 
-    private val homeViewModel by viewModel<HomeViewModel>()
+  @Inject
+  lateinit var testActivityScope: DummyActivityScopeDep
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        setupItems()
-    }
+  @Inject
+  override lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private fun setupItems() {
-        val itemsController = ItemsPagingController(this)
-        itemsRv.setController(itemsController)
-        homeViewModel.itemsPagedList.subscribeBy(onNext = itemsController::submitList)
-        itemsController.clicks.subscribeBy(onNext = homeViewModel::delete)
-    }
+  private val homeViewModel by viewModel<HomeViewModel>()
 
-    @Module
-    abstract class Builder {
-        @PerActivity
-        @ContributesAndroidInjector
-        abstract fun mainActivity(): HomeActivity
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    setContentView(R.layout.activity_main)
+    setupItems()
+  }
 
-        @Binds
-        @IntoMap
-        @ViewModelKey(HomeViewModel::class)
-        abstract fun homeViewModel(homeViewModel: HomeViewModel): ViewModel
-    }
+  private fun setupItems() {
+    val itemsController = ItemsPagingController(this)
+    itemsRv.setController(itemsController)
+    homeViewModel.itemsPagedList.subscribeBy(onNext = itemsController::submitList)
+    itemsController.clicks.subscribeBy(onNext = homeViewModel::delete)
+  }
 
-
+  @Module
+  abstract class Builder {
     @PerActivity
-    class DummyActivityScopeDep @Inject constructor()
+    @ContributesAndroidInjector
+    abstract fun mainActivity(): HomeActivity
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(HomeViewModel::class)
+    abstract fun homeViewModel(homeViewModel: HomeViewModel): ViewModel
+  }
+
+
+  @PerActivity
+  class DummyActivityScopeDep @Inject constructor()
 }

@@ -4,54 +4,54 @@ apply plugin: "kotlin-kapt"
 apply plugin: "kotlin-android-extensions"
 
 android {
-    compileSdkVersion buildDetails.compileSdk
+  compileSdkVersion buildDetails.compileSdk
 
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+
+  kotlinOptions {
+    jvmTarget = "1.8"
+  }
+
+  defaultConfig {
+    minSdkVersion buildDetails.minSdk
+    targetSdkVersion buildDetails.targetSdk
+
+    versionCode 1
+    versionName moduleVersions[project.name]
+
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    consumerProguardFiles "proguard-rules.pro"
+  }
+
+  buildTypes {
+    debug {
+      buildConfigField "boolean", "DEBUG_BUILD", "true"
     }
-
-    kotlinOptions {
-        jvmTarget = "1.8"
+    release {
+      buildConfigField "boolean", "DEBUG_BUILD", "false"
     }
+  }
 
-    defaultConfig {
-        minSdkVersion buildDetails.minSdk
-        targetSdkVersion buildDetails.targetSdk
-
-        versionCode 1
-        versionName moduleVersions[project.name]
-
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
-        consumerProguardFiles "proguard-rules.pro"
+  testOptions {
+    unitTests {
+      includeAndroidResources = true
     }
+  }
 
-    buildTypes {
-        debug {
-            buildConfigField "boolean", "DEBUG_BUILD", "true"
-        }
-        release {
-            buildConfigField "boolean", "DEBUG_BUILD", "false"
-        }
-    }
-
-    testOptions {
-        unitTests {
-            includeAndroidResources = true
-        }
-    }
-
-    lintOptions {
-        abortOnError false
-    }
+  lintOptions {
+    abortOnError false
+  }
 }
 
 androidExtensions {
-    experimental = true
+  experimental = true
 }
 
 dependencies {
-    testImplementation deps.junit
-    testImplementation deps.roboelectric
+  testImplementation deps.junit
+  testImplementation deps.roboelectric
 }

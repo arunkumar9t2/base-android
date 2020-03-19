@@ -15,26 +15,26 @@ import javax.inject.Inject
 class DeleteItemWorker
 @Inject
 constructor(
-    private val itemsRepository: ItemsRepository,
-    application: Application,
-    private val workerParams: WorkerParameters
+  private val itemsRepository: ItemsRepository,
+  application: Application,
+  private val workerParams: WorkerParameters
 ) : RxWorker(application, workerParams) {
 
-    override fun createWork(): Single<Result> {
-        val id = workerParams.inputData.keyValueMap["id"] as Int
-        return itemsRepository
-            .deleteItem(id)
-            .toSingle { Result.success() }
-            .doOnSuccess {
-                logd("Delete item id $id success")
-            }
-    }
+  override fun createWork(): Single<Result> {
+    val id = workerParams.inputData.keyValueMap["id"] as Int
+    return itemsRepository
+      .deleteItem(id)
+      .toSingle { Result.success() }
+      .doOnSuccess {
+        logd("Delete item id $id success")
+      }
+  }
 
-    @Module
-    interface Builder {
-        @Binds
-        @IntoMap
-        @WorkerKey(DeleteItemWorker::class)
-        fun bindWorker(deleteItemWorker: DeleteItemWorker): ListenableWorker
-    }
+  @Module
+  interface Builder {
+    @Binds
+    @IntoMap
+    @WorkerKey(DeleteItemWorker::class)
+    fun bindWorker(deleteItemWorker: DeleteItemWorker): ListenableWorker
+  }
 }

@@ -1,16 +1,16 @@
 dependencies {
-    implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation deps.kotlinStdLib
+  implementation fileTree(dir: "libs", include: ["*.jar"])
+  implementation deps.kotlinStdLib
 
-    api deps.rx
-    api deps.rxAndroid
+  api deps.rx
+  api deps.rxAndroid
 
-    api project(path: ":common")
+  api project(path: ":common")
 
-    api deps.daggerAndroid
-    api deps.daggerAndroidSupport
-    kapt deps.daggerCompiler
-    kapt deps.daggerAndroidProcessor
-    kaptTest deps.daggerCompiler
-    kaptTest deps.daggerAndroidProcessor
+  api deps.daggerAndroid
+  api deps.daggerAndroidSupport
+  kapt deps.daggerCompiler
+  kapt deps.daggerAndroidProcessor
+  kaptTest deps.daggerCompiler
+  kaptTest deps.daggerAndroidProcessor
 }

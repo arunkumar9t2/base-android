@@ -14,31 +14,32 @@ import dev.arunkumar.android.R
 @ModelView(autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT)
 class ItemView(context: Context) : AppCompatTextView(context) {
 
-    init {
-        gravity = Gravity.CENTER
-        setTextAppearance(context,
-            R.style.TextAppearance_AppCompat_Headline
+  init {
+    gravity = Gravity.CENTER
+    setTextAppearance(
+      context,
+      R.style.TextAppearance_AppCompat_Headline
+    )
+    background = StateListDrawable().apply {
+      addState(
+        intArrayOf(android.R.attr.state_pressed),
+        ColorDrawable(
+          ContextCompat.getColor(
+            context,
+            R.color.colorAccent
+          )
         )
-        background = StateListDrawable().apply {
-            addState(
-                intArrayOf(android.R.attr.state_pressed),
-                ColorDrawable(
-                    ContextCompat.getColor(
-                        context,
-                        R.color.colorAccent
-                    )
-                )
-            )
-        }
+      )
     }
+  }
 
-    @TextProp
-    fun text(name: CharSequence) {
-        text = name
-    }
+  @TextProp
+  fun text(name: CharSequence) {
+    text = name
+  }
 
-    @CallbackProp
-    fun onClick(onClick: OnClickListener?) {
-        setOnClickListener(onClick)
-    }
+  @CallbackProp
+  fun onClick(onClick: OnClickListener?) {
+    setOnClickListener(onClick)
+  }
 }

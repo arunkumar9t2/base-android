@@ -10,7 +10,7 @@ import kotlin.reflect.KProperty
  * the property changes
  */
 fun <T> EpoxyController.model(initialValue: T) = object : ObservableProperty<T>(initialValue) {
-    override fun afterChange(property: KProperty<*>, oldValue: T, newValue: T) {
-        requestDelayedModelBuild(0)
-    }
+  override fun afterChange(property: KProperty<*>, oldValue: T, newValue: T) {
+    requestDelayedModelBuild(0)
+  }
 }

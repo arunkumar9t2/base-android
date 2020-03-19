@@ -1,15 +1,15 @@
 dependencies {
-    implementation fileTree(dir: "libs", include: ["*.jar"])
+  implementation fileTree(dir: "libs", include: ["*.jar"])
 
-    implementation project(path: ":logging")
-    implementation project(path: ":dagger-base")
+  implementation project(path: ":logging")
+  implementation project(path: ":dagger-base")
 
-    api deps.workManager
+  api deps.workManager
 
-    api deps.daggerAndroid
-    api deps.daggerAndroidSupport
-    kapt deps.daggerCompiler
-    kapt deps.daggerAndroidProcessor
-    kaptTest deps.daggerCompiler
-    kaptTest deps.daggerAndroidProcessor
+  api deps.daggerAndroid
+  api deps.daggerAndroidSupport
+  kapt deps.daggerCompiler
+  kapt deps.daggerAndroidProcessor
+  kaptTest deps.daggerCompiler
+  kaptTest deps.daggerAndroidProcessor
 }

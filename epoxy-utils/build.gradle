@@ -1,14 +1,14 @@
 apply plugin: "kotlin-kapt"
 
 kapt {
-    correctErrorTypes = true
+  correctErrorTypes = true
 }
 
 dependencies {
-    implementation fileTree(dir: "libs", include: ["*.jar"])
-    api project(path: ":common")
-    implementation deps.kotlinStdLib
+  implementation fileTree(dir: "libs", include: ["*.jar"])
+  api project(path: ":common")
+  implementation deps.kotlinStdLib
 
-    api deps.epoxy
-    kapt deps.epoxyProcessor
+  api deps.epoxy
+  kapt deps.epoxyProcessor
 }

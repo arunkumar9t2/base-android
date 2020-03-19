@@ -12,7 +12,18 @@ build/
 .ART
 # Project files
 *.iml
-.idea
+.idea/caches
+.idea/libraries
+.idea/encodings.xml
+.idea/gradle.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml
+.idea/compiler.xml
+/.idea/jarRepositories.xml
+.idea/shelf
+.idea/runConfigurations.xml
 # .idea/workspace.xml
 
 # Local configuration file (sdk path, etc)

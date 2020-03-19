@@ -1,21 +1,21 @@
 buildscript {
-    repositories {
-        google()
-        jcenter()
-    }
-    dependencies {
-        classpath deps.realmPlugin
-    }
+  repositories {
+    google()
+    jcenter()
+  }
+  dependencies {
+    classpath deps.realmPlugin
+  }
 }
 
 apply plugin: "realm-android"
 
 dependencies {
-    api project(path: ":common")
-    api project(path: ":rx-utils")
+  api project(path: ":common")
+  api project(path: ":rx-utils")
 
-    api deps.epoxy
-    api deps.paging
-    api deps.pagingCommon
-    api deps.pagingRxjava
+  api deps.epoxy
+  api deps.paging
+  api deps.pagingCommon
+  api deps.pagingRxjava
 }

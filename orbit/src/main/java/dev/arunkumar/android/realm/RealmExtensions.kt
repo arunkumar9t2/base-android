@@ -10,18 +10,18 @@ typealias RealmFunction<T> = (Realm) -> T
 inline fun defaultRealm(): Realm = Realm.getDefaultInstance()
 
 inline fun realm(action: RealmBlock) {
-    val realm = defaultRealm()
-    action(realm)
-    realm.close()
+  val realm = defaultRealm()
+  action(realm)
+  realm.close()
 }
 
 inline fun <T> realmFunction(block: RealmFunction<T>): T {
-    val realm = defaultRealm()
-    return block(realm).also { realm.close() }
+  val realm = defaultRealm()
+  return block(realm).also { realm.close() }
 }
 
 inline fun realmTransaction(noinline action: RealmBlock) {
-    val realm = defaultRealm()
-    realm.executeTransaction(action)
-    realm.close()
+  val realm = defaultRealm()
+  realm.executeTransaction(action)
+  realm.close()
 }

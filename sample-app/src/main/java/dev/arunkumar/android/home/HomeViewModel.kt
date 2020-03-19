@@ -16,30 +16,30 @@ import javax.inject.Inject
 class HomeViewModel
 @Inject
 constructor(
-    private val schedulerProvider: SchedulerProvider,
-    private val defaultItemsRepository: DefaultItemsRepository,
-    private val workManager: WorkManager
+  private val schedulerProvider: SchedulerProvider,
+  private val defaultItemsRepository: DefaultItemsRepository,
+  private val workManager: WorkManager
 ) : RxViewModel() {
 
-    val itemsPagedList = BehaviorRelay.create<PagedList<Item>>()
+  val itemsPagedList = BehaviorRelay.create<PagedList<Item>>()
 
-    init {
-        start()
-    }
+  init {
+    start()
+  }
 
-    private fun start() {
-        defaultItemsRepository.items()
-            .observeOn(schedulerProvider.ui)
-            .untilCleared()
-            .subscribeBy(onNext = itemsPagedList::accept)
-    }
+  private fun start() {
+    defaultItemsRepository.items()
+      .observeOn(schedulerProvider.ui)
+      .untilCleared()
+      .subscribeBy(onNext = itemsPagedList::accept)
+  }
 
-    fun delete(item: Item) {
-        //TODO Dereference work manager from here.
-        val workRequest = OneTimeWorkRequestBuilder<DeleteItemWorker>().run {
-            setInputData(workDataOf("id" to item.id))
-            build()
-        }
-        workManager.enqueue(workRequest)
+  fun delete(item: Item) {
+    //TODO Dereference work manager from here.
+    val workRequest = OneTimeWorkRequestBuilder<DeleteItemWorker>().run {
+      setInputData(workDataOf("id" to item.id))
+      build()
     }
+    workManager.enqueue(workRequest)
+  }
 }
