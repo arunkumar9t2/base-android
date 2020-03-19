@@ -6,8 +6,7 @@ import androidx.work.WorkerFactory
 import androidx.work.WorkerParameters
 import javax.inject.Provider
 
-abstract class DaggerWorkerFactory<T : WorkerSubComponent.Factory>
-constructor(
+abstract class DaggerWorkerFactory<T : WorkerSubComponent.Factory>(
     private val workerSubComponentFactory: T
 ) : WorkerFactory() {
 

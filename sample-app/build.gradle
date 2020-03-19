@@ -65,16 +65,10 @@ android {
         remote {
             dimension "dep"
         }
-        snapshot {
-            dimension "dep"
-        }
     }
 
     variantFilter { variant ->
         if (variant.name == "localRelease") {
-            variant.setIgnore(true)
-        }
-        if (variant.name == "snapshotRelease") {
             variant.setIgnore(true)
         }
     }
@@ -93,52 +87,6 @@ androidExtensions {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
 
-    // Common
-    localImplementation project(path: ":common")
-    remoteImplementation "dev.arunkumar.android:common:1.0.0"
-
-    // Dagger related
-    localImplementation project(path: ":dagger-base")
-    remoteImplementation "dev.arunkumar.android:dagger-base:1.0.0"
-    snapshotImplementation "dev.arunkumar.android:dagger-base:master-SNAPSHOT"
-    localImplementation project(path: ":dagger-viewmodel")
-    remoteImplementation "dev.arunkumar.android:dagger-viewmodel:1.0.0"
-    snapshotImplementation "dev.arunkumar.android:dagger-viewmodel:master-SNAPSHOT"
-
-    // Logging
-    localImplementation project(path: ":logging")
-    remoteImplementation "dev.arunkumar.android:logging:1.0.0"
-    snapshotImplementation "dev.arunkumar.android:logging:master-SNAPSHOT"
-
-    // Viewmodel
-    localImplementation project(path: ":viewmodel-utils")
-    remoteImplementation "dev.arunkumar.android:viewmodel-utils:1.0.0"
-    snapshotImplementation "dev.arunkumar.android:viewmodel-utils:master-SNAPSHOT"
-
-    // Rx utils
-    localImplementation project(path: ":rx-utils")
-    remoteImplementation "dev.arunkumar.android:rx-utils:1.0.0"
-    snapshotImplementation "dev.arunkumar.android:rx-utils:master-SNAPSHOT"
-
-    // Epoxy utils
-    localImplementation project(path: ":epoxy-utils")
-    remoteImplementation "dev.arunkumar.android:epoxy-utils:1.0.0"
-    snapshotImplementation "dev.arunkumar.android:epoxy-utils:master-SNAPSHOT"
-
-    // Orbit
-    localImplementation project(path: ":orbit")
-    remoteImplementation "dev.arunkumar.android:orbit:1.0.0"
-    snapshotImplementation "dev.arunkumar.android:orbit:master-SNAPSHOT"
-
-    // Glide component icon
-    localImplementation project(path: ":orbit")
-    remoteImplementation "dev.arunkumar.android:orbit:1.0.0"
-    snapshotImplementation "dev.arunkumar.android:orbit:master-SNAPSHOT"
-
-    // Dagger work manager
-    implementation project(path: ":dagger-workmanager")
-    // remoteImplementation "dev.arunkumar.android:dagger-workmanager:1.0.0"
-    // snapshotImplementation "dev.arunkumar.android:dagger-workmanager:master-SNAPSHOT"
     implementation deps.workManagerRx
     implementation deps.workManagerKtx
 

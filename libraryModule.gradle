@@ -20,7 +20,7 @@ android {
         targetSdkVersion buildDetails.targetSdk
 
         versionCode 1
-        versionName moduleVersion[project.name]
+        versionName moduleVersions[project.name]
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 

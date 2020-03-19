@@ -21,6 +21,8 @@ scabbard {
     outputFormat "svg"
 }
 
+apply from: "gradle/local-properties.gradle"
+
 allprojects { project ->
     group = groupId
     def repoUrl = "https://raw.github.com/arunkumar9t2/base-android/master/maven-repo/"
@@ -58,13 +60,38 @@ allprojects { project ->
 def sampleAppName = "sample-app"
 def isSnapshot = project.hasProperty("snapshot")
 
-subprojects { subProject ->
+subprojects { subproject ->
     apply from: "../constants.gradle"
-    if (subProject.name != sampleAppName) {
-        subProject.ext.artifact = subProject.name
-        subProject.version = isSnapshot ? "master-SNAPSHOT" : subProject.ext.moduleVersion[subProject.name]
+    if (subproject.name != sampleAppName) {
+        subproject.ext.artifact = subproject.name
+        subproject.version = isSnapshot ? "master-SNAPSHOT" : subproject.ext.moduleVersions[subproject.name]
         apply from: "../libraryModule.gradle"
         apply from: "../publishing.gradle"
+    }
+}
+
+afterEvaluate {
+    // Sample project
+    def sampleProject = subprojects.find { it.name == sampleAppName }
+    def baseModuleDependencies = subprojects
+            .findAll { it.name != sampleAppName }
+            .collect { "$group:${it.ext.artifact}:${it.version}" }
+
+    sampleProject.pluginManager.withPlugin("com.android.application") {
+        baseModuleDependencies.forEach { moduleDependency ->
+            sampleProject.dependencies.add("implementation", moduleDependency)
+        }
+    }
+    if (localBuild == "true") {
+        sampleProject.configurations.configureEach {
+            resolutionStrategy {
+                dependencySubstitution {
+                    baseModuleDependencies.forEach { moduleDependency ->
+                        substitute module(moduleDependency) with project(":${moduleDependency.split(":")[1]}")
+                    }
+                }
+            }
+        }
     }
 }
 
