@@ -9,3 +9,13 @@ abstract class KotlinEpoxyModelWithHolder<T : KotlinHolder> : EpoxyModelWithHold
     holder.unbindView()
   }
 }
+
+abstract class SimpleEpoxyModel : EpoxyModelWithHolder<SimpleEpoxyModel.ViewHolder>() {
+
+  override fun unbind(holder: ViewHolder) {
+    super.unbind(holder)
+    holder.unbindView()
+  }
+
+  class ViewHolder : KotlinHolder()
+}
