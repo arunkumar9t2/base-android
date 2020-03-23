@@ -1,5 +1,7 @@
 package dev.arunkumar.android
 
+import android.content.Context
+import androidx.multidex.MultiDex
 import com.airbnb.epoxy.EpoxyController
 import dagger.android.support.DaggerApplication
 import dev.arunkumar.android.dagger.application.AppInitializer
@@ -32,6 +34,11 @@ class SampleApp : DaggerApplication() {
     initEpoxy()
     initRealm()
     appInitializers.forEach { initializer -> initializer.initialize(this) }
+  }
+
+  override fun attachBaseContext(base: Context?) {
+    super.attachBaseContext(base)
+    MultiDex.install(this)
   }
 
   private fun initEpoxy() {

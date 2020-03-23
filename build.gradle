@@ -82,7 +82,7 @@ afterEvaluate {
       sampleProject.dependencies.add("implementation", moduleDependency)
     }
   }
-  if (hasProperty("localBuild")) {
+  if (sampleProject.hasProperty("localBuild")) {
     sampleProject.configurations.configureEach {
       resolutionStrategy {
         dependencySubstitution {

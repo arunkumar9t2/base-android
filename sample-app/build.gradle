@@ -38,6 +38,8 @@ android {
 
     vectorDrawables.useSupportLibrary = true
 
+    multiDexEnabled true
+
     testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
   }
 
@@ -89,6 +91,8 @@ dependencies {
 
   implementation deps.workManagerRx
   implementation deps.workManagerKtx
+
+  implementation "androidx.multidex:multidex:2.0.1"
 
   implementation deps.daggerAndroid
   implementation deps.daggerAndroidSupport

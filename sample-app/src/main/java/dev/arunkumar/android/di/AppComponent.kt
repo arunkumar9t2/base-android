@@ -10,7 +10,7 @@ import dev.arunkumar.android.SampleApp
 import dev.arunkumar.android.dagger.viewmodel.DefaultViewModelsBuilder
 import dev.arunkumar.android.data.ItemsModule
 import dev.arunkumar.android.home.HomeActivity
-import dev.arunkumar.android.util.PreferencesModule
+import dev.arunkumar.android.preferences.PreferenceModule
 import dev.arunkumar.android.util.work.SampleDaggerWorkerFactory
 import dev.arunkumar.android.util.work.SampleWorkerSubComponent
 import javax.inject.Singleton
@@ -28,7 +28,7 @@ import javax.inject.Singleton
     /** Utils **/
     AppModule::class,
     DefaultViewModelsBuilder::class,
-    PreferencesModule::class,
+    PreferenceModule::class,
     AppSchedulersModule::class,
     SampleDaggerWorkerFactory.Module::class
   ]

@@ -1,6 +1,6 @@
 package dev.arunkumar.android.home
 
-import android.content.SharedPreferences
+import android.app.Activity
 import android.os.Bundle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -21,13 +21,13 @@ import javax.inject.Inject
 
 class HomeActivity : DaggerAppCompatActivity(), UsesViewModel {
   @Inject
-  lateinit var preferences: SharedPreferences
-
-  @Inject
   lateinit var testActivityScope: DummyActivityScopeDep
 
   @Inject
   override lateinit var viewModelFactory: ViewModelProvider.Factory
+
+  @Inject
+  lateinit var itemsController: ItemsPagingController
 
   private val homeViewModel by viewModel<HomeViewModel>()
 
@@ -38,22 +38,28 @@ class HomeActivity : DaggerAppCompatActivity(), UsesViewModel {
   }
 
   private fun setupItems() {
-    val itemsController = ItemsPagingController(this)
     itemsRv.setController(itemsController)
     homeViewModel.itemsPagedList.subscribeBy(onNext = itemsController::submitList)
     itemsController.clicks.subscribeBy(onNext = homeViewModel::delete)
   }
 
   @Module
-  abstract class Builder {
+  interface HomeModule {
     @PerActivity
-    @ContributesAndroidInjector
-    abstract fun mainActivity(): HomeActivity
+    @Binds
+    fun bindActivity(homeActivity: HomeActivity): Activity
+  }
+
+  @Module
+  interface Builder {
+    @PerActivity
+    @ContributesAndroidInjector(modules = [HomeModule::class])
+    fun homeActivity(): HomeActivity
 
     @Binds
     @IntoMap
     @ViewModelKey(HomeViewModel::class)
-    abstract fun homeViewModel(homeViewModel: HomeViewModel): ViewModel
+    fun homeViewModel(homeViewModel: HomeViewModel): ViewModel
   }
 
 

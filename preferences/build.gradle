@@ -1,0 +1,40 @@
+buildscript {
+  repositories {
+    google()
+    jcenter()
+  }
+  dependencies {
+    classpath deps.butterKnife
+  }
+}
+
+apply plugin: "kotlin-kapt"
+apply plugin: 'com.jakewharton.butterknife'
+
+kapt {
+  correctErrorTypes = true
+}
+
+dependencies {
+  implementation fileTree(dir: "libs", include: ["*.jar"])
+  api project(path: ":common")
+  api project(path: ":rx-utils")
+  api project(path: ":epoxy-utils")
+  implementation deps.kotlinStdLib
+
+  implementation deps.material
+
+  api deps.epoxy
+  kapt deps.epoxyProcessor
+
+  implementation deps.androidXAppCompat
+  implementation deps.androidXCoreKtx
+  implementation deps.constraintLayout
+
+  api deps.rxKPrefsCore
+  api deps.rxKPrefsRx
+
+  api deps.daggerAndroid
+  kapt deps.daggerCompiler
+  kaptTest deps.daggerCompiler
+}

@@ -4,6 +4,10 @@ dependencies {
 
   api deps.rx
   api deps.rxAndroid
+  api deps.rxKotlin
+  api deps.rxBinding
+  api "com.jakewharton.rxbinding2:rxbinding-recyclerview-v7-kotlin:$rxBindingVersion"
+  api "com.jakewharton.rxbinding2:rxbinding-appcompat-v7-kotlin:$rxBindingVersion"
 
   api project(path: ":common")
 

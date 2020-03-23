@@ -1,15 +1,27 @@
 package dev.arunkumar.android.home.items
 
 import android.app.Activity
+import com.afollestad.rxkprefs.RxkPrefs
 import com.airbnb.epoxy.EpoxyAsyncUtil.getAsyncBackgroundHandler
 import com.airbnb.epoxy.EpoxyModel
 import com.airbnb.epoxy.paging.PagedListEpoxyController
 import com.jakewharton.rxrelay2.PublishRelay
+import dev.arunkumar.android.dagger.activity.PerActivity
 import dev.arunkumar.android.data.Item
+import dev.arunkumar.android.preferences.Preference
+import dev.arunkumar.android.preferences.togglePreference
+import dev.arunkumar.android.rxschedulers.SchedulerProvider
 import io.reactivex.Observable
+import javax.inject.Inject
 
-
-class ItemsPagingController(private val activity: Activity) : PagedListEpoxyController<Item>(
+@PerActivity
+class ItemsPagingController
+@Inject
+constructor(
+  private val activity: Activity,
+  private val rxkPrefs: RxkPrefs,
+  private val schedulerProvider: SchedulerProvider
+) : PagedListEpoxyController<Item>(
   modelBuildingHandler = getAsyncBackgroundHandler(),
   diffingHandler = getAsyncBackgroundHandler()
 ) {
@@ -17,7 +29,20 @@ class ItemsPagingController(private val activity: Activity) : PagedListEpoxyCont
   private val clicksSubject = PublishRelay.create<Item>()
   val clicks: Observable<Item> = clicksSubject.hide()
 
+  private val togglePreference: Preference<Boolean> by lazy {
+    val simplePreferenceId = "togglePreference"
+    Preference<Boolean>(simplePreferenceId, "Title", "Subtitle").apply {
+      value = rxkPrefs.boolean(simplePreferenceId)
+    }
+  }
+
   override fun addModels(models: List<EpoxyModel<*>>) {
+    togglePreference {
+      id(togglePreference.id)
+      preference(togglePreference)
+      schedulerProvider(schedulerProvider)
+      summaryProvider { "${togglePreference.subTitle.toString()}: $it" }
+    }
 
     itemView {
       val header = (models.first() as ItemViewModel_).getText(activity).first().toString()

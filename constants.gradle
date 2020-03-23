@@ -3,7 +3,7 @@ ext {
 
   buildDetails = [
       "compileSdk": 29,
-      "minSdk"    : 16,
+      "minSdk"    : 19,
       "targetSdk" : 28,
   ]
 
@@ -17,6 +17,7 @@ ext {
   androidXLifecycle = "2.2.0"
   androidXAppCompat = "1.1.0"
   constraintLayoutVersion = "1.1.3"
+  materialVersion = "1.2.0-alpha05"
 
   pagingVersion = "2.1.0"
 
@@ -27,11 +28,14 @@ ext {
 
   timberVersion = "4.7.1"
 
+  butterKnifeVersion = "10.2.1"
+
   rxVersion = "2.2.8"
   rxAndroidVersion = "2.1.1"
   rxKotlinVersion = "2.2.0"
   rxRelayVersion = "2.1.0"
   rxBindingVersion = "2.1.1"
+  rxKPrefsVersion = "2.0.3"
 
   realmVersion = "6.1.0"
 
@@ -47,6 +51,10 @@ ext {
       "constraintLayout"      : "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion",
       "recyclerView"          : "androidx.recyclerview:recyclerview:$rvVersion",
       "agp"                   : "com.android.tools.build:gradle:$agpVersion",
+
+      "material"              : "com.google.android.material:material:$materialVersion",
+
+      "butterKnife"           : "com.jakewharton:butterknife-gradle-plugin:$butterKnifeVersion",
 
       "paging"                : "androidx.paging:paging-runtime-ktx:$pagingVersion",
       "pagingCommon"          : "androidx.paging:paging-common-ktx:$pagingVersion",
@@ -75,6 +83,9 @@ ext {
       "rxKotlin"              : "io.reactivex.rxjava2:rxkotlin:$rxKotlinVersion",
       "rxRelay"               : "com.jakewharton.rxrelay2:rxrelay:$rxRelayVersion",
       "rxBinding"             : "com.jakewharton.rxbinding2:rxbinding:$rxBindingVersion",
+      "rxKPrefsCore"          : "com.afollestad.rxkprefs:core:$rxKPrefsVersion",
+      "rxKPrefsRx"            : "com.afollestad.rxkprefs:rxjava:$rxKPrefsVersion",
+
 
       "realmPlugin"           : "io.realm:realm-gradle-plugin:$realmVersion",
 
