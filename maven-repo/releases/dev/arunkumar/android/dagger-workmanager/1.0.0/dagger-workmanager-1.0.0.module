@@ -11,7 +11,7 @@
   "createdBy": {
     "gradle": {
       "version": "6.2.2",
-      "buildId": "vamn7kmqhbcanmnkamshex4lae"
+      "buildId": "unfytuylazfh7ftqsbvdrsttem"
     }
   },
   "variants": [
@@ -50,11 +50,11 @@
         {
           "name": "dagger-workmanager-1.0.0.aar",
           "url": "dagger-workmanager-1.0.0.aar",
-          "size": 20407,
-          "sha512": "d27ac30303731ff073684cbe539432f11d9db549416fbd55d85bdec08f61ad3514e45e5e15d32e14a92b060966cc9def4f1a8479bdb8ca133ad5b354eba281fa",
-          "sha256": "19154214f631a22883b24275df6a4b587592e698078baadb122a92d5c59fef7e",
-          "sha1": "2c2331458515aea311cbf0f18a9e08c0fa0c162b",
-          "md5": "2024548204dc44d7f2f5d36fd6d9a218"
+          "size": 20418,
+          "sha512": "a1eb499318d5ccb2f3577c7c9ed675f09100540513f3dbe6d797c94bdda59add7dc07222f4a26cd3a10c5a6882f0d546be47b9146888f243b72bd59341f539f3",
+          "sha256": "4250cdab76702f9d7c7c7b0813573fe17cebe903aa1841d388e2111628902ecd",
+          "sha1": "be176ab08b0bc902943f1e990c0a0ff49f2e2aa4",
+          "md5": "9d8527250f6e13f814268944bfe039ab"
         }
       ]
     },
@@ -114,11 +114,11 @@
         {
           "name": "dagger-workmanager-1.0.0.aar",
           "url": "dagger-workmanager-1.0.0.aar",
-          "size": 20407,
-          "sha512": "d27ac30303731ff073684cbe539432f11d9db549416fbd55d85bdec08f61ad3514e45e5e15d32e14a92b060966cc9def4f1a8479bdb8ca133ad5b354eba281fa",
-          "sha256": "19154214f631a22883b24275df6a4b587592e698078baadb122a92d5c59fef7e",
-          "sha1": "2c2331458515aea311cbf0f18a9e08c0fa0c162b",
-          "md5": "2024548204dc44d7f2f5d36fd6d9a218"
+          "size": 20418,
+          "sha512": "a1eb499318d5ccb2f3577c7c9ed675f09100540513f3dbe6d797c94bdda59add7dc07222f4a26cd3a10c5a6882f0d546be47b9146888f243b72bd59341f539f3",
+          "sha256": "4250cdab76702f9d7c7c7b0813573fe17cebe903aa1841d388e2111628902ecd",
+          "sha1": "be176ab08b0bc902943f1e990c0a0ff49f2e2aa4",
+          "md5": "9d8527250f6e13f814268944bfe039ab"
         }
       ]
     }
