@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>dev.arunkumar.android</groupId>
+  <artifactId>preferences</artifactId>
+  <versioning>
+    <latest>master-SNAPSHOT</latest>
+    <versions>
+      <version>master-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20200324161801</lastUpdated>
+  </versioning>
+</metadata>
