@@ -11,7 +11,7 @@
   "createdBy": {
     "gradle": {
       "version": "6.2.2",
-      "buildId": "unfytuylazfh7ftqsbvdrsttem"
+      "buildId": "oovmjdrtwze5tj25b7kme5wmlq"
     }
   },
   "variants": [
@@ -36,11 +36,11 @@
         {
           "name": "logging-1.0.0.aar",
           "url": "logging-1.0.0.aar",
-          "size": 3824,
-          "sha512": "3d8e904d8d0e882406bf768eaa69472d1080d7d6f122b29253bfe165aaa46c1bb7780df0ec731e935b8aff6a33a870e13e1524fb7fac61799e09aaa1d3507f9f",
-          "sha256": "8700a42d52455daa9e197b1ecfc31434b6dbcb26a6cb96cc76076a38a43bb841",
-          "sha1": "0dc1bfe3a1e7328ea1dc56a1aac3613168961969",
-          "md5": "4f722cdd32d299bfceeb4bfebe765f10"
+          "size": 3815,
+          "sha512": "dcf82f8fe8f48f137e65d5976831369b596769337efc83bb862734ff1c177ef4daf1220d93417ca10f8c53fc7f2013937dc44360d38f6817060df04ea7fb50f2",
+          "sha256": "e810f1038acd224695280a798b2e42b48e01fdeab14569c14e3e4776ae99f422",
+          "sha1": "32b1ac659cf4a9876df3f452f25f551f8e76a072",
+          "md5": "c25761df3326a481e96d7084f4afbcb1"
         }
       ]
     },
@@ -79,11 +79,11 @@
         {
           "name": "logging-1.0.0.aar",
           "url": "logging-1.0.0.aar",
-          "size": 3824,
-          "sha512": "3d8e904d8d0e882406bf768eaa69472d1080d7d6f122b29253bfe165aaa46c1bb7780df0ec731e935b8aff6a33a870e13e1524fb7fac61799e09aaa1d3507f9f",
-          "sha256": "8700a42d52455daa9e197b1ecfc31434b6dbcb26a6cb96cc76076a38a43bb841",
-          "sha1": "0dc1bfe3a1e7328ea1dc56a1aac3613168961969",
-          "md5": "4f722cdd32d299bfceeb4bfebe765f10"
+          "size": 3815,
+          "sha512": "dcf82f8fe8f48f137e65d5976831369b596769337efc83bb862734ff1c177ef4daf1220d93417ca10f8c53fc7f2013937dc44360d38f6817060df04ea7fb50f2",
+          "sha256": "e810f1038acd224695280a798b2e42b48e01fdeab14569c14e3e4776ae99f422",
+          "sha1": "32b1ac659cf4a9876df3f452f25f551f8e76a072",
+          "md5": "c25761df3326a481e96d7084f4afbcb1"
         }
       ]
     }
