@@ -10,4 +10,5 @@ include ":sample-app",
     ":glide-component-icon",
     ":dagger-workmanager",
     ":preferences",
-    ":spring-item-animator"
+    ":spring-item-animator",
+    ":colors"

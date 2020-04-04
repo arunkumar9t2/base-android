@@ -1,6 +1,5 @@
 dependencies {
   implementation fileTree(dir: "libs", include: ["*.jar"])
   implementation deps.kotlinStdLib
-  implementation deps.androidXCoreKtx
-  implementation deps.recyclerView
+  api deps.palette
 }
