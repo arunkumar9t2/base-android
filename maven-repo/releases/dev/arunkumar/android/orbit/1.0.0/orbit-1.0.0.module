@@ -11,7 +11,7 @@
   "createdBy": {
     "gradle": {
       "version": "6.3",
-      "buildId": "bt5nmpqyf5fd5emcebh2k5hmw4"
+      "buildId": "mbhtnkyfqnbwfivp2ep5opyviu"
     }
   },
   "variants": [
@@ -92,11 +92,11 @@
         {
           "name": "orbit-1.0.0.aar",
           "url": "orbit-1.0.0.aar",
-          "size": 35534,
-          "sha512": "850ea359d6b6de8c6ebbe26aea6177091d5460c39248580b45e9beae826cf02913cb41b684223124d1887f0a60a8a59cf28133dfa0bc13e0f4d9fe3bcff7ff3d",
-          "sha256": "13f420083194ab47daa175553ed8c07937ba2c9298b10ce046955c592d77a3ca",
-          "sha1": "f0aa79e511306d1bf56a6685d16f610c07f4515e",
-          "md5": "771779f223de18fcfd7ff8473b3abb6a"
+          "size": 35525,
+          "sha512": "3f178fcdc990895bec6c05203af931cfca11af236e4417e7a9f6615c3bcc3003f40c02bb7f1e77e16bded9af0c14e4339d56d1ee602c444c1cab38a5f2850491",
+          "sha256": "80aca75da9d4a8279701c84d7b853256db83ce006a6ee0f86c4ce73fc51e1738",
+          "sha1": "66cc3f4f77b8bca0ec3c49210819ffb3077c5f73",
+          "md5": "efc9c3e1748507970d8c4be0cd5cfd32"
         }
       ]
     },
@@ -184,11 +184,11 @@
         {
           "name": "orbit-1.0.0.aar",
           "url": "orbit-1.0.0.aar",
-          "size": 35534,
-          "sha512": "850ea359d6b6de8c6ebbe26aea6177091d5460c39248580b45e9beae826cf02913cb41b684223124d1887f0a60a8a59cf28133dfa0bc13e0f4d9fe3bcff7ff3d",
-          "sha256": "13f420083194ab47daa175553ed8c07937ba2c9298b10ce046955c592d77a3ca",
-          "sha1": "f0aa79e511306d1bf56a6685d16f610c07f4515e",
-          "md5": "771779f223de18fcfd7ff8473b3abb6a"
+          "size": 35525,
+          "sha512": "3f178fcdc990895bec6c05203af931cfca11af236e4417e7a9f6615c3bcc3003f40c02bb7f1e77e16bded9af0c14e4339d56d1ee602c444c1cab38a5f2850491",
+          "sha256": "80aca75da9d4a8279701c84d7b853256db83ce006a6ee0f86c4ce73fc51e1738",
+          "sha1": "66cc3f4f77b8bca0ec3c49210819ffb3077c5f73",
+          "md5": "efc9c3e1748507970d8c4be0cd5cfd32"
         }
       ]
     }
