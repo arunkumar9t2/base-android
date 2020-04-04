@@ -11,7 +11,7 @@
   "createdBy": {
     "gradle": {
       "version": "6.3",
-      "buildId": "mbhtnkyfqnbwfivp2ep5opyviu"
+      "buildId": "e76ag77w4rd5pazy3yqxgdzo5e"
     }
   },
   "variants": [
@@ -27,11 +27,11 @@
         {
           "name": "glide-component-icon-1.0.0.aar",
           "url": "glide-component-icon-1.0.0.aar",
-          "size": 11564,
-          "sha512": "90d7687968349b1a84b11507f80409987a0a705b2c4e8b169097215345db914991cb34670b5147a872c6ddb6300854731023db95d500d82680f44f44d5e6d48e",
-          "sha256": "c20fd880d01cdbfa61f7ab1ad917e3297c8370b8db830f883952839bdf65581c",
-          "sha1": "a5fe375fd627879b6166e00af650f5ae5197c053",
-          "md5": "5ff254001faccf0664104fadc4dccd6e"
+          "size": 11575,
+          "sha512": "69482abce9c703d47ef1f259bde93ae0684ef1908495164bb0b70cd26a5610be6a62a3fe8bc09eaba8ce286723060d1ce1740a1dd3a9f193f9a6f258f04d0ccd",
+          "sha256": "a6c21aabc67485597e817f0c0bd2f9fdd873e5eb56a949371ea4ee4e99d49459",
+          "sha1": "08c4daf573704c14a09cd29b716feb91d52660cb",
+          "md5": "8f833738260586dc50f3a406eea6dfc4"
         }
       ]
     },
@@ -77,11 +77,11 @@
         {
           "name": "glide-component-icon-1.0.0.aar",
           "url": "glide-component-icon-1.0.0.aar",
-          "size": 11564,
-          "sha512": "90d7687968349b1a84b11507f80409987a0a705b2c4e8b169097215345db914991cb34670b5147a872c6ddb6300854731023db95d500d82680f44f44d5e6d48e",
-          "sha256": "c20fd880d01cdbfa61f7ab1ad917e3297c8370b8db830f883952839bdf65581c",
-          "sha1": "a5fe375fd627879b6166e00af650f5ae5197c053",
-          "md5": "5ff254001faccf0664104fadc4dccd6e"
+          "size": 11575,
+          "sha512": "69482abce9c703d47ef1f259bde93ae0684ef1908495164bb0b70cd26a5610be6a62a3fe8bc09eaba8ce286723060d1ce1740a1dd3a9f193f9a6f258f04d0ccd",
+          "sha256": "a6c21aabc67485597e817f0c0bd2f9fdd873e5eb56a949371ea4ee4e99d49459",
+          "sha1": "08c4daf573704c14a09cd29b716feb91d52660cb",
+          "md5": "8f833738260586dc50f3a406eea6dfc4"
         }
       ]
     }

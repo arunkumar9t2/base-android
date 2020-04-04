@@ -1,0 +1,91 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "dev.arunkumar.android",
+    "module": "logging",
+    "version": "master-SNAPSHOT",
+    "attributes": {
+      "org.gradle.status": "integration"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "6.3",
+      "buildId": "6f75z5moonfrhd6boderjwsvzu"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "com.jakewharton.timber",
+          "module": "timber",
+          "version": {
+            "requires": "4.7.1"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "logging-master-SNAPSHOT.aar",
+          "url": "logging-master-SNAPSHOT.aar",
+          "size": 3842,
+          "sha512": "0f0e8c4b219aef54d066ee4c82775cac588238a5c2ed2df5a9cfce3a4efbc495db52b250aef61396c5c5f838d253d5ca0141fd8b12b1d8677c5b59b96c98d541",
+          "sha256": "858043e32a28941e68b61f05ba6c0e285d8b26e544c233d9eef67bd6283da65d",
+          "sha1": "42e2efdca7c2e5890410f2f4a897e22f06ac4ead",
+          "md5": "b7183d51588ba0378c27f3b1571c6d45"
+        }
+      ]
+    },
+    {
+      "name": "releaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "com.jakewharton.timber",
+          "module": "timber",
+          "version": {
+            "requires": "4.7.1"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-android-extensions-runtime",
+          "version": {
+            "requires": "1.3.71"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "1.3.71"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "logging-master-SNAPSHOT.aar",
+          "url": "logging-master-SNAPSHOT.aar",
+          "size": 3842,
+          "sha512": "0f0e8c4b219aef54d066ee4c82775cac588238a5c2ed2df5a9cfce3a4efbc495db52b250aef61396c5c5f838d253d5ca0141fd8b12b1d8677c5b59b96c98d541",
+          "sha256": "858043e32a28941e68b61f05ba6c0e285d8b26e544c233d9eef67bd6283da65d",
+          "sha1": "42e2efdca7c2e5890410f2f4a897e22f06ac4ead",
+          "md5": "b7183d51588ba0378c27f3b1571c6d45"
+        }
+      ]
+    }
+  ]
+}
