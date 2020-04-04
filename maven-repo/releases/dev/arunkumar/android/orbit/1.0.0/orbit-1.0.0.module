@@ -10,8 +10,8 @@
   },
   "createdBy": {
     "gradle": {
-      "version": "6.2.2",
-      "buildId": "oovmjdrtwze5tj25b7kme5wmlq"
+      "version": "6.3",
+      "buildId": "ndukemifbrda5m6sfixbqobjfy"
     }
   },
   "variants": [
@@ -92,11 +92,11 @@
         {
           "name": "orbit-1.0.0.aar",
           "url": "orbit-1.0.0.aar",
-          "size": 35823,
-          "sha512": "4c7b1932abca39ea2d56df5101b653222287904d2d7bc25cd8800ace1bb777cfb94a88191f473282d813f93ca939509914ec1be652c8d12ed2c4e888c85ca511",
-          "sha256": "c46d88488c360320da17b500b1c1cd4e5bd7d1d6ecbb7ba3c40cc9654602c8f3",
-          "sha1": "360eedd7a22796721b15bd8c0a114f8318e2100b",
-          "md5": "0f2e8327ab0e4cf5c473c90215991cd5"
+          "size": 35525,
+          "sha512": "3f178fcdc990895bec6c05203af931cfca11af236e4417e7a9f6615c3bcc3003f40c02bb7f1e77e16bded9af0c14e4339d56d1ee602c444c1cab38a5f2850491",
+          "sha256": "80aca75da9d4a8279701c84d7b853256db83ce006a6ee0f86c4ce73fc51e1738",
+          "sha1": "66cc3f4f77b8bca0ec3c49210819ffb3077c5f73",
+          "md5": "efc9c3e1748507970d8c4be0cd5cfd32"
         }
       ]
     },
@@ -176,7 +176,7 @@
           "group": "org.jetbrains.kotlin",
           "module": "kotlin-android-extensions-runtime",
           "version": {
-            "requires": "1.3.61"
+            "requires": "1.3.71"
           }
         }
       ],
@@ -184,11 +184,11 @@
         {
           "name": "orbit-1.0.0.aar",
           "url": "orbit-1.0.0.aar",
-          "size": 35823,
-          "sha512": "4c7b1932abca39ea2d56df5101b653222287904d2d7bc25cd8800ace1bb777cfb94a88191f473282d813f93ca939509914ec1be652c8d12ed2c4e888c85ca511",
-          "sha256": "c46d88488c360320da17b500b1c1cd4e5bd7d1d6ecbb7ba3c40cc9654602c8f3",
-          "sha1": "360eedd7a22796721b15bd8c0a114f8318e2100b",
-          "md5": "0f2e8327ab0e4cf5c473c90215991cd5"
+          "size": 35525,
+          "sha512": "3f178fcdc990895bec6c05203af931cfca11af236e4417e7a9f6615c3bcc3003f40c02bb7f1e77e16bded9af0c14e4339d56d1ee602c444c1cab38a5f2850491",
+          "sha256": "80aca75da9d4a8279701c84d7b853256db83ce006a6ee0f86c4ce73fc51e1738",
+          "sha1": "66cc3f4f77b8bca0ec3c49210819ffb3077c5f73",
+          "md5": "efc9c3e1748507970d8c4be0cd5cfd32"
         }
       ]
     }
