@@ -15,6 +15,7 @@ import dev.arunkumar.android.dagger.viewmodel.UsesViewModel
 import dev.arunkumar.android.dagger.viewmodel.ViewModelKey
 import dev.arunkumar.android.dagger.viewmodel.viewModel
 import dev.arunkumar.android.home.items.ItemsPagingController
+import dev.arunkumar.android.itemanimator.SpringSlideInItemAnimator
 import io.reactivex.rxkotlin.subscribeBy
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
@@ -39,6 +40,10 @@ class HomeActivity : DaggerAppCompatActivity(), UsesViewModel {
 
   private fun setupItems() {
     itemsRv.setController(itemsController)
+    itemsRv.run {
+      setController(itemsController)
+      itemAnimator = SpringSlideInItemAnimator()
+    }
     homeViewModel.itemsPagedList.subscribeBy(onNext = itemsController::submitList)
     itemsController.clicks.subscribeBy(onNext = homeViewModel::delete)
   }

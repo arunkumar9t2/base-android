@@ -9,4 +9,5 @@ include ":sample-app",
     ":orbit",
     ":glide-component-icon",
     ":dagger-workmanager",
-    ":preferences"
+    ":preferences",
+    ":spring-item-animator"

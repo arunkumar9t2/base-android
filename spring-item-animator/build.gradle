@@ -1,0 +1,6 @@
+dependencies {
+  implementation fileTree(dir: "libs", include: ["*.jar"])
+  implementation deps.kotlinStdLib
+  api deps.recyclerView
+  api deps.dynamicAnimation
+}
