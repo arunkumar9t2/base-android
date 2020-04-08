@@ -3,8 +3,10 @@
 package dev.arunkumar.common.context
 
 import android.content.Context
+import android.util.TypedValue
 import android.util.TypedValue.COMPLEX_UNIT_SP
 import android.util.TypedValue.applyDimension
+import androidx.annotation.AttrRes
 import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
@@ -28,3 +30,9 @@ fun Context.spToPx(sp: Float) = applyDimension(
 
 @ColorInt
 inline fun Context.resolveColorRes(@ColorRes id: Int): Int = ContextCompat.getColor(this, id)
+
+inline fun Context.resolveColorAttribute(@AttrRes id: Int): Int {
+  val typedValue = TypedValue()
+  val typedArray = obtainStyledAttributes(typedValue.data, intArrayOf(id))
+  return typedArray.getColor(0, 0).also { typedArray.recycle() }
+}
