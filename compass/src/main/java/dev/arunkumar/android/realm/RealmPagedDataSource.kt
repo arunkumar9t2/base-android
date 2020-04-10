@@ -1,5 +1,6 @@
 package dev.arunkumar.android.realm
 
+import androidx.paging.DataSource
 import io.realm.Realm
 import io.realm.RealmModel
 import io.realm.RealmQuery
@@ -9,9 +10,15 @@ class RealmPagedDataSource<T : RealmModel>(
   realmQueryBuilder: (Realm) -> RealmQuery<T>
 ) : TiledDataSource<T>() {
 
+  class Factory<T : RealmModel>(
+    private val realmQueryBuilder: (Realm) -> RealmQuery<T>
+  ) : DataSource.Factory<Int, T>() {
+    override fun create() = RealmPagedDataSource(realmQueryBuilder)
+  }
+
   private var realm: Realm = defaultRealm()
   private var realmResults: RealmResults<T> = realmQueryBuilder(realm).findAll().apply {
-    addChangeListener { results ->
+    addChangeListener { _ ->
       this@RealmPagedDataSource.realm.close()
       invalidate()
     }

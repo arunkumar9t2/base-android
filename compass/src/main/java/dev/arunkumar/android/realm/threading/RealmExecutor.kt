@@ -1,6 +1,5 @@
 package dev.arunkumar.android.realm.threading
 
-import android.os.Build
 import android.os.Handler
 import android.os.HandlerThread
 import android.os.Process.THREAD_PRIORITY_BACKGROUND
@@ -25,10 +24,6 @@ class RealmExecutor(private val tag: String? = null) : StoppableExecutor {
   override fun execute(command: Runnable) = handlerExecutor.execute(command)
 
   override fun stop() {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
-      handlerThread.quitSafely()
-    } else {
-      handlerThread.quit()
-    }
+    handlerThread.quitSafely()
   }
 }

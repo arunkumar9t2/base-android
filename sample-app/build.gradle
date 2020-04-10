@@ -30,7 +30,7 @@ android {
 
   defaultConfig {
     applicationId "dev.arunkumar.android"
-    minSdkVersion buildDetails.minSdk
+    minSdkVersion 21
     targetSdkVersion buildDetails.targetSdk
 
     versionCode 1
@@ -119,4 +119,13 @@ dependencies {
 
   // Lifecycle extensions
   implementation deps.androidXLifecycle
+
+  implementation deps.orbit
+  implementation deps.orbitAndroid
+
+  def autodispose = "1.4.0"
+  implementation "com.uber.autodispose:autodispose:$autodispose"
+  implementation "com.uber.autodispose:autodispose-android:$autodispose"
+  implementation "com.uber.autodispose:autodispose-android-archcomponents:$autodispose"
+  implementation "com.uber.autodispose:autodispose-lifecycle:$autodispose"
 }

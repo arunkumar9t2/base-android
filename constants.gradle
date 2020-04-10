@@ -46,6 +46,8 @@ ext {
 
   dynamicAnimationVersion = "1.0.0"
 
+  orbitVersion = "3.1.1"
+
   deps = [
       "androidXCore"          : "androidx.core:core:$androidXCore",
       "androidXCoreKtx"       : "androidx.core:core-ktx:$androidXCore",
@@ -101,6 +103,9 @@ ext {
       "workManagerKtx"        : "androidx.work:work-runtime-ktx:$workMangerVersion",
 
       "dynamicAnimation"      : "androidx.dynamicanimation:dynamicanimation:$dynamicAnimationVersion",
+
+      "orbit"                 : "com.babylon.orbit:orbit:$orbitVersion",
+      "orbitAndroid"          : "com.babylon.orbit:orbit-android:$orbitVersion"
   ]
 
   moduleVersions = [
