@@ -11,4 +11,5 @@ include ":sample-app",
     ":dagger-workmanager",
     ":preferences",
     ":spring-item-animator",
-    ":colors"
+    ":colors",
+    ":epoxy-rx"

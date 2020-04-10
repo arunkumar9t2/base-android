@@ -117,6 +117,7 @@ ext {
       "dagger-base"         : "1.0.0",
       "dagger-viewmodel"    : "1.0.0",
       "epoxy-utils"         : "1.0.0",
+      "epoxy-rx"            : "1.0.0",
       "logging"             : "1.0.0",
       "viewmodel-utils"     : "1.0.0",
       "rx-utils"            : "1.0.0",

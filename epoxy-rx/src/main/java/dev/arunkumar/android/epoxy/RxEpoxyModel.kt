@@ -1,4 +1,4 @@
-package dev.arunkumar.android.preferences
+package dev.arunkumar.android.epoxy
 
 import dev.arunkumar.android.epoxy.model.KotlinEpoxyModelWithHolder
 import dev.arunkumar.android.epoxy.model.KotlinHolder
@@ -27,8 +27,4 @@ abstract class RxEpoxyModel<T : KotlinHolder> : KotlinEpoxyModelWithHolder<T>() 
     super.unbind(holder)
     unBindDisposables.clear()
   }
-}
-
-abstract class SimpleRxModel : RxEpoxyModel<SimpleRxModel.ViewHolder>() {
-  class ViewHolder : KotlinHolder()
 }
