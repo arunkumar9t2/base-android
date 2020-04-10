@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>dev.arunkumar.android</groupId>
+  <artifactId>epoxy-rx</artifactId>
+  <versioning>
+    <latest>master-SNAPSHOT</latest>
+    <versions>
+      <version>master-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20200410165746</lastUpdated>
+  </versioning>
+</metadata>
