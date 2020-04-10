@@ -74,8 +74,14 @@ constructor(
   override fun buildItemModel(
     currentPosition: Int,
     item: Item?
-  ): EpoxyModel<*> = ItemViewModel_()
-    .id(item?.id)
-    .text(item?.name!!)
-    .onClick { _ -> clicksSubject.accept(item) }
+  ): EpoxyModel<*> {
+    return if (item == null) {
+      ItemViewModel_()
+        .id("$currentPosition:null")
+        .text("Loading..")
+    } else ItemViewModel_()
+      .id(item.id)
+      .text(item.name)
+      .onClick { _ -> clicksSubject.accept(item) }
+  }
 }

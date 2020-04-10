@@ -38,7 +38,7 @@ abstract class SimpleRealmSource<T : RealmObject>(
     realmQueryBuilder: (Realm) -> RealmQuery<T>
   ) = deferFlowable {
     val config = PagedList.Config.Builder().run {
-      setEnablePlaceholders(false)
+      setEnablePlaceholders(true)
       setInitialLoadSizeHint(initialLoadSize)
       setPageSize(pageSize)
       setPrefetchDistance(prefetchDistance)
