@@ -3,4 +3,5 @@ dependencies {
   implementation deps.kotlinStdLib
   api deps.androidXCoreKtx
   api deps.recyclerView
+  api deps.result
 }

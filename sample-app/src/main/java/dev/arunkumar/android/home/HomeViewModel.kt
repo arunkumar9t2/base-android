@@ -7,7 +7,7 @@ import com.babylon.orbit.OrbitViewModel
 import dev.arunkumar.android.data.Item
 import dev.arunkumar.android.data.ItemsRepository
 import dev.arunkumar.android.preferences.Preference
-import dev.arunkumar.android.result.asResult
+import dev.arunkumar.android.result.asResource
 import io.realm.kotlin.where
 import javax.inject.Inject
 
@@ -55,7 +55,7 @@ constructor(
                   } else it
                 }
               }.toObservable()
-              .asResult()
+              .asResource()
           }
       }
     }.reduce { currentState.copy(items = event) }

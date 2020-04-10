@@ -22,7 +22,7 @@ import dev.arunkumar.android.dagger.viewmodel.viewModel
 import dev.arunkumar.android.data.DeleteItemWorker
 import dev.arunkumar.android.home.items.ItemsPagingController
 import dev.arunkumar.android.itemanimator.SpringSlideInItemAnimator
-import dev.arunkumar.common.result.Result
+import dev.arunkumar.common.result.success
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
@@ -66,9 +66,8 @@ class HomeActivity : DaggerAppCompatActivity(), UsesViewModel {
 
 
   private val stateConsumer: (HomeState) -> Unit = { homeState ->
-    when (homeState.items) {
-      // handle other cases
-      is Result.Success -> itemsController.submitList(homeState.items.data)
+    homeState.items.success {
+      itemsController.submitList(data)
     }
     itemsController.preferences = homeState.preferences
     itemsController.headers = homeState.headers

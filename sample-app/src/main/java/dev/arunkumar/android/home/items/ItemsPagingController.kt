@@ -42,7 +42,7 @@ constructor(
       }
     }
 
-    if (headers) {
+    if (headers && models.isNotEmpty()) {
       itemView {
         val header = (models.first() as ItemViewModel_).getText(activity).first().toString()
         id(header)

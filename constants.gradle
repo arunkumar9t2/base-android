@@ -48,6 +48,8 @@ ext {
 
   orbitVersion = "3.1.1"
 
+  resultVersion = "3.0.0"
+
   deps = [
       "androidXCore"          : "androidx.core:core:$androidXCore",
       "androidXCoreKtx"       : "androidx.core:core-ktx:$androidXCore",
@@ -105,7 +107,9 @@ ext {
       "dynamicAnimation"      : "androidx.dynamicanimation:dynamicanimation:$dynamicAnimationVersion",
 
       "orbit"                 : "com.babylon.orbit:orbit:$orbitVersion",
-      "orbitAndroid"          : "com.babylon.orbit:orbit-android:$orbitVersion"
+      "orbitAndroid"          : "com.babylon.orbit:orbit-android:$orbitVersion",
+
+      "result"                : "com.github.kittinunf.result:result:$resultVersion",
   ]
 
   moduleVersions = [
