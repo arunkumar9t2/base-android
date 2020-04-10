@@ -6,10 +6,12 @@ import android.graphics.drawable.StateListDrawable
 import android.view.Gravity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
+import androidx.core.view.updatePadding
 import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelView
 import com.airbnb.epoxy.TextProp
 import dev.arunkumar.android.R
+import dev.arunkumar.common.context.dpToPx
 
 @ModelView(autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT)
 class ItemView(context: Context) : AppCompatTextView(context) {
@@ -31,6 +33,8 @@ class ItemView(context: Context) : AppCompatTextView(context) {
         )
       )
     }
+    val dp4 = context.dpToPx(4.0)
+    updatePadding(top = dp4, bottom = dp4)
   }
 
   @TextProp

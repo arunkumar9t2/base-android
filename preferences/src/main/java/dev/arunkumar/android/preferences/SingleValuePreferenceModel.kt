@@ -8,7 +8,8 @@ import io.reactivex.Observable
 import io.reactivex.functions.Function
 
 
-abstract class SingleValuePreferenceModel<S, R, ViewHolder : KotlinHolder> : RxEpoxyModel<ViewHolder>() {
+abstract class SingleValuePreferenceModel<S, R, ViewHolder : KotlinHolder> :
+  RxEpoxyModel<ViewHolder>() {
   abstract var preference: Preference<S>
 
   open var summaryProvider: Function<R, CharSequence?>? = null
