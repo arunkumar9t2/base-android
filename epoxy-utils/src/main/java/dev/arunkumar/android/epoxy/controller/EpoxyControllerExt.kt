@@ -14,3 +14,14 @@ fun <T> EpoxyController.model(initialValue: T) = object : ObservableProperty<T>(
     requestDelayedModelBuild(0)
   }
 }
+
+/**
+ * Property delegate that automatically calls [AsyncEpoxyController.requestDelayedModelBuild] when
+ * the property changes
+ */
+fun <T> EpoxyController.listModel(initialValue: List<T> = emptyList()) =
+  object : ObservableProperty<List<T>>(initialValue) {
+    override fun afterChange(property: KProperty<*>, oldValue: List<T>, newValue: List<T>) {
+      requestDelayedModelBuild(0)
+    }
+  }

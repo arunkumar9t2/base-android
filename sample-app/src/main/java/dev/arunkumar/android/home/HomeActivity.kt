@@ -70,6 +70,8 @@ class HomeActivity : DaggerAppCompatActivity(), UsesViewModel {
       // handle other cases
       is Result.Success -> itemsController.submitList(homeState.items.data)
     }
+    itemsController.preferences = homeState.preferences
+    itemsController.headers = homeState.headers
   }
 
   private val sideEffectConsumer: (HomeSideEffect) -> Unit = { homeSideEffect ->
