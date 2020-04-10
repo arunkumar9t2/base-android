@@ -47,15 +47,13 @@ constructor(
       eventObservable.flatMap {
         sortPreference.value.observe()
           .switchMap { sort ->
-            itemsRepository
-              .pagedItems { realm ->
-                realm.where<Item>().let {
-                  if (sort) {
-                    it.sort("name")
-                  } else it
-                }
-              }.toObservable()
-              .asResource()
+            itemsRepository.pagedItems { realm ->
+              realm.where<Item>().let {
+                if (sort) {
+                  it.sort("name")
+                } else it
+              }
+            }.toObservable().asResource()
           }
       }
     }.reduce { currentState.copy(items = event) }
