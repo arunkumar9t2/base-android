@@ -14,16 +14,18 @@ import io.realm.RealmObject
 import io.realm.RealmQuery
 
 /**
- * Common abstractions for a [RealmObject]
+ * Common abstractions for a [RealmObject] providing paging lib support to Realm objects
  */
 interface RealmSource<T : RealmObject> {
 
-  fun pagedItems(
+  @Suppress("UNCHECKED_CAST")
+  fun <R> pagedItems(
     initialLoadSize: Int = 30 * 3,
     pageSize: Int = 30,
     prefetchDistance: Int = 30 * 2,
+    mapper: (T) -> R = { it as R },
     realmQueryBuilder: (Realm) -> RealmQuery<T>
-  ): Flowable<PagedList<T>>
+  ): Flowable<PagedList<R>>
 
 }
 
@@ -31,12 +33,13 @@ abstract class SimpleRealmSource<T : RealmObject>(
   private val schedulerProvider: SchedulerProvider
 ) : RealmSource<T> {
 
-  override fun pagedItems(
+  override fun <R> pagedItems(
     initialLoadSize: Int,
     pageSize: Int,
     prefetchDistance: Int,
+    mapper: (T) -> R,
     realmQueryBuilder: (Realm) -> RealmQuery<T>
-  ) = deferFlowable {
+  ): Flowable<PagedList<R>> = deferFlowable {
     val config = PagedList.Config.Builder().run {
       setEnablePlaceholders(true)
       setInitialLoadSizeHint(initialLoadSize)
@@ -46,6 +49,7 @@ abstract class SimpleRealmSource<T : RealmObject>(
     }
     val realmExecutor = RealmExecutor()
     val dataSourceFactory = RealmPagedDataSource.Factory(realmQueryBuilder)
+            .map { mapper(it) }
 
     RxPagedListBuilder(dataSourceFactory, config)
       .run {
