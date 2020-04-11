@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Base Android</string>
+    <string name="reset_db">Reset Database</string>
 </resources>

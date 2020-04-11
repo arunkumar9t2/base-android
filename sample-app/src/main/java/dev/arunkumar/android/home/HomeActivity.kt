@@ -2,7 +2,6 @@ package dev.arunkumar.android.home
 
 import android.app.Activity
 import android.os.Bundle
-import androidx.lifecycle.Lifecycle.Event.ON_DESTROY
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.work.OneTimeWorkRequestBuilder
@@ -19,8 +18,8 @@ import dev.arunkumar.android.dagger.activity.PerActivity
 import dev.arunkumar.android.dagger.viewmodel.UsesViewModel
 import dev.arunkumar.android.dagger.viewmodel.ViewModelKey
 import dev.arunkumar.android.dagger.viewmodel.viewModel
-import dev.arunkumar.android.data.DeleteItemWorker
 import dev.arunkumar.android.home.items.ItemsPagingController
+import dev.arunkumar.android.item.DeleteItemWorker
 import dev.arunkumar.android.itemanimator.SpringSlideInItemAnimator
 import dev.arunkumar.common.result.success
 import kotlinx.android.synthetic.main.activity_main.*
@@ -58,9 +57,12 @@ class HomeActivity : DaggerAppCompatActivity(), UsesViewModel {
       setController(itemsController)
       itemAnimator = SpringSlideInItemAnimator()
     }
-    itemsController.clicks
+    itemsController.itemClicks
       .map { HomeAction.DeleteItem(it) }
-      .autoDispose(this, ON_DESTROY)
+      .autoDispose(this)
+      .subscribe(homeViewModel::sendAction)
+    itemsController.resetDbs
+      .autoDispose(this)
       .subscribe(homeViewModel::sendAction)
   }
 

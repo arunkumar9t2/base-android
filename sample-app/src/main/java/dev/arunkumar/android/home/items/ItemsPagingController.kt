@@ -6,9 +6,10 @@ import com.airbnb.epoxy.EpoxyModel
 import com.airbnb.epoxy.paging.PagedListEpoxyController
 import com.jakewharton.rxrelay2.PublishRelay
 import dev.arunkumar.android.dagger.activity.PerActivity
-import dev.arunkumar.android.data.Item
 import dev.arunkumar.android.epoxy.controller.listModel
 import dev.arunkumar.android.epoxy.controller.model
+import dev.arunkumar.android.home.HomeAction
+import dev.arunkumar.android.item.Item
 import dev.arunkumar.android.preferences.Preference
 import dev.arunkumar.android.preferences.togglePreference
 import dev.arunkumar.android.rxschedulers.SchedulerProvider
@@ -26,8 +27,11 @@ constructor(
   diffingHandler = getAsyncBackgroundHandler()
 ) {
 
-  private val clicksSubject = PublishRelay.create<Item>()
-  val clicks: Observable<Item> = clicksSubject.hide()
+  private val itemClicksRelay = PublishRelay.create<Item>()
+  val itemClicks: Observable<Item> = itemClicksRelay.hide()
+
+  private val resetDbRelay = PublishRelay.create<HomeAction.ResetItems>()
+  val resetDbs: Observable<HomeAction.ResetItems> = resetDbRelay.hide()
 
   var headers by model(true)
   var preferences by listModel<Preference<*>>()
@@ -40,6 +44,11 @@ constructor(
         preference(preference as Preference<Boolean>)
         schedulerProvider(schedulerProvider)
       }
+    }
+
+    resetDbButton {
+      id("reset-item-db")
+      onClick { _ -> resetDbRelay.accept(HomeAction.ResetItems) }
     }
 
     if (headers && models.isNotEmpty()) {
@@ -82,6 +91,6 @@ constructor(
     } else ItemViewModel_()
       .id(item.id)
       .text(item.name)
-      .onClick { _ -> clicksSubject.accept(item) }
+      .onClick { _ -> itemClicksRelay.accept(item) }
   }
 }

@@ -1,4 +1,4 @@
-package dev.arunkumar.android.data
+package dev.arunkumar.android.item
 
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey

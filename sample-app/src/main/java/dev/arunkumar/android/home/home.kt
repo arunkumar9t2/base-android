@@ -1,7 +1,7 @@
 package dev.arunkumar.android.home
 
 import androidx.paging.PagedList
-import dev.arunkumar.android.data.Item
+import dev.arunkumar.android.item.Item
 import dev.arunkumar.android.preferences.Preference
 import dev.arunkumar.common.result.Resource
 import dev.arunkumar.common.result.idle
@@ -18,4 +18,5 @@ sealed class HomeSideEffect {
 
 sealed class HomeAction {
   data class DeleteItem(val item: Item) : HomeAction()
+  object ResetItems : HomeAction()
 }

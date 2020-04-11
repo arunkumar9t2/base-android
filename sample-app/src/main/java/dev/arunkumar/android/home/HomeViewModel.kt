@@ -4,8 +4,9 @@ import com.afollestad.rxkprefs.RxkPrefs
 import com.afollestad.rxkprefs.rxjava.observe
 import com.babylon.orbit.LifecycleAction
 import com.babylon.orbit.OrbitViewModel
-import dev.arunkumar.android.data.Item
-import dev.arunkumar.android.data.ItemsRepository
+import dev.arunkumar.android.item.Item
+import dev.arunkumar.android.item.ItemsRepository
+import dev.arunkumar.android.item.ResetDbUseCase
 import dev.arunkumar.android.preferences.Preference
 import dev.arunkumar.android.result.asResource
 import io.realm.kotlin.where
@@ -15,7 +16,8 @@ class HomeViewModel
 @Inject
 constructor(
   private val rxkPrefs: RxkPrefs,
-  private val itemsRepository: ItemsRepository
+  private val itemsRepository: ItemsRepository,
+  private val resetDbUseCase: ResetDbUseCase
 ) : OrbitViewModel<HomeState, HomeSideEffect>(HomeState(), {
 
   val sortPreference: Preference<Boolean> by lazy {
@@ -66,4 +68,8 @@ constructor(
   perform("delete item")
     .on<HomeAction.DeleteItem>()
     .sideEffect { post(HomeSideEffect.PerformDelete(event.item)) }
+
+  perform("reset db")
+    .on<HomeAction.ResetItems>()
+    .transform { eventObservable.flatMap { resetDbUseCase.build().toObservable<Any>() } }
 })

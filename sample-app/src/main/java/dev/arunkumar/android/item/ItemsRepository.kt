@@ -1,4 +1,4 @@
-package dev.arunkumar.android.data
+package dev.arunkumar.android.item
 
 import dagger.Binds
 import dagger.Module
@@ -16,6 +16,8 @@ interface ItemsRepository : RealmSource<Item> {
   fun addItemsIfEmpty(): Completable
 
   fun deleteItem(itemId: Int): Completable
+
+  fun clear(): Completable
 }
 
 @Module
@@ -57,6 +59,12 @@ constructor(
         .equalTo("id", itemId)
         .findAll()
         .deleteAllFromRealm()
+    }
+  }
+
+  override fun clear() = completable {
+    realmTransaction { realm ->
+      realm.where<Item>().findAll().deleteAllFromRealm()
     }
   }
 }

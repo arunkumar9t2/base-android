@@ -1,4 +1,4 @@
-package dev.arunkumar.android.data
+package dev.arunkumar.android.item
 
 import android.app.Application
 import androidx.work.ListenableWorker
