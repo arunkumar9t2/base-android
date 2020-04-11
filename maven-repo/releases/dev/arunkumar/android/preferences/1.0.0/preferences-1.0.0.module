@@ -11,7 +11,7 @@
   "createdBy": {
     "gradle": {
       "version": "6.3",
-      "buildId": "2n52chogtbhgnp5rylkz35dmvu"
+      "buildId": "erca443wjffvdg6xzexcnwoxbi"
     }
   },
   "variants": [
@@ -33,14 +33,7 @@
         },
         {
           "group": "dev.arunkumar.android",
-          "module": "rx-utils",
-          "version": {
-            "requires": "1.0.0"
-          }
-        },
-        {
-          "group": "dev.arunkumar.android",
-          "module": "epoxy-utils",
+          "module": "epoxy-rx",
           "version": {
             "requires": "1.0.0"
           }
@@ -78,11 +71,11 @@
         {
           "name": "preferences-1.0.0.aar",
           "url": "preferences-1.0.0.aar",
-          "size": 110853,
-          "sha512": "7bbb66e3a201d9f349811ab737ab2175e25930ba6083007851ee072b9a9255ce39ee59d0b114073ca274f45d3ef85ed31c0c88c10639f32a72879674cade800b",
-          "sha256": "0db7569fb3180cdd98780569732d5ccdffd09acc67a8bea7b09cc144082f2e40",
-          "sha1": "aad0fe2cef98aae0e1fca13372485f869984d6ab",
-          "md5": "c9ed49aa142091723e2a4c755d4d367d"
+          "size": 108121,
+          "sha512": "7355d976641f104a7eac990044b5e4e6b84c29a01a6c4f7e6b0079e89f695c733c238afd23a33da7536fcb98cc3364c0d971198eb56930fe3d87172efcdf7352",
+          "sha256": "20604789f58ebdf91c493d265ab240fb91c99cdfcf12d9cb0b87b75e56c44b46",
+          "sha1": "d3c61efc050557f33ebdad643bcf61a218d4780a",
+          "md5": "c6ae038583fc67345752e8dd13aa26b6"
         }
       ]
     },
@@ -104,14 +97,7 @@
         },
         {
           "group": "dev.arunkumar.android",
-          "module": "rx-utils",
-          "version": {
-            "requires": "1.0.0"
-          }
-        },
-        {
-          "group": "dev.arunkumar.android",
-          "module": "epoxy-utils",
+          "module": "epoxy-rx",
           "version": {
             "requires": "1.0.0"
           }
@@ -191,11 +177,11 @@
         {
           "name": "preferences-1.0.0.aar",
           "url": "preferences-1.0.0.aar",
-          "size": 110853,
-          "sha512": "7bbb66e3a201d9f349811ab737ab2175e25930ba6083007851ee072b9a9255ce39ee59d0b114073ca274f45d3ef85ed31c0c88c10639f32a72879674cade800b",
-          "sha256": "0db7569fb3180cdd98780569732d5ccdffd09acc67a8bea7b09cc144082f2e40",
-          "sha1": "aad0fe2cef98aae0e1fca13372485f869984d6ab",
-          "md5": "c9ed49aa142091723e2a4c755d4d367d"
+          "size": 108121,
+          "sha512": "7355d976641f104a7eac990044b5e4e6b84c29a01a6c4f7e6b0079e89f695c733c238afd23a33da7536fcb98cc3364c0d971198eb56930fe3d87172efcdf7352",
+          "sha256": "20604789f58ebdf91c493d265ab240fb91c99cdfcf12d9cb0b87b75e56c44b46",
+          "sha1": "d3c61efc050557f33ebdad643bcf61a218d4780a",
+          "md5": "c6ae038583fc67345752e8dd13aa26b6"
         }
       ]
     }

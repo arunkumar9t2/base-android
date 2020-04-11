@@ -34,13 +34,7 @@
     </dependency>
     <dependency>
       <groupId>dev.arunkumar.android</groupId>
-      <artifactId>rx-utils</artifactId>
-      <version>1.0.0</version>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>dev.arunkumar.android</groupId>
-      <artifactId>epoxy-utils</artifactId>
+      <artifactId>epoxy-rx</artifactId>
       <version>1.0.0</version>
       <scope>compile</scope>
     </dependency>

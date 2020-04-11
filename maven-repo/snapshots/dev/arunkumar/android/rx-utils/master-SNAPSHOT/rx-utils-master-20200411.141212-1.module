@@ -1,0 +1,203 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "dev.arunkumar.android",
+    "module": "rx-utils",
+    "version": "master-SNAPSHOT",
+    "attributes": {
+      "org.gradle.status": "integration"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "6.3",
+      "buildId": "idcg7t7xqve4bnqtoaunlyiwpu"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "io.reactivex.rxjava2",
+          "module": "rxjava",
+          "version": {
+            "requires": "2.2.8"
+          }
+        },
+        {
+          "group": "io.reactivex.rxjava2",
+          "module": "rxandroid",
+          "version": {
+            "requires": "2.1.1"
+          }
+        },
+        {
+          "group": "io.reactivex.rxjava2",
+          "module": "rxkotlin",
+          "version": {
+            "requires": "2.2.0"
+          }
+        },
+        {
+          "group": "com.jakewharton.rxbinding2",
+          "module": "rxbinding",
+          "version": {
+            "requires": "2.1.1"
+          }
+        },
+        {
+          "group": "com.jakewharton.rxbinding2",
+          "module": "rxbinding-recyclerview-v7-kotlin",
+          "version": {
+            "requires": "2.1.1"
+          }
+        },
+        {
+          "group": "com.jakewharton.rxbinding2",
+          "module": "rxbinding-appcompat-v7-kotlin",
+          "version": {
+            "requires": "2.1.1"
+          }
+        },
+        {
+          "group": "dev.arunkumar.android",
+          "module": "common",
+          "version": {
+            "requires": "master-SNAPSHOT"
+          }
+        },
+        {
+          "group": "com.google.dagger",
+          "module": "dagger-android",
+          "version": {
+            "requires": "2.23.2"
+          }
+        },
+        {
+          "group": "com.google.dagger",
+          "module": "dagger-android-support",
+          "version": {
+            "requires": "2.23.2"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "rx-utils-master-SNAPSHOT.aar",
+          "url": "rx-utils-master-SNAPSHOT.aar",
+          "size": 31886,
+          "sha512": "9a84e2ddee46e602baa3b8187c476f4cfbecdc8213e7f047af5c9bc7166c9bf72062105e9839136e532aab672dd28146daae6b3ba386b32cd705cbfda637610f",
+          "sha256": "8178045ce89d360b33e9047a4fe1e92a74e82005adf33dc9d7baa3c12aa683ef",
+          "sha1": "f56eb06e7423ab1a717b92b74f993581f34221b8",
+          "md5": "8a0173cfe1b135d1044b31a073415c49"
+        }
+      ]
+    },
+    {
+      "name": "releaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "io.reactivex.rxjava2",
+          "module": "rxjava",
+          "version": {
+            "requires": "2.2.8"
+          }
+        },
+        {
+          "group": "io.reactivex.rxjava2",
+          "module": "rxandroid",
+          "version": {
+            "requires": "2.1.1"
+          }
+        },
+        {
+          "group": "io.reactivex.rxjava2",
+          "module": "rxkotlin",
+          "version": {
+            "requires": "2.2.0"
+          }
+        },
+        {
+          "group": "com.jakewharton.rxbinding2",
+          "module": "rxbinding",
+          "version": {
+            "requires": "2.1.1"
+          }
+        },
+        {
+          "group": "com.jakewharton.rxbinding2",
+          "module": "rxbinding-recyclerview-v7-kotlin",
+          "version": {
+            "requires": "2.1.1"
+          }
+        },
+        {
+          "group": "com.jakewharton.rxbinding2",
+          "module": "rxbinding-appcompat-v7-kotlin",
+          "version": {
+            "requires": "2.1.1"
+          }
+        },
+        {
+          "group": "dev.arunkumar.android",
+          "module": "common",
+          "version": {
+            "requires": "master-SNAPSHOT"
+          }
+        },
+        {
+          "group": "com.google.dagger",
+          "module": "dagger-android",
+          "version": {
+            "requires": "2.23.2"
+          }
+        },
+        {
+          "group": "com.google.dagger",
+          "module": "dagger-android-support",
+          "version": {
+            "requires": "2.23.2"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-android-extensions-runtime",
+          "version": {
+            "requires": "1.3.71"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "1.3.71"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "rx-utils-master-SNAPSHOT.aar",
+          "url": "rx-utils-master-SNAPSHOT.aar",
+          "size": 31886,
+          "sha512": "9a84e2ddee46e602baa3b8187c476f4cfbecdc8213e7f047af5c9bc7166c9bf72062105e9839136e532aab672dd28146daae6b3ba386b32cd705cbfda637610f",
+          "sha256": "8178045ce89d360b33e9047a4fe1e92a74e82005adf33dc9d7baa3c12aa683ef",
+          "sha1": "f56eb06e7423ab1a717b92b74f993581f34221b8",
+          "md5": "8a0173cfe1b135d1044b31a073415c49"
+        }
+      ]
+    }
+  ]
+}
