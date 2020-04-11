@@ -8,7 +8,9 @@ import io.reactivex.Observable
 
 /** Observable extensions **/
 inline fun <T> deferObservable(noinline block: () -> Observable<T>): Observable<T> =
-  Observable.defer(block)
+        Observable.defer(block)
+
+inline fun <T> callableObservable(crossinline callableAction: () -> T): Observable<T> = Observable.fromCallable { callableAction() }
 
 inline fun completable(noinline action: () -> Unit): Completable = Completable.fromAction(action)
 
