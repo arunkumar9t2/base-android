@@ -11,7 +11,7 @@
   "createdBy": {
     "gradle": {
       "version": "6.3",
-      "buildId": "erca443wjffvdg6xzexcnwoxbi"
+      "buildId": "jeoagc4sengdlj33ugwo423rja"
     }
   },
   "variants": [
@@ -43,11 +43,11 @@
         {
           "name": "spring-item-animator-1.0.0.aar",
           "url": "spring-item-animator-1.0.0.aar",
-          "size": 16333,
-          "sha512": "1bad122c10b4881a41c0c67eafc4b5b9fa2d8918ea31e7b38112564f8d888889eb57efd4f9a4b613239036a2a4c1848ae26d27eb7731f0baa58a7b47fb6dc1d9",
-          "sha256": "f31e97838f36c0d9f2e4acf9deefdcb3abfa28c18b37992fd5d4fd4e3140523c",
-          "sha1": "815c37dd0ab525b7b53e25511c00e1366984fb75",
-          "md5": "e9a742d0501e4432e324288ac3f890ae"
+          "size": 16325,
+          "sha512": "d5c7d243a0c9f6e0f4d954111abb85d5f172bdc28bafd7ec0d6bb8dbad7fa8a191010f9236f587cc95f19783b4c7f22aece27c513f0119d674826f0232a62eb8",
+          "sha256": "d63f2926383ab9838ba6e76281ad381014abc1cb892897f7be250ee3258c063f",
+          "sha1": "319360fdb3db0cad72eb272d0135b4bc533780d6",
+          "md5": "8a695ff94852a6f8154f77115c7e051c"
         }
       ]
     },
@@ -93,11 +93,11 @@
         {
           "name": "spring-item-animator-1.0.0.aar",
           "url": "spring-item-animator-1.0.0.aar",
-          "size": 16333,
-          "sha512": "1bad122c10b4881a41c0c67eafc4b5b9fa2d8918ea31e7b38112564f8d888889eb57efd4f9a4b613239036a2a4c1848ae26d27eb7731f0baa58a7b47fb6dc1d9",
-          "sha256": "f31e97838f36c0d9f2e4acf9deefdcb3abfa28c18b37992fd5d4fd4e3140523c",
-          "sha1": "815c37dd0ab525b7b53e25511c00e1366984fb75",
-          "md5": "e9a742d0501e4432e324288ac3f890ae"
+          "size": 16325,
+          "sha512": "d5c7d243a0c9f6e0f4d954111abb85d5f172bdc28bafd7ec0d6bb8dbad7fa8a191010f9236f587cc95f19783b4c7f22aece27c513f0119d674826f0232a62eb8",
+          "sha256": "d63f2926383ab9838ba6e76281ad381014abc1cb892897f7be250ee3258c063f",
+          "sha1": "319360fdb3db0cad72eb272d0135b4bc533780d6",
+          "md5": "8a695ff94852a6f8154f77115c7e051c"
         }
       ]
     }
