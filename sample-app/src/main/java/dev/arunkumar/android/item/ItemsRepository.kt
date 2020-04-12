@@ -29,8 +29,8 @@ interface ItemsModule {
 class DefaultItemsRepository
 @Inject
 constructor(
-  schedulerProvider: SchedulerProvider
-) : ItemsRepository, SimpleRealmSource<Item>(schedulerProvider) {
+  override val schedulerProvider: SchedulerProvider
+) : ItemsRepository, SimpleRealmSource<Item> {
 
   private val charPool: List<Char> = ('a'..'z') + ('A'..'Z') + ('0'..'9')
 
