@@ -29,9 +29,9 @@ interface RealmSource<T : RealmObject> {
 
 }
 
-abstract class SimpleRealmSource<T : RealmObject>(
-  private val schedulerProvider: SchedulerProvider
-) : RealmSource<T> {
+interface SimpleRealmSource<T : RealmObject> : RealmSource<T> {
+
+  val schedulerProvider: SchedulerProvider
 
   override fun <R> pagedItems(
     initialLoadSize: Int,
