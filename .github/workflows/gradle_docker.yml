@@ -22,7 +22,7 @@ jobs:
 
       - name: Set gradle permissions
         run: |
-          sudo chmod +x ./gradlew
+          chmod +x ./gradlew
 
       - name: Prepare gradle cache
         run: |
