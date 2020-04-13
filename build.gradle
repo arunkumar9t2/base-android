@@ -78,11 +78,14 @@ afterEvaluate {
       .collect { "$group:${it.ext.artifact}:${it.version}" }
 
   sampleProject.pluginManager.withPlugin("com.android.application") {
-    baseModuleDependencies.forEach { moduleDependency ->
-      sampleProject.dependencies.add("implementation", moduleDependency)
+    sampleProject.afterEvaluate {
+      baseModuleDependencies.forEach { moduleDependency ->
+        sampleProject.dependencies.add("localImplementation", project(":${moduleDependency.split(":")[1]}"))
+        sampleProject.dependencies.add("remoteImplementation", moduleDependency)
+      }
     }
   }
-  if (sampleProject.hasProperty("localBuild")) {
+  /*if (sampleProject.hasProperty("localBuild")) {
     sampleProject.configurations.configureEach {
       resolutionStrategy {
         dependencySubstitution {
@@ -92,7 +95,7 @@ afterEvaluate {
         }
       }
     }
-  }
+  }*/
 }
 
 task clean(type: Delete) {
