@@ -30,7 +30,7 @@ jobs:
 
       - name: Set gradle permissions
         if: github.ref == 'refs/heads/master'
-        run: sudo chmod +x ./gradlew
+        run: chmod +x ./gradlew
 
       - name: Deploy artifacts
         if: github.ref == 'refs/heads/master'
