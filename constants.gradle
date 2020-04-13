@@ -5,6 +5,7 @@ ext {
       "compileSdk": 29,
       "minSdk"    : 19,
       "targetSdk" : 28,
+      "buildTools": "29.0.3"
   ]
 
   rvVersion = "1.0.0"

@@ -16,6 +16,7 @@ apply plugin: "realm-android"
 
 android {
   compileSdkVersion buildDetails.compileSdk
+  buildToolsVersion buildDetails.buildTools
 
   compileOptions {
     sourceCompatibility JavaVersion.VERSION_1_8
