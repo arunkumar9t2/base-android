@@ -50,11 +50,7 @@ constructor(
         sortPreference.value.observe()
           .switchMap { sort ->
             itemsRepository.pagedItems<Item> { realm ->
-              realm.where<Item>().let {
-                if (sort) {
-                  it.sort("name")
-                } else it
-              }
+              realm.where<Item>().let { if (sort) it.sort("name") else it }
             }.toObservable().asResource()
           }
       }
