@@ -2,13 +2,13 @@ package dev.arunkumar.android.realm
 
 import androidx.paging.PagedList
 import androidx.paging.RxPagedListBuilder
-import dev.arunkumar.android.realm.epoxy.epoxyBgScheduler
+import dev.arunkumar.android.realm.paging.pagingConfig
 import dev.arunkumar.android.realm.threading.RealmExecutor
-import dev.arunkumar.android.rx.deferFlowable
+import dev.arunkumar.android.rx.deferObservable
 import dev.arunkumar.android.rxschedulers.SchedulerProvider
 import dev.arunkumar.android.rxschedulers.toScheduler
-import io.reactivex.BackpressureStrategy
-import io.reactivex.Flowable
+import io.reactivex.Observable
+import io.reactivex.Scheduler
 import io.realm.Realm
 import io.realm.RealmObject
 import io.realm.RealmQuery
@@ -18,44 +18,48 @@ import io.realm.RealmQuery
  */
 interface RealmSource<T : RealmObject> {
 
+  val schedulerProvider: SchedulerProvider
+
   @Suppress("UNCHECKED_CAST")
   fun <R> pagedItems(
     initialLoadSize: Int = 30 * 3,
     pageSize: Int = 30,
     prefetchDistance: Int = 30 * 2,
-    mapper: (T) -> R = { it as R },
+    placeholders: Boolean = false,
+    notifyScheduler: Scheduler = schedulerProvider.ui,
+    itemMapper: (T) -> R = { it as R },
     realmQueryBuilder: (Realm) -> RealmQuery<T>
-  ): Flowable<PagedList<R>>
+  ): Observable<PagedList<R>>
 
 }
 
 interface SimpleRealmSource<T : RealmObject> : RealmSource<T> {
 
-  val schedulerProvider: SchedulerProvider
-
   override fun <R> pagedItems(
     initialLoadSize: Int,
     pageSize: Int,
     prefetchDistance: Int,
-    mapper: (T) -> R,
+    placeholders: Boolean,
+    notifyScheduler: Scheduler,
+    itemMapper: (T) -> R,
     realmQueryBuilder: (Realm) -> RealmQuery<T>
-  ): Flowable<PagedList<R>> = deferFlowable {
-    val config = PagedList.Config.Builder().run {
-      setEnablePlaceholders(true)
+  ): Observable<PagedList<R>> = deferObservable {
+    val pagingConfig = pagingConfig {
+      setEnablePlaceholders(placeholders)
       setInitialLoadSizeHint(initialLoadSize)
       setPageSize(pageSize)
       setPrefetchDistance(prefetchDistance)
-      build()
     }
-    val realmExecutor = RealmExecutor()
-    val dataSourceFactory = RealmPagedDataSource.Factory(realmQueryBuilder)
-      .map { mapper(it) }
+    val realmPagedDataSourceFactory = RealmPagedDataSource.Factory(realmQueryBuilder)
+      .map { itemMapper(it) }
 
-    RxPagedListBuilder(dataSourceFactory, config)
+    val realmExecutor = RealmExecutor()
+
+    RxPagedListBuilder(realmPagedDataSourceFactory, pagingConfig)
       .run {
         setFetchScheduler(realmExecutor.toScheduler())
-        setNotifyScheduler(epoxyBgScheduler())
-      }.buildFlowable(BackpressureStrategy.LATEST)
+        setNotifyScheduler(notifyScheduler)
+      }.buildObservable()
       .doAfterTerminate { realmExecutor.stop() }
   }.subscribeOn(schedulerProvider.io)
 }

@@ -1,10 +1,8 @@
 package dev.arunkumar.android.epoxy
 
 import androidx.recyclerview.widget.ListUpdateCallback
-import com.airbnb.epoxy.DiffResult
-import com.airbnb.epoxy.EpoxyController
-import com.airbnb.epoxy.EpoxyModel
-import com.airbnb.epoxy.OnModelBuildFinishedListener
+import com.airbnb.epoxy.*
+import dev.arunkumar.android.rxschedulers.toScheduler
 import io.reactivex.Observable
 
 fun EpoxyController.buildEvents(): Observable<DiffResult> = Observable.create { emitter ->
@@ -45,3 +43,6 @@ fun DiffResult.on(
     }
   })
 }
+
+@Suppress("NOTHING_TO_INLINE")
+inline fun epoxyAsyncScheduler() = EpoxyAsyncUtil.getAsyncBackgroundHandler().toScheduler()

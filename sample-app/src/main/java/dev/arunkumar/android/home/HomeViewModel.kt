@@ -4,6 +4,7 @@ import com.afollestad.rxkprefs.RxkPrefs
 import com.afollestad.rxkprefs.rxjava.observe
 import com.babylon.orbit.LifecycleAction
 import com.babylon.orbit.OrbitViewModel
+import dev.arunkumar.android.epoxy.epoxyAsyncScheduler
 import dev.arunkumar.android.item.Item
 import dev.arunkumar.android.item.ItemsRepository
 import dev.arunkumar.android.item.ResetDbUseCase
@@ -49,9 +50,9 @@ constructor(
       eventObservable.flatMap {
         sortPreference.value.observe()
           .switchMap { sort ->
-            itemsRepository.pagedItems<Item> { realm ->
+            itemsRepository.pagedItems<Item>(notifyScheduler = epoxyAsyncScheduler()) { realm ->
               realm.where<Item>().let { if (sort) it.sort("name") else it }
-            }.toObservable().asResource()
+            }.asResource()
           }
       }
     }.reduce { currentState.copy(items = event) }
