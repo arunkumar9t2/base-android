@@ -57,12 +57,6 @@
       <scope>compile</scope>
     </dependency>
     <dependency>
-      <groupId>com.airbnb.android</groupId>
-      <artifactId>epoxy</artifactId>
-      <version>3.7.0</version>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
       <groupId>androidx.paging</groupId>
       <artifactId>paging-runtime-ktx</artifactId>
       <version>2.1.0</version>
