@@ -49,7 +49,7 @@ interface SimpleRealmSource<T : RealmObject> : RealmSource<T> {
     }
     val realmExecutor = RealmExecutor()
     val dataSourceFactory = RealmPagedDataSource.Factory(realmQueryBuilder)
-            .map { mapper(it) }
+      .map { mapper(it) }
 
     RxPagedListBuilder(dataSourceFactory, config)
       .run {

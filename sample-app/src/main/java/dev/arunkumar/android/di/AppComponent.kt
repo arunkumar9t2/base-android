@@ -8,8 +8,8 @@ import dagger.android.support.AndroidSupportInjectionModule
 import dev.arunkumar.android.AppSchedulersModule
 import dev.arunkumar.android.SampleApp
 import dev.arunkumar.android.dagger.viewmodel.DefaultViewModelsBuilder
-import dev.arunkumar.android.item.ItemsModule
 import dev.arunkumar.android.home.HomeActivity
+import dev.arunkumar.android.item.ItemsModule
 import dev.arunkumar.android.preferences.PreferenceModule
 import dev.arunkumar.android.util.work.SampleDaggerWorkerFactory
 import dev.arunkumar.android.util.work.SampleWorkerSubComponent
