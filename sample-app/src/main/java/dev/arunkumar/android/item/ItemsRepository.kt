@@ -43,7 +43,7 @@ constructor(
 
       if (realm.where<Item>().findAll().isEmpty()) {
         val newItems = mutableListOf<Item>().apply {
-          for (id in 1..1000) {
+          for (id in 1..MAX_ITEMS) {
             add(Item(id, name()))
           }
         }
@@ -66,5 +66,9 @@ constructor(
     realmTransaction { realm ->
       realm.where<Item>().findAll().deleteAllFromRealm()
     }
+  }
+
+  companion object {
+    private const val MAX_ITEMS = 30000
   }
 }
