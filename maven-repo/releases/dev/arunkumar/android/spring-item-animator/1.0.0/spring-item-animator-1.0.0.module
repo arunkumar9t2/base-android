@@ -11,7 +11,7 @@
   "createdBy": {
     "gradle": {
       "version": "6.3",
-      "buildId": "h3a6u3a6q5bmjdbhjcxatwn6fa"
+      "buildId": "swbrzwxdajcuji5kv6fh2frxim"
     }
   },
   "variants": [
@@ -43,11 +43,11 @@
         {
           "name": "spring-item-animator-1.0.0.aar",
           "url": "spring-item-animator-1.0.0.aar",
-          "size": 16325,
-          "sha512": "d5c7d243a0c9f6e0f4d954111abb85d5f172bdc28bafd7ec0d6bb8dbad7fa8a191010f9236f587cc95f19783b4c7f22aece27c513f0119d674826f0232a62eb8",
-          "sha256": "d63f2926383ab9838ba6e76281ad381014abc1cb892897f7be250ee3258c063f",
-          "sha1": "319360fdb3db0cad72eb272d0135b4bc533780d6",
-          "md5": "8a695ff94852a6f8154f77115c7e051c"
+          "size": 16321,
+          "sha512": "210a298d10e3b813290ada9e116bca90f59c4cfb8e2b2090751508cbb14f0546b2bbac8e42c4746d8324324a3df4e982ff51ad3dc961cd31f5d44b268770ac55",
+          "sha256": "e1da6323bb239b6b87e99c14a499865ff90c21de8b55643df9c6c2af61149b66",
+          "sha1": "f40f916a3ca0a02ff7045781b5b348a55282e8ab",
+          "md5": "7d5c46172314d267e04d7505e1e4fdae"
         }
       ]
     },
@@ -78,14 +78,14 @@
           "group": "org.jetbrains.kotlin",
           "module": "kotlin-android-extensions-runtime",
           "version": {
-            "requires": "1.3.71"
+            "requires": "1.3.72"
           }
         },
         {
           "group": "org.jetbrains.kotlin",
           "module": "kotlin-stdlib",
           "version": {
-            "requires": "1.3.71"
+            "requires": "1.3.72"
           }
         }
       ],
@@ -93,11 +93,11 @@
         {
           "name": "spring-item-animator-1.0.0.aar",
           "url": "spring-item-animator-1.0.0.aar",
-          "size": 16325,
-          "sha512": "d5c7d243a0c9f6e0f4d954111abb85d5f172bdc28bafd7ec0d6bb8dbad7fa8a191010f9236f587cc95f19783b4c7f22aece27c513f0119d674826f0232a62eb8",
-          "sha256": "d63f2926383ab9838ba6e76281ad381014abc1cb892897f7be250ee3258c063f",
-          "sha1": "319360fdb3db0cad72eb272d0135b4bc533780d6",
-          "md5": "8a695ff94852a6f8154f77115c7e051c"
+          "size": 16321,
+          "sha512": "210a298d10e3b813290ada9e116bca90f59c4cfb8e2b2090751508cbb14f0546b2bbac8e42c4746d8324324a3df4e982ff51ad3dc961cd31f5d44b268770ac55",
+          "sha256": "e1da6323bb239b6b87e99c14a499865ff90c21de8b55643df9c6c2af61149b66",
+          "sha1": "f40f916a3ca0a02ff7045781b5b348a55282e8ab",
+          "md5": "7d5c46172314d267e04d7505e1e4fdae"
         }
       ]
     }

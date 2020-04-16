@@ -1,0 +1,189 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "dev.arunkumar.android",
+    "module": "preferences",
+    "version": "master-SNAPSHOT",
+    "attributes": {
+      "org.gradle.status": "integration"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "6.3",
+      "buildId": "ge352i5pqna7lavvgkt2az7jaa"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "dev.arunkumar.android",
+          "module": "common",
+          "version": {
+            "requires": "master-SNAPSHOT"
+          }
+        },
+        {
+          "group": "dev.arunkumar.android",
+          "module": "epoxy-rx",
+          "version": {
+            "requires": "master-SNAPSHOT"
+          }
+        },
+        {
+          "group": "com.airbnb.android",
+          "module": "epoxy",
+          "version": {
+            "requires": "3.7.0"
+          }
+        },
+        {
+          "group": "com.afollestad.rxkprefs",
+          "module": "core",
+          "version": {
+            "requires": "2.0.3"
+          }
+        },
+        {
+          "group": "com.afollestad.rxkprefs",
+          "module": "rxjava",
+          "version": {
+            "requires": "2.0.3"
+          }
+        },
+        {
+          "group": "com.google.dagger",
+          "module": "dagger-android",
+          "version": {
+            "requires": "2.23.2"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "preferences-master-SNAPSHOT.aar",
+          "url": "preferences-master-SNAPSHOT.aar",
+          "size": 108108,
+          "sha512": "1a0e382f21c6f0cb97ef8330cae47e6b39ceafce97dd69b3b26a920f8a5de4284face27ff9abedd3e34bc20641906bee607e75b56e0c969aaa940b7d5a83e325",
+          "sha256": "8f259f654ad6c33edbc7f084b9426d9ccbe2f78de6bd506fb77bc6fb62ec4309",
+          "sha1": "f1afa201730322250a30a873945dfd455e4e3d43",
+          "md5": "0291895e52082df065db82a1ad83fa4c"
+        }
+      ]
+    },
+    {
+      "name": "releaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "dev.arunkumar.android",
+          "module": "common",
+          "version": {
+            "requires": "master-SNAPSHOT"
+          }
+        },
+        {
+          "group": "dev.arunkumar.android",
+          "module": "epoxy-rx",
+          "version": {
+            "requires": "master-SNAPSHOT"
+          }
+        },
+        {
+          "group": "com.airbnb.android",
+          "module": "epoxy",
+          "version": {
+            "requires": "3.7.0"
+          }
+        },
+        {
+          "group": "com.afollestad.rxkprefs",
+          "module": "core",
+          "version": {
+            "requires": "2.0.3"
+          }
+        },
+        {
+          "group": "com.afollestad.rxkprefs",
+          "module": "rxjava",
+          "version": {
+            "requires": "2.0.3"
+          }
+        },
+        {
+          "group": "com.google.dagger",
+          "module": "dagger-android",
+          "version": {
+            "requires": "2.23.2"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-android-extensions-runtime",
+          "version": {
+            "requires": "1.3.72"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "1.3.72"
+          }
+        },
+        {
+          "group": "com.google.android.material",
+          "module": "material",
+          "version": {
+            "requires": "1.2.0-alpha05"
+          }
+        },
+        {
+          "group": "androidx.appcompat",
+          "module": "appcompat",
+          "version": {
+            "requires": "1.1.0"
+          }
+        },
+        {
+          "group": "androidx.core",
+          "module": "core-ktx",
+          "version": {
+            "requires": "1.2.0"
+          }
+        },
+        {
+          "group": "androidx.constraintlayout",
+          "module": "constraintlayout",
+          "version": {
+            "requires": "1.1.3"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "preferences-master-SNAPSHOT.aar",
+          "url": "preferences-master-SNAPSHOT.aar",
+          "size": 108108,
+          "sha512": "1a0e382f21c6f0cb97ef8330cae47e6b39ceafce97dd69b3b26a920f8a5de4284face27ff9abedd3e34bc20641906bee607e75b56e0c969aaa940b7d5a83e325",
+          "sha256": "8f259f654ad6c33edbc7f084b9426d9ccbe2f78de6bd506fb77bc6fb62ec4309",
+          "sha1": "f1afa201730322250a30a873945dfd455e4e3d43",
+          "md5": "0291895e52082df065db82a1ad83fa4c"
+        }
+      ]
+    }
+  ]
+}
