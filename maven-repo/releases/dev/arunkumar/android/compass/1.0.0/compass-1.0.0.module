@@ -11,7 +11,7 @@
   "createdBy": {
     "gradle": {
       "version": "6.3",
-      "buildId": "swbrzwxdajcuji5kv6fh2frxim"
+      "buildId": "ydmlcnqif5eehn5ml4pnl73fsi"
     }
   },
   "variants": [
@@ -85,11 +85,11 @@
         {
           "name": "compass-1.0.0.aar",
           "url": "compass-1.0.0.aar",
-          "size": 50010,
-          "sha512": "efd26a0d208dde698d2d1d188136ae6a2b2c4038079ee058db0c303336a1d344e87b7d07527dbc0bd7f4c3c227979c796557a5a68c58692e65b4e8609f7e83dd",
-          "sha256": "b2df09d38ead1c8fad58ef7c088df8c6d73462ec4a7a96f5e9bb0032b419736c",
-          "sha1": "e932a30833c0469e8ba1c8197e5c7fd67810dc73",
-          "md5": "43106be166f8834e666b9bd8fd43875e"
+          "size": 67823,
+          "sha512": "cba4acd735d67b5b87b3312f9dd1f975348c35e0495408123e036ed5288364bca44738216addd06a5ea5bb9aab45251501cd35732b453d1787dd9a752c56d36e",
+          "sha256": "fa565148649cf04aca9d9c0c2f9cd8de220fac210ab5e171d021a179f03d84d5",
+          "sha1": "0ed1a55ed98b5f4b68abe7d75ce5a17deda892f7",
+          "md5": "a200e791f066be1ea3b093f1f916a864"
         }
       ]
     },
@@ -170,11 +170,11 @@
         {
           "name": "compass-1.0.0.aar",
           "url": "compass-1.0.0.aar",
-          "size": 50010,
-          "sha512": "efd26a0d208dde698d2d1d188136ae6a2b2c4038079ee058db0c303336a1d344e87b7d07527dbc0bd7f4c3c227979c796557a5a68c58692e65b4e8609f7e83dd",
-          "sha256": "b2df09d38ead1c8fad58ef7c088df8c6d73462ec4a7a96f5e9bb0032b419736c",
-          "sha1": "e932a30833c0469e8ba1c8197e5c7fd67810dc73",
-          "md5": "43106be166f8834e666b9bd8fd43875e"
+          "size": 67823,
+          "sha512": "cba4acd735d67b5b87b3312f9dd1f975348c35e0495408123e036ed5288364bca44738216addd06a5ea5bb9aab45251501cd35732b453d1787dd9a752c56d36e",
+          "sha256": "fa565148649cf04aca9d9c0c2f9cd8de220fac210ab5e171d021a179f03d84d5",
+          "sha1": "0ed1a55ed98b5f4b68abe7d75ce5a17deda892f7",
+          "md5": "a200e791f066be1ea3b093f1f916a864"
         }
       ]
     }
