@@ -6,7 +6,7 @@ import dev.arunkumar.android.realm.threading.RealmSchedulers
 import dev.arunkumar.android.rx.createObservable
 import io.reactivex.Observable
 import io.realm.Realm
-import io.realm.RealmObject
+import io.realm.RealmModel
 import io.realm.RealmQuery
 
 typealias RealmBlock = (Realm) -> Unit
@@ -31,7 +31,7 @@ inline fun realmTransaction(noinline action: RealmBlock) {
   realm.close()
 }
 
-fun <T : RealmObject> realmObservable(
+fun <T : RealmModel> realmObservable(
   tag: String? = null,
   realmQuery: (Realm) -> RealmQuery<T>
 ): Observable<List<T>> {

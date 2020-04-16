@@ -2,6 +2,8 @@ package dev.arunkumar.android.realm
 
 import androidx.paging.PagedList
 import androidx.paging.RxPagedListBuilder
+import dev.arunkumar.android.realm.paging.RealmPagedDataSource
+import dev.arunkumar.android.realm.paging.RealmTiledDataSource
 import dev.arunkumar.android.realm.paging.pagingConfig
 import dev.arunkumar.android.realm.threading.RealmExecutor
 import dev.arunkumar.android.rx.deferObservable
@@ -10,13 +12,13 @@ import dev.arunkumar.android.rxschedulers.toScheduler
 import io.reactivex.Observable
 import io.reactivex.Scheduler
 import io.realm.Realm
-import io.realm.RealmObject
+import io.realm.RealmModel
 import io.realm.RealmQuery
 
 /**
- * Common abstractions for a [RealmObject] providing paging lib support to Realm objects
+ * Common abstractions for a [RealmModel] providing paging lib support to Realm objects
  */
-interface RealmSource<T : RealmObject> {
+interface RealmSource<T : RealmModel> {
 
   val schedulerProvider: SchedulerProvider
 
@@ -33,7 +35,38 @@ interface RealmSource<T : RealmObject> {
 
 }
 
-interface SimpleRealmSource<T : RealmObject> : RealmSource<T> {
+interface TiledRealmSource<T : RealmModel> : RealmSource<T> {
+
+  override fun <R> pagedItems(
+    initialLoadSize: Int,
+    pageSize: Int,
+    prefetchDistance: Int,
+    placeholders: Boolean,
+    notifyScheduler: Scheduler,
+    itemMapper: (T) -> R,
+    realmQueryBuilder: (Realm) -> RealmQuery<T>
+  ): Observable<PagedList<R>> = deferObservable {
+    val pagingConfig = pagingConfig {
+      setEnablePlaceholders(placeholders)
+      setInitialLoadSizeHint(initialLoadSize)
+      setPageSize(pageSize)
+      setPrefetchDistance(prefetchDistance)
+    }
+    val realmTiledDataSourceFactory = RealmTiledDataSource.Factory(realmQueryBuilder)
+      .map { itemMapper(it) }
+
+    val realmExecutor = RealmExecutor()
+
+    RxPagedListBuilder(realmTiledDataSourceFactory, pagingConfig)
+      .run {
+        setFetchScheduler(realmExecutor.toScheduler())
+        setNotifyScheduler(notifyScheduler)
+      }.buildObservable()
+      .doAfterTerminate { realmExecutor.stop() }
+  }.subscribeOn(schedulerProvider.io)
+}
+
+interface PagedRealmSource<T : RealmModel> : RealmSource<T> {
 
   override fun <R> pagedItems(
     initialLoadSize: Int,

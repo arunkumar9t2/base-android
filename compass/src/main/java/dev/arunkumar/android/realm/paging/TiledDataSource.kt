@@ -1,4 +1,4 @@
-package dev.arunkumar.android.realm
+package dev.arunkumar.android.realm.paging
 
 import androidx.paging.PositionalDataSource
 
