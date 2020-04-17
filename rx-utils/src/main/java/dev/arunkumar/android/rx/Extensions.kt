@@ -18,6 +18,10 @@ inline fun <T> createObservable(crossinline creator: ObservableEmitter<T>.() -> 
   return Observable.create { emitter -> creator(emitter) }
 }
 
+inline fun <T> observableConcat(vararg observables: Observable<T>): Observable<T> {
+  return Observable.concatArray(*observables)
+}
+
 inline fun completable(noinline action: () -> Unit): Completable = Completable.fromAction(action)
 
 inline fun <T> deferFlowable(noinline block: () -> Flowable<T>): Flowable<T> = Flowable.defer(block)
