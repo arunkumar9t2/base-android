@@ -1,0 +1,105 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "dev.arunkumar.android",
+    "module": "spring-item-animator",
+    "version": "master-SNAPSHOT",
+    "attributes": {
+      "org.gradle.status": "integration"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "6.3",
+      "buildId": "nwh3j2p57vbxtb5rkhfznckfl4"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.recyclerview",
+          "module": "recyclerview",
+          "version": {
+            "requires": "1.0.0"
+          }
+        },
+        {
+          "group": "androidx.dynamicanimation",
+          "module": "dynamicanimation",
+          "version": {
+            "requires": "1.0.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "spring-item-animator-master-SNAPSHOT.aar",
+          "url": "spring-item-animator-master-SNAPSHOT.aar",
+          "size": 16321,
+          "sha512": "210a298d10e3b813290ada9e116bca90f59c4cfb8e2b2090751508cbb14f0546b2bbac8e42c4746d8324324a3df4e982ff51ad3dc961cd31f5d44b268770ac55",
+          "sha256": "e1da6323bb239b6b87e99c14a499865ff90c21de8b55643df9c6c2af61149b66",
+          "sha1": "f40f916a3ca0a02ff7045781b5b348a55282e8ab",
+          "md5": "7d5c46172314d267e04d7505e1e4fdae"
+        }
+      ]
+    },
+    {
+      "name": "releaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.recyclerview",
+          "module": "recyclerview",
+          "version": {
+            "requires": "1.0.0"
+          }
+        },
+        {
+          "group": "androidx.dynamicanimation",
+          "module": "dynamicanimation",
+          "version": {
+            "requires": "1.0.0"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-android-extensions-runtime",
+          "version": {
+            "requires": "1.3.72"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "1.3.72"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "spring-item-animator-master-SNAPSHOT.aar",
+          "url": "spring-item-animator-master-SNAPSHOT.aar",
+          "size": 16321,
+          "sha512": "210a298d10e3b813290ada9e116bca90f59c4cfb8e2b2090751508cbb14f0546b2bbac8e42c4746d8324324a3df4e982ff51ad3dc961cd31f5d44b268770ac55",
+          "sha256": "e1da6323bb239b6b87e99c14a499865ff90c21de8b55643df9c6c2af61149b66",
+          "sha1": "f40f916a3ca0a02ff7045781b5b348a55282e8ab",
+          "md5": "7d5c46172314d267e04d7505e1e4fdae"
+        }
+      ]
+    }
+  ]
+}
