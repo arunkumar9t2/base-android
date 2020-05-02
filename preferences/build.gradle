@@ -29,6 +29,7 @@ dependencies {
   implementation deps.androidXAppCompat
   implementation deps.androidXCoreKtx
   implementation deps.constraintLayout
+  api deps.androidXPreferences
 
   api deps.rxKPrefsCore
   api deps.rxKPrefsRx
