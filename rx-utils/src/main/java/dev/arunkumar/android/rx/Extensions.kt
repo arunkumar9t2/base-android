@@ -2,10 +2,7 @@
 
 package dev.arunkumar.android.rx
 
-import io.reactivex.Completable
-import io.reactivex.Flowable
-import io.reactivex.Observable
-import io.reactivex.ObservableEmitter
+import io.reactivex.*
 
 /** Observable extensions **/
 inline fun <T> deferObservable(noinline block: () -> Observable<T>): Observable<T> =
@@ -22,6 +19,22 @@ inline fun <T> observableConcat(vararg observables: Observable<T>): Observable<T
   return Observable.concatArray(*observables)
 }
 
+/** Observable extensions - end **/
+
+/** Flowable extensions **/
+inline fun <T> deferFlowable(noinline block: () -> Flowable<T>): Flowable<T> = Flowable.defer(block)
+
+/** Flowable extensions - end **/
+
+
+/** Completable extensions **/
 inline fun completable(noinline action: () -> Unit): Completable = Completable.fromAction(action)
 
-inline fun <T> deferFlowable(noinline block: () -> Flowable<T>): Flowable<T> = Flowable.defer(block)
+/** Completable extensions - end **/
+
+/** Single extensions **/
+inline fun <T> createSingle(crossinline creator: SingleEmitter<T>.() -> Unit): Single<T> {
+  return Single.create { emitter -> creator(emitter) }
+}
+
+/** Single extensions - end **/
