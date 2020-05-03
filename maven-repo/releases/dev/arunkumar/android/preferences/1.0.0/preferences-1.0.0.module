@@ -11,7 +11,7 @@
   "createdBy": {
     "gradle": {
       "version": "6.3",
-      "buildId": "xxk3e53sovd2jdrg3n3etkzj4i"
+      "buildId": "bqfb2pg33jchncbap375hsdj74"
     }
   },
   "variants": [
@@ -46,6 +46,13 @@
           }
         },
         {
+          "group": "androidx.preference",
+          "module": "preference-ktx",
+          "version": {
+            "requires": "1.1.1"
+          }
+        },
+        {
           "group": "com.afollestad.rxkprefs",
           "module": "core",
           "version": {
@@ -71,11 +78,11 @@
         {
           "name": "preferences-1.0.0.aar",
           "url": "preferences-1.0.0.aar",
-          "size": 108108,
-          "sha512": "8b49bd00c80f60665a221e03420c4c3067a415fffe6f9e41f4eac2ad78790b5c52542cd279af579e71a192663502f8d1751653be46d29074e437c8d74bc01b9a",
-          "sha256": "c1bf3fcecf19465ac82b47bcd45200e32037dabbc44f95d846083c3c5137674a",
-          "sha1": "2e9b730abc9529e05617d8c9f87d1425505a1709",
-          "md5": "ca33c483f5b63437c867c76ec944991c"
+          "size": 115673,
+          "sha512": "6a04ec66873841e8fd3fb8affac6bc04f7b76f89a021c0a679c9bccfbeb7eaab1d2eb6986006a280db90df89820bcc4b4b5adbcfefaaf33f4cade3e0d982d810",
+          "sha256": "7ae0d2841dc10f68c3eabe3d2f45e4c2203740cc65087dca1c949cb3b4001b5c",
+          "sha1": "47e18dc5e048ad0ae0aef45e0b14806e2e6b4238",
+          "md5": "ee6d0e0ed430c32e2d2d739a8208b043"
         }
       ]
     },
@@ -107,6 +114,13 @@
           "module": "epoxy",
           "version": {
             "requires": "3.7.0"
+          }
+        },
+        {
+          "group": "androidx.preference",
+          "module": "preference-ktx",
+          "version": {
+            "requires": "1.1.1"
           }
         },
         {
@@ -177,11 +191,11 @@
         {
           "name": "preferences-1.0.0.aar",
           "url": "preferences-1.0.0.aar",
-          "size": 108108,
-          "sha512": "8b49bd00c80f60665a221e03420c4c3067a415fffe6f9e41f4eac2ad78790b5c52542cd279af579e71a192663502f8d1751653be46d29074e437c8d74bc01b9a",
-          "sha256": "c1bf3fcecf19465ac82b47bcd45200e32037dabbc44f95d846083c3c5137674a",
-          "sha1": "2e9b730abc9529e05617d8c9f87d1425505a1709",
-          "md5": "ca33c483f5b63437c867c76ec944991c"
+          "size": 115673,
+          "sha512": "6a04ec66873841e8fd3fb8affac6bc04f7b76f89a021c0a679c9bccfbeb7eaab1d2eb6986006a280db90df89820bcc4b4b5adbcfefaaf33f4cade3e0d982d810",
+          "sha256": "7ae0d2841dc10f68c3eabe3d2f45e4c2203740cc65087dca1c949cb3b4001b5c",
+          "sha1": "47e18dc5e048ad0ae0aef45e0b14806e2e6b4238",
+          "md5": "ee6d0e0ed430c32e2d2d739a8208b043"
         }
       ]
     }
