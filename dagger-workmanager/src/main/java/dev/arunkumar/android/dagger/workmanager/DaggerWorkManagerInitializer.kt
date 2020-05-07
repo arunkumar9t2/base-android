@@ -14,6 +14,8 @@ class DaggerWorkManagerInitializer
 @Inject
 constructor(private val workerFactory: WorkerFactory) : AppInitializer {
 
+  override val priority: Int = 0
+
   private fun workManagerConfig(block: Configuration.Builder.() -> Unit): Configuration {
     return Configuration.Builder().apply(block).build()
   }
