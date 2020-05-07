@@ -1,0 +1,133 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "dev.arunkumar.android",
+    "module": "epoxy-rx",
+    "version": "master-SNAPSHOT",
+    "attributes": {
+      "org.gradle.status": "integration"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "6.3",
+      "buildId": "iado6bxwdbfwjkci6bmrburf2i"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "dev.arunkumar.android",
+          "module": "common",
+          "version": {
+            "requires": "master-SNAPSHOT"
+          }
+        },
+        {
+          "group": "dev.arunkumar.android",
+          "module": "epoxy-utils",
+          "version": {
+            "requires": "master-SNAPSHOT"
+          }
+        },
+        {
+          "group": "dev.arunkumar.android",
+          "module": "rx-utils",
+          "version": {
+            "requires": "master-SNAPSHOT"
+          }
+        },
+        {
+          "group": "com.airbnb.android",
+          "module": "epoxy",
+          "version": {
+            "requires": "3.7.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "epoxy-rx-master-SNAPSHOT.aar",
+          "url": "epoxy-rx-master-SNAPSHOT.aar",
+          "size": 33991,
+          "sha512": "c91543a804d56fccc8f20edbb3b200af41a53554570c4dbeccad1cee2adbe566674c27e15fc169509bfca2db7f64908cdd83c8cdc8b8cc4aa3a2f4bd45c03d63",
+          "sha256": "6f5519a0036518c684664dc82aa642b4322818c3612b9e6c001a2c402ca8a3af",
+          "sha1": "fccba0f6030b51262733eb8ec39a734361cd7188",
+          "md5": "3397340f48c525e8dc172328a8fe14bd"
+        }
+      ]
+    },
+    {
+      "name": "releaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "dev.arunkumar.android",
+          "module": "common",
+          "version": {
+            "requires": "master-SNAPSHOT"
+          }
+        },
+        {
+          "group": "dev.arunkumar.android",
+          "module": "epoxy-utils",
+          "version": {
+            "requires": "master-SNAPSHOT"
+          }
+        },
+        {
+          "group": "dev.arunkumar.android",
+          "module": "rx-utils",
+          "version": {
+            "requires": "master-SNAPSHOT"
+          }
+        },
+        {
+          "group": "com.airbnb.android",
+          "module": "epoxy",
+          "version": {
+            "requires": "3.7.0"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-android-extensions-runtime",
+          "version": {
+            "requires": "1.3.72"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "1.3.72"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "epoxy-rx-master-SNAPSHOT.aar",
+          "url": "epoxy-rx-master-SNAPSHOT.aar",
+          "size": 33991,
+          "sha512": "c91543a804d56fccc8f20edbb3b200af41a53554570c4dbeccad1cee2adbe566674c27e15fc169509bfca2db7f64908cdd83c8cdc8b8cc4aa3a2f4bd45c03d63",
+          "sha256": "6f5519a0036518c684664dc82aa642b4322818c3612b9e6c001a2c402ca8a3af",
+          "sha1": "fccba0f6030b51262733eb8ec39a734361cd7188",
+          "md5": "3397340f48c525e8dc172328a8fe14bd"
+        }
+      ]
+    }
+  ]
+}

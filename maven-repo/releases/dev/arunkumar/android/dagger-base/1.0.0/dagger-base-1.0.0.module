@@ -11,7 +11,7 @@
   "createdBy": {
     "gradle": {
       "version": "6.3",
-      "buildId": "bqfb2pg33jchncbap375hsdj74"
+      "buildId": "3xysn66g7jd7djz4y43z2ovgeq"
     }
   },
   "variants": [
@@ -43,11 +43,11 @@
         {
           "name": "dagger-base-1.0.0.aar",
           "url": "dagger-base-1.0.0.aar",
-          "size": 14887,
-          "sha512": "bcb1c8f2d31c376115456c3c994499e0c99936427dc41ca569e812022b3c2797783de63d9572c73dbc9141281eb5772afc4f516c65ef5b665b170cc052bb2afd",
-          "sha256": "5513e68f58260791ac5a8433bccbb1b6f1580ef5559a3205ef59fed217f373da",
-          "sha1": "65834a4af384c41f78f08d7c2cc3e5c9465148b1",
-          "md5": "5be3e58f83beb2ea361947df275bb20e"
+          "size": 15697,
+          "sha512": "5314497ea4c4a01b52a00fb1c11711ac0fb83b4ccc0032a1d8a04d66e0297ae947c92db99549142fe13d289b2eece427313608dcafd0ae9544318fa5b99984e9",
+          "sha256": "5a28f008b6fc444add2bc20b09ff7136fa12ea5eb83e71a3238abd9570c06b07",
+          "sha1": "0dbb9d4dea8a8e744ba37279d46ea7933f777b80",
+          "md5": "251652d7cd6e56a0dbb2df32d4db2990"
         }
       ]
     },
@@ -93,11 +93,11 @@
         {
           "name": "dagger-base-1.0.0.aar",
           "url": "dagger-base-1.0.0.aar",
-          "size": 14887,
-          "sha512": "bcb1c8f2d31c376115456c3c994499e0c99936427dc41ca569e812022b3c2797783de63d9572c73dbc9141281eb5772afc4f516c65ef5b665b170cc052bb2afd",
-          "sha256": "5513e68f58260791ac5a8433bccbb1b6f1580ef5559a3205ef59fed217f373da",
-          "sha1": "65834a4af384c41f78f08d7c2cc3e5c9465148b1",
-          "md5": "5be3e58f83beb2ea361947df275bb20e"
+          "size": 15697,
+          "sha512": "5314497ea4c4a01b52a00fb1c11711ac0fb83b4ccc0032a1d8a04d66e0297ae947c92db99549142fe13d289b2eece427313608dcafd0ae9544318fa5b99984e9",
+          "sha256": "5a28f008b6fc444add2bc20b09ff7136fa12ea5eb83e71a3238abd9570c06b07",
+          "sha1": "0dbb9d4dea8a8e744ba37279d46ea7933f777b80",
+          "md5": "251652d7cd6e56a0dbb2df32d4db2990"
         }
       ]
     }
