@@ -17,7 +17,7 @@ plugins {
 
 scabbard {
   enabled true
-  fullBindingGraphValidation false
+  fullBindingGraphValidation true
   outputFormat "svg"
 }
 
