@@ -12,7 +12,7 @@ buildscript {
 }
 
 plugins {
-  id "scabbard.gradle" version "0.2.0"
+  id "scabbard.gradle" version "0.4.0"
 }
 
 scabbard {
@@ -26,13 +26,13 @@ apply from: "docker/resolve-dependencies.gradle"
 
 allprojects { project ->
   group = groupId
-  def repoUrl = "https://raw.github.com/arunkumar9t2/base-android/master/maven-repo/"
+  def repoUrl = "https://raw.github.com/arunkumar9t2/base-android/master/maven-repo"
 
   repositories {
     google()
     jcenter()
     maven {
-      url "${repoUrl}releases"
+      url "${repoUrl}/releases"
       mavenContent {
         releasesOnly()
       }
@@ -41,7 +41,7 @@ allprojects { project ->
       }
     }
     maven {
-      url "${repoUrl}snapshots"
+      url "${repoUrl}/snapshots"
       mavenContent {
         snapshotsOnly()
       }

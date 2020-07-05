@@ -59,6 +59,16 @@ android {
     }
   }
 
+  buildTypes.all { buildType ->
+    buildType
+        .javaCompileOptions
+        .annotationProcessorOptions
+        .arguments = [
+        logEpoxyTimings              : "true",
+        enableParallelEpoxyProcessing: "true"
+    ]
+  }
+
   flavorDimensions "dep"
 
   productFlavors {
