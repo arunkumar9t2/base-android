@@ -27,7 +27,7 @@ constructor(
       sortPreferenceId,
       "Sort items"
     ).apply {
-      value = rxkPrefs.boolean(sortPreferenceId)
+      value = rxkPrefs.boolean(sortPreferenceId, true)
     }
   }
 
@@ -37,7 +37,7 @@ constructor(
       headerPreferenceId,
       "Show headers"
     ).apply {
-      value = rxkPrefs.boolean(headerPreferenceId)
+      value = rxkPrefs.boolean(headerPreferenceId, false)
     }
   }
 
