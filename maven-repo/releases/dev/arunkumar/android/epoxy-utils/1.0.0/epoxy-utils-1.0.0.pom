@@ -35,7 +35,7 @@
     <dependency>
       <groupId>com.airbnb.android</groupId>
       <artifactId>epoxy</artifactId>
-      <version>3.7.0</version>
+      <version>4.0.0-beta4</version>
       <scope>compile</scope>
     </dependency>
     <dependency>

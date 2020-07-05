@@ -11,7 +11,7 @@
   "createdBy": {
     "gradle": {
       "version": "6.3",
-      "buildId": "dt5lnliqerfrresoqrdnovhsda"
+      "buildId": "x4mfbbcdrvdo5a2wp5edi3dnau"
     }
   },
   "variants": [
@@ -28,14 +28,14 @@
           "group": "com.google.dagger",
           "module": "dagger-android",
           "version": {
-            "requires": "2.23.2"
+            "requires": "2.28"
           }
         },
         {
           "group": "com.google.dagger",
           "module": "dagger-android-support",
           "version": {
-            "requires": "2.23.2"
+            "requires": "2.28"
           }
         }
       ],
@@ -43,11 +43,11 @@
         {
           "name": "dagger-base-1.0.0.aar",
           "url": "dagger-base-1.0.0.aar",
-          "size": 15697,
-          "sha512": "5314497ea4c4a01b52a00fb1c11711ac0fb83b4ccc0032a1d8a04d66e0297ae947c92db99549142fe13d289b2eece427313608dcafd0ae9544318fa5b99984e9",
-          "sha256": "5a28f008b6fc444add2bc20b09ff7136fa12ea5eb83e71a3238abd9570c06b07",
-          "sha1": "0dbb9d4dea8a8e744ba37279d46ea7933f777b80",
-          "md5": "251652d7cd6e56a0dbb2df32d4db2990"
+          "size": 15868,
+          "sha512": "286a3bce75e786b4b377da689ba2ba5b85f5997d5486e2b2af225a19df3af215bd7162dedee1b5fead77aebe662c4d2345f11abe38463326aaa41af9d0df9a2d",
+          "sha256": "e9944cedda920d93fa4cd2accb292ab2500c6559e239f18e44987b57893a5ae5",
+          "sha1": "82ace247bf7e777ce37d0ea6f8bd70276ba79295",
+          "md5": "84c0952433d2a9313cf9d02a9a2dc995"
         }
       ]
     },
@@ -64,14 +64,14 @@
           "group": "com.google.dagger",
           "module": "dagger-android",
           "version": {
-            "requires": "2.23.2"
+            "requires": "2.28"
           }
         },
         {
           "group": "com.google.dagger",
           "module": "dagger-android-support",
           "version": {
-            "requires": "2.23.2"
+            "requires": "2.28"
           }
         },
         {
@@ -93,11 +93,11 @@
         {
           "name": "dagger-base-1.0.0.aar",
           "url": "dagger-base-1.0.0.aar",
-          "size": 15697,
-          "sha512": "5314497ea4c4a01b52a00fb1c11711ac0fb83b4ccc0032a1d8a04d66e0297ae947c92db99549142fe13d289b2eece427313608dcafd0ae9544318fa5b99984e9",
-          "sha256": "5a28f008b6fc444add2bc20b09ff7136fa12ea5eb83e71a3238abd9570c06b07",
-          "sha1": "0dbb9d4dea8a8e744ba37279d46ea7933f777b80",
-          "md5": "251652d7cd6e56a0dbb2df32d4db2990"
+          "size": 15868,
+          "sha512": "286a3bce75e786b4b377da689ba2ba5b85f5997d5486e2b2af225a19df3af215bd7162dedee1b5fead77aebe662c4d2345f11abe38463326aaa41af9d0df9a2d",
+          "sha256": "e9944cedda920d93fa4cd2accb292ab2500c6559e239f18e44987b57893a5ae5",
+          "sha1": "82ace247bf7e777ce37d0ea6f8bd70276ba79295",
+          "md5": "84c0952433d2a9313cf9d02a9a2dc995"
         }
       ]
     }

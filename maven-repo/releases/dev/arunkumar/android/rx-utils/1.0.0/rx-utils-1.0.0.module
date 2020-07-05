@@ -11,7 +11,7 @@
   "createdBy": {
     "gradle": {
       "version": "6.3",
-      "buildId": "dt5lnliqerfrresoqrdnovhsda"
+      "buildId": "x4mfbbcdrvdo5a2wp5edi3dnau"
     }
   },
   "variants": [
@@ -77,14 +77,14 @@
           "group": "com.google.dagger",
           "module": "dagger-android",
           "version": {
-            "requires": "2.23.2"
+            "requires": "2.28"
           }
         },
         {
           "group": "com.google.dagger",
           "module": "dagger-android-support",
           "version": {
-            "requires": "2.23.2"
+            "requires": "2.28"
           }
         }
       ],
@@ -92,11 +92,11 @@
         {
           "name": "rx-utils-1.0.0.aar",
           "url": "rx-utils-1.0.0.aar",
-          "size": 35345,
-          "sha512": "3d49049cedd96e2115067e0c1e2000230a47624fcb44e9581001d25e9d13bcb7c75429c2c75605b6c7d33edcf2b2e894926770a688956f9e90c5679705741047",
-          "sha256": "bddd0f8552db162b51e4313707cf3376aece35bd2783e773f9b5598f2986b9a5",
-          "sha1": "bac1a8750bf2232baffff46532f7e0b0d4844c2c",
-          "md5": "92d9bf6e74847516a00e6782845934c1"
+          "size": 36703,
+          "sha512": "4ddcdfb63b6db75a05bc3c4016269e4a4d3a69a60784cf190cbb8d43f588079b103f7c322e67169816ab327b4c4a1d236be8c68288c68f5bf0d78fb1467616a5",
+          "sha256": "0d3cc6d4da4491ef7c18a5289221827be07ed6e8c95094f8046a1435d0ab9392",
+          "sha1": "1462148dec1467d15a329b3ac320f704123f1c86",
+          "md5": "2ae44038abbd5265c9ec87761e0caeb7"
         }
       ]
     },
@@ -162,14 +162,14 @@
           "group": "com.google.dagger",
           "module": "dagger-android",
           "version": {
-            "requires": "2.23.2"
+            "requires": "2.28"
           }
         },
         {
           "group": "com.google.dagger",
           "module": "dagger-android-support",
           "version": {
-            "requires": "2.23.2"
+            "requires": "2.28"
           }
         },
         {
@@ -191,11 +191,11 @@
         {
           "name": "rx-utils-1.0.0.aar",
           "url": "rx-utils-1.0.0.aar",
-          "size": 35345,
-          "sha512": "3d49049cedd96e2115067e0c1e2000230a47624fcb44e9581001d25e9d13bcb7c75429c2c75605b6c7d33edcf2b2e894926770a688956f9e90c5679705741047",
-          "sha256": "bddd0f8552db162b51e4313707cf3376aece35bd2783e773f9b5598f2986b9a5",
-          "sha1": "bac1a8750bf2232baffff46532f7e0b0d4844c2c",
-          "md5": "92d9bf6e74847516a00e6782845934c1"
+          "size": 36703,
+          "sha512": "4ddcdfb63b6db75a05bc3c4016269e4a4d3a69a60784cf190cbb8d43f588079b103f7c322e67169816ab327b4c4a1d236be8c68288c68f5bf0d78fb1467616a5",
+          "sha256": "0d3cc6d4da4491ef7c18a5289221827be07ed6e8c95094f8046a1435d0ab9392",
+          "sha1": "1462148dec1467d15a329b3ac320f704123f1c86",
+          "md5": "2ae44038abbd5265c9ec87761e0caeb7"
         }
       ]
     }

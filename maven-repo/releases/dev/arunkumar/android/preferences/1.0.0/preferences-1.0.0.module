@@ -11,7 +11,7 @@
   "createdBy": {
     "gradle": {
       "version": "6.3",
-      "buildId": "dt5lnliqerfrresoqrdnovhsda"
+      "buildId": "x4mfbbcdrvdo5a2wp5edi3dnau"
     }
   },
   "variants": [
@@ -42,7 +42,7 @@
           "group": "com.airbnb.android",
           "module": "epoxy",
           "version": {
-            "requires": "3.7.0"
+            "requires": "4.0.0-beta4"
           }
         },
         {
@@ -70,7 +70,7 @@
           "group": "com.google.dagger",
           "module": "dagger-android",
           "version": {
-            "requires": "2.23.2"
+            "requires": "2.28"
           }
         }
       ],
@@ -78,11 +78,11 @@
         {
           "name": "preferences-1.0.0.aar",
           "url": "preferences-1.0.0.aar",
-          "size": 115673,
-          "sha512": "6a04ec66873841e8fd3fb8affac6bc04f7b76f89a021c0a679c9bccfbeb7eaab1d2eb6986006a280db90df89820bcc4b4b5adbcfefaaf33f4cade3e0d982d810",
-          "sha256": "7ae0d2841dc10f68c3eabe3d2f45e4c2203740cc65087dca1c949cb3b4001b5c",
-          "sha1": "47e18dc5e048ad0ae0aef45e0b14806e2e6b4238",
-          "md5": "ee6d0e0ed430c32e2d2d739a8208b043"
+          "size": 115327,
+          "sha512": "c2fdc770d60824d52fbd00e7e93efb622de7dbc1e40c3d42cac440e2eab8b185de28bad6e82cc537d4a6bb46b27194839ae9a4ece560beae418f542db4f3c560",
+          "sha256": "8b60fa86a41151e4ef91bb93b30e308b63282e04aa7c6704c9649d412ea1ebd5",
+          "sha1": "0c1826eab2614301edf539abb3c809c24ccfb626",
+          "md5": "1d64dd6df133800220e10c7f9941b669"
         }
       ]
     },
@@ -113,7 +113,7 @@
           "group": "com.airbnb.android",
           "module": "epoxy",
           "version": {
-            "requires": "3.7.0"
+            "requires": "4.0.0-beta4"
           }
         },
         {
@@ -141,7 +141,7 @@
           "group": "com.google.dagger",
           "module": "dagger-android",
           "version": {
-            "requires": "2.23.2"
+            "requires": "2.28"
           }
         },
         {
@@ -191,11 +191,11 @@
         {
           "name": "preferences-1.0.0.aar",
           "url": "preferences-1.0.0.aar",
-          "size": 115673,
-          "sha512": "6a04ec66873841e8fd3fb8affac6bc04f7b76f89a021c0a679c9bccfbeb7eaab1d2eb6986006a280db90df89820bcc4b4b5adbcfefaaf33f4cade3e0d982d810",
-          "sha256": "7ae0d2841dc10f68c3eabe3d2f45e4c2203740cc65087dca1c949cb3b4001b5c",
-          "sha1": "47e18dc5e048ad0ae0aef45e0b14806e2e6b4238",
-          "md5": "ee6d0e0ed430c32e2d2d739a8208b043"
+          "size": 115327,
+          "sha512": "c2fdc770d60824d52fbd00e7e93efb622de7dbc1e40c3d42cac440e2eab8b185de28bad6e82cc537d4a6bb46b27194839ae9a4ece560beae418f542db4f3c560",
+          "sha256": "8b60fa86a41151e4ef91bb93b30e308b63282e04aa7c6704c9649d412ea1ebd5",
+          "sha1": "0c1826eab2614301edf539abb3c809c24ccfb626",
+          "md5": "1d64dd6df133800220e10c7f9941b669"
         }
       ]
     }

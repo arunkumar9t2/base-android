@@ -11,7 +11,7 @@
   "createdBy": {
     "gradle": {
       "version": "6.3",
-      "buildId": "dt5lnliqerfrresoqrdnovhsda"
+      "buildId": "x4mfbbcdrvdo5a2wp5edi3dnau"
     }
   },
   "variants": [
@@ -35,14 +35,14 @@
           "group": "com.google.dagger",
           "module": "dagger-android",
           "version": {
-            "requires": "2.23.2"
+            "requires": "2.28"
           }
         },
         {
           "group": "com.google.dagger",
           "module": "dagger-android-support",
           "version": {
-            "requires": "2.23.2"
+            "requires": "2.28"
           }
         }
       ],
@@ -50,11 +50,11 @@
         {
           "name": "dagger-viewmodel-1.0.0.aar",
           "url": "dagger-viewmodel-1.0.0.aar",
-          "size": 25831,
-          "sha512": "a395829f89642233c21f547b50dfcdc3f3505fe1c3e0a2ceec9fbbb93b60d4bcdcea69fbf7bf148230d839a357a9b323efdc114211233a1714bf4a2e3eb48fc4",
-          "sha256": "a930622ff1613bfadbcd79d0e906997f779b91a243f65259572e74c7e65d99fc",
-          "sha1": "77a9e591839b4834ec98f72df1eeb6e3db0f59cc",
-          "md5": "d03dc8f17c26738c7104546b9bd1404e"
+          "size": 25875,
+          "sha512": "42594fd7896b2f1c72d1ee02c0736e5f59f8a993574bdb28956375aae1c5a48b1aac1f30e52290db4ed714967ae6b7877d5058a7e6c445ad2db849dfefae4ee2",
+          "sha256": "f49d6c4527587ab311171422d61453e31885f9ef4a07ad3460ef296f6175ffa5",
+          "sha1": "9f24f03901139896ffa1f80ee5cd99e472771c1c",
+          "md5": "ad537f209f174b274eec0c357d822d84"
         }
       ]
     },
@@ -78,14 +78,14 @@
           "group": "com.google.dagger",
           "module": "dagger-android",
           "version": {
-            "requires": "2.23.2"
+            "requires": "2.28"
           }
         },
         {
           "group": "com.google.dagger",
           "module": "dagger-android-support",
           "version": {
-            "requires": "2.23.2"
+            "requires": "2.28"
           }
         },
         {
@@ -100,11 +100,11 @@
         {
           "name": "dagger-viewmodel-1.0.0.aar",
           "url": "dagger-viewmodel-1.0.0.aar",
-          "size": 25831,
-          "sha512": "a395829f89642233c21f547b50dfcdc3f3505fe1c3e0a2ceec9fbbb93b60d4bcdcea69fbf7bf148230d839a357a9b323efdc114211233a1714bf4a2e3eb48fc4",
-          "sha256": "a930622ff1613bfadbcd79d0e906997f779b91a243f65259572e74c7e65d99fc",
-          "sha1": "77a9e591839b4834ec98f72df1eeb6e3db0f59cc",
-          "md5": "d03dc8f17c26738c7104546b9bd1404e"
+          "size": 25875,
+          "sha512": "42594fd7896b2f1c72d1ee02c0736e5f59f8a993574bdb28956375aae1c5a48b1aac1f30e52290db4ed714967ae6b7877d5058a7e6c445ad2db849dfefae4ee2",
+          "sha256": "f49d6c4527587ab311171422d61453e31885f9ef4a07ad3460ef296f6175ffa5",
+          "sha1": "9f24f03901139896ffa1f80ee5cd99e472771c1c",
+          "md5": "ad537f209f174b274eec0c357d822d84"
         }
       ]
     }
