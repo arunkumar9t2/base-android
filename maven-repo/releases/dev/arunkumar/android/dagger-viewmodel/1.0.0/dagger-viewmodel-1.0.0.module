@@ -11,7 +11,7 @@
   "createdBy": {
     "gradle": {
       "version": "6.3",
-      "buildId": "x4mfbbcdrvdo5a2wp5edi3dnau"
+      "buildId": "ftspq6ko35hobkdw3tuesrnjqa"
     }
   },
   "variants": [
@@ -50,11 +50,11 @@
         {
           "name": "dagger-viewmodel-1.0.0.aar",
           "url": "dagger-viewmodel-1.0.0.aar",
-          "size": 25875,
-          "sha512": "42594fd7896b2f1c72d1ee02c0736e5f59f8a993574bdb28956375aae1c5a48b1aac1f30e52290db4ed714967ae6b7877d5058a7e6c445ad2db849dfefae4ee2",
-          "sha256": "f49d6c4527587ab311171422d61453e31885f9ef4a07ad3460ef296f6175ffa5",
-          "sha1": "9f24f03901139896ffa1f80ee5cd99e472771c1c",
-          "md5": "ad537f209f174b274eec0c357d822d84"
+          "size": 25795,
+          "sha512": "83396e56425796ac622ee507f47757619ac8616c6bc7aa90a501c3d6a98e487d4318edb74bde425b61cd9477cced16e9a1fe276550053e1fcca8389cfa36f3de",
+          "sha256": "2f7280169024eba94eb871a8700c5d8ed5a8a92a0aae6e4637b715a52c6f66ab",
+          "sha1": "49dedfa8a8c7ec211d2231840133ad3e3c7149ef",
+          "md5": "ba1fe2f54e749d1527dfc0b8a4952ef5"
         }
       ]
     },
@@ -100,11 +100,11 @@
         {
           "name": "dagger-viewmodel-1.0.0.aar",
           "url": "dagger-viewmodel-1.0.0.aar",
-          "size": 25875,
-          "sha512": "42594fd7896b2f1c72d1ee02c0736e5f59f8a993574bdb28956375aae1c5a48b1aac1f30e52290db4ed714967ae6b7877d5058a7e6c445ad2db849dfefae4ee2",
-          "sha256": "f49d6c4527587ab311171422d61453e31885f9ef4a07ad3460ef296f6175ffa5",
-          "sha1": "9f24f03901139896ffa1f80ee5cd99e472771c1c",
-          "md5": "ad537f209f174b274eec0c357d822d84"
+          "size": 25795,
+          "sha512": "83396e56425796ac622ee507f47757619ac8616c6bc7aa90a501c3d6a98e487d4318edb74bde425b61cd9477cced16e9a1fe276550053e1fcca8389cfa36f3de",
+          "sha256": "2f7280169024eba94eb871a8700c5d8ed5a8a92a0aae6e4637b715a52c6f66ab",
+          "sha1": "49dedfa8a8c7ec211d2231840133ad3e3c7149ef",
+          "md5": "ba1fe2f54e749d1527dfc0b8a4952ef5"
         }
       ]
     }
