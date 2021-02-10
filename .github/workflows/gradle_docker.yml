@@ -34,8 +34,8 @@ jobs:
       - name: Publish to Registry
         uses: elgohr/Publish-Docker-Github-Action@2.14
         with:
-          name: arunkumar9t2/base-android
-          username: arunkumar9t2
+          name: tonytangandroid/base-android
+          username: tonytangandroid
           password: ${{ secrets.DOCKER_TOKEN }}
           registry: registry.hub.docker.com
           workdir: ${{ github.workspace }}/docker
