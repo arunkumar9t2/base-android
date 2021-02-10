@@ -25,6 +25,6 @@ constructor(private val workerFactory: WorkerFactory) : AppInitializer {
       setWorkerFactory(workerFactory)
     }
     WorkManager.initialize(application, config)
-    logd("Workmanager initialized successfully")
+    logd("Work manager initialized successfully")
   }
 }
