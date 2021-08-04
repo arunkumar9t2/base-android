@@ -22,10 +22,6 @@ android {
     targetCompatibility JavaVersion.VERSION_1_8
   }
 
-  kotlinOptions {
-    jvmTarget = "1.8"
-  }
-
   defaultConfig {
     applicationId "dev.arunkumar.android"
     minSdkVersion 21
@@ -54,6 +50,10 @@ android {
       debuggable false
       proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
     }
+  }
+
+  kotlinOptions {
+    jvmTarget = "1.8"
   }
 
   buildTypes.all { buildType ->

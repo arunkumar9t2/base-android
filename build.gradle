@@ -72,30 +72,30 @@ subprojects { subproject ->
 
 afterEvaluate {
   // Sample project
-  def sampleProject = subprojects.find { it.name == sampleAppName }
-  def baseModuleDependencies = subprojects
-      .findAll { it.name != sampleAppName }
-      .collect { "$group:${it.ext.artifact}:${it.version}" }
+  /* def sampleProject = subprojects.find { it.name == sampleAppName }
+   def baseModuleDependencies = subprojects
+       .findAll { it.name != sampleAppName }
+       .collect { "$group:${it.ext.artifact}:${it.version}" }
 
-  sampleProject.pluginManager.withPlugin("com.android.application") {
-    sampleProject.afterEvaluate {
-      baseModuleDependencies.forEach { moduleDependency ->
-        sampleProject.dependencies.add("localImplementation", project(":${moduleDependency.split(":")[1]}"))
-        sampleProject.dependencies.add("remoteImplementation", moduleDependency)
-      }
-    }
-  }
-  /*if (sampleProject.hasProperty("localBuild")) {
-    sampleProject.configurations.configureEach {
-      resolutionStrategy {
-        dependencySubstitution {
-          baseModuleDependencies.forEach { moduleDependency ->
-            substitute module(moduleDependency) with project(":${moduleDependency.split(":")[1]}")
-          }
-        }
-      }
-    }
-  }*/
+   sampleProject.pluginManager.withPlugin("com.android.application") {
+     sampleProject.afterEvaluate {
+       baseModuleDependencies.forEach { moduleDependency ->
+         sampleProject.dependencies.add("localImplementation", project(":${moduleDependency.split(":")[1]}"))
+         sampleProject.dependencies.add("remoteImplementation", moduleDependency)
+       }
+     }
+   }
+   *//*if (sampleProject.hasProperty("localBuild")) {
+     sampleProject.configurations.configureEach {
+       resolutionStrategy {
+         dependencySubstitution {
+           baseModuleDependencies.forEach { moduleDependency ->
+             substitute module(moduleDependency) with project(":${moduleDependency.split(":")[1]}")
+           }
+         }
+       }
+     }
+   }*/
 }
 
 task clean(type: Delete) {
