@@ -28,7 +28,7 @@ public class AndroidBinary : ConfigurablePlugin({
 
   configure<ApplicationExtension> {
     defaultConfig {
-      applicationId = "dev.arunkumar.relic"
+      applicationId = "dev.arunkumar.android"
       versionCode = 1
       versionName = "1.0"
     }
