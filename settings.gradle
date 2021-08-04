@@ -1,3 +1,18 @@
+plugins {
+  id "com.gradle.enterprise" version "3.6.3"
+}
+
+def isCiServer = System.getenv().containsKey("CI")
+if (isCiServer) {
+  gradleEnterprise {
+    buildScan {
+      termsOfServiceUrl = "https://gradle.com/terms-of-service"
+      termsOfServiceAgree = "yes"
+      tag("CI")
+    }
+  }
+}
+
 include ":common"
 include ":dagger-base"
 include ":dagger-viewmodel"
