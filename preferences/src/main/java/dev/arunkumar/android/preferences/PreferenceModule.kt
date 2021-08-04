@@ -10,7 +10,6 @@ import javax.inject.Singleton
 @Module
 object PreferenceModule {
   @Provides
-  @JvmStatic
   @Singleton
   fun rxPrefs(application: Application): RxkPrefs = rxkPrefs(application)
 }

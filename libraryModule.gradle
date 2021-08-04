@@ -5,8 +5,7 @@ apply plugin: "kotlin-android-extensions"
 
 android {
   compileSdkVersion buildDetails.compileSdk
-  buildToolsVersion buildDetails.buildTools
-
+  
   compileOptions {
     sourceCompatibility JavaVersion.VERSION_1_8
     targetCompatibility JavaVersion.VERSION_1_8

@@ -5,7 +5,7 @@ buildscript {
     jcenter()
   }
   dependencies {
-    classpath deps.agp
+    classpath "com.android.tools.build:gradle:$agpVersion"
     classpath deps.kotlinGradlePlugin
     classpath deps.dokka
   }
@@ -22,7 +22,6 @@ scabbard {
 }
 
 apply from: "gradle/local-properties.gradle"
-apply from: "docker/resolve-dependencies.gradle"
 
 allprojects { project ->
   group = groupId

@@ -10,20 +10,15 @@ import dev.arunkumar.android.dagger.workmanager.DaggerWorkManagerInitializer
 import javax.inject.Singleton
 
 @Module
-interface AppModule {
-  @Module
-  companion object {
-    @Provides
-    @JvmStatic
-    @ElementsIntoSet
-    fun initializer(
-      daggerWorkManagerInitializer: DaggerWorkManagerInitializer
-    ): Set<AppInitializer> = linkedSetOf(daggerWorkManagerInitializer)
+object AppModule {
+  @Provides
+  @ElementsIntoSet
+  fun initializer(
+    daggerWorkManagerInitializer: DaggerWorkManagerInitializer
+  ): Set<AppInitializer> = linkedSetOf(daggerWorkManagerInitializer)
 
-    @JvmStatic
-    @Singleton
-    @Provides
-    fun workManager(application: Application): WorkManager =
-      WorkManager.getInstance(application)
-  }
+  @Singleton
+  @Provides
+  fun workManager(application: Application): WorkManager =
+    WorkManager.getInstance(application)
 }

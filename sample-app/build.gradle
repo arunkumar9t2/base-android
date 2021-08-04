@@ -16,7 +16,6 @@ apply plugin: "realm-android"
 
 android {
   compileSdkVersion buildDetails.compileSdk
-  buildToolsVersion buildDetails.buildTools
 
   compileOptions {
     sourceCompatibility JavaVersion.VERSION_1_8
@@ -26,8 +25,6 @@ android {
   kotlinOptions {
     jvmTarget = "1.8"
   }
-
-  ndkVersion "21.0.6113669"
 
   defaultConfig {
     applicationId "dev.arunkumar.android"
@@ -85,6 +82,8 @@ android {
       variant.setIgnore(true)
     }
   }
+
+  ndkVersion "21.3.6528147"
 
   testOptions {
     unitTests {
