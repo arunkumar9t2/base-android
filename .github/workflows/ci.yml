@@ -23,7 +23,7 @@ jobs:
           read-only: ${{ github.ref != 'refs/heads/master' }}
           gradle-dependencies-cache-key: |
             constants.gradle
-          arguments: app:lintDebug spotlessCheck
+          arguments: lintDebug
   build:
     runs-on: ubuntu-latest
     container:
@@ -41,7 +41,7 @@ jobs:
           read-only: ${{ github.ref != 'refs/heads/master' }}
           gradle-dependencies-cache-key: |
             constants.gradle
-          arguments: assembleLocalDebug --scan
+          arguments: assembleDebug --scan
   unit-tests:
     runs-on: ubuntu-latest
     container:
@@ -59,4 +59,4 @@ jobs:
           read-only: ${{ github.ref != 'refs/heads/master' }}
           gradle-dependencies-cache-key: |
             constants.gradle
-          arguments: testLocalDebugUnitTest --scan
+          arguments: testDebugUnitTest --scan
