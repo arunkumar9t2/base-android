@@ -28,42 +28,23 @@ buildscript {
 }
 
 plugins {
-  id "scabbard.gradle" version "0.4.0"
+  // id "scabbard.gradle" version "0.4.0"
 }
 
-scabbard {
-  enabled true
-  fullBindingGraphValidation false
-  outputFormat "svg"
-}
+//scabbard {
+//  enabled true
+//  fullBindingGraphValidation false
+//  outputFormat "svg"
+//}
 
 apply from: "gradle/local-properties.gradle"
 
 allprojects { project ->
   group = groupId
-  def repoUrl = "https://raw.github.com/arunkumar9t2/base-android/master/maven-repo"
 
   repositories {
     google()
     jcenter()
-    maven {
-      url "${repoUrl}/releases"
-      mavenContent {
-        releasesOnly()
-      }
-      content {
-        includeGroup group
-      }
-    }
-    maven {
-      url "${repoUrl}/snapshots"
-      mavenContent {
-        snapshotsOnly()
-      }
-      content {
-        includeGroup group
-      }
-    }
   }
 
   configurations.configureEach {

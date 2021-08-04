@@ -14,8 +14,37 @@
  * limitations under the License.
  */
 
+pluginManagement {
+  includeBuild "build-logic"
+  repositories {
+    gradlePluginPortal()
+    google()
+    jcenter()
+    mavenCentral()
+  }
+  plugins {
+    // TODO Replace with version catalogs once ready
+    id "com.android.application" version "7.1.0-alpha06"
+    id "com.android.library" version "7.1.0-alpha06"
+    id "org.jetbrains.kotlin.android" version "1.5.10"
+    id "com.diffplug.spotless" version "5.11.0"
+    id "com.gradle.enterprise" version "3.6.3"
+  }
+}
 plugins {
-  id "com.gradle.enterprise" version "3.6.3"
+  id "com.gradle.enterprise"
+}
+
+enableFeaturePreview("VERSION_CATALOGS")
+
+dependencyResolutionManagement {
+  // repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+  defaultLibrariesExtensionName.set("deps")
+  repositories {
+    google()
+    jcenter()
+    mavenCentral()
+  }
 }
 
 def isCiServer = System.getenv().containsKey("CI")
@@ -29,6 +58,7 @@ if (isCiServer) {
   }
 }
 
+rootProject.name = "base-android"
 include ":common"
 include ":dagger-base"
 include ":dagger-viewmodel"

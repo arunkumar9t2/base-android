@@ -18,9 +18,9 @@ ext {
   groupId = "dev.arunkumar.android"
 
   buildDetails = [
-      "compileSdk": 29,
-      "minSdk"    : 19,
-      "targetSdk" : 28,
+    "compileSdk": 29,
+    "minSdk"    : 19,
+    "targetSdk" : 28,
   ]
 
   rvVersion = "1.0.0"
@@ -65,86 +65,86 @@ ext {
 
   orbitVersion = "3.1.1"
 
-  resultVersion = "3.0.0"
+  resultVersion = "3.0.1"
 
   deps = [
-      "androidXCore"          : "androidx.core:core:$androidXCore",
-      "androidXCoreKtx"       : "androidx.core:core-ktx:$androidXCore",
-      "androidXLifecycle"     : "androidx.lifecycle:lifecycle-extensions:$androidXLifecycle",
-      "androidXAppCompat"     : "androidx.appcompat:appcompat:$androidXAppCompat",
-      "constraintLayout"      : "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion",
-      "recyclerView"          : "androidx.recyclerview:recyclerview:$rvVersion",
-      "androidXPreferences"   : "androidx.preference:preference-ktx:$androidXPreferences",
-      "agp"                   : "com.android.tools.build:gradle:$agpVersion",
+    "androidXCore"          : "androidx.core:core:$androidXCore",
+    "androidXCoreKtx"       : "androidx.core:core-ktx:$androidXCore",
+    "androidXLifecycle"     : "androidx.lifecycle:lifecycle-extensions:$androidXLifecycle",
+    "androidXAppCompat"     : "androidx.appcompat:appcompat:$androidXAppCompat",
+    "constraintLayout"      : "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion",
+    "recyclerView"          : "androidx.recyclerview:recyclerview:$rvVersion",
+    "androidXPreferences"   : "androidx.preference:preference-ktx:$androidXPreferences",
+    "agp"                   : "com.android.tools.build:gradle:$agpVersion",
 
-      "palette"               : "androidx.palette:palette-ktx:$paletteVersion",
+    "palette"               : "androidx.palette:palette-ktx:$paletteVersion",
 
-      "material"              : "com.google.android.material:material:$materialVersion",
+    "material"              : "com.google.android.material:material:$materialVersion",
 
-      "butterKnife"           : "com.jakewharton:butterknife-gradle-plugin:$butterKnifeVersion",
+    "butterKnife"           : "com.jakewharton:butterknife-gradle-plugin:$butterKnifeVersion",
 
-      "paging"                : "androidx.paging:paging-runtime-ktx:$pagingVersion",
-      "pagingCommon"          : "androidx.paging:paging-common-ktx:$pagingVersion",
-      "pagingRxjava"          : "androidx.paging:paging-rxjava2-ktx:$pagingVersion",
+    "paging"                : "androidx.paging:paging-runtime-ktx:$pagingVersion",
+    "pagingCommon"          : "androidx.paging:paging-common-ktx:$pagingVersion",
+    "pagingRxjava"          : "androidx.paging:paging-rxjava2-ktx:$pagingVersion",
 
-      "kotlinGradlePlugin"    : "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion",
-      "kotlinStdLib"          : "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion",
-      "dokka"                 : "org.jetbrains.dokka:dokka-android-gradle-plugin:$dokkaVersion",
+    "kotlinGradlePlugin"    : "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion",
+    "kotlinStdLib"          : "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion",
+    "dokka"                 : "org.jetbrains.dokka:dokka-android-gradle-plugin:$dokkaVersion",
 
-      "daggerAndroid"         : "com.google.dagger:dagger-android:$daggerVersion",
-      "daggerAndroidSupport"  : "com.google.dagger:dagger-android-support:$daggerVersion",
-      "daggerCompiler"        : "com.google.dagger:dagger-compiler:$daggerVersion",
-      "daggerAndroidProcessor": "com.google.dagger:dagger-android-processor:$daggerVersion",
+    "daggerAndroid"         : "com.google.dagger:dagger-android:$daggerVersion",
+    "daggerAndroidSupport"  : "com.google.dagger:dagger-android-support:$daggerVersion",
+    "daggerCompiler"        : "com.google.dagger:dagger-compiler:$daggerVersion",
+    "daggerAndroidProcessor": "com.google.dagger:dagger-android-processor:$daggerVersion",
 
-      "junit"                 : "junit:junit:$junitVersion",
-      "roboelectric"          : "org.robolectric:robolectric:$roboeletricVersion",
+    "junit"                 : "junit:junit:$junitVersion",
+    "roboelectric"          : "org.robolectric:robolectric:$roboeletricVersion",
 
-      "epoxy"                 : "com.airbnb.android:epoxy:$epoxyVersion",
-      "epoxyProcessor"        : "com.airbnb.android:epoxy-processor:$epoxyVersion",
-      "epoxyPaging"           : "com.airbnb.android:epoxy-paging:$epoxyVersion",
+    "epoxy"                 : "com.airbnb.android:epoxy:$epoxyVersion",
+    "epoxyProcessor"        : "com.airbnb.android:epoxy-processor:$epoxyVersion",
+    "epoxyPaging"           : "com.airbnb.android:epoxy-paging:$epoxyVersion",
 
-      "timber"                : "com.jakewharton.timber:timber:$timberVersion",
+    "timber"                : "com.jakewharton.timber:timber:$timberVersion",
 
-      "rx"                    : "io.reactivex.rxjava2:rxjava:$rxVersion",
-      "rxAndroid"             : "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion",
-      "rxKotlin"              : "io.reactivex.rxjava2:rxkotlin:$rxKotlinVersion",
-      "rxRelay"               : "com.jakewharton.rxrelay2:rxrelay:$rxRelayVersion",
-      "rxBinding"             : "com.jakewharton.rxbinding2:rxbinding:$rxBindingVersion",
-      "rxKPrefsCore"          : "com.afollestad.rxkprefs:core:$rxKPrefsVersion",
-      "rxKPrefsRx"            : "com.afollestad.rxkprefs:rxjava:$rxKPrefsVersion",
+    "rx"                    : "io.reactivex.rxjava2:rxjava:$rxVersion",
+    "rxAndroid"             : "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion",
+    "rxKotlin"              : "io.reactivex.rxjava2:rxkotlin:$rxKotlinVersion",
+    "rxRelay"               : "com.jakewharton.rxrelay2:rxrelay:$rxRelayVersion",
+    "rxBinding"             : "com.jakewharton.rxbinding2:rxbinding:$rxBindingVersion",
+    "rxKPrefsCore"          : "com.afollestad.rxkprefs:core:$rxKPrefsVersion",
+    "rxKPrefsRx"            : "com.afollestad.rxkprefs:rxjava:$rxKPrefsVersion",
 
 
-      "realmPlugin"           : "io.realm:realm-gradle-plugin:$realmVersion",
+    "realmPlugin"           : "io.realm:realm-gradle-plugin:$realmVersion",
 
-      "glide"                 : "com.github.bumptech.glide:glide:$glideVersion",
+    "glide"                 : "com.github.bumptech.glide:glide:$glideVersion",
 
-      "workManager"           : "androidx.work:work-runtime:$workMangerVersion",
-      "workManagerRx"         : "androidx.work:work-rxjava2:$workMangerVersion",
-      "workManagerKtx"        : "androidx.work:work-runtime-ktx:$workMangerVersion",
+    "workManager"           : "androidx.work:work-runtime:$workMangerVersion",
+    "workManagerRx"         : "androidx.work:work-rxjava2:$workMangerVersion",
+    "workManagerKtx"        : "androidx.work:work-runtime-ktx:$workMangerVersion",
 
-      "dynamicAnimation"      : "androidx.dynamicanimation:dynamicanimation:$dynamicAnimationVersion",
+    "dynamicAnimation"      : "androidx.dynamicanimation:dynamicanimation:$dynamicAnimationVersion",
 
-      "orbit"                 : "com.babylon.orbit:orbit:$orbitVersion",
-      "orbitAndroid"          : "com.babylon.orbit:orbit-android:$orbitVersion",
+    "orbit"                 : "com.babylon.orbit:orbit:$orbitVersion",
+    "orbitAndroid"          : "com.babylon.orbit:orbit-android:$orbitVersion",
 
-      "result"                : "com.github.kittinunf.result:result:$resultVersion",
+    "result"                : "com.github.kittinunf.result:result:$resultVersion",
   ]
 
   moduleVersions = [
-      "common"              : "1.0.0",
-      "dagger-base"         : "1.0.0",
-      "dagger-viewmodel"    : "1.0.0",
-      "epoxy-utils"         : "1.0.0",
-      "epoxy-rx"            : "1.0.0",
-      "logging"             : "1.0.0",
-      "viewmodel-utils"     : "1.0.0",
-      "rx-utils"            : "1.0.0",
-      "compass"             : "1.0.0",
-      "glide-component-icon": "1.0.0",
-      "dagger-workmanager"  : "1.0.0",
-      "preferences"         : "1.0.0",
-      "spring-item-animator": "1.0.0",
-      "colors"              : "1.0.0"
+    "common"              : "1.0.0",
+    "dagger-base"         : "1.0.0",
+    "dagger-viewmodel"    : "1.0.0",
+    "epoxy-utils"         : "1.0.0",
+    "epoxy-rx"            : "1.0.0",
+    "logging"             : "1.0.0",
+    "viewmodel-utils"     : "1.0.0",
+    "rx-utils"            : "1.0.0",
+    "compass"             : "1.0.0",
+    "glide-component-icon": "1.0.0",
+    "dagger-workmanager"  : "1.0.0",
+    "preferences"         : "1.0.0",
+    "spring-item-animator": "1.0.0",
+    "colors"              : "1.0.0"
   ]
 
   developerId = "arunkumar9t2"

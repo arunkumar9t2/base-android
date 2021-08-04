@@ -131,10 +131,10 @@ constructor(
 
   override fun isRunning() =
     pendingAdds.isNotEmpty() ||
-        runningAdds.isNotEmpty() ||
-        pendingMoves.isNotEmpty() ||
-        runningMoves.isNotEmpty() ||
-        super.isRunning()
+      runningAdds.isNotEmpty() ||
+      pendingMoves.isNotEmpty() ||
+      runningMoves.isNotEmpty() ||
+      super.isRunning()
 
   private fun addItem(holder: RecyclerView.ViewHolder) {
     val springAlpha = holder.itemView.spring(ALPHA)
