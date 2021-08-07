@@ -77,7 +77,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: burrunan/gradle-cache-action@v1
-        name: unit-tests
+        name: publish-snapshots
         with:
           debug: false
           job-id: build
