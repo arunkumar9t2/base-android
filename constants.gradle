@@ -129,6 +129,7 @@ ext {
   ]
 
   moduleVersions = [
+    "base-android"        : "1.0.0", // Dummy version, not published
     "common"              : "1.0.0",
     "dagger-base"         : "1.0.0",
     "dagger-viewmodel"    : "1.0.0",

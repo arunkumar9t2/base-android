@@ -24,7 +24,6 @@ import gradle.version
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.configure
-import org.gradle.kotlin.dsl.extra
 
 /**
  * Common build plugin that should be applied to root `build.gradle` file. This plugin can be used
@@ -45,12 +44,8 @@ public class BuildCommonPlugin : ConfigurablePlugin({
   if (this != rootProject) {
     error("build-common should be only applied to root project")
   }
-  val versions = (rootProject.extra["moduleVersions"] as Map<String, String>)
-    .withDefault { project -> error("Missing version for :$project") }
 
   subprojects {
-    group = findProperty("groupId").toString()
-    version = versions.getValue(name)
 
     configureSpotless()
 
