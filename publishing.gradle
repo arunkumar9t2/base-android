@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-apply plugin: "org.jetbrains.dokka-android"
+apply plugin: "org.jetbrains.dokka"
 apply plugin: "maven-publish"
 
 def releaseFolder = "file://${file("../maven-repo/releases/").absolutePath}"
@@ -22,23 +22,14 @@ def snapshotFolder = "file://${file("../maven-repo/snapshots/").absolutePath}"
 
 def isSnapshot = project.hasProperty("snapshot")
 
-dokka {
-  outputFormat = "html"
-  outputDirectory = "$buildDir/javadoc"
-  classpath = new ArrayList<File>(project.tasks["assemble"].outputs.files.files)
-  sourceDirs = android.sourceSets.main.java.srcDirs
-  externalDocumentationLink {
-    url = new URL("https://developer.android.com/reference/")
-    packageListUrl = new URL("https://developer.android.com/reference/android/support/package-list")
-  }
-}
-
-task dokkaJar(type: Jar, dependsOn: dokka) {
-  group = JavaBasePlugin.DOCUMENTATION_GROUP
-  classifier = "javadoc"
-  description = "Assembles Kotlin docs with Dokka"
-  from dokka.outputDirectory
-}
+//dokkaHtml {
+//  outputDirectory = file("$buildDir/javadoc")
+//  sourceDirs = android.sourceSets.main.java.srcDirs
+//  externalDocumentationLink {
+//    url = new URL("https://developer.android.com/reference/")
+//    packageListUrl = new URL("https://developer.android.com/reference/android/support/package-list")
+//  }
+//}
 
 task sourceJar(type: Jar) {
   classifier = "sources"
@@ -47,7 +38,6 @@ task sourceJar(type: Jar) {
 
 artifacts {
   archives sourceJar
-  archives dokkaJar
 }
 
 afterEvaluate {
@@ -56,7 +46,6 @@ afterEvaluate {
       release(MavenPublication) {
 
         artifact(sourceJar)
-        artifact(dokkaJar)
 
         pom {
           packaging "aar"

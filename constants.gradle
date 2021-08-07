@@ -26,7 +26,7 @@ ext {
   rvVersion = "1.0.0"
   agpVersion = "7.0.0"
   kotlinVersion = "1.5.20"
-  dokkaVersion = "0.9.17"
+  dokkaVersion = "1.5.0"
   daggerVersion = "2.38.1"
 
   androidXCore = "1.2.0"
@@ -89,7 +89,7 @@ ext {
 
     "kotlinGradlePlugin"    : "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion",
     "kotlinStdLib"          : "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion",
-    "dokka"                 : "org.jetbrains.dokka:dokka-android-gradle-plugin:$dokkaVersion",
+    "dokka"                 : "org.jetbrains.dokka:dokka-gradle-plugin:$dokkaVersion",
 
     "daggerAndroid"         : "com.google.dagger:dagger-android:$daggerVersion",
     "daggerAndroidSupport"  : "com.google.dagger:dagger-android-support:$daggerVersion",
