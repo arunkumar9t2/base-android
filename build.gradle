@@ -23,12 +23,13 @@ buildscript {
   dependencies {
     classpath "com.android.tools.build:gradle:$agpVersion"
     classpath deps.kotlinGradlePlugin
-    classpath deps.dokka
   }
 }
 
 plugins {
   id "scabbard.gradle" version "0.5.0"
+  id "build-common"
+  id "publish-common"
 }
 
 scabbard {
@@ -40,8 +41,6 @@ scabbard {
 apply from: "gradle/local-properties.gradle"
 
 allprojects { project ->
-  group = groupId
-
   repositories {
     google()
     jcenter()
@@ -63,38 +62,5 @@ subprojects { subproject ->
     subproject.ext.artifact = subproject.name
     subproject.version = isSnapshot ? "master-SNAPSHOT" : subproject.ext.moduleVersions[subproject.name]
     apply from: "../libraryModule.gradle"
-    apply from: "../publishing.gradle"
   }
-}
-
-afterEvaluate {
-  // Sample project
-  /* def sampleProject = subprojects.find { it.name == sampleAppName }
-   def baseModuleDependencies = subprojects
-       .findAll { it.name != sampleAppName }
-       .collect { "$group:${it.ext.artifact}:${it.version}" }
-
-   sampleProject.pluginManager.withPlugin("com.android.application") {
-     sampleProject.afterEvaluate {
-       baseModuleDependencies.forEach { moduleDependency ->
-         sampleProject.dependencies.add("localImplementation", project(":${moduleDependency.split(":")[1]}"))
-         sampleProject.dependencies.add("remoteImplementation", moduleDependency)
-       }
-     }
-   }
-   *//*if (sampleProject.hasProperty("localBuild")) {
-     sampleProject.configurations.configureEach {
-       resolutionStrategy {
-         dependencySubstitution {
-           baseModuleDependencies.forEach { moduleDependency ->
-             substitute module(moduleDependency) with project(":${moduleDependency.split(":")[1]}")
-           }
-         }
-       }
-     }
-   }*/
-}
-
-task clean(type: Delete) {
-  delete rootProject.buildDir
 }

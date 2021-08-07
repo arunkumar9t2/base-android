@@ -13,19 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-plugins {
-  id "publish"
-}
 
-dependencies {
-  implementation fileTree(dir: "libs", include: ["*.jar"])
+package publish
 
-  api deps.androidXLifecycle
+internal const val OSSRH_USERNAME = "OSSRH_USERNAME"
+internal const val OSSRH_PASSWORD = "OSSRH_PASSWORD"
+internal const val SONATYPE_STAGING_PROFILE_ID = "SONATYPE_STAGING_PROFILE_ID"
+internal const val SIGNING_KEY_ID = "SIGNING_KEY_ID"
+internal const val SIGNING_PASSWORD = "SIGNING_PASSWORD"
+internal const val SIGNING_SECRET_KEY_RING_FILE = "SIGNING_SECRET_KEY_RING_FILE"
 
-  api deps.daggerAndroid
-  api deps.daggerAndroidSupport
-  kapt deps.daggerCompiler
-  kapt deps.daggerAndroidProcessor
-  kaptTest deps.daggerCompiler
-  kaptTest deps.daggerAndroidProcessor
-}
+internal val PublishVariables = listOf(
+  OSSRH_USERNAME,
+  OSSRH_PASSWORD,
+  SONATYPE_STAGING_PROFILE_ID,
+  SIGNING_KEY_ID,
+  SIGNING_PASSWORD,
+  SIGNING_SECRET_KEY_RING_FILE,
+)

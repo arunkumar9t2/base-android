@@ -15,7 +15,6 @@
  */
 
 pluginManagement {
-  includeBuild "build-logic"
   repositories {
     gradlePluginPortal()
     google()
@@ -30,6 +29,7 @@ pluginManagement {
     id "com.diffplug.spotless" version "5.11.0"
     id "com.gradle.enterprise" version "3.6.3"
   }
+  includeBuild "build-logic"
 }
 plugins {
   id "com.gradle.enterprise"
@@ -42,12 +42,13 @@ dependencyResolutionManagement {
   defaultLibrariesExtensionName.set("deps")
   repositories {
     google()
+    gradlePluginPortal()
     jcenter()
     mavenCentral()
   }
 }
 
-def isCiServer = System.getenv().containsKey("CI")
+def isCiServer = System.getenv().containsKey("CI") || true
 if (isCiServer) {
   gradleEnterprise {
     buildScan {

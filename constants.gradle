@@ -15,8 +15,6 @@
  */
 
 ext {
-  groupId = "dev.arunkumar.android"
-
   buildDetails = [
     "compileSdk": 30,
     "minSdk"    : 21,
@@ -146,12 +144,4 @@ ext {
     "spring-item-animator": "1.0.0",
     "colors"              : "1.0.0"
   ]
-
-  developerId = "arunkumar9t2"
-  developerName = "Arunkumar"
-  developerEmail = "hi@arunkumar.dev"
-
-  licenseName = "The Apache Software License, Version 2.0"
-  licenseUrl = "http://www.apache.org/licenses/LICENSE-2.0.txt"
-  allLicenses = ["Apache-2.0"]
 }

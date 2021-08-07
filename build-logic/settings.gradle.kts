@@ -19,6 +19,7 @@ pluginManagement {
   repositories {
     gradlePluginPortal()
     google()
+    jcenter()
     mavenCentral()
   }
   plugins {
@@ -29,6 +30,7 @@ enableFeaturePreview("VERSION_CATALOGS")
 
 dependencyResolutionManagement {
   repositories {
+    gradlePluginPortal()
     google()
     mavenCentral()
   }

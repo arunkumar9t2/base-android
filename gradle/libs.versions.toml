@@ -1,6 +1,7 @@
 [versions]
 compose = "1.0.0"
 ktlint = "0.41.0"
+dokka = "1.5.0"
 
 [libraries]
 agp = "com.android.tools.build:gradle:7.1.0-alpha06"
@@ -16,6 +17,9 @@ compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = 
 compose-ui-toolingpreview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
 
 spotless = "com.diffplug.spotless:spotless-plugin-gradle:5.11.0"
+
+dokka = { module = "org.jetbrains.dokka:dokka-gradle-plugin", version.ref = "dokka" }
+nexus-publish = "io.github.gradle-nexus:publish-plugin:1.1.0"
 
 # Tests
 junit = "junit:junit:4.+"

@@ -39,6 +39,14 @@ gradlePlugin {
       id = "build-common"
       implementationClass = "common.BuildCommonPlugin"
     }
+    create("publishingCommon") {
+      id = "publish-common"
+      implementationClass = "publish.PublishingCommon"
+    }
+    create("publishing") {
+      id = "publish"
+      implementationClass = "publish.PublishingLibrary"
+    }
   }
 }
 
@@ -46,4 +54,6 @@ dependencies {
   implementation(deps.agp)
   implementation(deps.kotlin)
   implementation(deps.spotless)
+  implementation(deps.dokka)
+  implementation(deps.nexus.publish)
 }

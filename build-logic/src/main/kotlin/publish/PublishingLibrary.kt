@@ -1,0 +1,135 @@
+/*
+ * Copyright 2021 Arunkumar
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package publish
+
+import com.android.build.gradle.BaseExtension
+import com.android.build.gradle.api.AndroidSourceDirectorySet
+import gradle.ConfigurablePlugin
+import org.gradle.api.Project
+import org.gradle.api.publish.PublishingExtension
+import org.gradle.api.publish.maven.MavenPublication
+import org.gradle.api.tasks.SourceSetContainer
+import org.gradle.api.tasks.TaskProvider
+import org.gradle.jvm.tasks.Jar
+import org.gradle.kotlin.dsl.*
+import org.gradle.plugins.signing.SigningExtension
+import org.jetbrains.dokka.gradle.AbstractDokkaTask
+
+
+public class PublishingLibrary : ConfigurablePlugin({
+  apply(plugin = "maven-publish")
+  apply(plugin = "signing")
+  apply(plugin = "org.jetbrains.dokka")
+
+  val isAndroid = project.plugins.hasPlugin("com.android.library")
+
+  // Setup sources jar
+  val sourceJarTask = registerSourceJarTask()
+  // Documentation
+  val javaDocsTask = registerJavaDocsTask()
+
+  artifacts {
+    add("archives", sourceJarTask)
+    add("archives", javaDocsTask)
+  }
+
+  // Setup publishing
+  afterEvaluate {
+    configure<PublishingExtension> {
+      publications {
+        create<MavenPublication>("release") {
+          groupId = findProperty("groupId").toString()
+          artifactId = project.name
+          version = project.version.toString()
+
+          if (isAndroid) {
+            from(components["release"])
+          } else {
+            from(components["java"])
+          }
+
+          pom {
+            name.set(project.name)
+            description.set(project.description)
+            url.set(findProject("website").toString())
+
+            licenses {
+              license {
+                name.set("Apache License, Version 2.0")
+                url.set("https://github.com/arunkumar9t2/base-android/blob/master/LICENSE")
+              }
+            }
+
+            developers {
+              developer {
+                id.set("arunkumar9t2")
+                name.set("Arunkumar")
+                email.set("hi@arunkumar.dev")
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  configureSigning()
+})
+
+private fun Project.registerJavaDocsTask(): TaskProvider<Jar> {
+  val javaDocsTask = tasks.register<Jar>("javadocJar")
+  val dokkaJavaDocTask = tasks.named<AbstractDokkaTask>("dokkaJavadoc")
+  javaDocsTask.configure {
+    archiveClassifier.set("javadoc")
+    dependsOn(dokkaJavaDocTask)
+    from(dokkaJavaDocTask.map { it.outputDirectory })
+  }
+  return javaDocsTask
+}
+
+private fun Project.registerSourceJarTask(): TaskProvider<Jar> {
+  val sourcesJar = "sourcesJar"
+  val isAndroid = project.plugins.hasPlugin("com.android.library")
+  val android = extensions.getByType<BaseExtension>()
+
+  return tasks.register<Jar>(sourcesJar) {
+    archiveClassifier.set("sources")
+    if (isAndroid) {
+      from(project.provider {
+        android
+          .sourceSets
+          .matching { it.name == "main" }
+          .flatMap { it.java.srcDirs + (it.kotlin as AndroidSourceDirectorySet).srcDirs }
+      })
+    } else {
+      extensions.findByType<SourceSetContainer>()
+        ?.getByName("main")
+        ?.allJava
+        ?.srcDirs
+        ?.let { from(it) }
+    }
+  }
+}
+
+private fun Project.configureSigning() {
+  extra["signing.keyId"] = rootProject.extra[SIGNING_KEY_ID]
+  extra["signing.password"] = rootProject.extra[SIGNING_PASSWORD]
+  extra["signing.secretKeyRingFile"] = rootProject.extra[SIGNING_SECRET_KEY_RING_FILE]
+  configure<SigningExtension> {
+    sign(the<PublishingExtension>().publications)
+  }
+}
