@@ -38,7 +38,7 @@ public class PublishingCommon : ConfigurablePlugin({
       extra[variable] = providers
         .environmentVariable(variable)
         .forUseAtConfigurationTime()
-        .get()
+        .getOrElse(null)
     }
   }
 
