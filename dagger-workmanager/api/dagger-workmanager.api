@@ -1,0 +1,41 @@
+public final class dev/arunkumar/android/dagger/workmanager/BuildConfig {
+	public static final field BUILD_TYPE Ljava/lang/String;
+	public static final field DEBUG Z
+	public static final field DEBUG_BUILD Z
+	public static final field LIBRARY_PACKAGE_NAME Ljava/lang/String;
+	public fun <init> ()V
+}
+
+public final class dev/arunkumar/android/dagger/workmanager/DaggerWorkManagerInitializer : dev/arunkumar/android/dagger/application/AppInitializer {
+	public fun <init> (Landroidx/work/WorkerFactory;)V
+	public fun compareTo (Ldev/arunkumar/android/dagger/application/AppInitializer;)I
+	public synthetic fun compareTo (Ljava/lang/Object;)I
+	public fun getPriority ()I
+	public fun initialize (Landroid/app/Application;)V
+}
+
+public final class dev/arunkumar/android/dagger/workmanager/DaggerWorkManagerInitializer_Factory : dagger/internal/Factory {
+	public fun <init> (Ljavax/inject/Provider;)V
+	public static fun create (Ljavax/inject/Provider;)Ldev/arunkumar/android/dagger/workmanager/DaggerWorkManagerInitializer_Factory;
+	public fun get ()Ldev/arunkumar/android/dagger/workmanager/DaggerWorkManagerInitializer;
+	public synthetic fun get ()Ljava/lang/Object;
+	public static fun newInstance (Landroidx/work/WorkerFactory;)Ldev/arunkumar/android/dagger/workmanager/DaggerWorkManagerInitializer;
+}
+
+public abstract class dev/arunkumar/android/dagger/workmanager/DaggerWorkerFactory : androidx/work/WorkerFactory {
+	public fun <init> (Ldev/arunkumar/android/dagger/workmanager/WorkerSubComponent$Factory;)V
+	public fun createWorker (Landroid/content/Context;Ljava/lang/String;Landroidx/work/WorkerParameters;)Landroidx/work/ListenableWorker;
+}
+
+public abstract interface annotation class dev/arunkumar/android/dagger/workmanager/WorkerKey : java/lang/annotation/Annotation {
+	public abstract fun value ()Ljava/lang/Class;
+}
+
+public abstract interface class dev/arunkumar/android/dagger/workmanager/WorkerSubComponent {
+	public abstract fun workers ()Ljava/util/Map;
+}
+
+public abstract interface class dev/arunkumar/android/dagger/workmanager/WorkerSubComponent$Factory {
+	public abstract fun create (Landroidx/work/WorkerParameters;)Ldev/arunkumar/android/dagger/workmanager/WorkerSubComponent;
+}
+

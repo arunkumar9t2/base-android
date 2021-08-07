@@ -51,7 +51,11 @@ public class BuildCommonPlugin : ConfigurablePlugin({
   subprojects {
     group = findProperty("groupId").toString()
     version = versions.getValue(name)
+
     configureSpotless()
+
+    // Configure API checks
+    apply(plugin = "org.jetbrains.kotlinx.binary-compatibility-validator")
   }
 })
 

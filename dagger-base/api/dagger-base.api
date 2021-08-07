@@ -1,0 +1,31 @@
+public final class dev/arunkumar/android/dagger/BuildConfig {
+	public static final field BUILD_TYPE Ljava/lang/String;
+	public static final field DEBUG Z
+	public static final field DEBUG_BUILD Z
+	public static final field LIBRARY_PACKAGE_NAME Ljava/lang/String;
+	public fun <init> ()V
+}
+
+public abstract interface annotation class dev/arunkumar/android/dagger/activity/PerActivity : java/lang/annotation/Annotation {
+}
+
+public abstract interface class dev/arunkumar/android/dagger/application/AppInitializer : java/lang/Comparable {
+	public abstract fun compareTo (Ldev/arunkumar/android/dagger/application/AppInitializer;)I
+	public abstract fun getPriority ()I
+	public abstract fun initialize (Landroid/app/Application;)V
+}
+
+public final class dev/arunkumar/android/dagger/application/AppInitializer$DefaultImpls {
+	public static fun compareTo (Ldev/arunkumar/android/dagger/application/AppInitializer;Ldev/arunkumar/android/dagger/application/AppInitializer;)I
+	public static fun getPriority (Ldev/arunkumar/android/dagger/application/AppInitializer;)I
+}
+
+public abstract interface annotation class dev/arunkumar/android/dagger/fragment/PerFragment : java/lang/annotation/Annotation {
+}
+
+public abstract interface annotation class dev/arunkumar/android/dagger/service/PerService : java/lang/annotation/Annotation {
+}
+
+public abstract interface annotation class dev/arunkumar/android/dagger/view/PerView : java/lang/annotation/Annotation {
+}
+

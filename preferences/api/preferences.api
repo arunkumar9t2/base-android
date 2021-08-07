@@ -1,0 +1,67 @@
+public final class dev/arunkumar/android/preferences/BuildConfig {
+	public static final field BUILD_TYPE Ljava/lang/String;
+	public static final field DEBUG Z
+	public static final field DEBUG_BUILD Z
+	public static final field LIBRARY_PACKAGE_NAME Ljava/lang/String;
+	public fun <init> ()V
+}
+
+public final class dev/arunkumar/android/preferences/Preference {
+	public field value Lcom/afollestad/rxkprefs/Pref;
+	public fun <init> (Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;)V
+	public synthetic fun <init> (Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/CharSequence;
+	public final fun component2 ()Ljava/lang/CharSequence;
+	public final fun component3 ()Ljava/lang/CharSequence;
+	public final fun copy (Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ldev/arunkumar/android/preferences/Preference;
+	public static synthetic fun copy$default (Ldev/arunkumar/android/preferences/Preference;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;ILjava/lang/Object;)Ldev/arunkumar/android/preferences/Preference;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getId ()Ljava/lang/CharSequence;
+	public final fun getSubTitle ()Ljava/lang/CharSequence;
+	public final fun getTitle ()Ljava/lang/CharSequence;
+	public final fun getValue ()Lcom/afollestad/rxkprefs/Pref;
+	public fun hashCode ()I
+	public final fun setValue (Lcom/afollestad/rxkprefs/Pref;)V
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/arunkumar/android/preferences/PreferenceModule {
+	public static final field INSTANCE Ldev/arunkumar/android/preferences/PreferenceModule;
+	public final fun rxPrefs (Landroid/app/Application;)Lcom/afollestad/rxkprefs/RxkPrefs;
+}
+
+public final class dev/arunkumar/android/preferences/PreferenceModule_RxPrefsFactory : dagger/internal/Factory {
+	public fun <init> (Ljavax/inject/Provider;)V
+	public static fun create (Ljavax/inject/Provider;)Ldev/arunkumar/android/preferences/PreferenceModule_RxPrefsFactory;
+	public fun get ()Lcom/afollestad/rxkprefs/RxkPrefs;
+	public synthetic fun get ()Ljava/lang/Object;
+	public static fun rxPrefs (Landroid/app/Application;)Lcom/afollestad/rxkprefs/RxkPrefs;
+}
+
+public final class dev/arunkumar/android/preferences/dsl/CategoryPreferencesBuilder : dev/arunkumar/android/preferences/dsl/PreferencesBuilder {
+	public fun <init> (Landroidx/preference/PreferenceManager;Landroidx/preference/PreferenceCategory;)V
+	public final fun properties (Lkotlin/jvm/functions/Function1;)V
+}
+
+public abstract interface annotation class dev/arunkumar/android/preferences/dsl/PreferenceDsl : java/lang/annotation/Annotation {
+}
+
+public final class dev/arunkumar/android/preferences/dsl/PreferenceDslKt {
+	public static final fun defaultSummaryProvider (Landroidx/preference/Preference;)V
+	public static final fun defaultValueRes (Landroidx/preference/Preference;I)V
+	public static final fun keyRes (Landroidx/preference/Preference;I)V
+	public static final fun preferences (Landroidx/preference/PreferenceFragmentCompat;Lkotlin/jvm/functions/Function1;)V
+	public static final fun summaryRes (Landroidx/preference/Preference;I)V
+	public static final fun titleRes (Landroidx/preference/Preference;I)V
+	public static final fun titleRes (Landroidx/preference/PreferenceCategory;I)V
+}
+
+public class dev/arunkumar/android/preferences/dsl/PreferencesBuilder {
+	public fun <init> (Landroidx/preference/PreferenceManager;Landroidx/preference/PreferenceGroup;)V
+	public final fun category (Lkotlin/jvm/functions/Function1;)V
+	public final fun getPreferenceContext ()Landroid/content/Context;
+	public final fun getPreferenceGroup ()Landroidx/preference/PreferenceGroup;
+	public final fun getPreferenceManager ()Landroidx/preference/PreferenceManager;
+	public final fun simplePreference (Ljava/lang/String;Lkotlin/jvm/functions/Function1;)V
+}
+

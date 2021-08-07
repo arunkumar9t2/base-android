@@ -1,0 +1,55 @@
+public final class dev/arunkumar/android/glide/SetupKt {
+	public static final fun registerComponentIconLoader (Lcom/bumptech/glide/Registry;Landroid/content/Context;Lcom/bumptech/glide/Glide;)V
+}
+
+public final class dev/arunkumar/android/glide/componenticon/BuildConfig {
+	public static final field BUILD_TYPE Ljava/lang/String;
+	public static final field DEBUG Z
+	public static final field DEBUG_BUILD Z
+	public static final field LIBRARY_PACKAGE_NAME Ljava/lang/String;
+	public fun <init> ()V
+}
+
+public final class dev/arunkumar/android/glide/componenticon/ComponentIcon {
+	public static final field Companion Ldev/arunkumar/android/glide/componenticon/ComponentIcon$Companion;
+	public static final field URI_SCHEME_COMPONENT_ICON Ljava/lang/String;
+	public fun <init> (Landroid/content/ComponentName;)V
+	public final fun getComponentName ()Landroid/content/ComponentName;
+}
+
+public final class dev/arunkumar/android/glide/componenticon/ComponentIcon$Companion {
+	public final fun createUri (Landroid/content/ComponentName;)Landroid/net/Uri;
+}
+
+public final class dev/arunkumar/android/glide/componenticon/ComponentIconDataFetcher : com/bumptech/glide/load/data/DataFetcher {
+	public fun <init> (Landroid/content/ComponentName;)V
+	public fun cancel ()V
+	public fun cleanup ()V
+	public fun getDataClass ()Ljava/lang/Class;
+	public fun getDataSource ()Lcom/bumptech/glide/load/DataSource;
+	public fun loadData (Lcom/bumptech/glide/Priority;Lcom/bumptech/glide/load/data/DataFetcher$DataCallback;)V
+}
+
+public final class dev/arunkumar/android/glide/componenticon/ComponentIconDecoder : com/bumptech/glide/load/ResourceDecoder {
+	public fun <init> (Landroid/content/Context;Lcom/bumptech/glide/Glide;)V
+	public fun decode (Ldev/arunkumar/android/glide/componenticon/ComponentIcon;IILcom/bumptech/glide/load/Options;)Lcom/bumptech/glide/load/resource/bitmap/BitmapResource;
+	public synthetic fun decode (Ljava/lang/Object;IILcom/bumptech/glide/load/Options;)Lcom/bumptech/glide/load/engine/Resource;
+	public fun handles (Ldev/arunkumar/android/glide/componenticon/ComponentIcon;Lcom/bumptech/glide/load/Options;)Z
+	public synthetic fun handles (Ljava/lang/Object;Lcom/bumptech/glide/load/Options;)Z
+}
+
+public final class dev/arunkumar/android/glide/componenticon/ComponentIconModelLoader : com/bumptech/glide/load/model/ModelLoader {
+	public fun <init> ()V
+	public fun buildLoadData (Landroid/net/Uri;IILcom/bumptech/glide/load/Options;)Lcom/bumptech/glide/load/model/ModelLoader$LoadData;
+	public synthetic fun buildLoadData (Ljava/lang/Object;IILcom/bumptech/glide/load/Options;)Lcom/bumptech/glide/load/model/ModelLoader$LoadData;
+	public fun handles (Landroid/net/Uri;)Z
+	public synthetic fun handles (Ljava/lang/Object;)Z
+}
+
+public final class dev/arunkumar/android/glide/componenticon/ComponentIconModelLoader$Factory : com/bumptech/glide/load/model/ModelLoaderFactory {
+	public fun <init> ()V
+	public synthetic fun build (Lcom/bumptech/glide/load/model/MultiModelLoaderFactory;)Lcom/bumptech/glide/load/model/ModelLoader;
+	public fun build (Lcom/bumptech/glide/load/model/MultiModelLoaderFactory;)Ldev/arunkumar/android/glide/componenticon/ComponentIconModelLoader;
+	public fun teardown ()V
+}
+

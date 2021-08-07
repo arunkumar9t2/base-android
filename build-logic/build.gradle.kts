@@ -56,4 +56,5 @@ dependencies {
   implementation(deps.spotless)
   implementation(deps.dokka)
   implementation(deps.nexus.publish)
+  implementation(deps.kotlinx.binaryvalidator)
 }

@@ -1,0 +1,25 @@
+public final class dev/arunkumar/android/colors/BuildConfig {
+	public static final field BUILD_TYPE Ljava/lang/String;
+	public static final field DEBUG Z
+	public static final field DEBUG_BUILD Z
+	public static final field LIBRARY_PACKAGE_NAME Ljava/lang/String;
+	public fun <init> ()V
+}
+
+public final class dev/arunkumar/android/colors/ColorsKt {
+	public static final fun closestColor ([II)I
+	public static final fun closestVibrantColor (I)I
+	public static final fun closestVibrantDarkColor (I)I
+	public static final fun getDARK_VIBRANT_COLOR_700 ()[I
+	public static final fun getVIBRANT_COLOR_500 ()[I
+}
+
+public final class dev/arunkumar/android/colors/PaletteKt {
+	public static final fun bestVibrantColor (Landroid/graphics/Bitmap;)Landroidx/palette/graphics/Palette$Swatch;
+	public static final fun bestVibrantColor (Landroid/graphics/drawable/BitmapDrawable;)Landroidx/palette/graphics/Palette$Swatch;
+	public static final fun bestVibrantDarkColor (Landroid/graphics/Bitmap;)Landroidx/palette/graphics/Palette$Swatch;
+	public static final fun bestVibrantDarkColor (Landroid/graphics/drawable/BitmapDrawable;)Landroidx/palette/graphics/Palette$Swatch;
+	public static final fun pickDarkVibrantColor (Landroidx/palette/graphics/Palette;)Landroidx/palette/graphics/Palette$Swatch;
+	public static final fun pickVibrantColor (Landroidx/palette/graphics/Palette;)Landroidx/palette/graphics/Palette$Swatch;
+}
+

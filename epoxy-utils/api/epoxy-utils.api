@@ -1,0 +1,52 @@
+public final class dev/arunkumar/android/epoxy/ExtensionsKt {
+	public static final fun applyTo (Ldev/arunkumar/common/recyclerview/GridCalculator;Lcom/airbnb/epoxy/EpoxyRecyclerView;)V
+}
+
+public final class dev/arunkumar/android/epoxy/controller/EpoxyControllerExtKt {
+	public static final fun listModel (Lcom/airbnb/epoxy/EpoxyController;Ljava/util/List;)Lkotlin/properties/ObservableProperty;
+	public static synthetic fun listModel$default (Lcom/airbnb/epoxy/EpoxyController;Ljava/util/List;ILjava/lang/Object;)Lkotlin/properties/ObservableProperty;
+	public static final fun model (Lcom/airbnb/epoxy/EpoxyController;Ljava/lang/Object;)Lkotlin/properties/ObservableProperty;
+}
+
+public abstract class dev/arunkumar/android/epoxy/model/KotlinEpoxyModelWithHolder : com/airbnb/epoxy/EpoxyModelWithHolder {
+	public fun <init> ()V
+	public synthetic fun unbind (Lcom/airbnb/epoxy/EpoxyHolder;)V
+	public fun unbind (Ldev/arunkumar/android/epoxy/model/KotlinHolder;)V
+	public synthetic fun unbind (Ljava/lang/Object;)V
+}
+
+public abstract class dev/arunkumar/android/epoxy/model/KotlinHolder : com/airbnb/epoxy/EpoxyHolder, kotlinx/android/extensions/LayoutContainer {
+	public field containerView Landroid/view/View;
+	public fun <init> ()V
+	public fun _$_clearFindViewByIdCache ()V
+	protected fun bindView (Landroid/view/View;)V
+	public fun getContainerView ()Landroid/view/View;
+	public fun setContainerView (Landroid/view/View;)V
+	public final fun unbindView ()V
+}
+
+public abstract class dev/arunkumar/android/epoxy/model/SimpleEpoxyModel : com/airbnb/epoxy/EpoxyModelWithHolder {
+	public fun <init> ()V
+	public synthetic fun unbind (Lcom/airbnb/epoxy/EpoxyHolder;)V
+	public fun unbind (Ldev/arunkumar/android/epoxy/model/SimpleEpoxyModel$ViewHolder;)V
+	public synthetic fun unbind (Ljava/lang/Object;)V
+}
+
+public final class dev/arunkumar/android/epoxy/model/SimpleEpoxyModel$ViewHolder : dev/arunkumar/android/epoxy/model/KotlinHolder {
+	public fun <init> ()V
+	public fun _$_clearFindViewByIdCache ()V
+}
+
+public final class dev/arunkumar/android/epoxy/span/TotalSpanOverride : com/airbnb/epoxy/EpoxyModel$SpanSizeOverrideCallback {
+	public static final field INSTANCE Ldev/arunkumar/android/epoxy/span/TotalSpanOverride;
+	public fun getSpanSize (III)I
+}
+
+public final class dev/arunkumar/android/epoxy/utils/BuildConfig {
+	public static final field BUILD_TYPE Ljava/lang/String;
+	public static final field DEBUG Z
+	public static final field DEBUG_BUILD Z
+	public static final field LIBRARY_PACKAGE_NAME Ljava/lang/String;
+	public fun <init> ()V
+}
+

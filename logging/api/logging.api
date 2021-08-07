@@ -1,0 +1,35 @@
+public final class dev/arunkumar/android/logging/BuildConfig {
+	public static final field BUILD_TYPE Ljava/lang/String;
+	public static final field DEBUG Z
+	public static final field DEBUG_BUILD Z
+	public static final field LIBRARY_PACKAGE_NAME Ljava/lang/String;
+	public fun <init> ()V
+}
+
+public final class dev/arunkumar/android/logging/LogsKt {
+	public static final fun initDebugLogs (Landroid/app/Application;)V
+	public static final fun logD (ZLjava/lang/Throwable;Lkotlin/jvm/functions/Function0;)V
+	public static synthetic fun logD$default (ZLjava/lang/Throwable;Lkotlin/jvm/functions/Function0;ILjava/lang/Object;)V
+	public static final fun logE (ZLjava/lang/Throwable;Lkotlin/jvm/functions/Function0;)V
+	public static synthetic fun logE$default (ZLjava/lang/Throwable;Lkotlin/jvm/functions/Function0;ILjava/lang/Object;)V
+	public static final fun logI (ZLjava/lang/Throwable;Lkotlin/jvm/functions/Function0;)V
+	public static synthetic fun logI$default (ZLjava/lang/Throwable;Lkotlin/jvm/functions/Function0;ILjava/lang/Object;)V
+	public static final fun logThrowable (Ljava/lang/Throwable;)V
+	public static final fun logV (ZLjava/lang/Throwable;Lkotlin/jvm/functions/Function0;)V
+	public static synthetic fun logV$default (ZLjava/lang/Throwable;Lkotlin/jvm/functions/Function0;ILjava/lang/Object;)V
+	public static final fun logW (ZLjava/lang/Throwable;Lkotlin/jvm/functions/Function0;)V
+	public static synthetic fun logW$default (ZLjava/lang/Throwable;Lkotlin/jvm/functions/Function0;ILjava/lang/Object;)V
+	public static final fun logd (Ljava/lang/String;ZLjava/lang/Throwable;[Ljava/lang/Object;)V
+	public static synthetic fun logd$default (Ljava/lang/String;ZLjava/lang/Throwable;[Ljava/lang/Object;ILjava/lang/Object;)V
+	public static final fun loge (Ljava/lang/String;ZLjava/lang/Throwable;[Ljava/lang/Object;)V
+	public static synthetic fun loge$default (Ljava/lang/String;ZLjava/lang/Throwable;[Ljava/lang/Object;ILjava/lang/Object;)V
+	public static final fun logi (Ljava/lang/String;ZLjava/lang/Throwable;[Ljava/lang/Object;)V
+	public static synthetic fun logi$default (Ljava/lang/String;ZLjava/lang/Throwable;[Ljava/lang/Object;ILjava/lang/Object;)V
+	public static final fun logv (Ljava/lang/String;ZLjava/lang/Throwable;[Ljava/lang/Object;)V
+	public static synthetic fun logv$default (Ljava/lang/String;ZLjava/lang/Throwable;[Ljava/lang/Object;ILjava/lang/Object;)V
+	public static final fun logw (Ljava/lang/String;ZLjava/lang/Throwable;[Ljava/lang/Object;)V
+	public static synthetic fun logw$default (Ljava/lang/String;ZLjava/lang/Throwable;[Ljava/lang/Object;ILjava/lang/Object;)V
+	public static final fun onDebug (ZLkotlin/jvm/functions/Function0;)V
+	public static synthetic fun onDebug$default (ZLkotlin/jvm/functions/Function0;ILjava/lang/Object;)V
+}
+
