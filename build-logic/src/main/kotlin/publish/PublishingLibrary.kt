@@ -126,10 +126,12 @@ private fun Project.registerSourceJarTask(): TaskProvider<Jar> {
 }
 
 private fun Project.configureSigning() {
-  extra["signing.keyId"] = rootProject.extra[SIGNING_KEY_ID]
-  extra["signing.password"] = rootProject.extra[SIGNING_PASSWORD]
-  extra["signing.secretKeyRingFile"] = rootProject.extra[SIGNING_SECRET_KEY_RING_FILE]
   configure<SigningExtension> {
+    useInMemoryPgpKeys(
+      rootProject.extra[SIGNING_KEY_ID].toString(),
+      rootProject.extra[SIGNING_KEY].toString(),
+      rootProject.extra[SIGNING_PASSWORD].toString(),
+    )
     sign(the<PublishingExtension>().publications)
   }
 }
