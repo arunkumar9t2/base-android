@@ -28,14 +28,14 @@ buildscript {
 }
 
 plugins {
-  // id "scabbard.gradle" version "0.4.0"
+  id "scabbard.gradle" version "0.5.0"
 }
 
-//scabbard {
-//  enabled true
-//  fullBindingGraphValidation false
-//  outputFormat "svg"
-//}
+scabbard {
+  enabled true
+  fullBindingGraphValidation false
+  outputFormat "svg"
+}
 
 apply from: "gradle/local-properties.gradle"
 
