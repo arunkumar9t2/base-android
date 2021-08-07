@@ -21,7 +21,7 @@ import androidx.work.Configuration
 import androidx.work.WorkManager
 import androidx.work.WorkerFactory
 import dev.arunkumar.android.dagger.application.AppInitializer
-import dev.arunkumar.android.logging.logd
+import dev.arunkumar.android.logging.logD
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -41,6 +41,6 @@ constructor(private val workerFactory: WorkerFactory) : AppInitializer {
       setWorkerFactory(workerFactory)
     }
     WorkManager.initialize(application, config)
-    logd("Workmanager initialized successfully")
+    logD { "Workmanager initialized successfully" }
   }
 }

@@ -26,7 +26,7 @@ import timber.log.Timber
 /**
  * Includes given block of code in [action] only on debug builds.
  *
- * @param include to indicate if the block should be
+ * @param include to indicate if the block should be inlined
  */
 inline fun onDebug(include: Boolean = DEBUG_BUILD, action: () -> Unit) {
   if (include) {
@@ -37,6 +37,10 @@ inline fun onDebug(include: Boolean = DEBUG_BUILD, action: () -> Unit) {
 /**
  * Logs with [Log.DEBUG] level when [include] is `true`
  */
+@Deprecated(
+  "Use logD {} instead",
+  replaceWith = ReplaceWith("logD(include, throwable) { message }")
+)
 inline fun logd(
   message: String,
   include: Boolean = DEBUG_BUILD,
@@ -49,8 +53,25 @@ inline fun logd(
 }
 
 /**
+ * Logs [message] with [Log.DEBUG] level when `include` is `true`
+ */
+inline fun logD(
+  include: Boolean = DEBUG_BUILD,
+  throwable: Throwable? = null,
+  crossinline message: () -> String
+) {
+  if (include) {
+    logd(message(), include, throwable)
+  }
+}
+
+/**
  * Logs with [Log.VERBOSE] level when [include] is `true`
  */
+@Deprecated(
+  "Use logV {} instead",
+  replaceWith = ReplaceWith("logV(include, throwable) { message }")
+)
 inline fun logv(
   message: String,
   include: Boolean = DEBUG_BUILD,
@@ -63,8 +84,26 @@ inline fun logv(
 }
 
 /**
+ * Logs [message] with [Log.VERBOSE] level when `include` is `true`
+ */
+inline fun logV(
+  include: Boolean = DEBUG_BUILD,
+  throwable: Throwable? = null,
+  crossinline message: () -> String
+) {
+  if (include) {
+    logv(message(), include, throwable)
+  }
+}
+
+
+/**
  * Logs with [Log.INFO] level when [include] is `true`
  */
+@Deprecated(
+  "Use logI {} instead",
+  replaceWith = ReplaceWith("logI(include, throwable) { message }")
+)
 inline fun logi(
   message: String,
   include: Boolean = DEBUG_BUILD,
@@ -77,8 +116,25 @@ inline fun logi(
 }
 
 /**
+ * Logs [message] with [Log.INFO] level when `include` is `true`
+ */
+inline fun logI(
+  include: Boolean = DEBUG_BUILD,
+  throwable: Throwable? = null,
+  crossinline message: () -> String
+) {
+  if (include) {
+    logi(message(), include, throwable)
+  }
+}
+
+/**
  * Logs with [Log.INFO] level when [include] is `true`
  */
+@Deprecated(
+  "Use logW {} instead",
+  replaceWith = ReplaceWith("logW(include, throwable) { message }")
+)
 inline fun logw(
   message: String,
   include: Boolean = DEBUG_BUILD,
@@ -90,10 +146,26 @@ inline fun logw(
   }
 }
 
+/**
+ * Logs [message] with [Log.WARN] level when `include` is `true`
+ */
+inline fun logW(
+  include: Boolean = DEBUG_BUILD,
+  throwable: Throwable? = null,
+  crossinline message: () -> String
+) {
+  if (include) {
+    logw(message(), include, throwable)
+  }
+}
 
 /**
  * Logs with [Log.INFO] level when [include] is `true`
  */
+@Deprecated(
+  "Use logE {} instead",
+  replaceWith = ReplaceWith("logE(include, throwable) { message }")
+)
 inline fun loge(
   message: String,
   include: Boolean = DEBUG_BUILD,
@@ -104,6 +176,20 @@ inline fun loge(
     throwable?.let { Timber.e(it, message, args) } ?: Timber.e(message, args)
   }
 }
+
+/**
+ * Logs [message] with [Log.ERROR] level when `include` is `true`
+ */
+inline fun logE(
+  include: Boolean = DEBUG_BUILD,
+  throwable: Throwable? = null,
+  crossinline message: () -> String
+) {
+  if (include) {
+    loge(message(), include, throwable)
+  }
+}
+
 
 /**
  * Logs the given [throwable] with no message attached.
