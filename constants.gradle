@@ -18,9 +18,9 @@ ext {
   groupId = "dev.arunkumar.android"
 
   buildDetails = [
-    "compileSdk": 29,
-    "minSdk"    : 19,
-    "targetSdk" : 28,
+    "compileSdk": 30,
+    "minSdk"    : 21,
+    "targetSdk" : 30,
   ]
 
   rvVersion = "1.0.0"
