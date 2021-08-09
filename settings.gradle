@@ -23,10 +23,6 @@ pluginManagement {
   }
   plugins {
     // TODO Replace with version catalogs once ready
-    id "com.android.application" version "7.1.0-alpha06"
-    id "com.android.library" version "7.1.0-alpha06"
-    id "org.jetbrains.kotlin.android" version "1.5.10"
-    id "com.diffplug.spotless" version "5.11.0"
     id "com.gradle.enterprise" version "3.6.3"
   }
   includeBuild "build-logic"
