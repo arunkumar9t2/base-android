@@ -42,6 +42,12 @@ public class PublishingCommon : ConfigurablePlugin({
     }
   }
 
+  println(
+    extra.properties.toList()
+      .sortedBy { it.first }
+      .joinToString(separator = "\n") { it.first + ":" + it.second }
+  )
+
   val versions = (rootProject.extra["moduleVersions"] as Map<String, String>)
     .withDefault { project -> error("Missing version for :$project") }
 
