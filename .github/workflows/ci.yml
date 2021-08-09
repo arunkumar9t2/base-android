@@ -59,7 +59,7 @@ jobs:
         name: unit-tests
         with:
           debug: false
-          job-id: build
+          job-id: unit-tests
           read-only: ${{ github.ref != 'refs/heads/master' }}
           gradle-dependencies-cache-key: |
             constants.gradle
@@ -88,7 +88,7 @@ jobs:
           OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
         with:
           debug: false
-          job-id: build
+          job-id: publish-snapshots
           read-only: ${{ github.ref != 'refs/heads/master' }}
           gradle-dependencies-cache-key: |
             constants.gradle
