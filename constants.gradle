@@ -42,7 +42,7 @@ ext {
 
   epoxyVersion = "4.0.0-beta4"
 
-  timberVersion = "4.7.1"
+  timberVersion = "5.0.0"
 
   butterKnifeVersion = "10.2.1"
 
