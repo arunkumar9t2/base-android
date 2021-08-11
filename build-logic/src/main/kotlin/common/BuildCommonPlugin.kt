@@ -21,6 +21,7 @@ import com.diffplug.gradle.spotless.SpotlessPlugin
 import gradle.ConfigurablePlugin
 import gradle.deps
 import gradle.version
+import kotlinx.validation.ApiValidationExtension
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.configure
@@ -45,14 +46,20 @@ public class BuildCommonPlugin : ConfigurablePlugin({
     error("build-common should be only applied to root project")
   }
 
+  configureApiValidation()
+
   subprojects {
-
     configureSpotless()
-
-    // Configure API checks
-    apply(plugin = "org.jetbrains.kotlinx.binary-compatibility-validator")
   }
 })
+
+private fun Project.configureApiValidation() {
+  // Configure API checks
+  apply(plugin = "org.jetbrains.kotlinx.binary-compatibility-validator")
+  configure<ApiValidationExtension> {
+    ignoredProjects.add("sample-app")
+  }
+}
 
 /**
  * Configures spotless plugin on given subproject.
