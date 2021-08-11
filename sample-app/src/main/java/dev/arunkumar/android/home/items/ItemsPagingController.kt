@@ -1,3 +1,19 @@
+/*
+ * Copyright 2021 Arunkumar
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package dev.arunkumar.android.home.items
 
 import android.app.Activity
@@ -6,13 +22,9 @@ import com.airbnb.epoxy.EpoxyModel
 import com.airbnb.epoxy.paging.PagedListEpoxyController
 import com.jakewharton.rxrelay2.PublishRelay
 import dev.arunkumar.android.dagger.activity.PerActivity
-import dev.arunkumar.android.epoxy.controller.listModel
 import dev.arunkumar.android.epoxy.controller.model
 import dev.arunkumar.android.home.HomeAction
 import dev.arunkumar.android.item.Item
-import dev.arunkumar.android.preferences.Preference
-import dev.arunkumar.android.preferences.togglePreference
-import dev.arunkumar.android.rxschedulers.SchedulerProvider
 import io.reactivex.Observable
 import javax.inject.Inject
 
@@ -21,7 +33,6 @@ class ItemsPagingController
 @Inject
 constructor(
   private val activity: Activity,
-  private val schedulerProvider: SchedulerProvider
 ) : PagedListEpoxyController<Item>(
   modelBuildingHandler = getAsyncBackgroundHandler(),
   diffingHandler = getAsyncBackgroundHandler()
@@ -34,18 +45,8 @@ constructor(
   val resetDbs: Observable<HomeAction.ResetItems> = resetDbRelay.hide()
 
   var headers by model(true)
-  var preferences by listModel<Preference<*>>()
 
   override fun addModels(models: List<EpoxyModel<*>>) {
-
-    preferences.forEach { preference ->
-      togglePreference {
-        id(preference.id)
-        preference(preference as Preference<Boolean>)
-        schedulerProvider(schedulerProvider)
-      }
-    }
-
     resetDbButton {
       id("reset-item-db")
       onClick { _ -> resetDbRelay.accept(HomeAction.ResetItems) }

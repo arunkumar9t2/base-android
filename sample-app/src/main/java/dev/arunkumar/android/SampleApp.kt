@@ -1,3 +1,19 @@
+/*
+ * Copyright 2021 Arunkumar
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package dev.arunkumar.android
 
 import android.content.Context
@@ -30,7 +46,6 @@ class SampleApp : DaggerApplication() {
 
   override fun onCreate() {
     super.onCreate()
-    initDebugLogs()
     initEpoxy()
     initRealm()
     appInitializers.forEach { initializer -> initializer.initialize(this) }
@@ -50,11 +65,11 @@ class SampleApp : DaggerApplication() {
     RealmLog.add { level, tag, throwable, message ->
       val formattedMessage = "$tag : $message, ${throwable?.message}"
       when (level) {
-        DEBUG -> logd(formattedMessage, throwable = throwable)
-        INFO -> logi(formattedMessage, throwable = throwable)
-        WARN -> logw(formattedMessage, throwable = throwable)
-        ERROR -> loge(formattedMessage, throwable = throwable)
-        FATAL -> loge(formattedMessage, throwable = throwable)
+        DEBUG -> logD(throwable = throwable) { formattedMessage }
+        INFO -> logI(throwable = throwable) { formattedMessage }
+        WARN -> logW(throwable = throwable) { formattedMessage }
+        ERROR -> logE(throwable = throwable) { formattedMessage }
+        FATAL -> logE(throwable = throwable) { formattedMessage }
       }
     }
     RealmConfiguration.Builder()

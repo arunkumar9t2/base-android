@@ -47,6 +47,10 @@ gradlePlugin {
       id = "publish"
       implementationClass = "publish.PublishingLibrary"
     }
+    create("base-android-sample") {
+      id = "base-android-sample"
+      implementationClass = "base.BaseAndroidSample"
+    }
   }
 }
 

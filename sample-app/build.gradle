@@ -29,6 +29,7 @@ apply plugin: "kotlin-android"
 apply plugin: "kotlin-kapt"
 apply plugin: "kotlin-android-extensions"
 apply plugin: "realm-android"
+apply plugin: "base-android-sample"
 
 android {
   compileSdkVersion buildDetails.compileSdk
@@ -82,23 +83,6 @@ android {
     ]
   }
 
-  flavorDimensions "dep"
-
-  productFlavors {
-    local {
-      dimension "dep"
-    }
-    remote {
-      dimension "dep"
-    }
-  }
-
-  variantFilter { variant ->
-    if (variant.name == "localRelease") {
-      variant.setIgnore(true)
-    }
-  }
-
   ndkVersion "21.3.6528147"
 
   testOptions {
@@ -114,6 +98,20 @@ androidExtensions {
 
 dependencies {
   implementation fileTree(dir: "libs", include: ["*.jar"])
+
+  implementation project(':colors')
+  implementation project(':common')
+  implementation project(':compass')
+  implementation project(':dagger-base')
+  implementation project(':dagger-viewmodel')
+  implementation project(':dagger-workmanager')
+  implementation project(':epoxy-rx')
+  implementation project(':epoxy-utils')
+  implementation project(':glide-component-icon')
+  implementation project(':logging')
+  implementation project(':preferences')
+  implementation project(':rx-utils')
+  implementation project(':spring-item-animator')
 
   implementation deps.workManagerRx
   implementation deps.workManagerKtx
