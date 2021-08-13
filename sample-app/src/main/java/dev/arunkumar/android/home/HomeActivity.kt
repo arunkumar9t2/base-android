@@ -108,7 +108,7 @@ class HomeActivity : DaggerAppCompatActivity(), UsesViewModel {
   interface HomeModule {
     @PerActivity
     @Binds
-    fun bindActivity(homeActivity: HomeActivity): Activity
+    fun HomeActivity.bindActivity(): Activity
   }
 
   @Module
@@ -120,7 +120,7 @@ class HomeActivity : DaggerAppCompatActivity(), UsesViewModel {
     @Binds
     @IntoMap
     @ViewModelKey(HomeViewModel::class)
-    fun homeViewModel(homeViewModel: HomeViewModel): ViewModel
+    fun HomeViewModel.homeViewModel(): ViewModel
   }
 
 
