@@ -24,7 +24,7 @@ import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
 import dev.arunkumar.android.dagger.workmanager.WorkerKey
-import dev.arunkumar.android.logging.logd
+import dev.arunkumar.android.logging.logD
 import io.reactivex.Single
 import javax.inject.Inject
 
@@ -42,7 +42,7 @@ constructor(
       .deleteItem(id)
       .toSingle { Result.success() }
       .doOnSuccess {
-        logd("Delete item id $id success")
+        logD { "Delete item id $id success" }
       }
   }
 
