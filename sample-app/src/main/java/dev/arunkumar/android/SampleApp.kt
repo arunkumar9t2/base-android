@@ -33,9 +33,7 @@ import javax.inject.Inject
 class SampleApp : DaggerApplication() {
 
   private val appComponent: AppComponent by lazy {
-    DaggerAppComponent.builder()
-      .application(this)
-      .build()
+    DaggerAppComponent.factory().create(this)
   }
 
   override fun applicationInjector() = appComponent
