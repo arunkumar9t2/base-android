@@ -81,6 +81,7 @@ android {
       logEpoxyTimings              : "true",
       enableParallelEpoxyProcessing: "true"
     ]
+
   }
 
   ndkVersion "21.3.6528147"
@@ -89,6 +90,10 @@ android {
     unitTests {
       includeAndroidResources = true
     }
+  }
+
+  lintOptions {
+    abortOnError false
   }
 }
 

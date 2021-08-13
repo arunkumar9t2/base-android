@@ -43,11 +43,12 @@ public class PublishingCommon : ConfigurablePlugin({
   }
 
   val versions = (rootProject.extra["moduleVersions"] as Map<String, String>)
-    .withDefault { project -> error("Missing version for :$project") }
 
   allprojects {
     group = findProperty("groupId").toString()
-    version = if (hasProperty("snapshot")) "master-SNAPSHOT" else versions.getValue(name)
+    if (versions[name] != null) {
+      version = if (hasProperty("snapshot")) "master-SNAPSHOT" else versions[name]!!.toString()
+    }
   }
 
   configure<NexusPublishExtension> {
