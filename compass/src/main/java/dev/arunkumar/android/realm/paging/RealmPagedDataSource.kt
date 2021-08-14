@@ -16,7 +16,6 @@
 
 package dev.arunkumar.android.realm.paging
 
-import android.util.Log
 import androidx.paging.DataSource
 import androidx.paging.PageKeyedDataSource
 import dev.arunkumar.android.realm.defaultRealm
@@ -70,7 +69,6 @@ class RealmPagedDataSource<T : RealmModel>(
     }
     val startPosition = (pageNo - 1) * loadSize
     val endPosition = minOf(startPosition + loadSize, realmResults.size)
-    Log.d("Paged", "loadPage: $pageNo, $loadSize, $startPosition, $endPosition")
     val copiedResults = mutableListOf<T>()
     for (position in startPosition until endPosition) {
       realmResults[position]?.let { item ->
