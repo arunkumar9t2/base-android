@@ -30,11 +30,11 @@ class RealmTiledDataSource<T : RealmModel>(
   class Factory<T : RealmModel>(
     private val realmQueryBuilder: (Realm) -> RealmQuery<T>
   ) : DataSource.Factory<Int, T>() {
-    override fun create() =
-      RealmTiledDataSource(realmQueryBuilder)
+    override fun create() = RealmTiledDataSource(realmQueryBuilder)
   }
 
   private var realm: Realm = defaultRealm()
+
   private var realmResults: RealmResults<T> = realmQueryBuilder(realm).findAll().apply {
     addChangeListener { _ -> invalidate() }
   }

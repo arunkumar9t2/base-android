@@ -29,6 +29,7 @@ import javax.inject.Inject
 import kotlin.random.Random.Default.nextInt
 
 interface ItemsRepository : RealmSource<Item> {
+
   fun addItemsIfEmpty(): Completable
 
   fun deleteItem(itemId: Int): Completable

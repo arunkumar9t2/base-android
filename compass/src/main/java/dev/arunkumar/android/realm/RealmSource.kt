@@ -32,7 +32,7 @@ import io.realm.RealmModel
 import io.realm.RealmQuery
 
 /**
- * Common abstractions for a [RealmModel] providing paging lib support to Realm objects
+ * Common abstractions for a [RealmModel] providing paging support to [Realm] objects
  */
 interface RealmSource<T : RealmModel> {
 

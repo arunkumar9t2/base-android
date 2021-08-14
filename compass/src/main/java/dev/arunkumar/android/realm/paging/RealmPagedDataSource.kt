@@ -35,6 +35,7 @@ class RealmPagedDataSource<T : RealmModel>(
   }
 
   private var realm: Realm = defaultRealm()
+
   private var realmChangeListener = { _: RealmResults<T> ->
     invalidate()
   }
