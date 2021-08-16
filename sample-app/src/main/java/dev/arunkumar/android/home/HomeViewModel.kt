@@ -1,3 +1,19 @@
+/*
+ * Copyright 2021 Arunkumar
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package dev.arunkumar.android.home
 
 import com.afollestad.rxkprefs.RxkPrefs
@@ -7,7 +23,7 @@ import com.babylon.orbit.OrbitViewModel
 import dev.arunkumar.android.epoxy.epoxyAsyncScheduler
 import dev.arunkumar.android.item.Item
 import dev.arunkumar.android.item.ItemsRepository
-import dev.arunkumar.android.item.ResetDbUseCase
+import dev.arunkumar.android.item.ResetItems
 import dev.arunkumar.android.preferences.Preference
 import dev.arunkumar.android.result.asResource
 import io.realm.kotlin.where
@@ -18,7 +34,7 @@ class HomeViewModel
 constructor(
   private val rxkPrefs: RxkPrefs,
   private val itemsRepository: ItemsRepository,
-  private val resetDbUseCase: ResetDbUseCase
+  private val resetItems: ResetItems
 ) : OrbitViewModel<HomeState, HomeSideEffect>(HomeState(), {
 
   val sortPreference: Preference<Boolean> by lazy {
@@ -68,5 +84,5 @@ constructor(
 
   perform("reset db")
     .on<HomeAction.ResetItems>()
-    .transform { eventObservable.flatMap { resetDbUseCase.build().toObservable<Any>() } }
+    .transform { eventObservable.flatMap { resetItems.build().toObservable<Any>() } }
 })

@@ -19,7 +19,7 @@ package dev.arunkumar.android.item
 import io.reactivex.Completable
 import javax.inject.Inject
 
-class ResetDbUseCase
+class ResetItems
 @Inject
 constructor(
   private val itemsRepository: ItemsRepository

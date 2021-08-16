@@ -56,7 +56,9 @@ fun <T : RealmModel> realmObservable(
       val realm = defaultRealm()
       val results = realmQuery(realm).findAll()
       onNext(realm.copyFromRealm(results))
-      results.addChangeListener { newResults -> onNext(realm.copyFromRealm(newResults)) }
+      results.addChangeListener { newResults ->
+        onNext(realm.copyFromRealm(newResults))
+      }
       setCancellable {
         results.removeAllChangeListeners()
         realm.close()
