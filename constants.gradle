@@ -35,7 +35,7 @@ ext {
   paletteVersion = "1.0.0"
   androidXPreferences = "1.1.1"
 
-  pagingVersion = "2.1.0"
+  pagingVersion = "2.1.2"
 
   junitVersion = "4.12"
   roboeletricVersion = "4.2"
