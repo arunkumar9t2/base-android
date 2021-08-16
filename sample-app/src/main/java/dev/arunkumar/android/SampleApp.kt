@@ -70,9 +70,11 @@ class SampleApp : DaggerApplication() {
         FATAL -> logE(throwable = throwable) { formattedMessage }
       }
     }
-    RealmConfiguration.Builder()
+    val realmConfiguration = RealmConfiguration.Builder()
       .deleteRealmIfMigrationNeeded()
+      .allowQueriesOnUiThread(false)
+      .allowWritesOnUiThread(false)
       .build()
-      .let(Realm::setDefaultConfiguration)
+    Realm.setDefaultConfiguration(realmConfiguration)
   }
 }

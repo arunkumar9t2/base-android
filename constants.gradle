@@ -46,14 +46,14 @@ ext {
 
   butterKnifeVersion = "10.2.1"
 
-  rxVersion = "2.2.8"
+  rxVersion = "2.2.21"
   rxAndroidVersion = "2.1.1"
   rxKotlinVersion = "2.2.0"
   rxRelayVersion = "2.1.0"
   rxBindingVersion = "2.1.1"
   rxKPrefsVersion = "2.0.3"
 
-  realmVersion = "6.1.0"
+  realmVersion = "10.7.1"
 
   glideVersion = "4.11.0"
 
