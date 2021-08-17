@@ -74,10 +74,9 @@ interface TiledRealmSource<T : RealmModel> : RealmSource<T> {
     val realmExecutor = RealmExecutor()
 
     RxPagedListBuilder(realmTiledDataSourceFactory, pagingConfig)
-      .run {
-        setFetchScheduler(realmExecutor.toScheduler())
-        setNotifyScheduler(notifyScheduler)
-      }.buildObservable()
+      .setFetchScheduler(realmExecutor.toScheduler())
+      .setNotifyScheduler(notifyScheduler)
+      .buildObservable()
       .doAfterTerminate { realmExecutor.stop() }
   }.subscribeOn(schedulerProvider.io)
 }
@@ -105,10 +104,9 @@ interface PagedRealmSource<T : RealmModel> : RealmSource<T> {
     val realmExecutor = RealmExecutor()
 
     RxPagedListBuilder(realmPagedDataSourceFactory, pagingConfig)
-      .run {
-        setFetchScheduler(realmExecutor.toScheduler())
-        setNotifyScheduler(notifyScheduler)
-      }.buildObservable()
+      .setFetchScheduler(realmExecutor.toScheduler())
+      .setNotifyScheduler(notifyScheduler)
+      .buildObservable()
       .doAfterTerminate { realmExecutor.stop() }
   }.subscribeOn(schedulerProvider.io)
 }
