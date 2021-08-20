@@ -17,8 +17,9 @@
 package dev.arunkumar.android.realm.paging
 
 import androidx.paging.PositionalDataSource
+import io.realm.RealmModel
 
-abstract class TiledDataSource<T> : PositionalDataSource<T>() {
+abstract class TiledDataSource<T : RealmModel> : PositionalDataSource<T>() {
 
   abstract fun countItems(): Int
 

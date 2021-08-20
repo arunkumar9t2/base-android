@@ -77,6 +77,10 @@ internal fun Project.androidCommon() {
   tasks.withType<KotlinCompile>().configureEach {
     kotlinOptions {
       jvmTarget = "1.8"
+      freeCompilerArgs += listOf(
+        "-Xopt-in=kotlin.ExperimentalStdlibApi",
+        "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
+      )
     }
   }
 }

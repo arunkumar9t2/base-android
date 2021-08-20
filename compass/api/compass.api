@@ -6,19 +6,6 @@ public final class dev/arunkumar/android/realm/BuildConfig {
 	public fun <init> ()V
 }
 
-public abstract interface class dev/arunkumar/android/realm/PagedRealmSource : dev/arunkumar/android/realm/RealmSource {
-	public abstract fun pagedItems (IIIZLio/reactivex/Scheduler;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Lio/reactivex/Observable;
-}
-
-public final class dev/arunkumar/android/realm/PagedRealmSource$DefaultImpls {
-	public static fun pagedItems (Ldev/arunkumar/android/realm/PagedRealmSource;IIIZLio/reactivex/Scheduler;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Lio/reactivex/Observable;
-}
-
-public final class dev/arunkumar/android/realm/PagedRealmSource$DefaultImpls$inlined$sam$i$java_util_concurrent_Callable$0 : java/util/concurrent/Callable {
-	public fun <init> (Lkotlin/jvm/functions/Function0;)V
-	public final synthetic fun call ()Ljava/lang/Object;
-}
-
 public final class dev/arunkumar/android/realm/RealmExtensionsKt {
 	public static final fun defaultRealm ()Lio/realm/Realm;
 	public static final fun realm (Lkotlin/jvm/functions/Function1;)V
@@ -35,24 +22,19 @@ public final class dev/arunkumar/android/realm/RealmExtensionsKt$sam$i$io_realm_
 
 public abstract interface class dev/arunkumar/android/realm/RealmSource {
 	public abstract fun getSchedulerProvider ()Ldev/arunkumar/android/rxschedulers/SchedulerProvider;
-	public abstract fun pagedItems (IIIZLio/reactivex/Scheduler;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Lio/reactivex/Observable;
+	public abstract fun pagedItems (IIIZLio/reactivex/Scheduler;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Lkotlinx/coroutines/flow/Flow;
 }
 
 public final class dev/arunkumar/android/realm/RealmSource$DefaultImpls {
-	public static synthetic fun pagedItems$default (Ldev/arunkumar/android/realm/RealmSource;IIIZLio/reactivex/Scheduler;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lio/reactivex/Observable;
+	public static synthetic fun pagedItems$default (Ldev/arunkumar/android/realm/RealmSource;IIIZLio/reactivex/Scheduler;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
 }
 
 public abstract interface class dev/arunkumar/android/realm/TiledRealmSource : dev/arunkumar/android/realm/RealmSource {
-	public abstract fun pagedItems (IIIZLio/reactivex/Scheduler;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Lio/reactivex/Observable;
+	public abstract fun pagedItems (IIIZLio/reactivex/Scheduler;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Lkotlinx/coroutines/flow/Flow;
 }
 
 public final class dev/arunkumar/android/realm/TiledRealmSource$DefaultImpls {
-	public static fun pagedItems (Ldev/arunkumar/android/realm/TiledRealmSource;IIIZLio/reactivex/Scheduler;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Lio/reactivex/Observable;
-}
-
-public final class dev/arunkumar/android/realm/TiledRealmSource$DefaultImpls$inlined$sam$i$java_util_concurrent_Callable$0 : java/util/concurrent/Callable {
-	public fun <init> (Lkotlin/jvm/functions/Function0;)V
-	public final synthetic fun call ()Ljava/lang/Object;
+	public static fun pagedItems (Ldev/arunkumar/android/realm/TiledRealmSource;IIIZLio/reactivex/Scheduler;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Lkotlinx/coroutines/flow/Flow;
 }
 
 public final class dev/arunkumar/android/realm/paging/PagingKt {
@@ -70,6 +52,18 @@ public final class dev/arunkumar/android/realm/paging/RealmPagedDataSource$Facto
 	public fun <init> (Lkotlin/jvm/functions/Function1;)V
 	public synthetic fun create ()Landroidx/paging/DataSource;
 	public fun create ()Ldev/arunkumar/android/realm/paging/RealmPagedDataSource;
+}
+
+public final class dev/arunkumar/android/realm/paging/RealmPagingSource : androidx/paging/rxjava2/RxPagingSource {
+	public fun <init> (Lkotlin/jvm/functions/Function1;)V
+	public fun getRefreshKey (Landroidx/paging/PagingState;)Ljava/lang/Integer;
+	public synthetic fun getRefreshKey (Landroidx/paging/PagingState;)Ljava/lang/Object;
+	public fun loadSingle (Landroidx/paging/PagingSource$LoadParams;)Lio/reactivex/Single;
+}
+
+public final class dev/arunkumar/android/realm/paging/RealmPagingSource$sam$i$io_realm_RealmChangeListener$0 : io/realm/RealmChangeListener {
+	public fun <init> (Lkotlin/jvm/functions/Function1;)V
+	public final synthetic fun onChange (Ljava/lang/Object;)V
 }
 
 public final class dev/arunkumar/android/realm/paging/RealmTiledDataSource : dev/arunkumar/android/realm/paging/TiledDataSource {

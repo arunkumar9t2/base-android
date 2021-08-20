@@ -16,20 +16,16 @@
 
 package dev.arunkumar.android.realm
 
-import androidx.paging.PagedList
-import androidx.paging.RxPagedListBuilder
-import dev.arunkumar.android.realm.paging.RealmPagedDataSource
-import dev.arunkumar.android.realm.paging.RealmTiledDataSource
-import dev.arunkumar.android.realm.paging.pagingConfig
-import dev.arunkumar.android.realm.threading.RealmExecutor
-import dev.arunkumar.android.rx.deferObservable
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import dev.arunkumar.android.realm.paging.RealmPagingSource
 import dev.arunkumar.android.rxschedulers.SchedulerProvider
-import dev.arunkumar.android.rxschedulers.toScheduler
-import io.reactivex.Observable
 import io.reactivex.Scheduler
 import io.realm.Realm
 import io.realm.RealmModel
 import io.realm.RealmQuery
+import kotlinx.coroutines.flow.Flow
 
 /**
  * Common abstractions for a [RealmModel] providing paging support to [Realm] objects
@@ -47,7 +43,7 @@ interface RealmSource<T : RealmModel> {
     notifyScheduler: Scheduler = schedulerProvider.ui,
     itemMapper: (T) -> R = { it as R },
     realmQueryBuilder: (Realm) -> RealmQuery<T>
-  ): Observable<PagedList<R>>
+  ): Flow<PagingData<T>>
 
 }
 
@@ -61,52 +57,18 @@ interface TiledRealmSource<T : RealmModel> : RealmSource<T> {
     notifyScheduler: Scheduler,
     itemMapper: (T) -> R,
     realmQueryBuilder: (Realm) -> RealmQuery<T>
-  ): Observable<PagedList<R>> = deferObservable {
-    val pagingConfig = pagingConfig {
-      setEnablePlaceholders(placeholders)
-      setInitialLoadSizeHint(initialLoadSize)
-      setPageSize(pageSize)
-      setPrefetchDistance(prefetchDistance)
-    }
-    val realmTiledDataSourceFactory = RealmTiledDataSource.Factory(realmQueryBuilder)
-      .map { itemMapper(it) }
-
-    val realmExecutor = RealmExecutor()
-
-    RxPagedListBuilder(realmTiledDataSourceFactory, pagingConfig)
-      .setFetchScheduler(realmExecutor.toScheduler())
-      .setNotifyScheduler(notifyScheduler)
-      .buildObservable()
-      .doAfterTerminate { realmExecutor.stop() }
-  }.subscribeOn(schedulerProvider.io)
-}
-
-interface PagedRealmSource<T : RealmModel> : RealmSource<T> {
-
-  override fun <R> pagedItems(
-    initialLoadSize: Int,
-    pageSize: Int,
-    prefetchDistance: Int,
-    placeholders: Boolean,
-    notifyScheduler: Scheduler,
-    itemMapper: (T) -> R,
-    realmQueryBuilder: (Realm) -> RealmQuery<T>
-  ): Observable<PagedList<R>> = deferObservable {
-    val pagingConfig = pagingConfig {
-      setEnablePlaceholders(placeholders)
-      setInitialLoadSizeHint(initialLoadSize)
-      setPageSize(pageSize)
-      setPrefetchDistance(prefetchDistance)
-    }
-    val realmPagedDataSourceFactory = RealmPagedDataSource.Factory(realmQueryBuilder)
-      .map { itemMapper(it) }
-
-    val realmExecutor = RealmExecutor()
-
-    RxPagedListBuilder(realmPagedDataSourceFactory, pagingConfig)
-      .setFetchScheduler(realmExecutor.toScheduler())
-      .setNotifyScheduler(notifyScheduler)
-      .buildObservable()
-      .doAfterTerminate { realmExecutor.stop() }
-  }.subscribeOn(schedulerProvider.io)
+  ): Flow<PagingData<T>> {
+    return Pager(
+      config = PagingConfig(
+        pageSize = pageSize,
+        prefetchDistance = prefetchDistance,
+        enablePlaceholders = placeholders,
+        initialLoadSize = initialLoadSize,
+      ),
+      initialKey = 0,
+      pagingSourceFactory = {
+        RealmPagingSource(realmQueryBuilder)
+      }
+    ).flow
+  }
 }

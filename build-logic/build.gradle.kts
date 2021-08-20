@@ -28,11 +28,11 @@ kotlin {
 gradlePlugin {
   plugins {
     create("androidLibrary") {
-      id = "android-library"
+      id = "android-library-plugin"
       implementationClass = "android.AndroidLibrary"
     }
     create("androidBinary") {
-      id = "android-binary"
+      id = "android-binary-plugin"
       implementationClass = "android.AndroidBinary"
     }
     create("buildCommon") {

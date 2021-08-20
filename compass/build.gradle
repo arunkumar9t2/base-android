@@ -23,7 +23,9 @@ buildscript {
     classpath deps.realmPlugin
   }
 }
-
+plugins {
+  id "android-library-plugin"
+}
 apply plugin: "realm-android"
 
 dependencies {
@@ -31,6 +33,5 @@ dependencies {
   api project(path: ":rx-utils")
 
   api deps.paging
-  api deps.pagingCommon
   api deps.pagingRxjava
 }

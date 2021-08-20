@@ -44,6 +44,7 @@ class SampleApp : DaggerApplication() {
 
   override fun onCreate() {
     super.onCreate()
+    initDebugLogs()
     initEpoxy()
     initRealm()
     appInitializers.forEach { initializer -> initializer.initialize(this) }

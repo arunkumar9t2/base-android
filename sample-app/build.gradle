@@ -147,10 +147,7 @@ dependencies {
   implementation deps.constraintLayout
 
   // Lifecycle extensions
-  implementation deps.androidXLifecycle
-
-  implementation deps.orbit
-  implementation deps.orbitAndroid
+  implementation deps.viewmodel
 
   def autodispose = "1.4.0"
   implementation "com.uber.autodispose:autodispose:$autodispose"

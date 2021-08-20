@@ -16,73 +16,81 @@
 
 package dev.arunkumar.android.home
 
-import com.afollestad.rxkprefs.RxkPrefs
-import com.afollestad.rxkprefs.rxjava.observe
-import com.babylon.orbit.LifecycleAction
-import com.babylon.orbit.OrbitViewModel
-import dev.arunkumar.android.epoxy.epoxyAsyncScheduler
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.viewModelScope
+import androidx.paging.PagingData
 import dev.arunkumar.android.item.Item
 import dev.arunkumar.android.item.ItemsRepository
-import dev.arunkumar.android.item.ResetItems
 import dev.arunkumar.android.preferences.Preference
-import dev.arunkumar.android.result.asResource
+import io.realm.Realm
 import io.realm.kotlin.where
+import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
 import javax.inject.Inject
+
+data class HomeState(
+  val preferences: List<Preference<*>> = emptyList(),
+  val headers: Boolean = true,
+  val items: PagingData<Item> = PagingData.empty()
+)
+
+sealed class HomeSideEffect {
+  data class PerformDelete(val item: Item) : HomeSideEffect()
+}
+
+sealed class HomeAction {
+  object LoadItems : HomeAction()
+  data class DeleteItem(val item: Item) : HomeAction()
+  object ResetItems : HomeAction()
+}
+
+private typealias HomeReducer = HomeState.() -> HomeState
 
 class HomeViewModel
 @Inject
 constructor(
-  private val rxkPrefs: RxkPrefs,
   private val itemsRepository: ItemsRepository,
-  private val resetItems: ResetItems
-) : OrbitViewModel<HomeState, HomeSideEffect>(HomeState(), {
+) : ViewModel() {
+  /**
+   * Action stream for processing set of UI actions received from View
+   */
+  private val actions = MutableSharedFlow<HomeAction>()
+  private val actionsFlow = actions.asSharedFlow()
 
-  val sortPreference: Preference<Boolean> by lazy {
-    val sortPreferenceId = "sortPreference"
-    Preference<Boolean>(
-      sortPreferenceId,
-      "Sort items"
-    ).apply {
-      value = rxkPrefs.boolean(sortPreferenceId, true)
-    }
-  }
-
-  val headerPreference: Preference<Boolean> by lazy {
-    val headerPreferenceId = "headerPreference"
-    Preference<Boolean>(
-      headerPreferenceId,
-      "Show headers"
-    ).apply {
-      value = rxkPrefs.boolean(headerPreferenceId, false)
-    }
-  }
-
-  val preferences: List<Preference<*>> by lazy { listOf(sortPreference, headerPreference) }
-
-  perform("load items")
-    .on<LifecycleAction.Created>()
-    .reduce { currentState.copy(preferences = preferences) }
-    .transform {
-      eventObservable.flatMap {
-        sortPreference.value.observe()
-          .switchMap { sort ->
-            itemsRepository.pagedItems<Item>(notifyScheduler = epoxyAsyncScheduler()) { realm ->
-              realm.where<Item>().let { if (sort) it.sort("name") else it }
-            }.asResource()
-          }
+  // actions to reducers
+  private val loadItemsReducer = onAction<HomeAction.LoadItems>()
+    .flatMapLatest {
+      itemsRepository.pagedItems<Item>(realmQueryBuilder = Realm::where)
+    }.map<PagingData<Item>, HomeReducer> { items ->
+      {
+        copy(items = items, headers = false)
       }
-    }.reduce { currentState.copy(items = event) }
+    }
 
-  perform("observe header preference")
-    .on<LifecycleAction.Created>()
-    .transform { eventObservable.flatMap { headerPreference.value.observe() } }
-    .reduce { currentState.copy(headers = event) }
+  /**
+   * StateFlow should basically be a `StateFlow<HomeState>` produced by processing all reducers
+   */
+  val state = merge(loadItemsReducer)
+    .scan(HomeState()) { state, reducer -> reducer(state) }
+    .stateIn(
+      scope = viewModelScope,
+      started = SharingStarted.WhileSubscribed(5000),
+      initialValue = HomeState()
+    ).asLiveData()
 
-  perform("delete item")
-    .on<HomeAction.DeleteItem>()
-    .sideEffect { post(HomeSideEffect.PerformDelete(event.item)) }
+  // TODO Implement one off without caching but lifecycle aware like LiveData
+  private val _effects = MutableSharedFlow<HomeSideEffect>()
+  val effects = _effects.asSharedFlow()
 
-  perform("reset db")
-    .on<HomeAction.ResetItems>()
-    .transform { eventObservable.flatMap { resetItems.build().toObservable<Any>() } }
-})
+  private inline fun <reified Action : HomeAction> onAction() = actionsFlow
+    // TODO Figure out thread here, in RxJava we can observe using observeOn, but flow only has
+    // flowOn
+    .filterIsInstance<Action>()
+
+  fun perform(action: HomeAction) {
+    viewModelScope.launch {
+      actions.emit(action)
+    }
+  }
+}

@@ -20,7 +20,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
 
@@ -63,7 +62,7 @@ val AppCompatActivity.vmFactory
 inline fun <reified T : ViewModel> AppCompatActivity.viewModel(
   crossinline viewModelFactory: () -> ViewModelProvider.Factory = { vmFactory }
 ) = FastLazy { _: AppCompatActivity, _: KProperty<*> ->
-  ViewModelProviders.of(this, viewModelFactory()).get<T>()
+  ViewModelProvider(this, viewModelFactory()).get<T>()
 }
 
 
@@ -85,7 +84,7 @@ val Fragment.vmFactory
 inline fun <reified T : ViewModel> Fragment.viewModel(
   crossinline viewModelFactory: () -> ViewModelProvider.Factory = { vmFactory }
 ) = FastLazy { _: AppCompatActivity, _: KProperty<*> ->
-  ViewModelProviders.of(this, viewModelFactory()).get<T>()
+  ViewModelProvider(this, viewModelFactory()).get<T>()
 }
 
 

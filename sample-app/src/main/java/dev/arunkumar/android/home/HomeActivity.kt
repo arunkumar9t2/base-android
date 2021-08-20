@@ -20,10 +20,6 @@ import android.app.Activity
 import android.os.Bundle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.work.OneTimeWorkRequestBuilder
-import androidx.work.WorkManager
-import androidx.work.workDataOf
-import com.uber.autodispose.android.lifecycle.autoDispose
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -34,75 +30,33 @@ import dev.arunkumar.android.dagger.activity.PerActivity
 import dev.arunkumar.android.dagger.viewmodel.UsesViewModel
 import dev.arunkumar.android.dagger.viewmodel.ViewModelKey
 import dev.arunkumar.android.dagger.viewmodel.viewModel
-import dev.arunkumar.android.home.items.ItemsPagingController
-import dev.arunkumar.android.item.DeleteItemWorker
-import dev.arunkumar.android.itemanimator.SpringSlideInItemAnimator
-import dev.arunkumar.common.result.success
-import kotlinx.android.synthetic.main.activity_main.*
+import dev.arunkumar.android.logging.logD
 import javax.inject.Inject
 
 class HomeActivity : DaggerAppCompatActivity(), UsesViewModel {
   @Inject
-  lateinit var testActivityScope: DummyActivityScopeDep
-
-  @Inject
   override lateinit var viewModelFactory: ViewModelProvider.Factory
-
-  @Inject
-  lateinit var itemsController: ItemsPagingController
-
-  @Inject
-  lateinit var workManager: WorkManager
 
   private val homeViewModel by viewModel<HomeViewModel>()
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
-    setupItems()
-    homeViewModel.connect(
-      this,
-      stateConsumer,
-      sideEffectConsumer
-    )
+    homeViewModel.state.observe(this, ::render)
+    homeViewModel.perform(HomeAction.LoadItems)
   }
 
-  private fun setupItems() {
-    itemsRv.setController(itemsController)
-    itemsRv.run {
-      setController(itemsController)
-      itemAnimator = SpringSlideInItemAnimator()
-    }
-    itemsController.itemClicks
-      .map { HomeAction.DeleteItem(it) }
-      .autoDispose(this)
-      .subscribe(homeViewModel::sendAction)
-    itemsController.resetDbs
-      .autoDispose(this)
-      .subscribe(homeViewModel::sendAction)
+  private fun render(homeState: HomeState) {
+    logD { homeState.toString() }
   }
 
-
-  private val stateConsumer: (HomeState) -> Unit = { homeState ->
-    homeState.items.success {
-      itemsController.submitList(data)
-    }
-    itemsController.headers = homeState.headers
-  }
-
-  private val sideEffectConsumer: (HomeSideEffect) -> Unit = { homeSideEffect ->
-    when (homeSideEffect) {
-      is HomeSideEffect.PerformDelete -> deleteItem(homeSideEffect)
-    }
-  }
-
-  private fun deleteItem(homeSideEffect: HomeSideEffect.PerformDelete) {
+  /*private fun deleteItem(homeSideEffect: HomeSideEffect.PerformDelete) {
     val workRequest = OneTimeWorkRequestBuilder<DeleteItemWorker>().run {
       setInputData(workDataOf("id" to homeSideEffect.item.id))
       build()
     }
     workManager.enqueue(workRequest)
-  }
+  }*/
 
   @Module
   interface HomeModule {
@@ -122,8 +76,4 @@ class HomeActivity : DaggerAppCompatActivity(), UsesViewModel {
     @ViewModelKey(HomeViewModel::class)
     fun HomeViewModel.homeViewModel(): ViewModel
   }
-
-
-  @PerActivity
-  class DummyActivityScopeDep @Inject constructor()
 }

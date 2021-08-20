@@ -20,7 +20,7 @@ plugins {
 dependencies {
   implementation fileTree(dir: "libs", include: ["*.jar"])
 
-  api deps.androidXLifecycle
+  api deps.viewmodel
 
   api deps.daggerAndroid
   api deps.daggerAndroidSupport
