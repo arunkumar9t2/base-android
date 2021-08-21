@@ -6,6 +6,14 @@ public final class dev/arunkumar/android/realm/BuildConfig {
 	public fun <init> ()V
 }
 
+public abstract interface class dev/arunkumar/android/realm/PagedRealmSource : dev/arunkumar/android/realm/RealmSource {
+	public abstract fun pagedItems (IIIZLio/reactivex/Scheduler;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Lkotlinx/coroutines/flow/Flow;
+}
+
+public final class dev/arunkumar/android/realm/PagedRealmSource$DefaultImpls {
+	public static fun pagedItems (Ldev/arunkumar/android/realm/PagedRealmSource;IIIZLio/reactivex/Scheduler;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Lkotlinx/coroutines/flow/Flow;
+}
+
 public final class dev/arunkumar/android/realm/RealmExtensionsKt {
 	public static final fun defaultRealm ()Lio/realm/Realm;
 	public static final fun realm (Lkotlin/jvm/functions/Function1;)V
@@ -29,31 +37,6 @@ public final class dev/arunkumar/android/realm/RealmSource$DefaultImpls {
 	public static synthetic fun pagedItems$default (Ldev/arunkumar/android/realm/RealmSource;IIIZLio/reactivex/Scheduler;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
 }
 
-public abstract interface class dev/arunkumar/android/realm/TiledRealmSource : dev/arunkumar/android/realm/RealmSource {
-	public abstract fun pagedItems (IIIZLio/reactivex/Scheduler;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Lkotlinx/coroutines/flow/Flow;
-}
-
-public final class dev/arunkumar/android/realm/TiledRealmSource$DefaultImpls {
-	public static fun pagedItems (Ldev/arunkumar/android/realm/TiledRealmSource;IIIZLio/reactivex/Scheduler;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Lkotlinx/coroutines/flow/Flow;
-}
-
-public final class dev/arunkumar/android/realm/paging/PagingKt {
-	public static final fun pagingConfig (Lkotlin/jvm/functions/Function1;)Landroidx/paging/PagedList$Config;
-}
-
-public final class dev/arunkumar/android/realm/paging/RealmPagedDataSource : androidx/paging/PageKeyedDataSource {
-	public fun <init> (Lkotlin/jvm/functions/Function1;)V
-	public fun loadAfter (Landroidx/paging/PageKeyedDataSource$LoadParams;Landroidx/paging/PageKeyedDataSource$LoadCallback;)V
-	public fun loadBefore (Landroidx/paging/PageKeyedDataSource$LoadParams;Landroidx/paging/PageKeyedDataSource$LoadCallback;)V
-	public fun loadInitial (Landroidx/paging/PageKeyedDataSource$LoadInitialParams;Landroidx/paging/PageKeyedDataSource$LoadInitialCallback;)V
-}
-
-public final class dev/arunkumar/android/realm/paging/RealmPagedDataSource$Factory : androidx/paging/DataSource$Factory {
-	public fun <init> (Lkotlin/jvm/functions/Function1;)V
-	public synthetic fun create ()Landroidx/paging/DataSource;
-	public fun create ()Ldev/arunkumar/android/realm/paging/RealmPagedDataSource;
-}
-
 public final class dev/arunkumar/android/realm/paging/RealmPagingSource : androidx/paging/rxjava2/RxPagingSource {
 	public fun <init> (Lkotlin/jvm/functions/Function1;)V
 	public fun getRefreshKey (Landroidx/paging/PagingState;)Ljava/lang/Integer;
@@ -64,26 +47,6 @@ public final class dev/arunkumar/android/realm/paging/RealmPagingSource : androi
 public final class dev/arunkumar/android/realm/paging/RealmPagingSource$sam$i$io_realm_RealmChangeListener$0 : io/realm/RealmChangeListener {
 	public fun <init> (Lkotlin/jvm/functions/Function1;)V
 	public final synthetic fun onChange (Ljava/lang/Object;)V
-}
-
-public final class dev/arunkumar/android/realm/paging/RealmTiledDataSource : dev/arunkumar/android/realm/paging/TiledDataSource {
-	public fun <init> (Lkotlin/jvm/functions/Function1;)V
-	public fun countItems ()I
-	public fun loadRange (II)Ljava/util/List;
-}
-
-public final class dev/arunkumar/android/realm/paging/RealmTiledDataSource$Factory : androidx/paging/DataSource$Factory {
-	public fun <init> (Lkotlin/jvm/functions/Function1;)V
-	public synthetic fun create ()Landroidx/paging/DataSource;
-	public fun create ()Ldev/arunkumar/android/realm/paging/RealmTiledDataSource;
-}
-
-public abstract class dev/arunkumar/android/realm/paging/TiledDataSource : androidx/paging/PositionalDataSource {
-	public fun <init> ()V
-	public abstract fun countItems ()I
-	public fun loadInitial (Landroidx/paging/PositionalDataSource$LoadInitialParams;Landroidx/paging/PositionalDataSource$LoadInitialCallback;)V
-	public abstract fun loadRange (II)Ljava/util/List;
-	public fun loadRange (Landroidx/paging/PositionalDataSource$LoadRangeParams;Landroidx/paging/PositionalDataSource$LoadRangeCallback;)V
 }
 
 public final class dev/arunkumar/android/realm/rx/RealmRxUtilKt {

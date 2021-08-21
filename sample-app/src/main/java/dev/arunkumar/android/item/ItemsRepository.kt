@@ -18,8 +18,8 @@ package dev.arunkumar.android.item
 
 import dagger.Binds
 import dagger.Module
+import dev.arunkumar.android.realm.PagedRealmSource
 import dev.arunkumar.android.realm.RealmSource
-import dev.arunkumar.android.realm.TiledRealmSource
 import dev.arunkumar.android.realm.realmTransaction
 import dev.arunkumar.android.rx.completable
 import dev.arunkumar.android.rxschedulers.SchedulerProvider
@@ -47,7 +47,7 @@ class DefaultItemsRepository
 @Inject
 constructor(
   override val schedulerProvider: SchedulerProvider
-) : ItemsRepository, TiledRealmSource<Item> {
+) : ItemsRepository, PagedRealmSource<Item> {
 
   private val charPool: List<Char> = ('a'..'z') + ('A'..'Z') + ('0'..'9')
 

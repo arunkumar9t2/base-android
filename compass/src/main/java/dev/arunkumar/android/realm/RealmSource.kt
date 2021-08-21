@@ -27,9 +27,6 @@ import io.realm.RealmModel
 import io.realm.RealmQuery
 import kotlinx.coroutines.flow.Flow
 
-/**
- * Common abstractions for a [RealmModel] providing paging support to [Realm] objects
- */
 interface RealmSource<T : RealmModel> {
 
   val schedulerProvider: SchedulerProvider
@@ -47,7 +44,7 @@ interface RealmSource<T : RealmModel> {
 
 }
 
-interface TiledRealmSource<T : RealmModel> : RealmSource<T> {
+interface PagedRealmSource<T : RealmModel> : RealmSource<T> {
 
   override fun <R> pagedItems(
     initialLoadSize: Int,
