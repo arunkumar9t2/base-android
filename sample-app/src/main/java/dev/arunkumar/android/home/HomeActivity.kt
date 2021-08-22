@@ -19,7 +19,15 @@ package dev.arunkumar.android.home
 import android.app.Activity
 import android.os.Bundle
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.Button
 import androidx.compose.material.Text
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import dagger.Binds
@@ -31,8 +39,8 @@ import dev.arunkumar.android.dagger.activity.PerActivity
 import dev.arunkumar.android.dagger.viewmodel.UsesViewModel
 import dev.arunkumar.android.dagger.viewmodel.ViewModelKey
 import dev.arunkumar.android.dagger.viewmodel.viewModel
-import dev.arunkumar.android.logging.logD
 import dev.arunkumar.android.ui.theme.BaseTheme
+import dev.arunkumar.android.util.work.rememberFlowWithLifecycle
 import javax.inject.Inject
 
 class HomeActivity : DaggerAppCompatActivity(), UsesViewModel {
@@ -45,22 +53,26 @@ class HomeActivity : DaggerAppCompatActivity(), UsesViewModel {
     super.onCreate(savedInstanceState)
     setContent {
       BaseTheme {
-        Text(text = "Hello World")
+        val state by rememberFlowWithLifecycle(flow = homeViewModel.state)
+          .collectAsState(initial = HomeState())
+        Box(
+          modifier = Modifier.fillMaxSize(),
+          contentAlignment = Alignment.Center,
+        ) {
+          Column(
+            horizontalAlignment = Alignment.CenterHorizontally
+          ) {
+            Text(state.toolbar)
+            Button(onClick = {
+              homeViewModel.perform(HomeAction.LoadItems)
+            }) {
+              Text(text = "Click Me")
+            }
+          }
+        }
       }
     }
   }
-
-  private fun render(homeState: HomeState) {
-    logD { homeState.toString() }
-  }
-
-  /*private fun deleteItem(homeSideEffect: HomeSideEffect.PerformDelete) {
-    val workRequest = OneTimeWorkRequestBuilder<DeleteItemWorker>().run {
-      setInputData(workDataOf("id" to homeSideEffect.item.id))
-      build()
-    }
-    workManager.enqueue(workRequest)
-  }*/
 
   @Module
   interface HomeModule {

@@ -17,32 +17,22 @@
 package dev.arunkumar.android.home
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import androidx.paging.PagingData
-import dev.arunkumar.android.item.Item
-import dev.arunkumar.android.item.ItemsRepository
-import dev.arunkumar.android.preferences.Preference
-import io.realm.Realm
-import io.realm.kotlin.where
+import dev.arunkumar.android.logging.logD
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 data class HomeState(
-  val preferences: List<Preference<*>> = emptyList(),
-  val headers: Boolean = true,
-  val items: PagingData<Item> = PagingData.empty()
+  val toolbar: String = "Toolbar",
+  val header: Boolean = false
 )
 
 sealed class HomeSideEffect {
-  data class PerformDelete(val item: Item) : HomeSideEffect()
 }
 
 sealed class HomeAction {
   object LoadItems : HomeAction()
-  data class DeleteItem(val item: Item) : HomeAction()
-  object ResetItems : HomeAction()
 }
 
 private typealias HomeReducer = HomeState.() -> HomeState
@@ -50,7 +40,6 @@ private typealias HomeReducer = HomeState.() -> HomeState
 class HomeViewModel
 @Inject
 constructor(
-  private val itemsRepository: ItemsRepository,
 ) : ViewModel() {
   /**
    * Action stream for processing set of UI actions received from View
@@ -59,12 +48,11 @@ constructor(
   private val actionsFlow = actions.asSharedFlow()
 
   // actions to reducers
-  private val loadItemsReducer = onAction<HomeAction.LoadItems>()
-    .flatMapLatest {
-      itemsRepository.pagedItems<Item>(realmQueryBuilder = Realm::where)
-    }.map<PagingData<Item>, HomeReducer> { items ->
+  private val loadItemsReducer: Flow<HomeReducer> = onAction<HomeAction.LoadItems>()
+    .onEach { logD { "Emitted ${it.toString()}" } }
+    .map {
       {
-        copy(items = items, headers = false)
+        copy(toolbar = "Tool")
       }
     }
 
@@ -77,7 +65,7 @@ constructor(
       scope = viewModelScope,
       started = SharingStarted.WhileSubscribed(5000),
       initialValue = HomeState()
-    ).asLiveData()
+    )
 
   // TODO Implement one off without caching but lifecycle aware like LiveData
   private val _effects = MutableSharedFlow<HomeSideEffect>()
