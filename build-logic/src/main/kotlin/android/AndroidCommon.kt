@@ -21,20 +21,18 @@ import ANDROID_DEBUG_VARIANT
 import ANDROID_MIN_SDK
 import ANDROID_RELEASE_VARIANT
 import ANDROID_TARGET_SDK
-import com.android.build.gradle.BaseExtension
 import gradle.deps
 import gradle.version
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
-import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 internal fun Project.androidCommon() {
   apply(plugin = "org.jetbrains.kotlin.android")
 
-  configure<BaseExtension> {
+  android {
     compileSdkVersion(ANDROID_COMPILE_SDK)
 
     compileOptions {
