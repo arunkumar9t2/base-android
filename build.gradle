@@ -56,12 +56,6 @@ allprojects { project ->
 def sampleAppName = "sample-app"
 def isSnapshot = project.hasProperty("snapshot")
 
-subprojects { subproject ->
+subprojects {
   apply from: "../constants.gradle"
-  if (subproject.name != sampleAppName) {
-    subproject.ext.artifact = subproject.name
-    subproject.version = isSnapshot ? "master-SNAPSHOT" : subproject.ext.moduleVersions[subproject.name]
-    // TODO Delete libraryModule.gradle and manually apply plugins
-    apply from: "../libraryModule.gradle"
-  }
 }

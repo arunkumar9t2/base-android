@@ -32,6 +32,5 @@ public abstract class dev/arunkumar/android/epoxy/SimpleRxModel : dev/arunkumar/
 
 public final class dev/arunkumar/android/epoxy/SimpleRxModel$ViewHolder : dev/arunkumar/android/epoxy/model/KotlinHolder {
 	public fun <init> ()V
-	public fun _$_clearFindViewByIdCache ()V
 }
 

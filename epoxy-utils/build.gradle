@@ -14,18 +14,24 @@
  * limitations under the License.
  */
 plugins {
+  id "android-library-plugin"
   id "publish"
 }
 apply plugin: "kotlin-kapt"
+apply plugin: "kotlin-android-extensions"
 
 kapt {
   correctErrorTypes = true
 }
 
+androidExtensions {
+  experimental = true
+}
+
 dependencies {
   implementation fileTree(dir: "libs", include: ["*.jar"])
   api project(path: ":common")
-   
+
 
   api libs.epoxy
   kapt libs.epoxyProcessor

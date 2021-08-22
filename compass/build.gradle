@@ -25,6 +25,8 @@ buildscript {
 }
 plugins {
   id "android-library-plugin"
+  id "publish"
+  id "kotlin-kapt"
 }
 apply plugin: "realm-android"
 

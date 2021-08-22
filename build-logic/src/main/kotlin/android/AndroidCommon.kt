@@ -17,6 +17,7 @@
 package android
 
 import ANDROID_COMPILE_SDK
+import ANDROID_DEBUG_VARIANT
 import ANDROID_MIN_SDK
 import ANDROID_RELEASE_VARIANT
 import ANDROID_TARGET_SDK
@@ -55,12 +56,18 @@ internal fun Project.androidCommon() {
     }
 
     buildTypes {
+      named(ANDROID_DEBUG_VARIANT) {
+        minifyEnabled(false)
+        buildConfigField("boolean", "DEBUG_BUILD", "true")
+      }
+
       named(ANDROID_RELEASE_VARIANT) {
         minifyEnabled(true)
         proguardFiles(
           getDefaultProguardFile("proguard-android-optimize.txt"),
           "proguard-rules.pro"
         )
+        buildConfigField("boolean", "DEBUG_BUILD", "false")
       }
     }
 

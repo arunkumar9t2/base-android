@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 plugins {
+  id "android-library-plugin"
   id "publish"
+  id "kotlin-kapt"
 }
 
 dependencies {

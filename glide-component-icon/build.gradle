@@ -14,13 +14,14 @@
  * limitations under the License.
  */
 plugins {
+  id "android-library-plugin"
   id "publish"
 }
 apply plugin: "kotlin-kapt"
 
 dependencies {
   implementation fileTree(dir: "libs", include: ["*.jar"])
-   
+
   implementation libs.glide
   api(deps.androidx.core)
 }

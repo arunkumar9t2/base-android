@@ -1,5 +1,6 @@
 public final class ConstantsKt {
 	public static final field ANDROID_COMPILE_SDK I
+	public static final field ANDROID_DEBUG_VARIANT Ljava/lang/String;
 	public static final field ANDROID_MIN_SDK I
 	public static final field ANDROID_RELEASE_VARIANT Ljava/lang/String;
 	public static final field ANDROID_TARGET_SDK I
@@ -20,10 +21,6 @@ public final class android/AndroidCommonKt$inlined$sam$i$org_gradle_api_Action$0
 }
 
 public final class android/AndroidLibrary : gradle/ConfigurablePlugin {
-	public fun <init> ()V
-}
-
-public final class base/BaseAndroidSample : gradle/ConfigurablePlugin {
 	public fun <init> ()V
 }
 

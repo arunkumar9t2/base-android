@@ -14,13 +14,14 @@
  * limitations under the License.
  */
 plugins {
+  id "android-library-plugin"
   id "publish"
+  id "kotlin-kapt"
 }
-
 dependencies {
   api project(path: ":common")
   api project(path: ":epoxy-rx")
-   
+
 
   implementation libs.material
 

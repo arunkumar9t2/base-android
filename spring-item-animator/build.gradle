@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 plugins {
+  id "android-library-plugin"
   id "publish"
 }
 
@@ -24,7 +25,7 @@ android {
 }
 dependencies {
   implementation fileTree(dir: "libs", include: ["*.jar"])
-   
+
   api libs.recyclerView
   api libs.dynamicAnimation
 }
