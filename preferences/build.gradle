@@ -25,7 +25,7 @@ dependencies {
 
   implementation libs.material
 
-  implementation libs.androidXAppCompat
+  api(deps.androidx.appcompat)
   api(deps.androidx.core)
   implementation libs.constraintLayout
   api libs.androidXPreferences

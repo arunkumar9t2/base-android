@@ -82,11 +82,7 @@ dependencies {
   kapt libs.epoxyProcessor
 
   // AndroidX
-  implementation libs.androidXAppCompat
   implementation libs.constraintLayout
-
-  // Lifecycle extensions
-  implementation libs.viewmodel
 
   def autodispose = "1.4.0"
   implementation "com.uber.autodispose:autodispose:$autodispose"

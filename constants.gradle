@@ -27,8 +27,6 @@ ext {
   dokkaVersion = "1.5.0"
   daggerVersion = "2.38.1"
 
-  viewmodel = "2.4.0-alpha02"
-  androidXAppCompat = "1.1.0"
   constraintLayoutVersion = "1.1.3"
   materialVersion = "1.5.0-alpha02"
   paletteVersion = "1.0.0"
@@ -63,8 +61,6 @@ ext {
   resultVersion = "3.0.1"
 
   libs = [
-    "viewmodel"             : "androidx.lifecycle:lifecycle-viewmodel-ktx:$viewmodel",
-    "androidXAppCompat"     : "androidx.appcompat:appcompat:$androidXAppCompat",
     "constraintLayout"      : "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion",
     "recyclerView"          : "androidx.recyclerview:recyclerview:$rvVersion",
     "androidXPreferences"   : "androidx.preference:preference-ktx:$androidXPreferences",
