@@ -20,12 +20,12 @@ plugins {
 dependencies {
   api project(path: ":common")
   api project(path: ":epoxy-rx")
-  implementation libs.kotlinStdLib
+   
 
   implementation libs.material
 
   implementation libs.androidXAppCompat
-  implementation libs.androidXCoreKtx
+  api(deps.androidx.core)
   implementation libs.constraintLayout
   api libs.androidXPreferences
 

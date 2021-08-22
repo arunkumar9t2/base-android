@@ -61,6 +61,7 @@ subprojects { subproject ->
   if (subproject.name != sampleAppName) {
     subproject.ext.artifact = subproject.name
     subproject.version = isSnapshot ? "master-SNAPSHOT" : subproject.ext.moduleVersions[subproject.name]
+    // TODO Delete libraryModule.gradle and manually apply plugins
     apply from: "../libraryModule.gradle"
   }
 }

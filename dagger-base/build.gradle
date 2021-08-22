@@ -20,7 +20,7 @@ plugins {
 dependencies {
   implementation fileTree(dir: "libs", include: ["*.jar"])
 
-  implementation libs.androidXCore
+  api(deps.androidx.core)
 
   api libs.daggerAndroid
   api libs.daggerAndroidSupport

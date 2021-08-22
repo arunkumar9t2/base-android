@@ -36,14 +36,22 @@ internal fun Project.androidCommon() {
   configure<BaseExtension> {
     compileSdkVersion(ANDROID_COMPILE_SDK)
 
+    compileOptions {
+      sourceCompatibility = JavaVersion.VERSION_1_8
+      targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
     defaultConfig {
       minSdk = ANDROID_MIN_SDK
       targetSdk = ANDROID_TARGET_SDK
 
-      testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
       vectorDrawables {
         useSupportLibrary = true
       }
+
+      multiDexEnabled = true
+
+      testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -56,10 +64,7 @@ internal fun Project.androidCommon() {
       }
     }
 
-    compileOptions {
-      sourceCompatibility = JavaVersion.VERSION_1_8
-      targetCompatibility = JavaVersion.VERSION_1_8
-    }
+    ndkVersion = "21.3.6528147"
 
     composeOptions {
       kotlinCompilerExtensionVersion = deps.version("compose")!!
@@ -71,6 +76,10 @@ internal fun Project.androidCommon() {
         "META-INF/LGPL2.1",
         "META-INF/licenses/**"
       )
+    }
+
+    lintOptions {
+      isAbortOnError = false
     }
   }
 

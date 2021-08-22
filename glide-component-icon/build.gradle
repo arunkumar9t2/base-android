@@ -20,7 +20,7 @@ apply plugin: "kotlin-kapt"
 
 dependencies {
   implementation fileTree(dir: "libs", include: ["*.jar"])
-  implementation libs.kotlinStdLib
+   
   implementation libs.glide
-  implementation libs.androidXCoreKtx
+  api(deps.androidx.core)
 }

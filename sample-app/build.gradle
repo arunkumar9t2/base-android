@@ -23,82 +23,14 @@ buildscript {
     classpath libs.realmPlugin
   }
 }
-
-apply plugin: "com.android.application"
-apply plugin: "kotlin-android"
+apply plugin: "android-binary-plugin"
 apply plugin: "kotlin-kapt"
-apply plugin: "kotlin-android-extensions"
 apply plugin: "realm-android"
-apply plugin: "base-android-sample"
 
 android {
-  compileSdkVersion buildDetails.compileSdk
-
-  compileOptions {
-    sourceCompatibility JavaVersion.VERSION_1_8
-    targetCompatibility JavaVersion.VERSION_1_8
+  buildFeatures {
+    compose true
   }
-
-  defaultConfig {
-    applicationId "dev.arunkumar.android"
-    minSdkVersion 21
-    targetSdkVersion buildDetails.targetSdk
-
-    versionCode 1
-    versionName "1.0"
-
-    vectorDrawables.useSupportLibrary = true
-
-    multiDexEnabled true
-
-    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-  }
-
-  buildTypes {
-    debug {
-      minifyEnabled false
-      shrinkResources false
-      debuggable true
-      proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
-    }
-    release {
-      minifyEnabled true
-      shrinkResources true
-      debuggable false
-      proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
-    }
-  }
-
-  kotlinOptions {
-    jvmTarget = "1.8"
-  }
-
-  buildTypes.all { buildType ->
-    buildType
-      .javaCompileOptions
-      .annotationProcessorOptions
-      .arguments = [
-      logEpoxyTimings              : "true",
-      enableParallelEpoxyProcessing: "true"
-    ]
-
-  }
-
-  ndkVersion "21.3.6528147"
-
-  testOptions {
-    unitTests {
-      includeAndroidResources = true
-    }
-  }
-
-  lintOptions {
-    abortOnError false
-  }
-}
-
-androidExtensions {
-  experimental = true
 }
 
 dependencies {
@@ -118,6 +50,16 @@ dependencies {
   implementation project(':rx-utils')
   implementation project(':spring-item-animator')
 
+  implementation(deps.androidx.core)
+  implementation(deps.androidx.appcompat)
+  implementation(deps.androidx.lifecycle)
+  implementation(deps.androidx.activity.compose)
+
+  implementation(deps.compose.material)
+  implementation(deps.compose.ui.ui)
+  implementation(deps.compose.ui.toolingpreview)
+  debugImplementation(deps.compose.ui.tooling)
+
   implementation libs.workManagerRx
   implementation libs.workManagerKtx
 
@@ -129,9 +71,6 @@ dependencies {
   kapt libs.daggerAndroidProcessor
   kaptTest libs.daggerCompiler
   kaptTest libs.daggerAndroidProcessor
-
-  // Kotlin
-  implementation libs.kotlinStdLib
 
   // Rx
   implementation libs.rxAndroid

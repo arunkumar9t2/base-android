@@ -13,21 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-plugins {
-  id "publish"
-}
-apply plugin: "kotlin-kapt"
 
-kapt {
-  correctErrorTypes = true
-}
+package dev.arunkumar.android.ui.theme
 
-dependencies {
-  implementation fileTree(dir: "libs", include: ["*.jar"])
-  api project(path: ":common")
-  api project(path: ":epoxy-utils")
-  api project(path: ":rx-utils")
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Shapes
+import androidx.compose.ui.unit.dp
 
-  api libs.epoxy
-  kapt libs.epoxyProcessor
-}
+val Shapes = Shapes(
+  small = RoundedCornerShape(4.dp),
+  medium = RoundedCornerShape(4.dp),
+  large = RoundedCornerShape(0.dp)
+)

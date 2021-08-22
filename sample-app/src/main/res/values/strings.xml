@@ -15,6 +15,5 @@
   -->
 
 <resources>
-    <string name="app_name">Base Android</string>
-    <string name="reset_db">Reset Database</string>
+    <string name="app_name">Android</string>
 </resources>

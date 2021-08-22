@@ -19,7 +19,7 @@ plugins {
 
 dependencies {
   implementation fileTree(dir: "libs", include: ["*.jar"])
-  implementation libs.kotlinStdLib
+   
 
   api libs.rx
   api libs.rxAndroid
