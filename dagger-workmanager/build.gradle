@@ -23,12 +23,12 @@ dependencies {
   implementation project(path: ":logging")
   implementation project(path: ":dagger-base")
 
-  api deps.workManager
+  api libs.workManager
 
-  api deps.daggerAndroid
-  api deps.daggerAndroidSupport
-  kapt deps.daggerCompiler
-  kapt deps.daggerAndroidProcessor
-  kaptTest deps.daggerCompiler
-  kaptTest deps.daggerAndroidProcessor
+  api libs.daggerAndroid
+  api libs.daggerAndroidSupport
+  kapt libs.daggerCompiler
+  kapt libs.daggerAndroidProcessor
+  kaptTest libs.daggerCompiler
+  kaptTest libs.daggerAndroidProcessor
 }

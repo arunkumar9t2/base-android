@@ -20,7 +20,7 @@ buildscript {
     jcenter()
   }
   dependencies {
-    classpath deps.realmPlugin
+    classpath libs.realmPlugin
   }
 }
 
@@ -118,36 +118,36 @@ dependencies {
   implementation project(':rx-utils')
   implementation project(':spring-item-animator')
 
-  implementation deps.workManagerRx
-  implementation deps.workManagerKtx
+  implementation libs.workManagerRx
+  implementation libs.workManagerKtx
 
   implementation "androidx.multidex:multidex:2.0.1"
 
-  implementation deps.daggerAndroid
-  implementation deps.daggerAndroidSupport
-  kapt deps.daggerCompiler
-  kapt deps.daggerAndroidProcessor
-  kaptTest deps.daggerCompiler
-  kaptTest deps.daggerAndroidProcessor
+  implementation libs.daggerAndroid
+  implementation libs.daggerAndroidSupport
+  kapt libs.daggerCompiler
+  kapt libs.daggerAndroidProcessor
+  kaptTest libs.daggerCompiler
+  kaptTest libs.daggerAndroidProcessor
 
   // Kotlin
-  implementation deps.kotlinStdLib
+  implementation libs.kotlinStdLib
 
   // Rx
-  implementation deps.rxAndroid
-  implementation deps.rxKotlin
-  implementation deps.rxBinding
+  implementation libs.rxAndroid
+  implementation libs.rxKotlin
+  implementation libs.rxBinding
 
   // Epoxy
-  implementation deps.epoxyPaging
-  kapt deps.epoxyProcessor
+  implementation libs.epoxyPaging
+  kapt libs.epoxyProcessor
 
   // AndroidX
-  implementation deps.androidXAppCompat
-  implementation deps.constraintLayout
+  implementation libs.androidXAppCompat
+  implementation libs.constraintLayout
 
   // Lifecycle extensions
-  implementation deps.viewmodel
+  implementation libs.viewmodel
 
   def autodispose = "1.4.0"
   implementation "com.uber.autodispose:autodispose:$autodispose"

@@ -25,8 +25,8 @@ kapt {
 dependencies {
   implementation fileTree(dir: "libs", include: ["*.jar"])
   api project(path: ":common")
-  implementation deps.kotlinStdLib
+  implementation libs.kotlinStdLib
 
-  api deps.epoxy
-  kapt deps.epoxyProcessor
+  api libs.epoxy
+  kapt libs.epoxyProcessor
 }

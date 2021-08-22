@@ -19,7 +19,7 @@ plugins {
 
 dependencies {
   implementation fileTree(dir: "libs", include: ["*.jar"])
-  implementation deps.kotlinStdLib
+  implementation libs.kotlinStdLib
 
-  api deps.timber
+  api libs.timber
 }

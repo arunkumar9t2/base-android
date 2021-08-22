@@ -69,6 +69,6 @@ androidExtensions {
 }
 
 dependencies {
-  testImplementation deps.junit
-  testImplementation deps.roboelectric
+  testImplementation libs.junit
+  testImplementation libs.roboelectric
 }

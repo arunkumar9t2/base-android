@@ -19,22 +19,22 @@ plugins {
 
 dependencies {
   implementation fileTree(dir: "libs", include: ["*.jar"])
-  implementation deps.kotlinStdLib
+  implementation libs.kotlinStdLib
 
-  api deps.rx
-  api deps.rxAndroid
-  api deps.rxKotlin
-  api deps.rxBinding
+  api libs.rx
+  api libs.rxAndroid
+  api libs.rxKotlin
+  api libs.rxBinding
   api "com.jakewharton.rxbinding2:rxbinding-recyclerview-v7-kotlin:$rxBindingVersion"
   api "com.jakewharton.rxbinding2:rxbinding-appcompat-v7-kotlin:$rxBindingVersion"
-  api deps.rxRelay
+  api libs.rxRelay
 
   api project(path: ":common")
 
-  api deps.daggerAndroid
-  api deps.daggerAndroidSupport
-  kapt deps.daggerCompiler
-  kapt deps.daggerAndroidProcessor
-  kaptTest deps.daggerCompiler
-  kaptTest deps.daggerAndroidProcessor
+  api libs.daggerAndroid
+  api libs.daggerAndroidSupport
+  kapt libs.daggerCompiler
+  kapt libs.daggerAndroidProcessor
+  kaptTest libs.daggerCompiler
+  kaptTest libs.daggerAndroidProcessor
 }

@@ -19,8 +19,8 @@ plugins {
 
 dependencies {
   implementation fileTree(dir: "libs", include: ["*.jar"])
-  implementation deps.kotlinStdLib
-  api deps.androidXCoreKtx
-  api deps.recyclerView
-  api deps.result
+  implementation libs.kotlinStdLib
+  api libs.androidXCoreKtx
+  api libs.recyclerView
+  api libs.result
 }

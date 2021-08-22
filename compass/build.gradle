@@ -20,7 +20,7 @@ buildscript {
     jcenter()
   }
   dependencies {
-    classpath deps.realmPlugin
+    classpath libs.realmPlugin
   }
 }
 plugins {
@@ -32,6 +32,6 @@ dependencies {
   api project(path: ":common")
   api project(path: ":rx-utils")
 
-  api deps.paging
-  api deps.pagingRxjava
+  api libs.paging
+  api libs.pagingRxjava
 }

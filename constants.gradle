@@ -63,7 +63,7 @@ ext {
 
   resultVersion = "3.0.1"
 
-  deps = [
+  libs = [
     "androidXCore"          : "androidx.core:core:$androidXCore",
     "androidXCoreKtx"       : "androidx.core:core-ktx:$androidXCore",
     "viewmodel"             : "androidx.lifecycle:lifecycle-viewmodel-ktx:$viewmodel",

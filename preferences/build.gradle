@@ -20,19 +20,19 @@ plugins {
 dependencies {
   api project(path: ":common")
   api project(path: ":epoxy-rx")
-  implementation deps.kotlinStdLib
+  implementation libs.kotlinStdLib
 
-  implementation deps.material
+  implementation libs.material
 
-  implementation deps.androidXAppCompat
-  implementation deps.androidXCoreKtx
-  implementation deps.constraintLayout
-  api deps.androidXPreferences
+  implementation libs.androidXAppCompat
+  implementation libs.androidXCoreKtx
+  implementation libs.constraintLayout
+  api libs.androidXPreferences
 
-  api deps.rxKPrefsCore
-  api deps.rxKPrefsRx
+  api libs.rxKPrefsCore
+  api libs.rxKPrefsRx
 
-  api deps.daggerAndroid
-  kapt deps.daggerCompiler
-  kaptTest deps.daggerCompiler
+  api libs.daggerAndroid
+  kapt libs.daggerCompiler
+  kaptTest libs.daggerCompiler
 }
