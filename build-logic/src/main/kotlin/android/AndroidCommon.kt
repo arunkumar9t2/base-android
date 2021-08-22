@@ -57,12 +57,10 @@ internal fun Project.androidCommon() {
 
     buildTypes {
       named(ANDROID_DEBUG_VARIANT) {
-        minifyEnabled(false)
         buildConfigField("boolean", "DEBUG_BUILD", "true")
       }
 
       named(ANDROID_RELEASE_VARIANT) {
-        minifyEnabled(true)
         proguardFiles(
           getDefaultProguardFile("proguard-android-optimize.txt"),
           "proguard-rules.pro"
