@@ -47,9 +47,13 @@ constructor(
   private val actions = MutableSharedFlow<HomeAction>()
   private val actionsFlow = actions.asSharedFlow()
 
+  // TODO Implement one off without caching but lifecycle aware like LiveData
+  private val _effects = MutableSharedFlow<HomeSideEffect>()
+  val effects = _effects.asSharedFlow()
+
   // actions to reducers
   private val loadItemsReducer: Flow<HomeReducer> = onAction<HomeAction.LoadItems>()
-    .onEach { logD { "Emitted ${it.toString()}" } }
+    .onEach { logD { "Emitted $it" } }
     .map {
       {
         copy(toolbar = "Tool")
@@ -66,10 +70,6 @@ constructor(
       started = SharingStarted.WhileSubscribed(5000),
       initialValue = HomeState()
     )
-
-  // TODO Implement one off without caching but lifecycle aware like LiveData
-  private val _effects = MutableSharedFlow<HomeSideEffect>()
-  val effects = _effects.asSharedFlow()
 
   private inline fun <reified Action : HomeAction> onAction() = actionsFlow
     // TODO Figure out thread here, in RxJava we can observe using observeOn, but flow only has
