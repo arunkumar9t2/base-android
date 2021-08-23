@@ -16,7 +16,6 @@
 
 package dev.arunkumar.android.home
 
-import android.app.Activity
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.compose.animation.animateContentSize
@@ -29,16 +28,9 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import dagger.Binds
-import dagger.Module
-import dagger.android.ContributesAndroidInjector
 import dagger.android.support.DaggerAppCompatActivity
-import dagger.multibindings.IntoMap
-import dev.arunkumar.android.dagger.activity.PerActivity
 import dev.arunkumar.android.dagger.viewmodel.UsesViewModel
-import dev.arunkumar.android.dagger.viewmodel.ViewModelKey
 import dev.arunkumar.android.dagger.viewmodel.viewModel
 import dev.arunkumar.android.ui.theme.BaseTheme
 import dev.arunkumar.android.util.work.rememberFlowWithLifecycle
@@ -73,24 +65,5 @@ class HomeActivity : DaggerAppCompatActivity(), UsesViewModel {
         }
       }
     }
-  }
-
-  @Module
-  interface HomeModule {
-    @PerActivity
-    @Binds
-    fun HomeActivity.bindActivity(): Activity
-  }
-
-  @Module
-  interface Builder {
-    @PerActivity
-    @ContributesAndroidInjector(modules = [HomeModule::class])
-    fun homeActivity(): HomeActivity
-
-    @Binds
-    @IntoMap
-    @ViewModelKey(HomeViewModel::class)
-    fun HomeViewModel.homeViewModel(): ViewModel
   }
 }
