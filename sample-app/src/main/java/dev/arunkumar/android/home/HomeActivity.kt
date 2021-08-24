@@ -18,7 +18,6 @@ package dev.arunkumar.android.home
 
 import android.os.Bundle
 import androidx.activity.compose.setContent
-import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -55,9 +54,8 @@ class HomeActivity : DaggerAppCompatActivity(), UsesViewModel {
           Column(
             horizontalAlignment = Alignment.CenterHorizontally
           ) {
-            Text(state.toolbar, modifier = Modifier.animateContentSize())
             Button(onClick = {
-              homeViewModel.perform(HomeAction.LoadItems)
+              homeViewModel.perform(HomeAction.LoadTasks)
             }) {
               Text(text = "Click Me")
             }

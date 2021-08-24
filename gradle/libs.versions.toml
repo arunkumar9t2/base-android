@@ -7,6 +7,7 @@ dokka = "1.5.0"
 agp = "com.android.tools.build:gradle:7.1.0-alpha09"
 kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.21"
 kotlinx-binaryvalidator = "org.jetbrains.kotlinx:binary-compatibility-validator:0.6.0"
+kotlinx-coroutines-android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0"
 
 androidx-core = "androidx.core:core-ktx:1.7.0-alpha01"
 androidx-lifecycle = "androidx.lifecycle:lifecycle-runtime-ktx:2.4.0-alpha03"

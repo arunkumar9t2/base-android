@@ -19,20 +19,27 @@ package dev.arunkumar.android.home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dev.arunkumar.android.logging.logD
+import dev.arunkumar.android.util.DispatcherProvider
+import dev.arunkumar.android.util.asResource
+import dev.arunkumar.common.result.Resource
+import dev.arunkumar.common.result.idle
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.newSingleThreadContext
 import javax.inject.Inject
 
+private typealias Task = String
+
 data class HomeState(
-  val toolbar: String = "Toolbar",
-  val header: Boolean = false
+  val tasks: Resource<List<Task>> = idle()
 )
 
 sealed class HomeSideEffect {
 }
 
 sealed class HomeAction {
-  object LoadItems : HomeAction()
+  object LoadTasks : HomeAction()
 }
 
 private typealias HomeReducer = HomeState.() -> HomeState
@@ -40,7 +47,11 @@ private typealias HomeReducer = HomeState.() -> HomeState
 class HomeViewModel
 @Inject
 constructor(
+  dispatchers: DispatcherProvider
 ) : ViewModel() {
+
+  private val reducerDispatcher = newSingleThreadContext("Reducer")
+
   /**
    * Action stream for processing set of UI actions received from View
    */
@@ -52,11 +63,18 @@ constructor(
   val effects = _effects.asSharedFlow()
 
   // actions to reducers
-  private val loadItemsReducer: Flow<HomeReducer> = onAction<HomeAction.LoadItems>()
-    .onEach { logD { "Emitted $it" } }
-    .map {
+  private val loadItemsReducer: Flow<HomeReducer> = onAction<HomeAction.LoadTasks>()
+    .onEach {
+      logD { "Action emitted " + Thread.currentThread().name }
+      delay(1000)
+    }
+    .map { listOf("Task 1", "Task 2", "Task 3") }
+    .asResource()
+    .flowOn(dispatchers.io)
+    .map { tasks ->
       {
-        copy(toolbar = "Tool")
+        logD { "Reducer thread " + Thread.currentThread().name }
+        copy(tasks = tasks)
       }
     }
 
@@ -65,6 +83,7 @@ constructor(
    */
   val state = merge(loadItemsReducer)
     .scan(HomeState()) { state, reducer -> reducer(state) }
+    .flowOn(reducerDispatcher)
     .stateIn(
       scope = viewModelScope,
       started = SharingStarted.WhileSubscribed(5000),
@@ -80,5 +99,9 @@ constructor(
     viewModelScope.launch {
       actions.emit(action)
     }
+  }
+
+  override fun onCleared() {
+    reducerDispatcher.close()
   }
 }

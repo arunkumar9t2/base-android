@@ -36,6 +36,8 @@ android {
 dependencies {
   implementation fileTree(dir: "libs", include: ["*.jar"])
 
+  implementation deps.kotlinx.coroutines.android
+
   implementation project(':colors')
   implementation project(':common')
   implementation project(':compass')

@@ -21,11 +21,24 @@ import androidx.work.WorkManager
 import dagger.Module
 import dagger.Provides
 import dagger.multibindings.ElementsIntoSet
+import dev.arunkumar.android.AppSchedulersModule
 import dev.arunkumar.android.dagger.application.AppInitializer
+import dev.arunkumar.android.dagger.viewmodel.DefaultViewModelsBuilder
 import dev.arunkumar.android.dagger.workmanager.DaggerWorkManagerInitializer
+import dev.arunkumar.android.preferences.PreferenceModule
+import dev.arunkumar.android.util.DispatcherModule
+import dev.arunkumar.android.util.work.SampleDaggerWorkerFactory
 import javax.inject.Singleton
 
-@Module
+@Module(
+  includes = [
+    DispatcherModule::class,
+    PreferenceModule::class,
+    AppSchedulersModule::class,
+    DefaultViewModelsBuilder::class,
+    SampleDaggerWorkerFactory.Module::class
+  ]
+)
 object AppModule {
   @Provides
   @ElementsIntoSet
