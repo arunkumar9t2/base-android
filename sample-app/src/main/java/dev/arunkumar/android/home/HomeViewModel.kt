@@ -56,7 +56,7 @@ constructor(
   /**
    * Action stream for processing set of UI actions received from View
    */
-  private val actions = MutableSharedFlow<HomeAction>()
+  private val actions = MutableSharedFlow<HomeAction>(replay = 1)
   private val actionsFlow = actions.asSharedFlow()
 
   // TODO Implement one off without caching but lifecycle aware like LiveData
@@ -99,6 +99,10 @@ constructor(
 
   override fun onCleared() {
     reducerDispatcher.close()
+  }
+
+  init {
+    perform(HomeAction.LoadTasks)
   }
 
   fun perform(action: HomeAction) {
