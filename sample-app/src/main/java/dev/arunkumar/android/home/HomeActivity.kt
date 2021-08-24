@@ -18,15 +18,8 @@ package dev.arunkumar.android.home
 
 import android.os.Bundle
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.Button
-import androidx.compose.material.Text
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
 import androidx.lifecycle.ViewModelProvider
 import dagger.android.support.DaggerAppCompatActivity
 import dev.arunkumar.android.dagger.viewmodel.UsesViewModel
@@ -47,20 +40,7 @@ class HomeActivity : DaggerAppCompatActivity(), UsesViewModel {
       BaseTheme {
         val state by rememberFlowWithLifecycle(flow = homeViewModel.state)
           .collectAsState(initial = HomeState())
-        Box(
-          modifier = Modifier.fillMaxSize(),
-          contentAlignment = Alignment.Center,
-        ) {
-          Column(
-            horizontalAlignment = Alignment.CenterHorizontally
-          ) {
-            Button(onClick = {
-              homeViewModel.perform(HomeAction.LoadTasks)
-            }) {
-              Text(text = "Click Me")
-            }
-          }
-        }
+        Home(state, homeViewModel)
       }
     }
   }

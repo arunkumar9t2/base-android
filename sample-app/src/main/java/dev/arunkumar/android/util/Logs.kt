@@ -16,17 +16,8 @@
 
 package dev.arunkumar.android.util
 
-import dev.arunkumar.common.result.Resource
-import dev.arunkumar.common.result.idle
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.onStart
+import dev.arunkumar.android.logging.logD
 
-fun <T> Flow<T>.asResource(
-  initial: Resource<T> = idle()
-): Flow<Resource<T>> {
-  return map<T, Resource<T>> { data -> Resource.Success(data) }
-    .catch { throwable -> emit(Resource.Error(initial.unsafeValue, throwable)) }
-    .onStart { emit(Resource.Loading(initial.unsafeValue)) }
+fun printThread(message: String) {
+  logD { "${Thread.currentThread().name}: $message" }
 }

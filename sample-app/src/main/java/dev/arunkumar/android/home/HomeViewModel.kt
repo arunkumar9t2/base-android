@@ -21,6 +21,7 @@ import androidx.lifecycle.viewModelScope
 import dev.arunkumar.android.logging.logD
 import dev.arunkumar.android.util.DispatcherProvider
 import dev.arunkumar.android.util.asResource
+import dev.arunkumar.android.util.printThread
 import dev.arunkumar.common.result.Resource
 import dev.arunkumar.common.result.idle
 import kotlinx.coroutines.delay
@@ -29,7 +30,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.newSingleThreadContext
 import javax.inject.Inject
 
-private typealias Task = String
+typealias Task = String
 
 data class HomeState(
   val tasks: Resource<List<Task>> = idle()
@@ -64,16 +65,16 @@ constructor(
 
   // actions to reducers
   private val loadItemsReducer: Flow<HomeReducer> = onAction<HomeAction.LoadTasks>()
-    .onEach {
-      logD { "Action emitted " + Thread.currentThread().name }
-      delay(1000)
-    }
-    .map { listOf("Task 1", "Task 2", "Task 3") }
-    .asResource()
-    .flowOn(dispatchers.io)
+    .flatMapLatest {
+      flow {
+        delay(1000)
+        emit(listOf("Task 1", "Task 2", "Task 3"))
+      }.asResource()
+    }.flowOn(dispatchers.io)
+    .onEach { logD { it.toString() } }
     .map { tasks ->
       {
-        logD { "Reducer thread " + Thread.currentThread().name }
+        printThread("Reducer thread")
         copy(tasks = tasks)
       }
     }
@@ -94,14 +95,15 @@ constructor(
     // TODO Figure out thread here, in RxJava we can observe using observeOn, but flow only has
     // flowOn
     .filterIsInstance<Action>()
+    .onEach { printThread("Action emitted ${it.javaClass.simpleName}") }
+
+  override fun onCleared() {
+    reducerDispatcher.close()
+  }
 
   fun perform(action: HomeAction) {
     viewModelScope.launch {
       actions.emit(action)
     }
-  }
-
-  override fun onCleared() {
-    reducerDispatcher.close()
   }
 }
