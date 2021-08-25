@@ -41,6 +41,7 @@ sealed class HomeSideEffect {
 
 sealed class HomeAction {
   object LoadTasks : HomeAction()
+  class AddTask(val task: Task) : HomeAction()
 }
 
 private typealias HomeReducer = HomeState.() -> HomeState
@@ -53,10 +54,13 @@ constructor(
 
   private val reducerDispatcher = newSingleThreadContext("Reducer")
 
+  @Suppress("NOTHING_TO_INLINE")
+  private inline fun Reducer(noinline reducer: HomeState.() -> HomeState) = reducer
+
   /**
    * Action stream for processing set of UI actions received from View
    */
-  private val actions = MutableSharedFlow<HomeAction>(replay = 1)
+  private val actions = MutableSharedFlow<HomeAction>()
   private val actionsFlow = actions.asSharedFlow()
 
   // TODO Implement one off without caching but lifecycle aware like LiveData
@@ -64,27 +68,41 @@ constructor(
   val effects = _effects.asSharedFlow()
 
   // actions to reducers
-  private val loadItemsReducer: Flow<HomeReducer> = onAction<HomeAction.LoadTasks>()
+  private val loadTasks: Flow<HomeReducer> = onAction<HomeAction.LoadTasks>()
     .flatMapLatest {
       flow {
         delay(1000)
         emit(listOf("Task 1", "Task 2", "Task 3"))
       }.asResource()
     }.flowOn(dispatchers.io)
-    .onEach { logD { it.toString() } }
     .map { tasks ->
-      {
-        printThread("Reducer thread")
+      Reducer {
         copy(tasks = tasks)
       }
-    }
+    }.shareIn(viewModelScope, SharingStarted.WhileSubscribed())
+
+  private val addTask: Flow<HomeReducer> = onAction<HomeAction.AddTask>()
+    .flatMapLatest {
+      flow {
+        emit(state.value.tasks.value.toMutableList() + it.task)
+      }.asResource()
+    }.flowOn(dispatchers.io)
+    .map { tasks ->
+      Reducer {
+        copy(tasks = tasks)
+      }
+    }.shareIn(viewModelScope, SharingStarted.WhileSubscribed())
 
   /**
    * StateFlow should basically be a `StateFlow<HomeState>` produced by processing all reducers
    */
-  val state = merge(loadItemsReducer)
-    .scan(HomeState()) { state, reducer -> reducer(state) }
+  val state = merge(
+    loadTasks,
+    addTask
+  ).scan(HomeState()) { state, reducer -> reducer(state) }
     .flowOn(reducerDispatcher)
+    .onEach { logD { "State: $it" } }
+    .onCompletion { logD { "State flow completed" } }
     .stateIn(
       scope = viewModelScope,
       started = SharingStarted.WhileSubscribed(5000),

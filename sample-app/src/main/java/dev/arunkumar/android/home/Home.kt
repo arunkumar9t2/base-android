@@ -37,7 +37,7 @@ fun Home(state: HomeState, homeViewModel: HomeViewModel) {
     Tasks(state.tasks, modifier = Modifier.weight(1F))
     Button(
       onClick = {
-        homeViewModel.perform(HomeAction.LoadTasks)
+        homeViewModel.perform(HomeAction.AddTask("Hello"))
       },
       modifier = Modifier.fillMaxWidth()
     ) {
@@ -59,6 +59,11 @@ fun Tasks(tasks: Resource<List<Task>>, modifier: Modifier) {
       is Resource.Loading -> {
         item("loading") {
           Text(text = "Loading")
+        }
+      }
+      is Resource.Error -> {
+        item("loading") {
+          Text(text = "Error")
         }
       }
       else -> {
