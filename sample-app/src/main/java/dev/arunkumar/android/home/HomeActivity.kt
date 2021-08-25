@@ -39,7 +39,7 @@ class HomeActivity : DaggerAppCompatActivity(), UsesViewModel {
     setContent {
       BaseTheme {
         val state by rememberFlowWithLifecycle(flow = homeViewModel.state)
-          .collectAsState(initial = HomeState())
+          .collectAsState(initial = homeViewModel.state.value)
         Home(state, homeViewModel)
       }
     }
