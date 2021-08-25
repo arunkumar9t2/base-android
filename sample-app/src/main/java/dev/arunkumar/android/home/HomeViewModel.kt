@@ -36,8 +36,7 @@ data class HomeState(
   val tasks: Resource<List<Task>> = idle()
 )
 
-sealed class HomeSideEffect {
-}
+sealed class HomeSideEffect
 
 sealed class HomeAction {
   object LoadTasks : HomeAction()
@@ -69,6 +68,7 @@ constructor(
 
   // actions to reducers
   private val loadTasks: Flow<HomeReducer> = onAction<HomeAction.LoadTasks>()
+    .onStart { emit(HomeAction.LoadTasks) }
     .flatMapLatest {
       flow {
         delay(1000)
