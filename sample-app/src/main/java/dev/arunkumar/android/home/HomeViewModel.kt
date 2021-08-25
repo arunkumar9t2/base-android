@@ -105,7 +105,7 @@ constructor(
     .onCompletion { logD { "State flow completed" } }
     .stateIn(
       scope = viewModelScope,
-      started = SharingStarted.WhileSubscribed(5000),
+      started = SharingStarted.Lazily,
       initialValue = HomeState()
     )
 
