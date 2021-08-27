@@ -4,7 +4,7 @@ ktlint = "0.41.0"
 dokka = "1.5.0"
 
 [libraries]
-agp = "com.android.tools.build:gradle:7.1.0-alpha09"
+agp = "com.android.tools.build:gradle:7.1.0-alpha10"
 kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.21"
 kotlinx-binaryvalidator = "org.jetbrains.kotlinx:binary-compatibility-validator:0.6.0"
 kotlinx-coroutines-android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0"
