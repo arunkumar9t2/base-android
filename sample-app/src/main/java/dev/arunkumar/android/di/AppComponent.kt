@@ -23,7 +23,7 @@ import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
 import dev.arunkumar.android.SampleApp
 import dev.arunkumar.android.home.HomeActivityBuilder
-import dev.arunkumar.android.item.ItemsModule
+import dev.arunkumar.android.tasks.TasksModule
 import dev.arunkumar.android.util.work.SampleWorkerSubComponent
 import javax.inject.Singleton
 
@@ -35,7 +35,7 @@ import javax.inject.Singleton
     HomeActivityBuilder::class,
 
     /** Items **/
-    ItemsModule::class,
+    TasksModule::class,
 
     /** Utils **/
     AppModule::class,

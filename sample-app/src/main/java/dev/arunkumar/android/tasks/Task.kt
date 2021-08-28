@@ -14,20 +14,13 @@
  * limitations under the License.
  */
 
-package dev.arunkumar.android.item
+package dev.arunkumar.android.tasks
 
-import io.reactivex.Completable
-import javax.inject.Inject
+import io.realm.RealmObject
+import io.realm.annotations.PrimaryKey
 
-class ResetItems
-@Inject
-constructor(
-  private val itemsRepository: ItemsRepository
-) {
-
-  fun build(): Completable {
-    return itemsRepository
-      .clear()
-      .andThen(itemsRepository.addItemsIfEmpty())
-  }
-}
+open class Task(
+  @PrimaryKey
+  var id: Int = 0,
+  var name: String = ""
+) : RealmObject()

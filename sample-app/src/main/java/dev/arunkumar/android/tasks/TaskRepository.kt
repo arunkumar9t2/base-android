@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package dev.arunkumar.android.item
+package dev.arunkumar.android.tasks
 
 import dagger.Binds
 import dagger.Module
@@ -28,7 +28,7 @@ import io.realm.kotlin.where
 import javax.inject.Inject
 import kotlin.random.Random.Default.nextInt
 
-interface ItemsRepository : RealmSource<Item> {
+interface TaskRepository : RealmSource<Task> {
 
   fun addItemsIfEmpty(): Completable
 
@@ -38,16 +38,16 @@ interface ItemsRepository : RealmSource<Item> {
 }
 
 @Module
-interface ItemsModule {
+interface TasksModule {
   @Binds
-  fun DefaultItemsRepository.itemsRepository(): ItemsRepository
+  fun DefaultTaskRepository.itemsRepository(): TaskRepository
 }
 
-class DefaultItemsRepository
+class DefaultTaskRepository
 @Inject
 constructor(
   override val schedulerProvider: SchedulerProvider
-) : ItemsRepository, PagedRealmSource<Item> {
+) : TaskRepository, PagedRealmSource<Task> {
 
   private val charPool: List<Char> = ('a'..'z') + ('A'..'Z') + ('0'..'9')
 
@@ -58,10 +58,10 @@ constructor(
         .map(charPool::get)
         .joinToString("")
 
-      if (realm.where<Item>().findAll().isEmpty()) {
-        val newItems = mutableListOf<Item>().apply {
+      if (realm.where<Task>().findAll().isEmpty()) {
+        val newItems = mutableListOf<Task>().apply {
           for (id in 1..MAX_ITEMS) {
-            add(Item(id, name()))
+            add(Task(id, name()))
           }
         }
         realm.copyToRealmOrUpdate(newItems)
@@ -72,7 +72,7 @@ constructor(
   override fun deleteItem(itemId: Int) = completable {
     realmTransaction { realm ->
       realm
-        .where<Item>()
+        .where<Task>()
         .equalTo("id", itemId)
         .findAll()
         .deleteAllFromRealm()
@@ -81,7 +81,7 @@ constructor(
 
   override fun clear() = completable {
     realmTransaction { realm ->
-      realm.where<Item>().findAll().deleteAllFromRealm()
+      realm.where<Task>().findAll().deleteAllFromRealm()
     }
   }
 

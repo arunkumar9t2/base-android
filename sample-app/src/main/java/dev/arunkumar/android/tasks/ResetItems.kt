@@ -14,18 +14,20 @@
  * limitations under the License.
  */
 
-package dev.arunkumar.android.util.work
+package dev.arunkumar.android.tasks
 
-import dagger.Subcomponent
-import dev.arunkumar.android.dagger.workmanager.WorkerSubComponent
-import dev.arunkumar.android.tasks.DeleteItemWorker
+import io.reactivex.Completable
+import javax.inject.Inject
 
-@Subcomponent(
-  modules = [
-    DeleteItemWorker.Builder::class
-  ]
-)
-interface SampleWorkerSubComponent : WorkerSubComponent {
-  @Subcomponent.Factory
-  interface Factory : WorkerSubComponent.Factory
+class ResetItems
+@Inject
+constructor(
+  private val taskRepository: TaskRepository
+) {
+
+  fun build(): Completable {
+    return taskRepository
+      .clear()
+      .andThen(taskRepository.addItemsIfEmpty())
+  }
 }

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package dev.arunkumar.android.item
+package dev.arunkumar.android.tasks
 
 import android.app.Application
 import androidx.work.ListenableWorker
@@ -31,14 +31,14 @@ import javax.inject.Inject
 class DeleteItemWorker
 @Inject
 constructor(
-  private val itemsRepository: ItemsRepository,
+  private val taskRepository: TaskRepository,
   application: Application,
   private val workerParams: WorkerParameters
 ) : RxWorker(application, workerParams) {
 
   override fun createWork(): Single<Result> {
     val id = workerParams.inputData.keyValueMap["id"] as Int
-    return itemsRepository
+    return taskRepository
       .deleteItem(id)
       .toSingle { Result.success() }
       .doOnSuccess {
