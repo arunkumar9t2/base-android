@@ -33,7 +33,7 @@ plugins {
 }
 
 scabbard {
-  enabled true
+  enabled false
   fullBindingGraphValidation false
   outputFormat "svg"
 }

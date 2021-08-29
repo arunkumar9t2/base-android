@@ -16,12 +16,8 @@
 
 package dev.arunkumar.android.home
 
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -29,8 +25,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
-import dev.arunkumar.common.result.Resource
-import dev.arunkumar.common.result.on
+import dev.arunkumar.android.home.tasks.Tasks
 
 @Composable
 fun Home(state: HomeState, homeViewModel: HomeViewModel) {
@@ -70,32 +65,4 @@ fun Home(state: HomeState, homeViewModel: HomeViewModel) {
       Tasks(state.tasks, innerPadding)
     }
   )
-}
-
-@OptIn(ExperimentalAnimationApi::class)
-@Composable
-fun Tasks(
-  tasks: Resource<List<Task>>,
-  contentPadding: PaddingValues,
-  modifier: Modifier = Modifier
-) {
-  LazyColumn(modifier = modifier, contentPadding = contentPadding) {
-    tasks.on(
-      success = {
-        items(data) { task ->
-          Text(text = task)
-        }
-      },
-      loading = {
-        item("loading") {
-          Text(text = "Loading")
-        }
-      },
-      error = {
-        item("loading") {
-          Text(text = "Error")
-        }
-      }
-    )
-  }
 }
