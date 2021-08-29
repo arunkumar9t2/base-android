@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package dev.arunkumar.android.tasks
+package dev.arunkumar.android.tasks.data
 
 import dagger.Binds
 import dagger.Module
@@ -23,6 +23,7 @@ import dev.arunkumar.android.realm.RealmSource
 import dev.arunkumar.android.realm.realmTransaction
 import dev.arunkumar.android.rx.completable
 import dev.arunkumar.android.rxschedulers.SchedulerProvider
+import dev.arunkumar.android.tasks.Task
 import io.reactivex.Completable
 import io.realm.kotlin.where
 import javax.inject.Inject

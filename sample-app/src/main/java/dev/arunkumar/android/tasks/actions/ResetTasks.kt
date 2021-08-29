@@ -16,7 +16,7 @@
 
 package dev.arunkumar.android.tasks.actions
 
-import dev.arunkumar.android.tasks.TaskRepository
+import dev.arunkumar.android.tasks.data.TaskRepository
 import io.reactivex.Completable
 import javax.inject.Inject
 
