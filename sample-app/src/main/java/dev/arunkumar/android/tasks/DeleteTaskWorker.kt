@@ -28,7 +28,7 @@ import dev.arunkumar.android.logging.logD
 import io.reactivex.Single
 import javax.inject.Inject
 
-class DeleteItemWorker
+class DeleteTaskWorker
 @Inject
 constructor(
   private val taskRepository: TaskRepository,
@@ -39,7 +39,7 @@ constructor(
   override fun createWork(): Single<Result> {
     val id = workerParams.inputData.keyValueMap["id"] as Int
     return taskRepository
-      .deleteItem(id)
+      .deleteTasks(id)
       .toSingle { Result.success() }
       .doOnSuccess {
         logD { "Delete item id $id success" }
@@ -50,7 +50,7 @@ constructor(
   interface Builder {
     @Binds
     @IntoMap
-    @WorkerKey(DeleteItemWorker::class)
-    fun DeleteItemWorker.bindWorker(): ListenableWorker
+    @WorkerKey(DeleteTaskWorker::class)
+    fun DeleteTaskWorker.bindWorker(): ListenableWorker
   }
 }

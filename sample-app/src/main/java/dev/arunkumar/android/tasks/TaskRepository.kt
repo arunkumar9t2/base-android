@@ -32,7 +32,7 @@ interface TaskRepository : RealmSource<Task> {
 
   fun addItemsIfEmpty(): Completable
 
-  fun deleteItem(itemId: Int): Completable
+  fun deleteTasks(taskId: Int): Completable
 
   fun clear(): Completable
 }
@@ -40,7 +40,7 @@ interface TaskRepository : RealmSource<Task> {
 @Module
 interface TasksModule {
   @Binds
-  fun DefaultTaskRepository.itemsRepository(): TaskRepository
+  fun DefaultTaskRepository.taskRepository(): TaskRepository
 }
 
 class DefaultTaskRepository
@@ -69,11 +69,11 @@ constructor(
     }
   }
 
-  override fun deleteItem(itemId: Int) = completable {
+  override fun deleteTasks(taskId: Int) = completable {
     realmTransaction { realm ->
       realm
         .where<Task>()
-        .equalTo("id", itemId)
+        .equalTo("id", taskId)
         .findAll()
         .deleteAllFromRealm()
     }

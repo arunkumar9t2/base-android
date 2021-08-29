@@ -18,11 +18,11 @@ package dev.arunkumar.android.util.work
 
 import dagger.Subcomponent
 import dev.arunkumar.android.dagger.workmanager.WorkerSubComponent
-import dev.arunkumar.android.tasks.DeleteItemWorker
+import dev.arunkumar.android.tasks.DeleteTaskWorker
 
 @Subcomponent(
   modules = [
-    DeleteItemWorker.Builder::class
+    DeleteTaskWorker.Builder::class
   ]
 )
 interface SampleWorkerSubComponent : WorkerSubComponent {
