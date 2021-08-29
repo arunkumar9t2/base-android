@@ -60,6 +60,7 @@ dependencies {
   implementation(deps.compose.material)
   implementation(deps.compose.ui.ui)
   implementation(deps.compose.ui.toolingpreview)
+  implementation(deps.compose.ui.livedata)
   debugImplementation(deps.compose.ui.tooling)
 
   implementation libs.workManagerRx
