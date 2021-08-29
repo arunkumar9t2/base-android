@@ -58,6 +58,7 @@ dependencies {
   implementation(deps.androidx.activity.compose)
 
   implementation(deps.compose.material)
+  implementation(deps.compose.materialicons)
   implementation(deps.compose.ui.ui)
   implementation(deps.compose.ui.toolingpreview)
   implementation(deps.compose.ui.livedata)

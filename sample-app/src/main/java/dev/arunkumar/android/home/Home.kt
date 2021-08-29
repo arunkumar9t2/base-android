@@ -17,57 +17,85 @@
 package dev.arunkumar.android.home
 
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.Button
-import androidx.compose.material.Text
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.text.style.TextAlign
 import dev.arunkumar.common.result.Resource
+import dev.arunkumar.common.result.on
 
 @Composable
 fun Home(state: HomeState, homeViewModel: HomeViewModel) {
-  Column(
-    modifier = Modifier.padding(16.dp)
-  ) {
-    Tasks(state.tasks, modifier = Modifier.weight(1F))
-    Button(
-      onClick = {
-        homeViewModel.perform(HomeAction.AddTask("Hello"))
-      },
-      modifier = Modifier.fillMaxWidth()
-    ) {
-      Text(text = "Click Me")
+  val scaffoldState = rememberScaffoldState()
+  val scope = rememberCoroutineScope()
+  Scaffold(
+    scaffoldState = scaffoldState,
+    topBar = {
+      TopAppBar {
+        Box {
+          Text(
+            text = "Tasks",
+            style = MaterialTheme.typography.h6,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.fillMaxWidth()
+          )
+        }
+      }
+    },
+    bottomBar = {
+      BottomAppBar {
+
+      }
+    },
+    isFloatingActionButtonDocked = true,
+    floatingActionButton = {
+      ExtendedFloatingActionButton(
+        text = { Text("Create Task") },
+        onClick = { homeViewModel.perform(HomeAction.AddTask("Hello")) },
+        icon = {
+          Icon(Icons.Default.Add, contentDescription = null)
+        }
+      )
+    },
+    floatingActionButtonPosition = FabPosition.Center,
+    content = { innerPadding ->
+      Tasks(state.tasks, innerPadding)
     }
-  }
+  )
 }
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
-fun Tasks(tasks: Resource<List<Task>>, modifier: Modifier) {
-  LazyColumn(modifier = modifier) {
-    when (tasks) {
-      is Resource.Success -> {
-        items(tasks.data) { task ->
+fun Tasks(
+  tasks: Resource<List<Task>>,
+  contentPadding: PaddingValues,
+  modifier: Modifier = Modifier
+) {
+  LazyColumn(modifier = modifier, contentPadding = contentPadding) {
+    tasks.on(
+      success = {
+        items(data) { task ->
           Text(text = task)
         }
-      }
-      is Resource.Loading -> {
+      },
+      loading = {
         item("loading") {
           Text(text = "Loading")
         }
-      }
-      is Resource.Error -> {
+      },
+      error = {
         item("loading") {
           Text(text = "Error")
         }
       }
-      else -> {
-      }
-    }
+    )
   }
 }

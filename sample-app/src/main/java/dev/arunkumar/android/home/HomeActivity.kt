@@ -24,7 +24,7 @@ import androidx.lifecycle.ViewModelProvider
 import dagger.android.support.DaggerAppCompatActivity
 import dev.arunkumar.android.dagger.viewmodel.UsesViewModel
 import dev.arunkumar.android.dagger.viewmodel.viewModel
-import dev.arunkumar.android.ui.theme.BaseTheme
+import dev.arunkumar.android.ui.theme.FoundationTheme
 import dev.arunkumar.android.util.work.rememberFlowWithLifecycle
 import javax.inject.Inject
 
@@ -37,7 +37,7 @@ class HomeActivity : DaggerAppCompatActivity(), UsesViewModel {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContent {
-      BaseTheme {
+      FoundationTheme {
         val state by rememberFlowWithLifecycle(flow = homeViewModel.state)
           .collectAsState(initial = homeViewModel.state.value)
         Home(state, homeViewModel)
