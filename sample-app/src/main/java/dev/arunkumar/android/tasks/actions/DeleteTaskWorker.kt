@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package dev.arunkumar.android.tasks
+package dev.arunkumar.android.tasks.actions
 
 import android.app.Application
 import androidx.work.ListenableWorker
@@ -25,6 +25,7 @@ import dagger.Module
 import dagger.multibindings.IntoMap
 import dev.arunkumar.android.dagger.workmanager.WorkerKey
 import dev.arunkumar.android.logging.logD
+import dev.arunkumar.android.tasks.TaskRepository
 import io.reactivex.Single
 import javax.inject.Inject
 

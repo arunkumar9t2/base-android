@@ -18,7 +18,7 @@ package dev.arunkumar.android.util.work
 
 import dagger.Subcomponent
 import dev.arunkumar.android.dagger.workmanager.WorkerSubComponent
-import dev.arunkumar.android.tasks.DeleteTaskWorker
+import dev.arunkumar.android.tasks.actions.DeleteTaskWorker
 
 @Subcomponent(
   modules = [

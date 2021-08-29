@@ -14,8 +14,9 @@
  * limitations under the License.
  */
 
-package dev.arunkumar.android.tasks
+package dev.arunkumar.android.tasks.actions
 
+import dev.arunkumar.android.tasks.TaskRepository
 import io.reactivex.Completable
 import javax.inject.Inject
 
