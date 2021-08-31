@@ -14,10 +14,13 @@
  * limitations under the License.
  */
 
+@file:Suppress("NOTHING_TO_INLINE")
+
 package dev.arunkumar.android.home.tasks
 
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -27,11 +30,13 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Alarm
+import androidx.compose.material.icons.filled.Tonality
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import dev.arunkumar.android.home.Task
@@ -52,7 +57,7 @@ fun Tasks(
     tasks.on(
       success = {
         items(data) { task ->
-          Task(task)
+          Task(task, modifier = Modifier.clickable { })
         }
       },
       loading = {
@@ -70,8 +75,8 @@ fun Tasks(
 }
 
 @Composable
-fun Task(task: Task) {
-  Card(modifier = Modifier.fillMaxWidth()) {
+fun Task(task: Task, modifier: Modifier = Modifier) {
+  Card(modifier = modifier.fillMaxWidth()) {
     Row(modifier = Modifier.padding(12.dp)) {
       Checkbox(
         checked = false,
@@ -94,18 +99,23 @@ fun Task(task: Task) {
             color = contentColorFor(backgroundColor = MaterialTheme.colors.onSurface).copy(alpha = 0.7f)
           )
         )
-        Spacer(modifier = Modifier.height(4.dp))
+        TaskMetaRow {
+          TaskTimeSpent(howMuch = "40m")
+          TaskProgress(progress = 60)
+        }
         Tags(listOf("learning", "projects", "iconzy", "jarvis"))
-        TaskMeta(modifier = Modifier.alpha(0.85F))
-        Spacer(modifier = Modifier.height(4.dp))
       }
     }
   }
 }
 
 @Composable
-private fun Tags(tags: List<String>) {
-  LazyRow(modifier = Modifier.fillMaxWidth()) {
+private fun Tags(tags: List<String>, modifier: Modifier = Modifier) {
+  LazyRow(
+    modifier = modifier
+      .fillMaxWidth()
+      .padding(2.dp)
+  ) {
     itemsIndexed(tags) { _, tag ->
       Text(
         text = "  $tag  ",
@@ -120,20 +130,35 @@ private fun Tags(tags: List<String>) {
 }
 
 @Composable
-private fun TaskMeta(modifier: Modifier = Modifier) {
-  Row(verticalAlignment = Alignment.CenterVertically, modifier = modifier.padding(4.dp)) {
-    TimeSpent(howMuch = "50m")
+private fun TaskMetaRow(modifier: Modifier = Modifier, block: @Composable RowScope.() -> Unit) {
+  Row(
+    verticalAlignment = Alignment.CenterVertically,
+    modifier = modifier
+      .alpha(0.85F)
+      .padding(4.dp)
+  ) {
+    block()
   }
 }
 
 @Composable
-private fun TimeSpent(howMuch: String) {
-  Row(verticalAlignment = Alignment.CenterVertically) {
-    Icon(Icons.Filled.Alarm, "", modifier = Modifier.size(12.dp))
+private fun TaskMeta(icon: ImageVector, text: String, modifier: Modifier = Modifier) {
+  Row(verticalAlignment = Alignment.CenterVertically, modifier = modifier.padding(2.dp)) {
+    Icon(icon, "", modifier = Modifier.size(12.dp))
     Spacer(modifier = Modifier.width(2.dp))
     Text(
-      text = howMuch,
-      style = MaterialTheme.typography.caption.copy(fontSize = 8.sp),
+      text = text,
+      style = MaterialTheme.typography.caption.copy(fontSize = 10.sp),
     )
   }
+}
+
+@Composable
+private inline fun TaskTimeSpent(howMuch: String) {
+  TaskMeta(icon = Icons.Filled.Alarm, text = howMuch)
+}
+
+@Composable
+private inline fun TaskProgress(progress: Int) {
+  TaskMeta(icon = Icons.Filled.Tonality, text = "$progress%")
 }
