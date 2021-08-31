@@ -25,9 +25,12 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Alarm
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -92,9 +95,8 @@ fun Task(task: Task) {
           )
         )
         Spacer(modifier = Modifier.height(4.dp))
-        Row {
-          Tags(listOf("learning", "projects", "iconzy", "jarvis"))
-        }
+        Tags(listOf("learning", "projects", "iconzy", "jarvis"))
+        TaskMeta(modifier = Modifier.alpha(0.85F))
         Spacer(modifier = Modifier.height(4.dp))
       }
     }
@@ -114,5 +116,24 @@ private fun Tags(tags: List<String>) {
       )
       Spacer(modifier = Modifier.width(4.dp))
     }
+  }
+}
+
+@Composable
+private fun TaskMeta(modifier: Modifier = Modifier) {
+  Row(verticalAlignment = Alignment.CenterVertically, modifier = modifier.padding(4.dp)) {
+    TimeSpent(howMuch = "50m")
+  }
+}
+
+@Composable
+private fun TimeSpent(howMuch: String) {
+  Row(verticalAlignment = Alignment.CenterVertically) {
+    Icon(Icons.Filled.Alarm, "", modifier = Modifier.size(12.dp))
+    Spacer(modifier = Modifier.width(2.dp))
+    Text(
+      text = howMuch,
+      style = MaterialTheme.typography.caption.copy(fontSize = 8.sp),
+    )
   }
 }
