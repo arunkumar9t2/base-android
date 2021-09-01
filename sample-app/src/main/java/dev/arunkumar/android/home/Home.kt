@@ -16,22 +16,23 @@
 
 package dev.arunkumar.android.home
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.ClearAll
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 import dev.arunkumar.android.home.tasks.TaskItem
 import dev.arunkumar.android.home.tasks.TasksList
 
 @Composable
 fun Home(state: HomeState, homeViewModel: HomeViewModel) {
   val scaffoldState = rememberScaffoldState()
-  val scope = rememberCoroutineScope()
   Scaffold(
     scaffoldState = scaffoldState,
     topBar = {
@@ -47,9 +48,7 @@ fun Home(state: HomeState, homeViewModel: HomeViewModel) {
       }
     },
     bottomBar = {
-      BottomAppBar {
-
-      }
+      TasksBottomBar(resetAll = { homeViewModel.perform(HomeAction.ResetTasks) })
     },
     isFloatingActionButtonDocked = true,
     floatingActionButton = {
@@ -78,4 +77,23 @@ fun Home(state: HomeState, homeViewModel: HomeViewModel) {
       })
     }
   )
+}
+
+@Composable
+private fun TasksBottomBar(resetAll: () -> Unit) {
+  BottomAppBar {
+    Row(
+      verticalAlignment = Alignment.CenterVertically,
+      horizontalArrangement = Arrangement.End,
+      modifier = Modifier
+        .fillMaxSize()
+        .padding(8.dp)
+    ) {
+      Icon(
+        imageVector = Icons.Filled.ClearAll,
+        contentDescription = "Clear All",
+        modifier = Modifier.clickable { resetAll() }
+      )
+    }
+  }
 }

@@ -21,6 +21,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import dev.arunkumar.android.logging.logD
+import dev.arunkumar.android.tasks.actions.ResetAllTasks
 import dev.arunkumar.android.tasks.data.Task
 import dev.arunkumar.android.tasks.data.TaskRepository
 import dev.arunkumar.android.util.DispatcherProvider
@@ -45,6 +46,7 @@ sealed class HomeAction {
   data class AddTask(val taskName: String) : HomeAction()
   data class CompleteTask(val taskId: UUID, val completed: Boolean) : HomeAction()
   data class DeleteTask(val taskId: UUID) : HomeAction()
+  object ResetTasks : HomeAction()
 }
 
 private typealias HomeReducer = HomeState.() -> HomeState
@@ -53,7 +55,8 @@ class HomeViewModel
 @Inject
 constructor(
   dispatchers: DispatcherProvider,
-  taskRepository: TaskRepository
+  taskRepository: TaskRepository,
+  val resetAllTask: ResetAllTasks
 ) : ViewModel() {
 
   private val reducerDispatcher = newSingleThreadContext("Reducer")
@@ -114,6 +117,14 @@ constructor(
     .mapToReducer()
     .share()
 
+  private val resetTasks: Flow<HomeReducer> = onAction<HomeAction.ResetTasks>()
+    .debounce(500)
+    .conflate()
+    .flatMapLatest { flow { emit(resetAllTask.build().await()) }.asResource() }
+    .flowOn(dispatchers.io)
+    .mapToReducer()
+    .share()
+
   /**
    * StateFlow should basically be a `StateFlow<HomeState>` produced by processing all reducers
    */
@@ -121,7 +132,8 @@ constructor(
     loadTasks,
     addTask,
     completeTask,
-    deleteTask
+    deleteTask,
+    resetTasks
   ).scan(HomeState()) { state, reducer -> reducer(state) }
     .flowOn(reducerDispatcher)
     .onEach { logD { "State: $it" } }

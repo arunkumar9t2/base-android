@@ -20,7 +20,7 @@ import dev.arunkumar.android.tasks.data.TaskRepository
 import io.reactivex.Completable
 import javax.inject.Inject
 
-class ResetTasks
+class ResetAllTasks
 @Inject
 constructor(
   private val taskRepository: TaskRepository
