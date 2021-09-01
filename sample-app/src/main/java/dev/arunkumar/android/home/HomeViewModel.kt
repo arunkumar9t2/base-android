@@ -25,8 +25,8 @@ import dev.arunkumar.android.tasks.actions.ResetAllTasks
 import dev.arunkumar.android.tasks.data.Task
 import dev.arunkumar.android.tasks.data.TaskRepository
 import dev.arunkumar.android.util.DispatcherProvider
-import dev.arunkumar.android.util.asResource
 import dev.arunkumar.android.util.printThread
+import dev.arunkumar.android.util.resourceFlow
 import dev.arunkumar.common.result.Resource
 import io.realm.kotlin.where
 import kotlinx.coroutines.flow.*
@@ -96,9 +96,9 @@ constructor(
 
   private val addTask: Flow<HomeReducer> = onAction<HomeAction.AddTask>()
     .flatMapLatest { addTask ->
-      flow {
+      resourceFlow {
         emit(taskRepository.addTask(addTask.taskName).await())
-      }.asResource()
+      }
     }.flowOn(dispatchers.io)
     .mapToReducer()
     .share()
@@ -122,7 +122,7 @@ constructor(
   private val resetTasks: Flow<HomeReducer> = onAction<HomeAction.ResetTasks>()
     .debounce(500)
     .conflate()
-    .flatMapLatest { flow { emit(resetAllTask.build().await()) }.asResource() }
+    .flatMapLatest { resourceFlow { emit(resetAllTask.build().await()) } }
     .flowOn(dispatchers.io)
     .mapToReducer { reset -> copy(reset = reset) }
     .share()

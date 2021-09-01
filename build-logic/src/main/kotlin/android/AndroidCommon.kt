@@ -91,7 +91,10 @@ internal fun Project.androidCommon() {
       jvmTarget = "1.8"
       freeCompilerArgs += listOf(
         "-Xopt-in=kotlin.ExperimentalStdlibApi",
-        "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
+        "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
+        "-Xopt-in=kotlin.experimental.ExperimentalTypeInference",
+        "-Xopt-in=kotlin.experimental.ExperimentalTypeInference",
+        "-Xopt-in=androidx.compose.animation.ExperimentalAnimationApi"
       )
     }
   }

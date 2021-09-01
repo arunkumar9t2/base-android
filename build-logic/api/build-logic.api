@@ -10,14 +10,8 @@ public final class android/AndroidBinary : gradle/ConfigurablePlugin {
 	public fun <init> ()V
 }
 
-public final class android/AndroidBinary$1$inlined$sam$i$org_gradle_api_Action$0 : org/gradle/api/Action {
-	public fun <init> (Lkotlin/jvm/functions/Function1;)V
-	public final synthetic fun execute (Ljava/lang/Object;)V
-}
-
-public final class android/AndroidCommonKt$inlined$sam$i$org_gradle_api_Action$0 : org/gradle/api/Action {
-	public fun <init> (Lkotlin/jvm/functions/Function1;)V
-	public final synthetic fun execute (Ljava/lang/Object;)V
+public final class android/AndroidKt {
+	public static final fun android (Lorg/gradle/api/Project;Lkotlin/jvm/functions/Function1;)V
 }
 
 public final class android/AndroidLibrary : gradle/ConfigurablePlugin {
@@ -26,11 +20,6 @@ public final class android/AndroidLibrary : gradle/ConfigurablePlugin {
 
 public final class common/BuildCommonPlugin : gradle/ConfigurablePlugin {
 	public fun <init> ()V
-}
-
-public final class common/BuildCommonPluginKt$inlined$sam$i$org_gradle_api_Action$0 : org/gradle/api/Action {
-	public fun <init> (Lkotlin/jvm/functions/Function1;)V
-	public final synthetic fun execute (Ljava/lang/Object;)V
 }
 
 public class gradle/ConfigurablePlugin : org/gradle/api/Plugin {
@@ -43,27 +32,7 @@ public final class publish/PublishingCommon : gradle/ConfigurablePlugin {
 	public fun <init> ()V
 }
 
-public final class publish/PublishingCommon$1$inlined$sam$i$org_gradle_api_Action$0 : org/gradle/api/Action {
-	public fun <init> (Lkotlin/jvm/functions/Function1;)V
-	public final synthetic fun execute (Ljava/lang/Object;)V
-}
-
 public final class publish/PublishingLibrary : gradle/ConfigurablePlugin {
 	public fun <init> ()V
-}
-
-public final class publish/PublishingLibrary$1$2$1$1$inlined$sam$i$org_gradle_api_Action$0 : org/gradle/api/Action {
-	public fun <init> (Lkotlin/jvm/functions/Function1;)V
-	public final synthetic fun execute (Ljava/lang/Object;)V
-}
-
-public final class publish/PublishingLibrary$1$2$inlined$sam$i$org_gradle_api_Action$0 : org/gradle/api/Action {
-	public fun <init> (Lkotlin/jvm/functions/Function1;)V
-	public final synthetic fun execute (Ljava/lang/Object;)V
-}
-
-public final class publish/PublishingLibraryKt$inlined$sam$i$org_gradle_api_Action$0 : org/gradle/api/Action {
-	public fun <init> (Lkotlin/jvm/functions/Function1;)V
-	public final synthetic fun execute (Ljava/lang/Object;)V
 }
 

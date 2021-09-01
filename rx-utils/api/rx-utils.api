@@ -8,7 +8,7 @@ public abstract class dev/arunkumar/android/TestSchedulersModule {
 	public abstract fun schedulerProvider (Ldev/arunkumar/android/rxschedulers/TestSchedulerProvider;)Ldev/arunkumar/android/rxschedulers/SchedulerProvider;
 }
 
-public final class dev/arunkumar/android/result/ResourceExtKt {
+public final class dev/arunkumar/android/result/ResourceKt {
 	public static final fun asResource (Lio/reactivex/Flowable;Ldev/arunkumar/common/result/Resource;)Lio/reactivex/Flowable;
 	public static final fun asResource (Lio/reactivex/Observable;Ldev/arunkumar/common/result/Resource;)Lio/reactivex/Observable;
 	public static final fun asResource (Lio/reactivex/Single;Ldev/arunkumar/common/result/Resource;)Lio/reactivex/Observable;

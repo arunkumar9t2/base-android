@@ -21,10 +21,7 @@ package dev.arunkumar.android.util
 import androidx.compose.runtime.Composable
 import dev.arunkumar.common.result.Resource
 import dev.arunkumar.common.result.idle
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.onStart
+import kotlinx.coroutines.flow.*
 
 fun <T> Flow<T>.asResource(
   initial: Resource<T> = idle()
@@ -33,6 +30,10 @@ fun <T> Flow<T>.asResource(
     .catch { throwable -> emit(Resource.Error(initial.unsafeValue, throwable)) }
     .onStart { emit(Resource.Loading(initial.unsafeValue)) }
 }
+
+fun <T> resourceFlow(
+  @BuilderInference block: suspend FlowCollector<T>.() -> Unit
+): Flow<Resource<T>> = flow(block).asResource()
 
 @Composable
 operator fun <T> Resource<T>.invoke(
