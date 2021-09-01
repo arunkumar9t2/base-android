@@ -72,7 +72,7 @@ constructor(
   // actions to reducers
   private val loadTasks: Flow<HomeReducer> = onAction<HomeAction.LoadTasks>()
     .onStart { emit(HomeAction.LoadTasks) }
-    .map {
+    .mapLatest {
       taskRepository.addItemsIfEmpty().await()
       taskRepository.pagedItems<Task> {
         it.where()
