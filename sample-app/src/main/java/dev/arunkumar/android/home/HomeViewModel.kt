@@ -19,6 +19,7 @@ package dev.arunkumar.android.home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import dev.arunkumar.android.logging.logD
 import dev.arunkumar.android.tasks.data.Task
 import dev.arunkumar.android.tasks.data.TaskRepository
@@ -76,7 +77,7 @@ constructor(
       taskRepository.addItemsIfEmpty().await()
       taskRepository.pagedItems<Task> {
         it.where()
-      }
+      }.cachedIn(viewModelScope)
     }.flowOn(dispatchers.io)
     .map { pagedTasks ->
       Reducer {
