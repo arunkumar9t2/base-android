@@ -14,8 +14,11 @@
  * limitations under the License.
  */
 
+@file:Suppress("NOTHING_TO_INLINE")
+
 package dev.arunkumar.android.util
 
+import androidx.compose.runtime.Composable
 import dev.arunkumar.common.result.Resource
 import dev.arunkumar.common.result.idle
 import kotlinx.coroutines.flow.Flow
@@ -29,4 +32,19 @@ fun <T> Flow<T>.asResource(
   return map<T, Resource<T>> { data -> Resource.Success(data) }
     .catch { throwable -> emit(Resource.Error(initial.unsafeValue, throwable)) }
     .onStart { emit(Resource.Loading(initial.unsafeValue)) }
+}
+
+@Composable
+operator fun <T> Resource<T>.invoke(
+  loading: @Composable (Resource.Loading<T>.() -> Unit)? = null,
+  success: @Composable (Resource.Success<T>.() -> Unit)? = null,
+  error: @Composable (Resource.Error<T>.() -> Unit)? = null,
+  idle: @Composable (Resource.Idle<T>.() -> Unit)? = null
+) {
+  when (this) {
+    is Resource.Success -> success?.invoke(this)
+    is Resource.Loading -> loading?.invoke(this)
+    is Resource.Error -> error?.invoke(this)
+    is Resource.Idle -> idle?.invoke(this)
+  }
 }

@@ -29,6 +29,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import dev.arunkumar.android.home.tasks.TaskItem
 import dev.arunkumar.android.home.tasks.TasksList
+import dev.arunkumar.android.util.invoke
+import dev.arunkumar.common.result.Resource
 
 @Composable
 fun Home(state: HomeState, homeViewModel: HomeViewModel) {
@@ -48,7 +50,7 @@ fun Home(state: HomeState, homeViewModel: HomeViewModel) {
       }
     },
     bottomBar = {
-      TasksBottomBar(resetAll = { homeViewModel.perform(HomeAction.ResetTasks) })
+      TasksBottomBar(state.reset) { homeViewModel.perform(HomeAction.ResetTasks) }
     },
     isFloatingActionButtonDocked = true,
     floatingActionButton = {
@@ -80,7 +82,7 @@ fun Home(state: HomeState, homeViewModel: HomeViewModel) {
 }
 
 @Composable
-private fun TasksBottomBar(resetAll: () -> Unit) {
+private fun TasksBottomBar(resetState: Resource<Unit>, resetAll: () -> Unit) {
   BottomAppBar {
     Row(
       verticalAlignment = Alignment.CenterVertically,
@@ -89,10 +91,17 @@ private fun TasksBottomBar(resetAll: () -> Unit) {
         .fillMaxSize()
         .padding(8.dp)
     ) {
-      Icon(
-        imageVector = Icons.Filled.ClearAll,
-        contentDescription = "Clear All",
-        modifier = Modifier.clickable { resetAll() }
+      resetState(
+        loading = {
+          CircularProgressIndicator()
+        },
+        success = {
+          Icon(
+            imageVector = Icons.Filled.ClearAll,
+            contentDescription = "Clear All",
+            modifier = Modifier.clickable { resetAll() }
+          )
+        }
       )
     }
   }

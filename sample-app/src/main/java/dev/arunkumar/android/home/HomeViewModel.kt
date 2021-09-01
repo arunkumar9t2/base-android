@@ -27,6 +27,7 @@ import dev.arunkumar.android.tasks.data.TaskRepository
 import dev.arunkumar.android.util.DispatcherProvider
 import dev.arunkumar.android.util.asResource
 import dev.arunkumar.android.util.printThread
+import dev.arunkumar.common.result.Resource
 import io.realm.kotlin.where
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -36,7 +37,8 @@ import java.util.*
 import javax.inject.Inject
 
 data class HomeState(
-  val tasks: Flow<PagingData<Task>> = flowOf(PagingData.empty())
+  val tasks: Flow<PagingData<Task>> = flowOf(PagingData.empty()),
+  val reset: Resource<Unit> = Resource.Success(Unit)
 )
 
 sealed class HomeSideEffect
@@ -122,7 +124,7 @@ constructor(
     .conflate()
     .flatMapLatest { flow { emit(resetAllTask.build().await()) }.asResource() }
     .flowOn(dispatchers.io)
-    .mapToReducer()
+    .mapToReducer { reset -> copy(reset = reset) }
     .share()
 
   /**
