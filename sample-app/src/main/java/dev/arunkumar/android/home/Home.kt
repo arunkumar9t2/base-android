@@ -67,6 +67,9 @@ fun Home(state: HomeState, homeViewModel: HomeViewModel) {
         if (task != null) {
           TaskItem(
             task = task,
+            deleteTask = {
+              homeViewModel.perform(HomeAction.DeleteTask(it))
+            },
             completeTask = { taskId, completed ->
               homeViewModel.perform(HomeAction.CompleteTask(taskId, completed))
             }

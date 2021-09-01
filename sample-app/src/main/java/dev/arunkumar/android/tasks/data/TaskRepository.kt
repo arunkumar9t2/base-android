@@ -36,7 +36,7 @@ interface TaskRepository : RealmSource<Task> {
 
   fun addTask(taskName: String): Single<Task>
 
-  fun deleteTasks(taskId: Int): Completable
+  fun deleteTasks(taskId: UUID): Completable
 
   fun completeTask(taskId: UUID, completed: Boolean): Completable
 
@@ -83,7 +83,7 @@ constructor() : TaskRepository, PagedRealmSource<Task> {
     }
   }
 
-  override fun deleteTasks(taskId: Int) = completable {
+  override fun deleteTasks(taskId: UUID) = completable {
     realmTransaction { realm ->
       realm
         .where<Task>()

@@ -27,6 +27,7 @@ import dev.arunkumar.android.dagger.workmanager.WorkerKey
 import dev.arunkumar.android.logging.logD
 import dev.arunkumar.android.tasks.data.TaskRepository
 import io.reactivex.Single
+import java.util.*
 import javax.inject.Inject
 
 class DeleteTaskWorker
@@ -38,7 +39,7 @@ constructor(
 ) : RxWorker(application, workerParams) {
 
   override fun createWork(): Single<Result> {
-    val id = workerParams.inputData.keyValueMap["id"] as Int
+    val id = UUID.fromString(workerParams.inputData.keyValueMap["id"] as String)
     return taskRepository
       .deleteTasks(id)
       .toSingle { Result.success() }

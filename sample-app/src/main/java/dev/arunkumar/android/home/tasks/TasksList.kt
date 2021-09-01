@@ -65,12 +65,13 @@ fun TasksList(
 @Composable
 fun TaskItem(
   task: Task,
+  deleteTask: (taskId: UUID) -> Unit,
   completeTask: (taskId: UUID, completed: Boolean) -> Unit,
   modifier: Modifier = Modifier
 ) {
   Card(modifier = modifier
     .fillMaxWidth()
-    .clickable { }
+    .clickable { deleteTask(task.id) }
   ) {
     Row(modifier = Modifier.padding(12.dp)) {
       Checkbox(

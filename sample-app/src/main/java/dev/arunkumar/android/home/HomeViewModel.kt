@@ -42,8 +42,9 @@ sealed class HomeSideEffect
 
 sealed class HomeAction {
   object LoadTasks : HomeAction()
-  class AddTask(val taskName: String) : HomeAction()
-  class CompleteTask(val taskId: UUID, val completed: Boolean) : HomeAction()
+  data class AddTask(val taskName: String) : HomeAction()
+  data class CompleteTask(val taskId: UUID, val completed: Boolean) : HomeAction()
+  data class DeleteTask(val taskId: UUID) : HomeAction()
 }
 
 private typealias HomeReducer = HomeState.() -> HomeState
@@ -97,10 +98,17 @@ constructor(
     .shareIn(viewModelScope, SharingStarted.WhileSubscribed())
 
   private val completeTask: Flow<HomeReducer> = onAction<HomeAction.CompleteTask>()
-    .map { completeTask ->
+    .onEach { completeTask ->
       taskRepository
         .completeTask(completeTask.taskId, completeTask.completed)
         .await()
+    }.flowOn(dispatchers.io)
+    .map { NoOp }
+    .shareIn(viewModelScope, SharingStarted.WhileSubscribed())
+
+  private val deleteTask: Flow<HomeReducer> = onAction<HomeAction.DeleteTask>()
+    .onEach { deleteTask ->
+      taskRepository.deleteTasks(deleteTask.taskId).await()
     }.flowOn(dispatchers.io)
     .map { NoOp }
     .shareIn(viewModelScope, SharingStarted.WhileSubscribed())
@@ -111,7 +119,8 @@ constructor(
   val state = merge(
     loadTasks,
     addTask,
-    completeTask
+    completeTask,
+    deleteTask
   ).scan(HomeState()) { state, reducer -> reducer(state) }
     .flowOn(reducerDispatcher)
     .onEach { logD { "State: $it" } }
@@ -123,8 +132,6 @@ constructor(
     )
 
   private inline fun <reified Action : HomeAction> onAction() = actionsFlow
-    // TODO Figure out thread here, in RxJava we can observe using observeOn, but flow only has
-    // flowOn
     .filterIsInstance<Action>()
     .onEach { printThread("Action emitted ${it.javaClass.simpleName}") }
 
