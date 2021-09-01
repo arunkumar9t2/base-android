@@ -21,8 +21,8 @@ import androidx.paging.rxjava2.RxPagingSource
 import dev.arunkumar.android.realm.defaultRealm
 import dev.arunkumar.android.realm.threading.RealmExecutor
 import dev.arunkumar.android.rx.createSingle
+import dev.arunkumar.android.rxschedulers.toScheduler
 import io.reactivex.Single
-import io.reactivex.schedulers.Schedulers
 import io.realm.Realm
 import io.realm.RealmModel
 import io.realm.RealmQuery
@@ -31,18 +31,27 @@ import io.realm.RealmResults
 class RealmPagingSource<T : RealmModel>(
   private val realmQueryBuilder: (Realm) -> RealmQuery<T>
 ) : RxPagingSource<Int, T>() {
+  private val realmExecutor = RealmExecutor(tag = "RealmPagingExecutor")
+  private val realmScheduler = realmExecutor.toScheduler()
+
 
   private val realm: Realm by lazy { defaultRealm() }
   private val realmQuery by lazy { realmQueryBuilder(realm) }
-  private val realmExecutor = RealmExecutor(tag = "RealmPagingExecutor")
-  private val realmScheduler = Schedulers.from(realmExecutor)
-
   private var realmChangeListener = { _: RealmResults<T> ->
     invalidate()
   }
 
+  private val realmResults by lazy {
+    realmQuery.findAll().apply {
+      addChangeListener(realmChangeListener)
+    }
+  }
+
   init {
     registerInvalidatedCallback {
+      if (realmResults.isValid) {
+        realmResults.removeAllChangeListeners()
+      }
       realm.close()
       realmExecutor.stop()
     }
@@ -54,6 +63,12 @@ class RealmPagingSource<T : RealmModel>(
       anchorPage?.prevKey?.plus(1) ?: anchorPage?.nextKey?.minus(1)
     }
   }
+
+  private val size
+    get() = when {
+      realm.isClosed || !realmResults.isValid -> 0
+      else -> realmResults.size
+    }
 
   override fun loadSingle(
     params: LoadParams<Int>
@@ -75,11 +90,8 @@ class RealmPagingSource<T : RealmModel>(
         )
       )
     } else {
-      val realmResults = realmQuery.findAll().apply {
-        addChangeListener(realmChangeListener)
-      }
       val startPosition = (pageNo + 1) * loadSize
-      val endPosition = minOf(startPosition + loadSize, realmResults.size)
+      val endPosition = minOf(startPosition + loadSize, size)
       val loadResult = LoadResult.Page(
         data = buildList<T> {
           for (position in startPosition until endPosition) {
