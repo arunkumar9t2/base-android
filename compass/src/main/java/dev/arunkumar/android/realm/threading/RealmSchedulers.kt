@@ -22,9 +22,11 @@ import io.reactivex.*
 
 object RealmSchedulers {
 
-  class RealmBgCompositeTransformer<T>(private val tag: String? = null) : CompositeTransformer<T> {
+  class RealmBgCompositeTransformer<T>(
+    private val tag: String? = null
+  ) : CompositeTransformer<T> {
 
-    private fun createRealmExecutor() = RealmExecutor(tag)
+    private fun createRealmExecutor(): RealmExecutor = RealmExecutor(tag)
 
     override fun apply(upstream: Flowable<T>): Flowable<T> = createRealmExecutor().let {
       val scheduler = it.toScheduler()
@@ -55,5 +57,5 @@ object RealmSchedulers {
     }
   }
 
-  fun <T> apply(tag: String? = null): CompositeTransformer<T> = RealmBgCompositeTransformer(tag)
+  fun <T> create(tag: String? = null): CompositeTransformer<T> = RealmBgCompositeTransformer(tag)
 }

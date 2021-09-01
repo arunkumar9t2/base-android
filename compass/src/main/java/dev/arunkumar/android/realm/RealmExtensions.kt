@@ -66,5 +66,5 @@ fun <T : RealmModel> realmObservable(
     } catch (e: Exception) {
       tryOnError(e)
     }
-  }.compose(RealmSchedulers.apply(tag))
+  }.compose(RealmSchedulers.create(tag))
 }

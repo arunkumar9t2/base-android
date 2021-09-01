@@ -19,19 +19,23 @@ package dev.arunkumar.android.realm.paging
 import androidx.paging.PagingState
 import androidx.paging.rxjava2.RxPagingSource
 import dev.arunkumar.android.realm.defaultRealm
+import dev.arunkumar.android.realm.threading.RealmExecutor
 import dev.arunkumar.android.rx.createSingle
 import io.reactivex.Single
+import io.reactivex.schedulers.Schedulers
 import io.realm.Realm
 import io.realm.RealmModel
 import io.realm.RealmQuery
 import io.realm.RealmResults
 
-
 class RealmPagingSource<T : RealmModel>(
   private val realmQueryBuilder: (Realm) -> RealmQuery<T>
 ) : RxPagingSource<Int, T>() {
 
-  private var realm: Realm = defaultRealm()
+  private val realm: Realm by lazy { defaultRealm() }
+  private val realmQuery by lazy { realmQueryBuilder(realm) }
+  private val realmExecutor = RealmExecutor(tag = "RealmPagingExecutor")
+  private val realmScheduler = Schedulers.from(realmExecutor)
 
   private var realmChangeListener = { _: RealmResults<T> ->
     invalidate()
@@ -40,6 +44,7 @@ class RealmPagingSource<T : RealmModel>(
   init {
     registerInvalidatedCallback {
       realm.close()
+      realmExecutor.stop()
     }
   }
 
@@ -50,8 +55,11 @@ class RealmPagingSource<T : RealmModel>(
     }
   }
 
-  override fun loadSingle(params: LoadParams<Int>): Single<LoadResult<Int, T>> {
+  override fun loadSingle(
+    params: LoadParams<Int>
+  ): Single<LoadResult<Int, T>> {
     return loadPage(params.key, params.loadSize)
+      .subscribeOn(realmScheduler)
   }
 
   private fun loadPage(
@@ -67,10 +75,10 @@ class RealmPagingSource<T : RealmModel>(
         )
       )
     } else {
-      val realmResults = realmQueryBuilder(realm).findAll().apply {
+      val realmResults = realmQuery.findAll().apply {
         addChangeListener(realmChangeListener)
       }
-      val startPosition = (pageNo - 1) * loadSize
+      val startPosition = (pageNo + 1) * loadSize
       val endPosition = minOf(startPosition + loadSize, realmResults.size)
       val loadResult = LoadResult.Page(
         data = buildList<T> {

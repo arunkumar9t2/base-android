@@ -22,16 +22,20 @@ import dev.arunkumar.android.realm.PagedRealmSource
 import dev.arunkumar.android.realm.RealmSource
 import dev.arunkumar.android.realm.realmTransaction
 import dev.arunkumar.android.rx.completable
+import dev.arunkumar.android.rx.createSingle
 import dev.arunkumar.android.rxschedulers.SchedulerProvider
-import dev.arunkumar.android.tasks.Task
 import io.reactivex.Completable
+import io.reactivex.Single
 import io.realm.kotlin.where
+import java.util.*
 import javax.inject.Inject
 import kotlin.random.Random.Default.nextInt
 
 interface TaskRepository : RealmSource<Task> {
 
   fun addItemsIfEmpty(): Completable
+
+  fun addTask(taskName: String): Single<Task>
 
   fun deleteTasks(taskId: Int): Completable
 
@@ -62,11 +66,21 @@ constructor(
       if (realm.where<Task>().findAll().isEmpty()) {
         val newItems = mutableListOf<Task>().apply {
           for (id in 1..MAX_ITEMS) {
-            add(Task(id, name()))
+            add(Task(UUID.randomUUID(), name()))
           }
         }
         realm.copyToRealmOrUpdate(newItems)
       }
+    }
+  }
+
+  override fun addTask(taskName: String): Single<Task> = createSingle {
+    try {
+      realmTransaction { realm ->
+        onSuccess(realm.copyToRealm(Task(name = taskName)))
+      }
+    } catch (e: Exception) {
+      tryOnError(e)
     }
   }
 
@@ -87,6 +101,6 @@ constructor(
   }
 
   companion object {
-    private const val MAX_ITEMS = 30000
+    private const val MAX_ITEMS = 3000
   }
 }

@@ -37,6 +37,7 @@ dependencies {
   implementation fileTree(dir: "libs", include: ["*.jar"])
 
   implementation deps.kotlinx.coroutines.android
+  implementation deps.kotlinx.coroutines.rx2
 
   implementation project(':colors')
   implementation project(':common')
@@ -84,6 +85,7 @@ dependencies {
   // Epoxy
   implementation libs.epoxyPaging
   kapt libs.epoxyProcessor
+  implementation deps.compose.paging
 
   // AndroidX
   implementation libs.constraintLayout

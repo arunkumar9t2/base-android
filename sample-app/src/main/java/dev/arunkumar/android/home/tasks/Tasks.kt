@@ -24,7 +24,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -39,43 +38,34 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import dev.arunkumar.android.home.Task
-import dev.arunkumar.common.result.Resource
-import dev.arunkumar.common.result.on
+import androidx.paging.PagingData
+import androidx.paging.compose.collectAsLazyPagingItems
+import androidx.paging.compose.items
+import dev.arunkumar.android.tasks.data.Task
+import kotlinx.coroutines.flow.Flow
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun Tasks(
-  tasks: Resource<List<Task>>,
+  tasks: Flow<PagingData<Task>>,
   contentPadding: PaddingValues,
   modifier: Modifier = Modifier
 ) {
+  val items = tasks.collectAsLazyPagingItems()
   LazyColumn(
     modifier = modifier,
     contentPadding = contentPadding
   ) {
-    tasks.on(
-      success = {
-        items(data) { task ->
-          Task(task, modifier = Modifier.clickable { })
-        }
-      },
-      loading = {
-        item("loading") {
-          Text(text = "Loading")
-        }
-      },
-      error = {
-        item("loading") {
-          Text(text = "Error")
-        }
+    items(items) { task ->
+      if (task != null) {
+        TaskItem(task, modifier = Modifier.clickable { })
       }
-    )
+    }
   }
 }
 
 @Composable
-fun Task(task: Task, modifier: Modifier = Modifier) {
+fun TaskItem(task: Task, modifier: Modifier = Modifier) {
   Card(modifier = modifier.fillMaxWidth()) {
     Row(modifier = Modifier.padding(12.dp)) {
       Checkbox(
@@ -88,7 +78,7 @@ fun Task(task: Task, modifier: Modifier = Modifier) {
       Spacer(modifier = Modifier.width(12.dp))
       Column {
         Text(
-          text = task,
+          text = task.name,
           style = MaterialTheme.typography.body1
         )
         Spacer(modifier = Modifier.height(4.dp))
@@ -103,7 +93,14 @@ fun Task(task: Task, modifier: Modifier = Modifier) {
           TaskTimeSpent(howMuch = "40m")
           TaskProgress(progress = 60)
         }
-        Tags(listOf("learning", "projects", "iconzy", "jarvis"))
+        Tags(
+          listOf(
+            "learning",
+            "projects",
+            "iconzy",
+            "jarvis",
+          )
+        )
       }
     }
   }
@@ -130,7 +127,10 @@ private fun Tags(tags: List<String>, modifier: Modifier = Modifier) {
 }
 
 @Composable
-private fun TaskMetaRow(modifier: Modifier = Modifier, block: @Composable RowScope.() -> Unit) {
+private fun TaskMetaRow(
+  modifier: Modifier = Modifier,
+  block: @Composable RowScope.() -> Unit
+) {
   Row(
     verticalAlignment = Alignment.CenterVertically,
     modifier = modifier
@@ -142,7 +142,11 @@ private fun TaskMetaRow(modifier: Modifier = Modifier, block: @Composable RowSco
 }
 
 @Composable
-private fun TaskMeta(icon: ImageVector, text: String, modifier: Modifier = Modifier) {
+private fun TaskMeta(
+  icon: ImageVector,
+  text: String,
+  modifier: Modifier = Modifier
+) {
   Row(verticalAlignment = Alignment.CenterVertically, modifier = modifier.padding(2.dp)) {
     Icon(icon, "", modifier = Modifier.size(12.dp))
     Spacer(modifier = Modifier.width(2.dp))

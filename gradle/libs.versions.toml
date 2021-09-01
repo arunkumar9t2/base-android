@@ -8,6 +8,7 @@ agp = "com.android.tools.build:gradle:7.1.0-alpha10"
 kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.21"
 kotlinx-binaryvalidator = "org.jetbrains.kotlinx:binary-compatibility-validator:0.6.0"
 kotlinx-coroutines-android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0"
+kotlinx-coroutines-rx2 = "org.jetbrains.kotlinx:kotlinx-coroutines-rx2:1.5.1"
 
 androidx-core = "androidx.core:core-ktx:1.7.0-alpha01"
 androidx-lifecycle = "androidx.lifecycle:lifecycle-runtime-ktx:2.4.0-alpha03"
@@ -20,7 +21,7 @@ compose-ui-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
 compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
 compose-ui-toolingpreview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
 compose-ui-livedata = { module = "androidx.compose.runtime:runtime-livedata", version.ref = "compose" }
-
+compose-paging = "androidx.paging:paging-compose:1.0.0-alpha12"
 
 spotless = "com.diffplug.spotless:spotless-plugin-gradle:5.11.0"
 

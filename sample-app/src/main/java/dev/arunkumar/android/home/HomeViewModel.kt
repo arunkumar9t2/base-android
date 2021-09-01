@@ -18,29 +18,29 @@ package dev.arunkumar.android.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.paging.PagingData
 import dev.arunkumar.android.logging.logD
+import dev.arunkumar.android.tasks.data.Task
+import dev.arunkumar.android.tasks.data.TaskRepository
 import dev.arunkumar.android.util.DispatcherProvider
 import dev.arunkumar.android.util.asResource
 import dev.arunkumar.android.util.printThread
-import dev.arunkumar.common.result.Resource
-import dev.arunkumar.common.result.idle
-import kotlinx.coroutines.delay
+import io.realm.kotlin.where
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.newSingleThreadContext
+import kotlinx.coroutines.rx2.await
 import javax.inject.Inject
 
-typealias Task = String
-
 data class HomeState(
-  val tasks: Resource<List<Task>> = idle()
+  val tasks: Flow<PagingData<Task>> = flowOf(PagingData.empty())
 )
 
 sealed class HomeSideEffect
 
 sealed class HomeAction {
   object LoadTasks : HomeAction()
-  class AddTask(val task: Task) : HomeAction()
+  class AddTask(val taskName: String) : HomeAction()
 }
 
 private typealias HomeReducer = HomeState.() -> HomeState
@@ -48,13 +48,16 @@ private typealias HomeReducer = HomeState.() -> HomeState
 class HomeViewModel
 @Inject
 constructor(
-  dispatchers: DispatcherProvider
+  dispatchers: DispatcherProvider,
+  taskRepository: TaskRepository
 ) : ViewModel() {
 
   private val reducerDispatcher = newSingleThreadContext("Reducer")
 
   @Suppress("NOTHING_TO_INLINE")
   private inline fun Reducer(noinline reducer: HomeState.() -> HomeState) = reducer
+
+  private val NoOp = Reducer { this }
 
   /**
    * Action stream for processing set of UI actions received from View
@@ -69,29 +72,26 @@ constructor(
   // actions to reducers
   private val loadTasks: Flow<HomeReducer> = onAction<HomeAction.LoadTasks>()
     .onStart { emit(HomeAction.LoadTasks) }
-    .flatMapLatest {
-      flow {
-        delay(1000)
-        emit(listOf("Task 1", "Task 2", "Task 3"))
-      }.asResource()
+    .map {
+      taskRepository.addItemsIfEmpty().await()
+      taskRepository.pagedItems<Task> {
+        it.where()
+      }
     }.flowOn(dispatchers.io)
-    .map { tasks ->
+    .map { pagedTasks ->
       Reducer {
-        copy(tasks = tasks)
+        copy(tasks = pagedTasks)
       }
     }.shareIn(viewModelScope, SharingStarted.WhileSubscribed())
 
   private val addTask: Flow<HomeReducer> = onAction<HomeAction.AddTask>()
-    .flatMapLatest {
+    .flatMapLatest { addTask ->
       flow {
-        emit(state.value.tasks.value.toMutableList() + it.task)
+        emit(taskRepository.addTask(addTask.taskName).await())
       }.asResource()
     }.flowOn(dispatchers.io)
-    .map { tasks ->
-      Reducer {
-        copy(tasks = tasks)
-      }
-    }.shareIn(viewModelScope, SharingStarted.WhileSubscribed())
+    .map { _ -> NoOp }
+    .shareIn(viewModelScope, SharingStarted.WhileSubscribed())
 
   /**
    * StateFlow should basically be a `StateFlow<HomeState>` produced by processing all reducers
