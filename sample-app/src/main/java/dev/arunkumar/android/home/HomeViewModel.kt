@@ -58,7 +58,7 @@ class HomeViewModel
 constructor(
   dispatchers: DispatcherProvider,
   taskRepository: TaskRepository,
-  val resetAllTask: ResetAllTasks
+  private val resetAllTask: ResetAllTasks
 ) : ViewModel() {
 
   private val reducerDispatcher = newSingleThreadContext("Reducer")
