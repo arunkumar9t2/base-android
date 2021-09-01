@@ -27,7 +27,8 @@ open class Task(
   @Required
   var id: UUID = UUID.randomUUID(),
   var name: String = "",
-  var tags: RealmList<Tag> = RealmList()
+  var tags: RealmList<Tag> = RealmList(),
+  var completed: Boolean = false,
 ) : RealmObject()
 
 open class Tag(

@@ -31,6 +31,7 @@ import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.newSingleThreadContext
 import kotlinx.coroutines.rx2.await
+import java.util.*
 import javax.inject.Inject
 
 data class HomeState(
@@ -42,6 +43,7 @@ sealed class HomeSideEffect
 sealed class HomeAction {
   object LoadTasks : HomeAction()
   class AddTask(val taskName: String) : HomeAction()
+  class CompleteTask(val taskId: UUID, val completed: Boolean) : HomeAction()
 }
 
 private typealias HomeReducer = HomeState.() -> HomeState
@@ -76,7 +78,7 @@ constructor(
     .mapLatest {
       taskRepository.addItemsIfEmpty().await()
       taskRepository.pagedItems<Task> {
-        it.where()
+        it.where<Task>()
       }.cachedIn(viewModelScope)
     }.flowOn(dispatchers.io)
     .map { pagedTasks ->
@@ -91,7 +93,16 @@ constructor(
         emit(taskRepository.addTask(addTask.taskName).await())
       }.asResource()
     }.flowOn(dispatchers.io)
-    .map { _ -> NoOp }
+    .map { NoOp }
+    .shareIn(viewModelScope, SharingStarted.WhileSubscribed())
+
+  private val completeTask: Flow<HomeReducer> = onAction<HomeAction.CompleteTask>()
+    .map { completeTask ->
+      taskRepository
+        .completeTask(completeTask.taskId, completeTask.completed)
+        .await()
+    }.flowOn(dispatchers.io)
+    .map { NoOp }
     .shareIn(viewModelScope, SharingStarted.WhileSubscribed())
 
   /**
@@ -99,7 +110,8 @@ constructor(
    */
   val state = merge(
     loadTasks,
-    addTask
+    addTask,
+    completeTask
   ).scan(HomeState()) { state, reducer -> reducer(state) }
     .flowOn(reducerDispatcher)
     .onEach { logD { "State: $it" } }

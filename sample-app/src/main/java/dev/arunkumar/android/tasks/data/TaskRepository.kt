@@ -23,7 +23,6 @@ import dev.arunkumar.android.realm.RealmSource
 import dev.arunkumar.android.realm.realmTransaction
 import dev.arunkumar.android.rx.completable
 import dev.arunkumar.android.rx.createSingle
-import dev.arunkumar.android.rxschedulers.SchedulerProvider
 import io.reactivex.Completable
 import io.reactivex.Single
 import io.realm.kotlin.where
@@ -39,6 +38,8 @@ interface TaskRepository : RealmSource<Task> {
 
   fun deleteTasks(taskId: Int): Completable
 
+  fun completeTask(taskId: UUID, completed: Boolean): Completable
+
   fun clear(): Completable
 }
 
@@ -50,9 +51,7 @@ interface TasksModule {
 
 class DefaultTaskRepository
 @Inject
-constructor(
-  override val schedulerProvider: SchedulerProvider
-) : TaskRepository, PagedRealmSource<Task> {
+constructor() : TaskRepository, PagedRealmSource<Task> {
 
   private val charPool: List<Char> = ('a'..'z') + ('A'..'Z') + ('0'..'9')
 
@@ -91,6 +90,15 @@ constructor(
         .equalTo("id", taskId)
         .findAll()
         .deleteAllFromRealm()
+    }
+  }
+
+  override fun completeTask(taskId: UUID, completed: Boolean) = completable {
+    realmTransaction { realm ->
+      realm.where<Task>()
+        .equalTo("id", taskId)
+        .findFirst()
+        ?.completed = completed
     }
   }
 

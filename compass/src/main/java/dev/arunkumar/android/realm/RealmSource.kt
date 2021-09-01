@@ -20,8 +20,6 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import dev.arunkumar.android.realm.paging.RealmPagingSource
-import dev.arunkumar.android.rxschedulers.SchedulerProvider
-import io.reactivex.Scheduler
 import io.realm.Realm
 import io.realm.RealmModel
 import io.realm.RealmQuery
@@ -29,15 +27,12 @@ import kotlinx.coroutines.flow.Flow
 
 interface RealmSource<T : RealmModel> {
 
-  val schedulerProvider: SchedulerProvider
-
   @Suppress("UNCHECKED_CAST")
   fun <R> pagedItems(
     initialLoadSize: Int = 30 * 3,
     pageSize: Int = 30,
     prefetchDistance: Int = 30 * 2,
     placeholders: Boolean = false,
-    notifyScheduler: Scheduler = schedulerProvider.ui,
     itemMapper: (T) -> R = { it as R },
     realmQueryBuilder: (Realm) -> RealmQuery<T>
   ): Flow<PagingData<T>>
@@ -51,7 +46,6 @@ interface PagedRealmSource<T : RealmModel> : RealmSource<T> {
     pageSize: Int,
     prefetchDistance: Int,
     placeholders: Boolean,
-    notifyScheduler: Scheduler,
     itemMapper: (T) -> R,
     realmQueryBuilder: (Realm) -> RealmQuery<T>
   ): Flow<PagingData<T>> {

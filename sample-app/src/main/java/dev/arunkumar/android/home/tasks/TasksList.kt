@@ -43,34 +43,39 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
 import dev.arunkumar.android.tasks.data.Task
 import kotlinx.coroutines.flow.Flow
+import java.util.*
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
-fun Tasks(
+fun TasksList(
   tasks: Flow<PagingData<Task>>,
   contentPadding: PaddingValues,
-  modifier: Modifier = Modifier
+  taskContent: @Composable (task: Task?) -> Unit,
+  modifier: Modifier = Modifier,
 ) {
   val items = tasks.collectAsLazyPagingItems()
   LazyColumn(
     modifier = modifier,
     contentPadding = contentPadding
   ) {
-    items(items) { task ->
-      if (task != null) {
-        TaskItem(task, modifier = Modifier.clickable { })
-      }
-    }
+    items(items) { taskContent(it) }
   }
 }
 
 @Composable
-fun TaskItem(task: Task, modifier: Modifier = Modifier) {
-  Card(modifier = modifier.fillMaxWidth()) {
+fun TaskItem(
+  task: Task,
+  completeTask: (taskId: UUID, completed: Boolean) -> Unit,
+  modifier: Modifier = Modifier
+) {
+  Card(modifier = modifier
+    .fillMaxWidth()
+    .clickable { }
+  ) {
     Row(modifier = Modifier.padding(12.dp)) {
       Checkbox(
-        checked = false,
-        onCheckedChange = {},
+        checked = task.completed,
+        onCheckedChange = { completed -> completeTask(task.id, completed) },
         modifier = Modifier
           .size(24.dp)
           .align(Alignment.Top)

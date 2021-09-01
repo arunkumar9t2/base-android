@@ -25,7 +25,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
-import dev.arunkumar.android.home.tasks.Tasks
+import dev.arunkumar.android.home.tasks.TaskItem
+import dev.arunkumar.android.home.tasks.TasksList
 
 @Composable
 fun Home(state: HomeState, homeViewModel: HomeViewModel) {
@@ -62,7 +63,16 @@ fun Home(state: HomeState, homeViewModel: HomeViewModel) {
     },
     floatingActionButtonPosition = FabPosition.Center,
     content = { innerPadding ->
-      Tasks(state.tasks, innerPadding)
+      TasksList(state.tasks, innerPadding, taskContent = { task ->
+        if (task != null) {
+          TaskItem(
+            task = task,
+            completeTask = { taskId, completed ->
+              homeViewModel.perform(HomeAction.CompleteTask(taskId, completed))
+            }
+          )
+        }
+      })
     }
   )
 }
