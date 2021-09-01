@@ -61,7 +61,11 @@ constructor(
   @Suppress("NOTHING_TO_INLINE")
   private inline fun Reducer(noinline reducer: HomeState.() -> HomeState) = reducer
 
-  private val NoOp = Reducer { this }
+  private fun <T> Flow<T>.mapToReducer(
+    transform: HomeState.(value: T) -> HomeState = { this }
+  ) = map { value -> Reducer { transform(value) } }
+
+  private fun <T> Flow<T>.share() = shareIn(viewModelScope, SharingStarted.WhileSubscribed())
 
   /**
    * Action stream for processing set of UI actions received from View
@@ -73,20 +77,17 @@ constructor(
   private val _effects = MutableSharedFlow<HomeSideEffect>()
   val effects = _effects.asSharedFlow()
 
-  // actions to reducers
+  // Actions to reducers
   private val loadTasks: Flow<HomeReducer> = onAction<HomeAction.LoadTasks>()
     .onStart { emit(HomeAction.LoadTasks) }
     .mapLatest {
       taskRepository.addItemsIfEmpty().await()
       taskRepository.pagedItems<Task> {
-        it.where<Task>()
+        it.where()
       }.cachedIn(viewModelScope)
     }.flowOn(dispatchers.io)
-    .map { pagedTasks ->
-      Reducer {
-        copy(tasks = pagedTasks)
-      }
-    }.shareIn(viewModelScope, SharingStarted.WhileSubscribed())
+    .mapToReducer { pagedTasks -> copy(tasks = pagedTasks) }
+    .share()
 
   private val addTask: Flow<HomeReducer> = onAction<HomeAction.AddTask>()
     .flatMapLatest { addTask ->
@@ -94,8 +95,8 @@ constructor(
         emit(taskRepository.addTask(addTask.taskName).await())
       }.asResource()
     }.flowOn(dispatchers.io)
-    .map { NoOp }
-    .shareIn(viewModelScope, SharingStarted.WhileSubscribed())
+    .mapToReducer()
+    .share()
 
   private val completeTask: Flow<HomeReducer> = onAction<HomeAction.CompleteTask>()
     .onEach { completeTask ->
@@ -103,15 +104,15 @@ constructor(
         .completeTask(completeTask.taskId, completeTask.completed)
         .await()
     }.flowOn(dispatchers.io)
-    .map { NoOp }
-    .shareIn(viewModelScope, SharingStarted.WhileSubscribed())
+    .mapToReducer()
+    .share()
 
   private val deleteTask: Flow<HomeReducer> = onAction<HomeAction.DeleteTask>()
     .onEach { deleteTask ->
       taskRepository.deleteTasks(deleteTask.taskId).await()
     }.flowOn(dispatchers.io)
-    .map { NoOp }
-    .shareIn(viewModelScope, SharingStarted.WhileSubscribed())
+    .mapToReducer()
+    .share()
 
   /**
    * StateFlow should basically be a `StateFlow<HomeState>` produced by processing all reducers
