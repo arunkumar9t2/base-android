@@ -24,7 +24,6 @@ import dev.arunkumar.android.realm.RealmQueryBuilder
 import dev.arunkumar.android.realm.flow.asFlow
 import dev.arunkumar.android.util.work.rememberFlowWithLifecycle
 import io.realm.RealmModel
-import kotlinx.coroutines.flow.onCompletion
 
 @Composable
 inline fun <reified T : RealmModel> RealmItem(
@@ -32,7 +31,6 @@ inline fun <reified T : RealmModel> RealmItem(
   content: @Composable (value: T) -> Unit
 ) {
   val value by rememberFlowWithLifecycle(flow = realmQueryBuilder.asFlow())
-    .onCompletion { printThread("Completed") }
     .collectAsState(initial = null)
   key(value) {
     value?.firstOrNull()?.let { realmValue -> content(realmValue) }
