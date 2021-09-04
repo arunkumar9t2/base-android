@@ -28,21 +28,24 @@ import io.realm.RealmQuery
 typealias RealmBlock = (Realm) -> Unit
 typealias RealmFunction<T> = (Realm) -> T
 
-inline fun defaultRealm(): Realm = Realm.getDefaultInstance()
+@Suppress("FunctionName")
+inline fun DefaultRealm(): Realm = Realm.getDefaultInstance()
 
 inline fun realm(action: RealmBlock) {
-  val realm = defaultRealm()
+  val realm = DefaultRealm()
   action(realm)
   realm.close()
 }
 
-inline fun <T> realmFunction(block: RealmFunction<T>): T {
-  val realm = defaultRealm()
+@Suppress("unused")
+inline fun <T> RealmFunction(block: RealmFunction<T>): T {
+  val realm = DefaultRealm()
   return block(realm).also { realm.close() }
 }
 
-inline fun realmTransaction(noinline action: RealmBlock) {
-  val realm = defaultRealm()
+@Suppress("FunctionName")
+inline fun RealmTransaction(noinline action: RealmBlock) {
+  val realm = DefaultRealm()
   realm.executeTransaction(action)
   realm.close()
 }
@@ -53,7 +56,7 @@ fun <T : RealmModel> realmObservable(
 ): Observable<List<T>> {
   return createObservable<List<T>> {
     try {
-      val realm = defaultRealm()
+      val realm = DefaultRealm()
       val results = realmQuery(realm).findAll()
       onNext(realm.copyFromRealm(results))
       results.addChangeListener { newResults ->

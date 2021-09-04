@@ -27,26 +27,15 @@ import kotlinx.coroutines.flow.Flow
 
 interface RealmSource<T : RealmModel> {
 
-  @Suppress("UNCHECKED_CAST")
+}
+
+interface PagedRealmSource<T : RealmModel> : RealmSource<T> {
+
   fun <R> pagedItems(
     initialLoadSize: Int = 30 * 3,
     pageSize: Int = 30,
     prefetchDistance: Int = 30 * 2,
     placeholders: Boolean = false,
-    itemMapper: (T) -> R = { it as R },
-    realmQueryBuilder: (Realm) -> RealmQuery<T>
-  ): Flow<PagingData<T>>
-
-}
-
-interface PagedRealmSource<T : RealmModel> : RealmSource<T> {
-
-  override fun <R> pagedItems(
-    initialLoadSize: Int,
-    pageSize: Int,
-    prefetchDistance: Int,
-    placeholders: Boolean,
-    itemMapper: (T) -> R,
     realmQueryBuilder: (Realm) -> RealmQuery<T>
   ): Flow<PagingData<T>> {
     return Pager(

@@ -19,8 +19,7 @@ package dev.arunkumar.android.tasks.data
 import dagger.Binds
 import dagger.Module
 import dev.arunkumar.android.realm.PagedRealmSource
-import dev.arunkumar.android.realm.RealmSource
-import dev.arunkumar.android.realm.realmTransaction
+import dev.arunkumar.android.realm.RealmTransaction
 import dev.arunkumar.android.rx.completable
 import dev.arunkumar.android.rx.createSingle
 import io.reactivex.Completable
@@ -30,7 +29,7 @@ import java.util.*
 import javax.inject.Inject
 import kotlin.random.Random.Default.nextInt
 
-interface TaskRepository : RealmSource<Task> {
+interface TaskRepository : PagedRealmSource<Task> {
 
   fun addItemsIfEmpty(): Completable
 
@@ -51,12 +50,12 @@ interface TasksModule {
 
 class DefaultTaskRepository
 @Inject
-constructor() : TaskRepository, PagedRealmSource<Task> {
+constructor() : TaskRepository {
 
   private val charPool: List<Char> = ('a'..'z') + ('A'..'Z') + ('0'..'9')
 
   override fun addItemsIfEmpty() = completable {
-    realmTransaction { realm ->
+    RealmTransaction { realm ->
       fun name() = (1..10)
         .map { nextInt(0, charPool.size) }
         .map(charPool::get)
@@ -75,7 +74,7 @@ constructor() : TaskRepository, PagedRealmSource<Task> {
 
   override fun addTask(taskName: String): Single<Task> = createSingle {
     try {
-      realmTransaction { realm ->
+      RealmTransaction { realm ->
         onSuccess(realm.copyToRealm(Task(name = taskName)))
       }
     } catch (e: Exception) {
@@ -84,7 +83,7 @@ constructor() : TaskRepository, PagedRealmSource<Task> {
   }
 
   override fun deleteTasks(taskId: UUID) = completable {
-    realmTransaction { realm ->
+    RealmTransaction { realm ->
       realm
         .where<Task>()
         .equalTo("id", taskId)
@@ -94,7 +93,7 @@ constructor() : TaskRepository, PagedRealmSource<Task> {
   }
 
   override fun completeTask(taskId: UUID, completed: Boolean) = completable {
-    realmTransaction { realm ->
+    RealmTransaction { realm ->
       realm.where<Task>()
         .equalTo("id", taskId)
         .findFirst()
@@ -103,7 +102,7 @@ constructor() : TaskRepository, PagedRealmSource<Task> {
   }
 
   override fun clear() = completable {
-    realmTransaction { realm ->
+    RealmTransaction { realm ->
       realm.where<Task>().findAll().deleteAllFromRealm()
     }
   }
