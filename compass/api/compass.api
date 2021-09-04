@@ -7,20 +7,21 @@ public final class dev/arunkumar/android/realm/BuildConfig {
 }
 
 public abstract interface class dev/arunkumar/android/realm/PagedRealmSource : dev/arunkumar/android/realm/RealmSource {
-	public abstract fun pagedItems (IIIZLkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Lkotlinx/coroutines/flow/Flow;
+	public abstract fun pagedItems (IIIZLkotlin/jvm/functions/Function1;)Lkotlinx/coroutines/flow/Flow;
 }
 
 public final class dev/arunkumar/android/realm/PagedRealmSource$DefaultImpls {
-	public static fun pagedItems (Ldev/arunkumar/android/realm/PagedRealmSource;IIIZLkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Lkotlinx/coroutines/flow/Flow;
+	public static fun pagedItems (Ldev/arunkumar/android/realm/PagedRealmSource;IIIZLkotlin/jvm/functions/Function1;)Lkotlinx/coroutines/flow/Flow;
+	public static synthetic fun pagedItems$default (Ldev/arunkumar/android/realm/PagedRealmSource;IIIZLkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
 }
 
 public final class dev/arunkumar/android/realm/RealmExtensionsKt {
-	public static final fun defaultRealm ()Lio/realm/Realm;
+	public static final fun DefaultRealm ()Lio/realm/Realm;
+	public static final fun RealmFunction (Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun RealmTransaction (Lkotlin/jvm/functions/Function1;)V
 	public static final fun realm (Lkotlin/jvm/functions/Function1;)V
-	public static final fun realmFunction (Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun realmObservable (Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lio/reactivex/Observable;
 	public static synthetic fun realmObservable$default (Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lio/reactivex/Observable;
-	public static final fun realmTransaction (Lkotlin/jvm/functions/Function1;)V
 }
 
 public final class dev/arunkumar/android/realm/RealmExtensionsKt$sam$i$io_realm_Realm_Transaction$0 : io/realm/Realm$Transaction {
@@ -29,11 +30,6 @@ public final class dev/arunkumar/android/realm/RealmExtensionsKt$sam$i$io_realm_
 }
 
 public abstract interface class dev/arunkumar/android/realm/RealmSource {
-	public abstract fun pagedItems (IIIZLkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Lkotlinx/coroutines/flow/Flow;
-}
-
-public final class dev/arunkumar/android/realm/RealmSource$DefaultImpls {
-	public static synthetic fun pagedItems$default (Ldev/arunkumar/android/realm/RealmSource;IIIZLkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
 }
 
 public final class dev/arunkumar/android/realm/paging/RealmPagingSource : androidx/paging/rxjava2/RxPagingSource {
@@ -43,8 +39,12 @@ public final class dev/arunkumar/android/realm/paging/RealmPagingSource : androi
 	public fun loadSingle (Landroidx/paging/PagingSource$LoadParams;)Lio/reactivex/Single;
 }
 
-public final class dev/arunkumar/android/realm/rx/RealmRxUtilKt {
-	public static final fun realmBgTransformer ()Ldev/arunkumar/android/transformers/CompositeTransformer;
+public final class dev/arunkumar/android/realm/threading/RealmDispatcher : kotlinx/coroutines/CoroutineDispatcher {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun dispatch (Lkotlin/coroutines/CoroutineContext;Ljava/lang/Runnable;)V
+	public fun isDispatchNeeded (Lkotlin/coroutines/CoroutineContext;)Z
 }
 
 public final class dev/arunkumar/android/realm/threading/RealmExecutor : dev/arunkumar/android/realm/threading/StoppableExecutor {
