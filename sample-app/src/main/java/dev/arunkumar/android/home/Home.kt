@@ -95,6 +95,13 @@ private fun TasksBottomBar(resetState: Resource<Unit>, resetAll: () -> Unit) {
         .fillMaxSize()
         .padding(8.dp)
     ) {
+      // Render a single item directly
+      RealmItem<Task>(
+        realmQueryBuilder = { where<Task>().sort("name").limit(1) },
+        content = { task ->
+          Text(text = task.name, Modifier.weight(1.0F))
+        }
+      )
       resetState(
         loading = {
           CircularProgressIndicator()
@@ -107,12 +114,6 @@ private fun TasksBottomBar(resetState: Resource<Unit>, resetAll: () -> Unit) {
           )
         }
       )
-      // Render a single item directly
-      RealmItem<Task>(
-        realmQueryBuilder = { where<Task>().sort("name").limit(1) },
-        content = { task ->
-          Text(text = task.name)
-        })
     }
   }
 }
