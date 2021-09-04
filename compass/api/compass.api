@@ -18,10 +18,9 @@ public final class dev/arunkumar/android/realm/PagedRealmSource$DefaultImpls {
 public final class dev/arunkumar/android/realm/RealmKt {
 	public static final fun DefaultRealm ()Lio/realm/Realm;
 	public static final fun RealmFunction (Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun RealmQuery (Lkotlin/jvm/functions/Function1;)Lkotlin/jvm/functions/Function1;
 	public static final fun RealmTransaction (Lkotlin/jvm/functions/Function1;)V
 	public static final fun realm (Lkotlin/jvm/functions/Function1;)V
-	public static final fun realmObservable (Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lio/reactivex/Observable;
-	public static synthetic fun realmObservable$default (Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lio/reactivex/Observable;
 }
 
 public final class dev/arunkumar/android/realm/RealmKt$sam$i$io_realm_Realm_Transaction$0 : io/realm/Realm$Transaction {
@@ -32,11 +31,20 @@ public final class dev/arunkumar/android/realm/RealmKt$sam$i$io_realm_Realm_Tran
 public abstract interface class dev/arunkumar/android/realm/RealmSource {
 }
 
+public final class dev/arunkumar/android/realm/flow/RealmFlowKt {
+	public static final fun asFlow (Lkotlin/jvm/functions/Function1;)Lkotlinx/coroutines/flow/Flow;
+}
+
 public final class dev/arunkumar/android/realm/paging/RealmPagingSource : androidx/paging/rxjava2/RxPagingSource {
 	public fun <init> (Lkotlin/jvm/functions/Function1;)V
 	public fun getRefreshKey (Landroidx/paging/PagingState;)Ljava/lang/Integer;
 	public synthetic fun getRefreshKey (Landroidx/paging/PagingState;)Ljava/lang/Object;
 	public fun loadSingle (Landroidx/paging/PagingSource$LoadParams;)Lio/reactivex/Single;
+}
+
+public final class dev/arunkumar/android/realm/rx/RealmRxKt {
+	public static final fun asObservable (Lio/realm/RealmModel;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lio/reactivex/Observable;
+	public static synthetic fun asObservable$default (Lio/realm/RealmModel;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lio/reactivex/Observable;
 }
 
 public final class dev/arunkumar/android/realm/threading/RealmDispatcher : kotlinx/coroutines/CoroutineDispatcher {
@@ -45,6 +53,7 @@ public final class dev/arunkumar/android/realm/threading/RealmDispatcher : kotli
 	public synthetic fun <init> (Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public fun dispatch (Lkotlin/coroutines/CoroutineContext;Ljava/lang/Runnable;)V
 	public fun isDispatchNeeded (Lkotlin/coroutines/CoroutineContext;)Z
+	public final fun stop ()V
 }
 
 public final class dev/arunkumar/android/realm/threading/RealmExecutor : dev/arunkumar/android/realm/threading/StoppableExecutor {
