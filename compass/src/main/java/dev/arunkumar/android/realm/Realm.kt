@@ -18,9 +18,6 @@
 
 package dev.arunkumar.android.realm
 
-import dev.arunkumar.android.realm.threading.RealmSchedulers
-import dev.arunkumar.android.rx.createObservable
-import io.reactivex.Observable
 import io.realm.Realm
 import io.realm.RealmModel
 import io.realm.RealmQuery
@@ -38,7 +35,7 @@ inline fun realm(action: RealmBlock) {
   realm.close()
 }
 
-@Suppress("unused")
+@Suppress("FunctionName")
 inline fun <T> RealmFunction(block: RealmFunction<T>): T {
   val realm = DefaultRealm()
   return block(realm).also { realm.close() }
@@ -51,24 +48,7 @@ inline fun RealmTransaction(noinline action: RealmBlock) {
   realm.close()
 }
 
-fun <T : RealmModel> realmObservable(
-  tag: String? = null,
-  realmQuery: (Realm) -> RealmQuery<T>
-): Observable<List<T>> {
-  return createObservable<List<T>> {
-    try {
-      val realm = DefaultRealm()
-      val results = realmQuery(realm).findAll()
-      onNext(realm.copyFromRealm(results))
-      results.addChangeListener { newResults ->
-        onNext(realm.copyFromRealm(newResults))
-      }
-      setCancellable {
-        results.removeAllChangeListeners()
-        realm.close()
-      }
-    } catch (e: Exception) {
-      tryOnError(e)
-    }
-  }.compose(RealmSchedulers.create(tag))
-}
+@Suppress("FunctionName")
+fun <T : RealmModel> RealmQuery(
+  builder: RealmQueryBuilder<T>
+): RealmQueryBuilder<T> = builder

@@ -29,8 +29,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import dev.arunkumar.android.home.tasks.TaskItem
 import dev.arunkumar.android.home.tasks.TasksList
+import dev.arunkumar.android.tasks.data.Task
+import dev.arunkumar.android.util.RealmItem
+
 import dev.arunkumar.android.util.invoke
 import dev.arunkumar.common.result.Resource
+import io.realm.kotlin.where
 
 @Composable
 fun Home(state: HomeState, homeViewModel: HomeViewModel) {
@@ -103,6 +107,12 @@ private fun TasksBottomBar(resetState: Resource<Unit>, resetAll: () -> Unit) {
           )
         }
       )
+      // Render a single item directly
+      RealmItem<Task>(
+        realmQueryBuilder = { where<Task>().sort("name").limit(1) },
+        content = { task ->
+          Text(text = task.name)
+        })
     }
   }
 }

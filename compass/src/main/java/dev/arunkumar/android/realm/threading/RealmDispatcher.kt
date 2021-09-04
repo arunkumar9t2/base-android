@@ -35,5 +35,9 @@ class RealmDispatcher(
   override fun isDispatchNeeded(
     context: CoroutineContext
   ) = delegateDispatcher.isDispatchNeeded(context)
+
+  fun stop() {
+    realmExecutor.stop()
+  }
 }
 
