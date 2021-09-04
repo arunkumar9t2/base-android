@@ -89,7 +89,7 @@ class RealmPagingSource<T : RealmModel>(
         )
       )
     } else {
-      val startPosition = (pageNo + 1) * loadSize
+      val startPosition = pageNo * loadSize
       val endPosition = minOf(startPosition + loadSize, size)
       val loadResult = LoadResult.Page(
         data = buildList<T> {

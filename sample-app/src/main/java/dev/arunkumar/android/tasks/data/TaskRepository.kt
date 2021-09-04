@@ -62,9 +62,9 @@ constructor() : TaskRepository {
         .joinToString("")
 
       if (realm.where<Task>().findAll().isEmpty()) {
-        val newItems = mutableListOf<Task>().apply {
-          for (id in 1..MAX_ITEMS) {
-            add(Task(UUID.randomUUID(), name()))
+        val newItems = buildList {
+          for (id in 0..MAX_ITEMS) {
+            add(Task(UUID.randomUUID(), "$id: " + name()))
           }
         }
         realm.copyToRealmOrUpdate(newItems)

@@ -28,6 +28,7 @@ import dev.arunkumar.android.util.DispatcherProvider
 import dev.arunkumar.android.util.printThread
 import dev.arunkumar.android.util.resourceFlow
 import dev.arunkumar.common.result.Resource
+import io.realm.Sort
 import io.realm.kotlin.where
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -89,7 +90,7 @@ constructor(
       taskRepository.addItemsIfEmpty().await()
       taskRepository
         .pagedItems<Task> {
-          where<Task>().sort("name")
+          where<Task>().sort("name", Sort.ASCENDING)
         }.cachedIn(viewModelScope)
     }.flowOn(dispatchers.io)
     .mapToReducer { pagedTasks -> copy(tasks = pagedTasks) }

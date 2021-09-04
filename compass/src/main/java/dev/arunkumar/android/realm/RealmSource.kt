@@ -30,9 +30,9 @@ interface RealmSource<T : RealmModel> {
 interface PagedRealmSource<T : RealmModel> : RealmSource<T> {
 
   fun <R> pagedItems(
-    initialLoadSize: Int = 30 * 3,
-    pageSize: Int = 30,
-    prefetchDistance: Int = 30 * 2,
+    initialLoadSize: Int = 10,
+    pageSize: Int = 10,
+    prefetchDistance: Int = 10 * 2,
     placeholders: Boolean = false,
     realmQueryBuilder: RealmQueryBuilder<T>
   ): Flow<PagingData<T>> {
