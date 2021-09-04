@@ -87,9 +87,7 @@ constructor(
     .onStart { emit(HomeAction.LoadTasks) }
     .mapLatest {
       taskRepository.addItemsIfEmpty().await()
-      taskRepository.pagedItems<Task> {
-        it.where()
-      }.cachedIn(viewModelScope)
+      taskRepository.pagedItems<Task> { where() }.cachedIn(viewModelScope)
     }.flowOn(dispatchers.io)
     .mapToReducer { pagedTasks -> copy(tasks = pagedTasks) }
     .share()

@@ -27,6 +27,7 @@ import io.realm.RealmQuery
 
 typealias RealmBlock = (Realm) -> Unit
 typealias RealmFunction<T> = (Realm) -> T
+typealias RealmQueryBuilder<T> = Realm.() -> RealmQuery<T>
 
 @Suppress("FunctionName")
 inline fun DefaultRealm(): Realm = Realm.getDefaultInstance()

@@ -20,9 +20,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import dev.arunkumar.android.realm.paging.RealmPagingSource
-import io.realm.Realm
 import io.realm.RealmModel
-import io.realm.RealmQuery
 import kotlinx.coroutines.flow.Flow
 
 interface RealmSource<T : RealmModel> {
@@ -36,7 +34,7 @@ interface PagedRealmSource<T : RealmModel> : RealmSource<T> {
     pageSize: Int = 30,
     prefetchDistance: Int = 30 * 2,
     placeholders: Boolean = false,
-    realmQueryBuilder: (Realm) -> RealmQuery<T>
+    realmQueryBuilder: RealmQueryBuilder<T>
   ): Flow<PagingData<T>> {
     return Pager(
       config = PagingConfig(

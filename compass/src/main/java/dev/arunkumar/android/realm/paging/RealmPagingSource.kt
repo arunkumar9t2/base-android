@@ -19,23 +19,23 @@ package dev.arunkumar.android.realm.paging
 import androidx.paging.PagingState
 import androidx.paging.rxjava2.RxPagingSource
 import dev.arunkumar.android.realm.DefaultRealm
+import dev.arunkumar.android.realm.RealmQueryBuilder
 import dev.arunkumar.android.realm.threading.RealmExecutor
 import dev.arunkumar.android.rx.createSingle
 import dev.arunkumar.android.rxschedulers.toScheduler
 import io.reactivex.Single
 import io.realm.Realm
 import io.realm.RealmModel
-import io.realm.RealmQuery
 import io.realm.RealmResults
 
 class RealmPagingSource<T : RealmModel>(
-  private val realmQueryBuilder: (Realm) -> RealmQuery<T>
+  private val realmQueryBuilder: RealmQueryBuilder<T>
 ) : RxPagingSource<Int, T>() {
   private val realmExecutor = RealmExecutor(tag = "RealmPagingExecutor")
   private val realmScheduler = realmExecutor.toScheduler()
 
   private val realm: Realm by lazy { DefaultRealm() }
-  private val realmQuery by lazy { realmQueryBuilder(realm) }
+  private val realmQuery by lazy { realm.realmQueryBuilder() }
   private var realmChangeListener = { _: RealmResults<T> ->
     invalidate()
   }
