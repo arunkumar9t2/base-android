@@ -26,8 +26,10 @@ import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.isActive
 
-fun <T : RealmModel> RealmQueryBuilder<T>.asFlow(): Flow<List<T>> = flow {
-  emit(RealmDispatcher())
+fun <T : RealmModel> RealmQueryBuilder<T>.asFlow(
+  dispatcherProvider: () -> RealmDispatcher = { RealmDispatcher() }
+): Flow<List<T>> = flow {
+  emit(dispatcherProvider())
 }.flatMapConcat { realmDispatcher: RealmDispatcher ->
   callbackFlow {
     val realm = DefaultRealm()

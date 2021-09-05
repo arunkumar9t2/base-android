@@ -19,6 +19,7 @@
 package dev.arunkumar.android.home.tasks
 
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -31,17 +32,21 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Alarm
 import androidx.compose.material.icons.filled.Tonality
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.paging.PagingData
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
 import dev.arunkumar.android.tasks.data.Task
+import dev.arunkumar.android.util.RealmItem
+import io.realm.kotlin.where
 import kotlinx.coroutines.flow.Flow
 import java.util.*
 
@@ -58,7 +63,7 @@ fun TasksList(
     modifier = modifier,
     contentPadding = contentPadding
   ) {
-    items(items) { taskContent(it) }
+    items(items) { task -> taskContent(task) }
   }
 }
 
@@ -171,4 +176,26 @@ private inline fun TaskTimeSpent(howMuch: String) {
 @Composable
 private inline fun TaskProgress(progress: Int) {
   TaskMeta(icon = Icons.Filled.Tonality, text = "$progress%")
+}
+
+
+@Composable
+fun RowScope.DemoTaskModel() {
+  RealmItem<Task>(
+    realmQueryBuilder = { where<Task>().sort("name").limit(1) },
+    content = { task ->
+      if (task != null) {
+        val taskColor by animateColorAsState(
+          targetValue = if (task.completed) Color.Green else Color.White
+        )
+        val textDecoration = if (task.completed) TextDecoration.LineThrough else null
+        Text(
+          text = task.name,
+          color = taskColor,
+          textDecoration = textDecoration,
+          modifier = Modifier.weight(1.0F)
+        )
+      }
+    }
+  )
 }

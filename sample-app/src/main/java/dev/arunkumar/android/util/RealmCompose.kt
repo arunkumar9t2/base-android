@@ -28,11 +28,11 @@ import io.realm.RealmModel
 @Composable
 inline fun <reified T : RealmModel> RealmItem(
   noinline realmQueryBuilder: RealmQueryBuilder<T>,
-  content: @Composable (value: T) -> Unit
+  content: @Composable (value: T?) -> Unit
 ) {
   val value by rememberFlowWithLifecycle(flow = realmQueryBuilder.asFlow())
     .collectAsState(initial = null)
   key(value) {
-    value?.firstOrNull()?.let { realmValue -> content(realmValue) }
+    content(value?.firstOrNull())
   }
 }

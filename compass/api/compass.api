@@ -32,7 +32,8 @@ public abstract interface class dev/arunkumar/android/realm/RealmSource {
 }
 
 public final class dev/arunkumar/android/realm/flow/RealmFlowKt {
-	public static final fun asFlow (Lkotlin/jvm/functions/Function1;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun asFlow (Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function0;)Lkotlinx/coroutines/flow/Flow;
+	public static synthetic fun asFlow$default (Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function0;ILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
 }
 
 public final class dev/arunkumar/android/realm/paging/RealmPagingSource : androidx/paging/rxjava2/RxPagingSource {
