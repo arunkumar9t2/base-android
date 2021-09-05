@@ -63,7 +63,10 @@ fun TasksList(
     modifier = modifier,
     contentPadding = contentPadding
   ) {
-    items(items) { task -> taskContent(task) }
+    items(
+      items = items,
+      key = { task -> task.id.toString() }
+    ) { task -> taskContent(task) }
   }
 }
 
