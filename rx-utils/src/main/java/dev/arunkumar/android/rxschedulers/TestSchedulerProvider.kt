@@ -23,7 +23,8 @@ import javax.inject.Singleton
 
 @Singleton
 class TestSchedulerProvider
-@Inject constructor() : SchedulerProvider {
+@Inject
+constructor() : SchedulerProvider {
   override val ui: Scheduler get() = Schedulers.trampoline()
   override val single: Scheduler get() = Schedulers.trampoline()
   override val io: Scheduler get() = Schedulers.trampoline()

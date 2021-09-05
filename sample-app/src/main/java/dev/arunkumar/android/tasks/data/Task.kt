@@ -26,6 +26,7 @@ open class Task(
   @PrimaryKey
   @Required
   var id: UUID = UUID.randomUUID(),
+  var description: String = "",
   var name: String = "",
   var tags: RealmList<Tag> = RealmList(),
   var completed: Boolean = false,

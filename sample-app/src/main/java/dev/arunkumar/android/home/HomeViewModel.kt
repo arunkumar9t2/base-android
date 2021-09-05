@@ -156,10 +156,6 @@ constructor(
     reducerDispatcher.close()
   }
 
-  init {
-    perform(HomeAction.LoadTasks)
-  }
-
   fun perform(action: HomeAction) {
     viewModelScope.launch {
       actions.emit(action)

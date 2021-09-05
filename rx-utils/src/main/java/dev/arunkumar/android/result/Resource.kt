@@ -38,5 +38,6 @@ inline fun <T> Flowable<T>.asResource(initialResource: Resource<T> = idle()) = c
 }
 
 @Suppress("NOTHING_TO_INLINE")
-inline fun <T> Single<T>.asResource(initialResource: Resource<T> = idle()) =
-  toObservable().asResource(initialResource)
+inline fun <T> Single<T>.asResource(
+  initialResource: Resource<T> = idle()
+) = toObservable().asResource(initialResource)

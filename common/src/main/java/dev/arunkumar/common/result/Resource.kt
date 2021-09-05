@@ -19,6 +19,7 @@ package dev.arunkumar.common.result
 import dev.arunkumar.common.result.Resource.*
 
 sealed class Resource<T> {
+
   val hasValue: Boolean
     get() = when (this) {
       is Success -> true

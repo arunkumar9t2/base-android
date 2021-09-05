@@ -66,7 +66,7 @@ public final class dev/arunkumar/android/rxschedulers/BuildConfig {
 	public fun <init> ()V
 }
 
-public final class dev/arunkumar/android/rxschedulers/ExtensionsKt {
+public final class dev/arunkumar/android/rxschedulers/HandlerKt {
 	public static final fun toScheduler (Landroid/os/Handler;)Lio/reactivex/Scheduler;
 	public static final fun toScheduler (Ljava/util/concurrent/Executor;)Lio/reactivex/Scheduler;
 }
