@@ -182,7 +182,7 @@ private inline fun TaskProgress(progress: Int) {
 @Composable
 fun RowScope.DemoTaskModel() {
   RealmItem<Task>(
-    realmQueryBuilder = { where<Task>().sort("name").limit(1) },
+    queryBuilder = { where<Task>().sort("name").limit(1) },
     content = { task ->
       if (task != null) {
         val taskColor by animateColorAsState(
