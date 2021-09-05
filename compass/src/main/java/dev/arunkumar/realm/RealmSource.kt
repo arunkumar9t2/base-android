@@ -23,10 +23,11 @@ import dev.arunkumar.realm.paging.RealmTiledDataSource
 import dev.arunkumar.realm.threading.RealmDispatcher
 import io.realm.RealmModel
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flatMapConcat
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.onCompletion
 
-interface RealmSource<T : RealmModel> {
-
-}
+interface RealmSource<T : RealmModel>
 
 interface PagedRealmSource<T : RealmModel> : RealmSource<T> {
 
@@ -36,8 +37,12 @@ interface PagedRealmSource<T : RealmModel> : RealmSource<T> {
     prefetchDistance: Int = 10 * 3,
     placeholders: Boolean = false,
     realmQueryBuilder: RealmQueryBuilder<T>
-  ): Flow<PagingData<T>> {
-    return Pager(
+  ): Flow<PagingData<T>> = flow<RealmDispatcher> {
+    emit(RealmDispatcher("Paging${this::class.java.simpleName}"))
+  }.flatMapConcat { dispatcher ->
+    val factory = RealmTiledDataSource.Factory(realmQueryBuilder)
+    val pagingSourceFactory = factory.asPagingSourceFactory(dispatcher)
+    Pager(
       config = PagingConfig(
         pageSize = pageSize,
         prefetchDistance = prefetchDistance,
@@ -45,8 +50,7 @@ interface PagedRealmSource<T : RealmModel> : RealmSource<T> {
         initialLoadSize = initialLoadSize,
       ),
       initialKey = 0,
-      pagingSourceFactory = RealmTiledDataSource.Factory(realmQueryBuilder)
-        .asPagingSourceFactory(RealmDispatcher())
-    ).flow
+      pagingSourceFactory = pagingSourceFactory
+    ).flow.onCompletion { dispatcher.stop() }
   }
 }

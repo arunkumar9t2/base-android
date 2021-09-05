@@ -19,9 +19,7 @@ package dev.arunkumar.realm.paging
 import androidx.paging.DataSource
 import dev.arunkumar.realm.DefaultRealm
 import dev.arunkumar.realm.RealmQueryBuilder
-import io.realm.Realm
 import io.realm.RealmModel
-import io.realm.RealmQuery
 import io.realm.RealmResults
 
 class RealmTiledDataSource<T : RealmModel>(
@@ -29,7 +27,7 @@ class RealmTiledDataSource<T : RealmModel>(
 ) : TiledDataSource<T>() {
 
   class Factory<T : RealmModel>(
-    private val realmQueryBuilder: (Realm) -> RealmQuery<T>
+    private val realmQueryBuilder: RealmQueryBuilder<T>
   ) : DataSource.Factory<Int, T>() {
     override fun create() = RealmTiledDataSource(realmQueryBuilder)
   }
