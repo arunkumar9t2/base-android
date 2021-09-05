@@ -20,9 +20,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
-import dev.arunkumar.android.realm.RealmQueryBuilder
-import dev.arunkumar.android.realm.flow.asFlow
 import dev.arunkumar.android.util.work.rememberFlowWithLifecycle
+import dev.arunkumar.realm.RealmQueryBuilder
+import dev.arunkumar.realm.flow.asFlow
 import io.realm.RealmModel
 
 @Composable

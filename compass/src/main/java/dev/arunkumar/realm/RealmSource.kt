@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package dev.arunkumar.android.realm
+package dev.arunkumar.realm
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import dev.arunkumar.android.realm.paging.RealmTiledDataSource
-import dev.arunkumar.android.realm.threading.RealmDispatcher
+import dev.arunkumar.realm.paging.RealmTiledDataSource
+import dev.arunkumar.realm.threading.RealmDispatcher
 import io.realm.RealmModel
 import kotlinx.coroutines.flow.Flow
 

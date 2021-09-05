@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package dev.arunkumar.android.realm.threading
+package dev.arunkumar.realm.threading
 
 import dev.arunkumar.android.rxschedulers.toScheduler
 import dev.arunkumar.android.transformers.CompositeTransformer

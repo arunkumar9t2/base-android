@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-package dev.arunkumar.android.realm.paging
+package dev.arunkumar.realm.paging
 
 import androidx.paging.PagingState
 import androidx.paging.rxjava2.RxPagingSource
-import dev.arunkumar.android.realm.DefaultRealm
-import dev.arunkumar.android.realm.RealmQueryBuilder
-import dev.arunkumar.android.realm.threading.RealmExecutor
 import dev.arunkumar.android.rx.createSingle
 import dev.arunkumar.android.rxschedulers.toScheduler
+import dev.arunkumar.realm.DefaultRealm
+import dev.arunkumar.realm.RealmQueryBuilder
+import dev.arunkumar.realm.threading.RealmExecutor
 import io.reactivex.Single
 import io.realm.Realm
 import io.realm.RealmModel

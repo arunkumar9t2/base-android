@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package dev.arunkumar.android.realm.rx
+package dev.arunkumar.realm.rx
 
-import dev.arunkumar.android.realm.DefaultRealm
-import dev.arunkumar.android.realm.RealmQueryBuilder
-import dev.arunkumar.android.realm.threading.RealmSchedulers
 import dev.arunkumar.android.rx.createObservable
+import dev.arunkumar.realm.DefaultRealm
+import dev.arunkumar.realm.RealmQueryBuilder
+import dev.arunkumar.realm.threading.RealmSchedulers
 import io.reactivex.Observable
 import io.realm.RealmChangeListener
 import io.realm.RealmModel

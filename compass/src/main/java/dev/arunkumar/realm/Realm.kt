@@ -16,7 +16,7 @@
 
 @file:Suppress("NOTHING_TO_INLINE")
 
-package dev.arunkumar.android.realm
+package dev.arunkumar.realm
 
 import io.realm.Realm
 import io.realm.RealmModel

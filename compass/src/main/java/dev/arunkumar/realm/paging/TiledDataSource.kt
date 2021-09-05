@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package dev.arunkumar.android.realm.paging
+package dev.arunkumar.realm.paging
 
 import androidx.paging.PositionalDataSource
 import io.realm.RealmModel

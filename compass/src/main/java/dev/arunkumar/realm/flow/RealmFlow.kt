@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package dev.arunkumar.android.realm.flow
+package dev.arunkumar.realm.flow
 
-import dev.arunkumar.android.realm.DefaultRealm
-import dev.arunkumar.android.realm.RealmQueryBuilder
-import dev.arunkumar.android.realm.threading.RealmDispatcher
+import dev.arunkumar.realm.DefaultRealm
+import dev.arunkumar.realm.RealmQueryBuilder
+import dev.arunkumar.realm.threading.RealmDispatcher
 import io.realm.RealmChangeListener
 import io.realm.RealmModel
 import io.realm.RealmResults

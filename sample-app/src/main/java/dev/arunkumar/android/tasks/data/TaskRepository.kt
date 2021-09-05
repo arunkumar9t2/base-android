@@ -18,10 +18,10 @@ package dev.arunkumar.android.tasks.data
 
 import dagger.Binds
 import dagger.Module
-import dev.arunkumar.android.realm.PagedRealmSource
-import dev.arunkumar.android.realm.RealmTransaction
 import dev.arunkumar.android.rx.completable
 import dev.arunkumar.android.rx.createSingle
+import dev.arunkumar.realm.PagedRealmSource
+import dev.arunkumar.realm.RealmTransaction
 import io.reactivex.Completable
 import io.reactivex.Single
 import io.realm.kotlin.where

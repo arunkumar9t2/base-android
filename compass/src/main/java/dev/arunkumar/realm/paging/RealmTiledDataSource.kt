@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package dev.arunkumar.android.realm.paging
+package dev.arunkumar.realm.paging
 
 import androidx.paging.DataSource
-import dev.arunkumar.android.realm.DefaultRealm
-import dev.arunkumar.android.realm.RealmQueryBuilder
+import dev.arunkumar.realm.DefaultRealm
+import dev.arunkumar.realm.RealmQueryBuilder
 import io.realm.Realm
 import io.realm.RealmModel
 import io.realm.RealmQuery

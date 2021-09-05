@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package dev.arunkumar.android.realm.paging
+package dev.arunkumar.realm.paging
 
 @RequiresOptIn(message = "This is an experimental Paging 3 API and is subject to change")
 @Target(AnnotationTarget.CLASS)
