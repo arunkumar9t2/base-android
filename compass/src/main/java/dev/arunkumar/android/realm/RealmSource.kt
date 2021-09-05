@@ -19,7 +19,8 @@ package dev.arunkumar.android.realm
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import dev.arunkumar.android.realm.paging.RealmPagingSource
+import dev.arunkumar.android.realm.paging.RealmTiledDataSource
+import dev.arunkumar.android.realm.threading.RealmDispatcher
 import io.realm.RealmModel
 import kotlinx.coroutines.flow.Flow
 
@@ -44,9 +45,8 @@ interface PagedRealmSource<T : RealmModel> : RealmSource<T> {
         initialLoadSize = initialLoadSize,
       ),
       initialKey = 0,
-      pagingSourceFactory = {
-        RealmPagingSource(realmQueryBuilder)
-      }
+      pagingSourceFactory = RealmTiledDataSource.Factory(realmQueryBuilder)
+        .asPagingSourceFactory(RealmDispatcher())
     ).flow
   }
 }

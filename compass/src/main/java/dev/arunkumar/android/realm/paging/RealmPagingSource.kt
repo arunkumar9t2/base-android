@@ -28,6 +28,7 @@ import io.realm.Realm
 import io.realm.RealmModel
 import io.realm.RealmResults
 
+@ExperimentalPagingApi
 class RealmPagingSource<T : RealmModel>(
   private val realmQueryBuilder: RealmQueryBuilder<T>
 ) : RxPagingSource<Int, T>() {
@@ -36,14 +37,10 @@ class RealmPagingSource<T : RealmModel>(
 
   private val realm: Realm by lazy { DefaultRealm() }
   private val realmQuery by lazy { realm.realmQueryBuilder() }
-  private var realmChangeListener = { _: RealmResults<T> ->
-    invalidate()
-  }
+  private var realmChangeListener = { _: RealmResults<T> -> invalidate() }
 
   private val realmResults by lazy {
-    realmQuery.findAll().apply {
-      addChangeListener(realmChangeListener)
-    }
+    realmQuery.findAll().apply { addChangeListener(realmChangeListener) }
   }
 
   init {
