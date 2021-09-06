@@ -100,7 +100,9 @@ fun TaskItem(
           text = "Early access to Jarvis",
           style = MaterialTheme.typography.caption.copy(
             fontSize = 10.sp,
-            color = contentColorFor(backgroundColor = MaterialTheme.colors.onSurface).copy(alpha = 0.7f)
+            color = contentColorFor(
+              backgroundColor = MaterialTheme.colors.onSurface
+            ).copy(alpha = 0.7f)
           )
         )
         TaskMetaRow {
