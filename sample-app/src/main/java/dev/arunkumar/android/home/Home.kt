@@ -16,22 +16,17 @@
 
 package dev.arunkumar.android.home
 
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.ClearAll
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
-import dev.arunkumar.android.home.tasks.DemoTaskModel
 import dev.arunkumar.android.home.tasks.TaskItem
+import dev.arunkumar.android.home.tasks.TasksBottomBar
 import dev.arunkumar.android.home.tasks.TasksList
-import dev.arunkumar.android.util.invoke
-import dev.arunkumar.common.result.Resource
 
 @Composable
 fun Home(state: HomeState, homeViewModel: HomeViewModel) {
@@ -51,7 +46,12 @@ fun Home(state: HomeState, homeViewModel: HomeViewModel) {
       }
     },
     bottomBar = {
-      TasksBottomBar(state.reset) { homeViewModel.perform(HomeAction.ResetTasks) }
+      TasksBottomBar(
+        resetState = state.reset,
+        onResetAll = { homeViewModel.perform(HomeAction.ResetTasks) },
+        sortOptions = state.sortOptions,
+        onSelectedSortOption = { homeViewModel.perform(HomeAction.LoadTasks(it)) }
+      )
     },
     isFloatingActionButtonDocked = false,
     floatingActionButton = {
@@ -79,32 +79,4 @@ fun Home(state: HomeState, homeViewModel: HomeViewModel) {
       })
     }
   )
-}
-
-@Composable
-private fun TasksBottomBar(resetState: Resource<Unit>, resetAll: () -> Unit) {
-  BottomAppBar {
-    Row(
-      verticalAlignment = Alignment.CenterVertically,
-      horizontalArrangement = Arrangement.End,
-      modifier = Modifier
-        .fillMaxSize()
-        .padding(8.dp)
-    ) {
-      // Render a single item directly
-      DemoTaskModel()
-      resetState(
-        loading = {
-          CircularProgressIndicator()
-        },
-        success = {
-          Icon(
-            imageVector = Icons.Filled.ClearAll,
-            contentDescription = "Clear All",
-            modifier = Modifier.clickable { resetAll() }
-          )
-        }
-      )
-    }
-  }
 }

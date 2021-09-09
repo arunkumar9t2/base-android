@@ -20,6 +20,7 @@ package dev.arunkumar.android.home.tasks
 
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -29,10 +30,8 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Alarm
-import androidx.compose.material.icons.filled.Tonality
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
+import androidx.compose.material.icons.filled.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -44,9 +43,12 @@ import androidx.compose.ui.unit.sp
 import androidx.paging.PagingData
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
+import dev.arunkumar.android.home.SortOption
 import dev.arunkumar.android.tasks.data.Tag
 import dev.arunkumar.android.tasks.data.Task
 import dev.arunkumar.android.util.RealmItem
+import dev.arunkumar.android.util.invoke
+import dev.arunkumar.common.result.Resource
 import io.realm.kotlin.where
 import kotlinx.coroutines.flow.Flow
 import java.util.*
@@ -117,9 +119,7 @@ private fun TaskDescription(description: String) {
       text = description,
       style = MaterialTheme.typography.caption.copy(
         fontSize = 10.sp,
-        color = contentColorFor(
-          backgroundColor = MaterialTheme.colors.onSurface
-        ).copy(alpha = 0.7f)
+        color = contentColorFor(backgroundColor = MaterialTheme.colors.onSurface).copy(alpha = 0.7f)
       )
     )
   }
@@ -179,7 +179,6 @@ private fun Tags(tags: List<String>, modifier: Modifier = Modifier) {
   }
 }
 
-
 @Composable
 private fun TaskEstimate(estimate: Long) {
   if (estimate > 0) {
@@ -194,8 +193,51 @@ private fun TaskProgress(progress: Int) {
   }
 }
 
+
 @Composable
-fun RowScope.DemoTaskModel() {
+private fun TaskSortOption(
+  sortOptions: List<SortOption>,
+  onSelectedSortOption: (selectedOption: SortOption?) -> Unit
+) {
+  var sortOptionsEnabled by remember { mutableStateOf(false) }
+  Icon(
+    imageVector = Icons.Filled.Sort,
+    contentDescription = "Sort By",
+    modifier = Modifier.clickable { sortOptionsEnabled = true }
+  )
+  DropdownMenu(
+    modifier = Modifier.fillMaxWidth(0.60F),
+    expanded = sortOptionsEnabled,
+    onDismissRequest = { sortOptionsEnabled = false }
+  ) {
+    sortOptions.forEach { option ->
+      DropdownMenuItem(onClick = {
+        sortOptionsEnabled = false
+        onSelectedSortOption(option)
+      }) {
+        Icon(
+          imageVector = when (option) {
+            SortOption.Completed -> Icons.Filled.Task
+            SortOption.Name -> Icons.Filled.TextSnippet
+            SortOption.Estimate -> Icons.Filled.Timelapse
+          },
+          contentDescription = null,
+        )
+        Spacer(modifier = Modifier.width(8.dp))
+        Text(
+          text = when (option) {
+            SortOption.Completed -> "Completed"
+            SortOption.Name -> "Name"
+            SortOption.Estimate -> "Estimate"
+          },
+        )
+      }
+    }
+  }
+}
+
+@Composable
+private fun RowScope.DemoTaskModel() {
   RealmItem<Task>(
     queryBuilder = { where<Task>().sort("name").limit(1) },
     content = { task ->
@@ -213,4 +255,40 @@ fun RowScope.DemoTaskModel() {
       }
     }
   )
+}
+
+@Composable
+fun TasksBottomBar(
+  resetState: Resource<Unit>,
+  onResetAll: () -> Unit,
+  sortOptions: List<SortOption>,
+  onSelectedSortOption: (selectedOption: SortOption?) -> Unit
+) {
+  BottomAppBar(modifier = Modifier.animateContentSize()) {
+    Row(
+      verticalAlignment = Alignment.CenterVertically,
+      horizontalArrangement = Arrangement.End,
+      modifier = Modifier
+        .fillMaxSize()
+        .padding(8.dp)
+    ) {
+      // Render a single item directly
+      DemoTaskModel()
+
+      TaskSortOption(sortOptions, onSelectedSortOption)
+      Spacer(modifier = Modifier.width(4.dp))
+      resetState(
+        loading = {
+          CircularProgressIndicator()
+        },
+        success = {
+          Icon(
+            imageVector = Icons.Filled.ClearAll,
+            contentDescription = "Clear All",
+            modifier = Modifier.clickable { onResetAll() }
+          )
+        }
+      )
+    }
+  }
 }

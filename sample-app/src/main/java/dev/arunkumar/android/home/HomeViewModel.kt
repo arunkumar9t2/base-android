@@ -37,15 +37,20 @@ import kotlinx.coroutines.rx2.await
 import java.util.*
 import javax.inject.Inject
 
+enum class SortOption {
+  Completed, Name, Estimate
+}
+
 data class HomeState(
   val tasks: Flow<PagingData<Task>> = flowOf(PagingData.empty()),
-  val reset: Resource<Unit> = Resource.Success(Unit)
+  val reset: Resource<Unit> = Resource.Success(Unit),
+  val sortOptions: List<SortOption> = SortOption.values().toList()
 )
 
 sealed class HomeSideEffect
 
 sealed class HomeAction {
-  object LoadTasks : HomeAction()
+  data class LoadTasks(val sortOption: SortOption? = null) : HomeAction()
   data class AddTask(val taskName: String) : HomeAction()
   data class CompleteTask(val taskId: UUID, val completed: Boolean) : HomeAction()
   data class DeleteTask(val taskId: UUID) : HomeAction()
@@ -85,12 +90,12 @@ constructor(
 
   // Actions to reducers
   private val loadTasks: Flow<HomeReducer> = onAction<HomeAction.LoadTasks>()
-    .onStart { emit(HomeAction.LoadTasks) }
-    .mapLatest {
-      taskRepository
-        .pagedItems<Task> {
-          where<Task>().sort("name", Sort.ASCENDING)
-        }.cachedIn(viewModelScope)
+    .onStart { emit(HomeAction.LoadTasks()) }
+    .mapLatest { loadTasks ->
+      taskRepository.pagedItems<Task> {
+        val sort = loadTasks.toSort()
+        where<Task>().sort(sort.first, sort.second)
+      }.cachedIn(viewModelScope)
     }.flowOn(dispatchers.io)
     .mapToReducer { pagedTasks -> copy(tasks = pagedTasks) }
     .share()
@@ -136,7 +141,7 @@ constructor(
     addTask,
     completeTask,
     deleteTask,
-    resetTasks
+    resetTasks,
   ).scan(HomeState()) { state, reducer -> reducer(state) }
     .flowOn(reducerDispatcher)
     .onEach { logD { "State: $it" } }
@@ -159,5 +164,12 @@ constructor(
     viewModelScope.launch {
       actions.emit(action)
     }
+  }
+
+  private fun HomeAction.LoadTasks.toSort() = when (sortOption) {
+    SortOption.Completed -> "completed" to Sort.ASCENDING
+    SortOption.Name -> "name" to Sort.ASCENDING
+    SortOption.Estimate -> "estimate" to Sort.DESCENDING
+    null -> "name" to Sort.ASCENDING
   }
 }
