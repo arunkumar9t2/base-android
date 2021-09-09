@@ -26,11 +26,20 @@ open class Task(
   @PrimaryKey
   @Required
   var id: UUID = UUID.randomUUID(),
-  var description: String = "",
   var name: String = "",
+  var description: String = "",
   var tags: RealmList<Tag> = RealmList(),
   var completed: Boolean = false,
-) : RealmObject()
+  var createdAt: Date = Date(),
+  var estimate: Long = 0L,
+  var progress: Int = 0
+) : RealmObject() {
+  init {
+    require(progress in 0..100) {
+      "Progress should be between 0 to 100"
+    }
+  }
+}
 
 open class Tag(
   @PrimaryKey

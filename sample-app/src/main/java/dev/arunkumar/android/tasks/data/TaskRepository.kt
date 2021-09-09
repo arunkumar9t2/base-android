@@ -22,16 +22,17 @@ import dev.arunkumar.android.rx.completable
 import dev.arunkumar.android.rx.createSingle
 import dev.arunkumar.realm.PagedRealmSource
 import dev.arunkumar.realm.RealmTransaction
+import dev.arunkumar.realm.toRealmList
 import io.reactivex.Completable
 import io.reactivex.Single
 import io.realm.kotlin.where
 import java.util.*
 import javax.inject.Inject
-import kotlin.random.Random.Default.nextInt
+import kotlin.random.Random.Default as Random
 
 interface TaskRepository : PagedRealmSource<Task> {
 
-  @Deprecated(level = DeprecationLevel.ERROR, message = "No longer supported")
+  // @Deprecated(level = DeprecationLevel.ERROR, message = "No longer supported")
   fun addItemsIfEmpty(): Completable
 
   fun addTask(taskName: String): Single<Task>
@@ -55,25 +56,36 @@ constructor() : TaskRepository {
 
   private val charPool: List<Char> = ('a'..'z') + ('A'..'Z') + ('0'..'9')
 
+  private fun randomString() = (1..10)
+    .map { Random.nextInt(0, charPool.size) }
+    .map(charPool::get)
+    .joinToString("")
+
+  private val tags = listOf("work", "projects", "personal")
+  private val progress = listOf(0, 10, 40, 60, 90)
+
   override fun addItemsIfEmpty() = completable {
     RealmTransaction { realm ->
-      fun name() = (1..10)
-        .map { nextInt(0, charPool.size) }
-        .map(charPool::get)
-        .joinToString("")
-
       if (realm.where<Task>().findAll().isEmpty()) {
-        val newItems = buildList {
+        buildList {
           for (id in 0..MAX_ITEMS) {
-            add(
-              Task(
-                id = UUID.randomUUID(),
-                name = "$id: " + name()
-              )
-            )
+            val description = if (Random.nextBoolean()) randomString() else ""
+            val tags = tags.take(Random.nextInt(tags.size)).map(::Tag).toRealmList()
+            val completed = Random.nextBoolean()
+            val estimate = (Random.nextInt(100) / 10) * 10L
+            val progress = (Random.nextInt(100) / 10) * 10
+            Task(
+              id = UUID.randomUUID(),
+              name = "$id: " + randomString(),
+              description = description,
+              tags = tags,
+              completed = completed,
+              createdAt = Date(),
+              estimate = estimate,
+              progress = progress
+            ).let(this::add)
           }
-        }
-        realm.copyToRealmOrUpdate(newItems)
+        }.let { items -> realm.copyToRealmOrUpdate(items) }
       }
     }
   }

@@ -27,6 +27,8 @@ constructor(
 ) {
 
   fun build(): Completable {
-    return taskRepository.clear()
+    return taskRepository
+      .clear()
+      .andThen(taskRepository.addItemsIfEmpty())
   }
 }

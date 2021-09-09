@@ -44,6 +44,7 @@ import androidx.compose.ui.unit.sp
 import androidx.paging.PagingData
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
+import dev.arunkumar.android.tasks.data.Tag
 import dev.arunkumar.android.tasks.data.Task
 import dev.arunkumar.android.util.RealmItem
 import io.realm.kotlin.where
@@ -60,8 +61,7 @@ fun TasksList(
 ) {
   val items = tasks.collectAsLazyPagingItems()
   LazyColumn(
-    modifier = modifier,
-    contentPadding = contentPadding
+    modifier = modifier.padding(contentPadding),
   ) {
     items(
       items = items,
@@ -79,9 +79,12 @@ fun TaskItem(
 ) {
   Card(modifier = modifier
     .fillMaxWidth()
+    .padding(start = 12.dp, end = 12.dp, top = 12.dp)
     .clickable { deleteTask(task.id) }
   ) {
-    Row(modifier = Modifier.padding(12.dp)) {
+    Row(
+      modifier = Modifier.padding(8.dp)
+    ) {
       Checkbox(
         checked = task.completed,
         onCheckedChange = { completed -> completeTask(task.id, completed) },
@@ -95,52 +98,33 @@ fun TaskItem(
           text = task.name,
           style = MaterialTheme.typography.body1
         )
-        Spacer(modifier = Modifier.height(4.dp))
-        Text(
-          text = "Early access to Jarvis",
-          style = MaterialTheme.typography.caption.copy(
-            fontSize = 10.sp,
-            color = contentColorFor(
-              backgroundColor = MaterialTheme.colors.onSurface
-            ).copy(alpha = 0.7f)
-          )
-        )
+        TaskDescription(task.description)
         TaskMetaRow {
-          TaskTimeSpent(howMuch = "40m")
-          TaskProgress(progress = 60)
+          TaskEstimate(estimate = task.estimate)
+          TaskProgress(progress = task.progress)
         }
-        Tags(
-          listOf(
-            "learning",
-            "projects",
-            "iconzy",
-            "jarvis",
-          )
-        )
+        Tags(tags = task.tags.map(Tag::tagName))
       }
     }
   }
 }
 
 @Composable
-private fun Tags(tags: List<String>, modifier: Modifier = Modifier) {
-  LazyRow(
-    modifier = modifier
-      .fillMaxWidth()
-      .padding(2.dp)
-  ) {
-    itemsIndexed(tags) { _, tag ->
-      Text(
-        text = "  $tag  ",
-        style = MaterialTheme.typography.caption.copy(fontSize = 10.sp),
-        modifier = Modifier
-          .background(Color(0xFF64b5f2), RoundedCornerShape(size = 16.dp))
-          .padding(2.dp)
+private fun TaskDescription(description: String) {
+  if (description.isNotEmpty()) {
+    Spacer(modifier = Modifier.height(4.dp))
+    Text(
+      text = description,
+      style = MaterialTheme.typography.caption.copy(
+        fontSize = 10.sp,
+        color = contentColorFor(
+          backgroundColor = MaterialTheme.colors.onSurface
+        ).copy(alpha = 0.7f)
       )
-      Spacer(modifier = Modifier.width(4.dp))
-    }
+    )
   }
 }
+
 
 @Composable
 private fun TaskMetaRow(
@@ -174,15 +158,41 @@ private fun TaskMeta(
 }
 
 @Composable
-private inline fun TaskTimeSpent(howMuch: String) {
-  TaskMeta(icon = Icons.Filled.Alarm, text = howMuch)
+private fun Tags(tags: List<String>, modifier: Modifier = Modifier) {
+  if (tags.isNotEmpty()) {
+    LazyRow(
+      modifier = modifier
+        .fillMaxWidth()
+        .padding(2.dp)
+    ) {
+      itemsIndexed(tags) { _, tag ->
+        Text(
+          text = "  $tag  ",
+          style = MaterialTheme.typography.caption.copy(fontSize = 10.sp),
+          modifier = Modifier
+            .background(Color(0xFF64b5f2), RoundedCornerShape(size = 16.dp))
+            .padding(2.dp)
+        )
+        Spacer(modifier = Modifier.width(4.dp))
+      }
+    }
+  }
+}
+
+
+@Composable
+private fun TaskEstimate(estimate: Long) {
+  if (estimate > 0) {
+    TaskMeta(icon = Icons.Filled.Alarm, text = "${estimate}m")
+  }
 }
 
 @Composable
-private inline fun TaskProgress(progress: Int) {
-  TaskMeta(icon = Icons.Filled.Tonality, text = "$progress%")
+private fun TaskProgress(progress: Int) {
+  if (progress > 0) {
+    TaskMeta(icon = Icons.Filled.Tonality, text = "$progress%")
+  }
 }
-
 
 @Composable
 fun RowScope.DemoTaskModel() {

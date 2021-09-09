@@ -19,6 +19,7 @@
 package dev.arunkumar.realm
 
 import io.realm.Realm
+import io.realm.RealmList
 import io.realm.RealmModel
 import io.realm.RealmQuery
 
@@ -52,3 +53,5 @@ inline fun RealmTransaction(noinline action: RealmBlock) {
 fun <T : RealmModel> RealmQuery(
   builder: RealmQueryBuilder<T>
 ): RealmQueryBuilder<T> = builder
+
+inline fun <reified T : RealmModel> Collection<T>.toRealmList() = RealmList(*this.toTypedArray())
