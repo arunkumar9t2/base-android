@@ -53,17 +53,16 @@ fun Home(state: HomeState, homeViewModel: HomeViewModel) {
     bottomBar = {
       TasksBottomBar(state.reset) { homeViewModel.perform(HomeAction.ResetTasks) }
     },
-    isFloatingActionButtonDocked = true,
+    isFloatingActionButtonDocked = false,
     floatingActionButton = {
-      ExtendedFloatingActionButton(
-        text = { Text("Create Task") },
+      FloatingActionButton(
         onClick = { homeViewModel.perform(HomeAction.AddTask("Hello")) },
-        icon = {
+        content = {
           Icon(Icons.Default.Add, contentDescription = null)
         }
       )
     },
-    floatingActionButtonPosition = FabPosition.Center,
+    floatingActionButtonPosition = FabPosition.End,
     content = { innerPadding ->
       TasksList(state.tasks, innerPadding, taskContent = { task ->
         if (task != null) {

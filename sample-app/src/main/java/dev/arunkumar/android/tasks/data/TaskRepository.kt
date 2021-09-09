@@ -31,6 +31,7 @@ import kotlin.random.Random.Default.nextInt
 
 interface TaskRepository : PagedRealmSource<Task> {
 
+  @Deprecated(level = DeprecationLevel.ERROR, message = "No longer supported")
   fun addItemsIfEmpty(): Completable
 
   fun addTask(taskName: String): Single<Task>
