@@ -27,6 +27,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import dev.arunkumar.android.home.tasks.DemoTaskModel
 import dev.arunkumar.android.home.tasks.TaskItem
 import dev.arunkumar.android.home.tasks.TasksList
 import dev.arunkumar.android.util.invoke
@@ -92,7 +93,7 @@ private fun TasksBottomBar(resetState: Resource<Unit>, resetAll: () -> Unit) {
         .padding(8.dp)
     ) {
       // Render a single item directly
-      // DemoTaskModel()
+      DemoTaskModel()
       resetState(
         loading = {
           CircularProgressIndicator()

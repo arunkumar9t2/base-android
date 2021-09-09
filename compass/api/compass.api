@@ -33,7 +33,9 @@ public abstract interface class dev/arunkumar/realm/RealmSource {
 
 public final class dev/arunkumar/realm/flow/RealmFlowKt {
 	public static final fun asFlow (Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function0;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun asFlow (Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function2;)Lkotlinx/coroutines/flow/Flow;
 	public static synthetic fun asFlow$default (Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function0;ILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public static synthetic fun asFlow$default (Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function2;ILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
 }
 
 public abstract interface annotation class dev/arunkumar/realm/paging/ExperimentalPagingApi : java/lang/annotation/Annotation {
