@@ -5,6 +5,10 @@ on:
     paths:
       - '.github/workflows/build-logic.yml'
       - 'build-logic/**'
+  pull_request:
+    paths:
+      - '.github/workflows/build-logic.yml'
+      - 'build-logic/**'
 env:
   TERM: dumb
 
