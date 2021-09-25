@@ -28,7 +28,7 @@ jobs:
         with:
           debug: false
           job-id: build-logic
-          read-only: ${{ github.ref != 'refs/heads/main' }}
+          read-only: ${{ github.ref != 'refs/heads/master' }}
           build-root-directory: build-logic
           gradle-dependencies-cache-key: |
             gradle/libs.versions.toml
