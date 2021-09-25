@@ -49,9 +49,4 @@ inline fun RealmTransaction(noinline action: RealmBlock) {
   realm.close()
 }
 
-@Suppress("FunctionName")
-fun <T : RealmModel> RealmQuery(
-  builder: RealmQueryBuilder<T>
-): RealmQueryBuilder<T> = builder
-
 inline fun <reified T : RealmModel> Collection<T>.toRealmList() = RealmList(*this.toTypedArray())
