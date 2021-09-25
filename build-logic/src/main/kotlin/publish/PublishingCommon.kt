@@ -44,7 +44,7 @@ public class PublishingCommon : ConfigurablePlugin({
 
   val versions = (rootProject.extra["moduleVersions"] as Map<String, String>)
 
-  subprojects {
+  allprojects {
     group = findProperty("groupId").toString()
     if (versions[name] != null) {
       version = if (hasProperty("snapshot")) "master-SNAPSHOT" else versions[name]!!.toString()
