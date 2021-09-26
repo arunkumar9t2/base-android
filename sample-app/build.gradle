@@ -53,6 +53,8 @@ dependencies {
   implementation project(':rx-utils')
   implementation project(':spring-item-animator')
 
+  implementation "dev.arunkumar.compass:compass:main-SNAPSHOT"
+
   implementation(deps.androidx.core)
   implementation(deps.androidx.appcompat)
   implementation(deps.androidx.lifecycle)

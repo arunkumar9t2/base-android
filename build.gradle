@@ -41,11 +41,6 @@ scabbard {
 apply from: "gradle/local-properties.gradle"
 
 allprojects { project ->
-  repositories {
-    google()
-    jcenter()
-  }
-
   configurations.configureEach {
     resolutionStrategy {
       cacheChangingModulesFor 0, "seconds"
