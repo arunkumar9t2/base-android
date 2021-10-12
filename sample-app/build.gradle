@@ -53,7 +53,7 @@ dependencies {
   implementation project(':rx-utils')
   implementation project(':spring-item-animator')
 
-  implementation "dev.arunkumar.compass:compass:main-SNAPSHOT"
+  implementation "dev.arunkumar.compass:compass-paging:1.0.0"
 
   implementation(deps.androidx.core)
   implementation(deps.androidx.appcompat)

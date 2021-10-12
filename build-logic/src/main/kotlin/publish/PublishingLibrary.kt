@@ -65,6 +65,9 @@ public class PublishingLibrary : ConfigurablePlugin({
             from(components["java"])
           }
 
+          artifact(sourceJarTask)
+          artifact(javaDocsTask)
+
           pom {
             name.set(project.name)
             description.set(project.description)
