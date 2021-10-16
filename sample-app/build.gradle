@@ -41,7 +41,6 @@ dependencies {
 
   implementation project(':colors')
   implementation project(':common')
-  implementation project(':compass')
   implementation project(':dagger-base')
   implementation project(':dagger-viewmodel')
   implementation project(':dagger-workmanager')

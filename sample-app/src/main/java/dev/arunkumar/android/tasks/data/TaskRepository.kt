@@ -16,22 +16,25 @@
 
 package dev.arunkumar.android.tasks.data
 
+import androidx.paging.PagingData
 import dagger.Binds
 import dagger.Module
 import dev.arunkumar.android.rx.completable
 import dev.arunkumar.android.rx.createSingle
-import dev.arunkumar.realm.PagedRealmSource
-import dev.arunkumar.realm.RealmTransaction
-import dev.arunkumar.realm.toRealmList
+import dev.arunkumar.compass.RealmQuery
+import dev.arunkumar.compass.RealmQueryBuilder
+import dev.arunkumar.compass.RealmTransaction
+import dev.arunkumar.compass.paging.asPagingItems
+import dev.arunkumar.compass.toRealmList
 import io.reactivex.Completable
 import io.reactivex.Single
 import io.realm.kotlin.where
+import kotlinx.coroutines.flow.Flow
 import java.util.*
 import javax.inject.Inject
 import kotlin.random.Random.Default as Random
 
-interface TaskRepository : PagedRealmSource<Task> {
-
+interface TaskRepository {
   // @Deprecated(level = DeprecationLevel.ERROR, message = "No longer supported")
   fun addItemsIfEmpty(): Completable
 
@@ -42,6 +45,8 @@ interface TaskRepository : PagedRealmSource<Task> {
   fun completeTask(taskId: UUID, completed: Boolean): Completable
 
   fun clear(): Completable
+
+  fun pagedItems(realmQueryBuilder: RealmQueryBuilder<Task>): Flow<PagingData<Task>>
 }
 
 @Module
@@ -65,8 +70,8 @@ constructor() : TaskRepository {
   private val progress = listOf(0, 10, 40, 60, 90)
 
   override fun addItemsIfEmpty() = completable {
-    RealmTransaction { realm ->
-      if (realm.where<Task>().findAll().isEmpty()) {
+    RealmTransaction {
+      if (where<Task>().findAll().isEmpty()) {
         buildList {
           for (id in 0..MAX_ITEMS) {
             val description = if (Random.nextBoolean()) randomString() else ""
@@ -85,15 +90,15 @@ constructor() : TaskRepository {
               progress = progress
             ).let(this::add)
           }
-        }.let { items -> realm.copyToRealmOrUpdate(items) }
+        }.let { items -> copyToRealmOrUpdate(items) }
       }
     }
   }
 
   override fun addTask(taskName: String): Single<Task> = createSingle {
     try {
-      RealmTransaction { realm ->
-        onSuccess(realm.copyToRealm(Task(name = taskName)))
+      RealmTransaction {
+        onSuccess(copyToRealm(Task(name = taskName)))
       }
     } catch (e: Exception) {
       tryOnError(e)
@@ -101,9 +106,8 @@ constructor() : TaskRepository {
   }
 
   override fun deleteTasks(taskId: UUID) = completable {
-    RealmTransaction { realm ->
-      realm
-        .where<Task>()
+    RealmTransaction {
+      where<Task>()
         .equalTo("id", taskId)
         .findAll()
         .deleteAllFromRealm()
@@ -111,8 +115,8 @@ constructor() : TaskRepository {
   }
 
   override fun completeTask(taskId: UUID, completed: Boolean) = completable {
-    RealmTransaction { realm ->
-      realm.where<Task>()
+    RealmTransaction {
+      where<Task>()
         .equalTo("id", taskId)
         .findFirst()
         ?.completed = completed
@@ -120,10 +124,14 @@ constructor() : TaskRepository {
   }
 
   override fun clear() = completable {
-    RealmTransaction { realm ->
-      realm.where<Task>().findAll().deleteAllFromRealm()
+    RealmTransaction {
+      where<Task>().findAll().deleteAllFromRealm()
     }
   }
+
+  override fun pagedItems(
+    realmQueryBuilder: RealmQueryBuilder<Task>
+  ): Flow<PagingData<Task>> = RealmQuery(realmQueryBuilder).asPagingItems()
 
   companion object {
     private const val MAX_ITEMS = 3000

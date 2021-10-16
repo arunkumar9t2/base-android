@@ -125,7 +125,6 @@ ext {
     "logging"             : "1.0.0",
     "viewmodel-utils"     : "1.0.0",
     "rx-utils"            : "1.0.0",
-    "compass"             : "1.0.0",
     "glide-component-icon": "1.0.0",
     "dagger-workmanager"  : "1.0.0",
     "preferences"         : "1.0.0",

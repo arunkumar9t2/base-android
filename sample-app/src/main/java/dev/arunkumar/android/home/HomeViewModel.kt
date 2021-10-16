@@ -92,7 +92,7 @@ constructor(
   private val loadTasks: Flow<HomeReducer> = onAction<HomeAction.LoadTasks>()
     .onStart { emit(HomeAction.LoadTasks()) }
     .mapLatest { loadTasks ->
-      taskRepository.pagedItems<Task> {
+      taskRepository.pagedItems {
         val sort = loadTasks.toSort()
         where<Task>().sort(sort.first, sort.second)
       }.cachedIn(viewModelScope)
