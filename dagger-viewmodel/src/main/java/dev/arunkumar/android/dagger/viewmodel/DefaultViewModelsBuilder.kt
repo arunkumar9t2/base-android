@@ -30,5 +30,5 @@ abstract class DefaultViewModelsBuilder {
 
   @Binds
   @Singleton
-  abstract fun viewModelFactory(factory: MultibindsViewModelFactory): ViewModelProvider.Factory
+  abstract fun MultibindsViewModelFactory.viewModelFactory(): ViewModelProvider.Factory
 }

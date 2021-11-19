@@ -24,5 +24,5 @@ import dev.arunkumar.android.rxschedulers.SchedulerProvider
 @Module
 abstract class AppSchedulersModule {
   @Binds
-  abstract fun schedulerProvider(appSchedulerProvider: AppSchedulerProvider): SchedulerProvider
+  abstract fun AppSchedulerProvider.schedulerProvider(): SchedulerProvider
 }
