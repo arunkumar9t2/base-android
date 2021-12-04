@@ -22,7 +22,7 @@ ext {
   ]
 
   rvVersion = "1.0.0"
-  agpVersion = "7.0.0"
+  agpVersion = "7.1.0-beta04"
   kotlinVersion = "1.5.20"
   dokkaVersion = "1.5.0"
   daggerVersion = "2.38.1"
