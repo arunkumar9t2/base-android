@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Arunkumar
+ * Copyright 2022 Arunkumar
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@ ext {
   ]
 
   rvVersion = "1.0.0"
-  agpVersion = "7.1.0-beta04"
+  agpVersion = "7.1.1"
   kotlinVersion = "1.5.20"
   dokkaVersion = "1.5.0"
   daggerVersion = "2.38.1"
