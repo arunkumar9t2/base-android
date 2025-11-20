@@ -29,7 +29,7 @@ compose-paging = "androidx.paging:paging-compose:1.0.0-alpha12"
 spotless = "com.diffplug.spotless:spotless-plugin-gradle:5.11.0"
 
 dokka = { module = "org.jetbrains.dokka:dokka-gradle-plugin", version.ref = "dokka" }
-nexus-publish = "io.github.gradle-nexus:publish-plugin:1.1.0"
+nexus-publish = "io.github.gradle-nexus:publish-plugin:2.0.0"
 
 # Tests
 junit = "junit:junit:4.+"

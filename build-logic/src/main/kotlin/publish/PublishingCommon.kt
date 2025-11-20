@@ -57,8 +57,8 @@ public class PublishingCommon : ConfigurablePlugin({
         stagingProfileId.set(extra[SONATYPE_STAGING_PROFILE_ID].toString())
         username.set(extra[OSSRH_USERNAME].toString())
         password.set(extra[OSSRH_PASSWORD].toString())
-        nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
-        snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
+        nexusUrl.set(uri("https://ossrh-staging-api.central.sonatype.com/service/local/"))
+        snapshotRepositoryUrl.set(uri("https://central.sonatype.com/repository/maven-snapshots/"))
       }
     }
   }
