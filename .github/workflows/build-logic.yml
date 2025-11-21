@@ -21,15 +21,13 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
-      - uses: burrunan/gradle-cache-action@v1
-        name: build-logic
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v5
         with:
-          debug: false
-          job-id: build-logic
-          read-only: ${{ github.ref != 'refs/heads/master' }}
-          build-root-directory: build-logic
-          gradle-dependencies-cache-key: |
-            gradle/libs.versions.toml
-          arguments: build
+          cache-read-only: ${{ github.ref != 'refs/heads/master' }}
+
+      - name: Build build-logic
+        working-directory: build-logic
+        run: ./gradlew build
