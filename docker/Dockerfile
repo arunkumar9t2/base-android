@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     gnupg \
     gzip \
     locales \
-    openjdk-17-jdk \
+    openjdk-11-jdk \
     software-properties-common \
     sudo \
     tar \
