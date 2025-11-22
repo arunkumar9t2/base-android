@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:24.04
 
 LABEL org.opencontainers.image.authors="hi@arunkumar.dev"
 LABEL org.opencontainers.image.source="https://github.com/arunkumar9t2/base-android"
@@ -15,20 +15,21 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     gnupg \
     gzip \
     locales \
-    openjdk-11-jdk \
+    openjdk-17-jdk \
     software-properties-common \
     sudo \
     tar \
     unzip \
     wget \
-    zip
+    zip \
+    && rm -rf /var/lib/apt/lists/*
 
 # Set en locale
 RUN locale-gen en_US.UTF-8
-ENV LANG C.UTF-8
+ENV LANG=C.UTF-8
 
 # Setup Android SDK
-ENV ANDROID_CMDLINE_TOOLS_URL="https://dl.google.com/android/repository/commandlinetools-linux-7583922_latest.zip"
+ENV ANDROID_CMDLINE_TOOLS_URL="https://dl.google.com/android/repository/commandlinetools-linux-13114758_latest.zip"
 ENV ANDROID_HOME="/opt/android-sdk"
 ENV ANDROID_SDK_ROOT=$ANDROID_HOME \
     PATH=${PATH}:${ANDROID_HOME}/cmdline-tools/latest:${ANDROID_HOME}/cmdline-tools/latest/bin:${ANDROID_HOME}/platform-tools
@@ -42,6 +43,6 @@ RUN mkdir "$ANDROID_SDK_ROOT" && \
     rm commandlinetools.zip && \
     # Setup sdkmanager
     yes | sdkmanager --licenses && \
-    sdkmanager tools platform-tools "platforms;android-30" "build-tools;30.0.3" --verbose
+    sdkmanager tools platform-tools "platforms;android-30" "platforms;android-35" "build-tools;30.0.3" "build-tools;35.0.0" --verbose
 
 ENV GRADLE_USER_HOME=/github/home/.gradle
